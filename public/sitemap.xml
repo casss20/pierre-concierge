@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://pierre-concierge.vercel.app/</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/services</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/pricing</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/about</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/faq</loc></url>
   <url><loc>https://pierre-concierge.vercel.app/going-home-checklist.html</loc></url>
   <url><loc>https://pierre-concierge.vercel.app/services/post-operative-recovery</loc></url>
   <url><loc>https://pierre-concierge.vercel.app/services/chronic-disease-management</loc></url>

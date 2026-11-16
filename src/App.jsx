@@ -705,10 +705,10 @@ function Footer() {
                     <div>
                         <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Explore</h4>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                            <a href="/#services" className="hover:text-sand transition-colors">Services</a>
-                            <a href="/#pricing" className="hover:text-sand transition-colors">Pricing</a>
-                            <a href="/#about" className="hover:text-sand transition-colors">About Elda</a>
-                            <a href="/#faq" className="hover:text-sand transition-colors">FAQ</a>
+                            <a href="/services" className="hover:text-sand transition-colors">Services</a>
+                            <a href="/pricing" className="hover:text-sand transition-colors">Pricing</a>
+                            <a href="/about" className="hover:text-sand transition-colors">About Elda</a>
+                            <a href="/faq" className="hover:text-sand transition-colors">FAQ</a>
                         </div>
                     </div>
                     <div>
@@ -868,7 +868,7 @@ function ServicePage({ slug, openBooking }) {
         return (
             <section className="bg-ivory py-28 text-center">
                 <h1 className="font-serif text-3xl font-semibold text-pine mb-4">Page not found</h1>
-                <PillButton href="/#services">See all services</PillButton>
+                <PillButton href="/services">See all services</PillButton>
             </section>
         );
     }
@@ -887,7 +887,7 @@ function ServicePage({ slug, openBooking }) {
         <>
             <section className="bg-ivory pt-12 pb-10 md:pt-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <a href="/#services" className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:text-royal-dark mb-8">
+                    <a href="/services" className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:text-royal-dark mb-8">
                         <ArrowRight className="w-4 h-4 rotate-180" /> All services
                     </a>
                     <div className="flex items-center gap-4 mb-5">
@@ -960,6 +960,26 @@ function ServicePage({ slug, openBooking }) {
         </>
     );
 }
+
+// --- Standalone pages ---------------------------------------------
+function PageHeader({ eyebrow, title, subtitle }) {
+    return (
+        <section className="bg-ivory pt-14 pb-6 md:pt-20">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-4">{eyebrow}</p>
+                <h1 className="font-serif text-4xl md:text-5xl font-semibold text-pine leading-tight mb-4">{title}</h1>
+                {subtitle && <p className="text-lg text-ink/80 leading-relaxed">{subtitle}</p>}
+            </div>
+        </section>
+    );
+}
+
+const PAGE_HEADERS = {
+    '/services': { eyebrow: 'Services', title: 'Our nursing services', subtitle: 'Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.' },
+    '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.' },
+    '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.' },
+    '/faq': { eyebrow: 'FAQ', title: 'Frequently asked questions', subtitle: 'Insurance, payment, physician orders, and how a visit works.' },
+};
 
 function BookingModal({ isOpen, onClose, service }) {
     const [submitted, setSubmitted] = useState(false);
@@ -1048,7 +1068,8 @@ function BookingModal({ isOpen, onClose, service }) {
 }
 
 // --- Nav ---------------------------------------------------------
-function Nav({ openBooking }) {
+function Nav({ openBooking, path = '/' }) {
+    const current = path.replace(/\/+$/, '') || '/';
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -1059,10 +1080,10 @@ function Nav({ openBooking }) {
     }, []);
 
     const links = [
-        { label: 'Services', href: '/#services' },
-        { label: 'Pricing', href: '/#pricing' },
-        { label: 'About', href: '/#about' },
-        { label: 'FAQ', href: '/#faq' },
+        { label: 'Services', href: '/services' },
+        { label: 'Pricing', href: '/pricing' },
+        { label: 'About', href: '/about' },
+        { label: 'FAQ', href: '/faq' },
     ];
 
     return (
@@ -1083,7 +1104,7 @@ function Nav({ openBooking }) {
 
                     <div className="hidden md:flex items-center gap-8">
                         {links.map(({ label, href }) => (
-                            <a key={label} href={href} className="text-sm font-semibold text-ink/75 hover:text-pine transition-colors">{label}</a>
+                            <a key={label} href={href} aria-current={current === href || current.startsWith(href + '/') ? 'page' : undefined} className={`text-sm font-semibold transition-colors hover:text-pine ${current === href || current.startsWith(href + '/') ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>{label}</a>
                         ))}
                         <PillButton onClick={() => openBooking('General Consultation')} className="py-2.5 px-6 text-sm">
                             Book Now
@@ -1116,7 +1137,8 @@ function Nav({ openBooking }) {
 
 // --- App ----------------------------------------------------------
 export default function App({ path = '/' }) {
-    const match = path.replace(/\/+$/, '').match(/^\/services\/([a-z0-9-]+)$/);
+    const clean = path.replace(/\/+$/, '') || '/';
+    const match = clean.match(/^\/services\/([a-z0-9-]+)$/);
     const serviceSlug = match ? match[1] : null;
     const [bookingOpen, setBookingOpen] = useState(false);
     const [service, setService] = useState('General Consultation');
@@ -1128,12 +1150,20 @@ export default function App({ path = '/' }) {
 
     useReveal();
 
-    return (
-        <div id="top" className="min-h-screen bg-ivory font-sans text-ink">
-            <Nav openBooking={openBooking} />
-            <main>
-                {serviceSlug ? <ServicePage slug={serviceSlug} openBooking={openBooking} /> : (
-                <>
+    let content;
+    if (serviceSlug) {
+        content = <ServicePage slug={serviceSlug} openBooking={openBooking} />;
+    } else if (clean === '/services') {
+        content = (<><PageHeader {...PAGE_HEADERS['/services']} /><Services openBooking={openBooking} /><HowItWorks /><FinalCTA openBooking={openBooking} /></>);
+    } else if (clean === '/pricing') {
+        content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
+    } else if (clean === '/about') {
+        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><CredentialsStrip /><CareTeam /><Testimonials /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+    } else if (clean === '/faq') {
+        content = (<><PageHeader {...PAGE_HEADERS['/faq']} /><FAQ /><ChecklistCTA /><FinalCTA openBooking={openBooking} /></>);
+    } else {
+        content = (
+            <>
                 <Hero openBooking={openBooking} />
                 <QuoteBand />
                 <CredentialsStrip />
@@ -1149,9 +1179,14 @@ export default function App({ path = '/' }) {
                 <ChecklistCTA />
                 <ServiceArea />
                 <FinalCTA openBooking={openBooking} />
-                </>
-                )}
-            </main>
+            </>
+        );
+    }
+
+    return (
+        <div id="top" className="min-h-screen bg-ivory font-sans text-ink">
+            <Nav openBooking={openBooking} path={clean} />
+            <main>{content}</main>
             <Footer />
             <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} service={service} />
         </div>

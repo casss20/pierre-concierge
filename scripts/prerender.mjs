@@ -7,7 +7,7 @@ import { pathToFileURL } from 'node:url'
 const root = process.cwd()
 const distDir = path.join(root, 'dist')
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8')
-const { render, serviceRoutes } = await import(pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href)
+const { render, serviceRoutes, pageRoutes } = await import(pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href)
 
 const ROOT_TAG = '<div id="root"></div>'
 if (!template.includes(ROOT_TAG)) throw new Error('prerender: <div id="root"></div> not found in dist/index.html')
@@ -19,9 +19,11 @@ const SITE = 'https://pierre-concierge.vercel.app'
 fs.writeFileSync(path.join(distDir, 'index.html'), template.replace(ROOT_TAG, `<div id="root">${render('/')}</div>`))
 
 // Service pages
-for (const { path: route, title, description } of serviceRoutes) {
+const FAQ_SCHEMA = /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "FAQPage"[\s\S]*?<\/script>\s*/
+
+for (const { path: route, title, description } of [...pageRoutes, ...serviceRoutes]) {
     let html = template
-        .replace(/<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "FAQPage"[\s\S]*?<\/script>\s*/, '')
+        .replace(FAQ_SCHEMA, (m) => (route === '/faq' ? m : ''))
         .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
         .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(description)}" />`)
         .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${SITE}${route}" />`)
@@ -37,4 +39,4 @@ for (const { path: route, title, description } of serviceRoutes) {
 }
 
 fs.rmSync(path.join(root, 'dist-ssr'), { recursive: true, force: true })
-console.log(`prerender: homepage + ${serviceRoutes.length} service pages written`)
+console.log(`prerender: homepage + ${pageRoutes.length} pages and ${serviceRoutes.length} service pages written`)
