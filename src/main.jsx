@@ -4,9 +4,10 @@ import App from './App.jsx'
 import './index.css'
 
 const root = document.getElementById('root')
+const path = window.location.pathname
 const app = (
     <React.StrictMode>
-        <App />
+        <App path={path} />
     </React.StrictMode>
 )
 

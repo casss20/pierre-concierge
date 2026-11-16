@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SITE_CONFIG } from './siteConfig.js';
+import { SERVICE_BY_SLUG, SLUG_BY_TITLE } from './serviceDetails.js';
 import {
     Heart,
     Stethoscope,
@@ -398,8 +399,13 @@ function Services({ openBooking }) {
                                 </div>
                                 <span className="font-serif text-brass text-lg">{String(i + 1).padStart(2, "0")}</span>
                             </div>
-                            <h3 className="font-serif text-[1.35rem] font-semibold text-pine mb-3">{title}</h3>
-                            <p className="text-ink/75 leading-relaxed text-[0.93rem] flex-grow mb-7">{description}</p>
+                            <h3 className="font-serif text-[1.35rem] font-semibold text-pine mb-3">
+                                <a href={`/services/${SLUG_BY_TITLE[title]}`} className="hover:text-royal transition-colors">{title}</a>
+                            </h3>
+                            <p className="text-ink/75 leading-relaxed text-[0.93rem] flex-grow mb-4">{description}</p>
+                            <a href={`/services/${SLUG_BY_TITLE[title]}`} className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:text-royal-dark mb-6">
+                                What is this treatment? <ArrowRight className="w-4 h-4" />
+                            </a>
                             <div className="pt-5 border-t border-pine/10 flex items-center justify-between mt-auto">
                                 <span className="text-pine font-bold text-base">{price}</span>
                                 <button onClick={() => openBooking(tag)} className="inline-flex items-center gap-1 text-sm font-semibold text-pine hover:text-royal transition-colors">
@@ -697,10 +703,10 @@ function Footer() {
                     <div>
                         <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Explore</h4>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                            <a href="#services" className="hover:text-sand transition-colors">Services</a>
-                            <a href="#pricing" className="hover:text-sand transition-colors">Pricing</a>
-                            <a href="#about" className="hover:text-sand transition-colors">About Elda</a>
-                            <a href="#faq" className="hover:text-sand transition-colors">FAQ</a>
+                            <a href="/#services" className="hover:text-sand transition-colors">Services</a>
+                            <a href="/#pricing" className="hover:text-sand transition-colors">Pricing</a>
+                            <a href="/#about" className="hover:text-sand transition-colors">About Elda</a>
+                            <a href="/#faq" className="hover:text-sand transition-colors">FAQ</a>
                         </div>
                     </div>
                     <div>
@@ -852,6 +858,100 @@ function ChecklistCTA() {
     );
 }
 
+// --- Service detail page -----------------------------------------
+function ServicePage({ slug, openBooking }) {
+    const detail = SERVICE_BY_SLUG[slug];
+    const service = SERVICES.find((x) => x.title === detail?.title);
+    if (!detail || !service) {
+        return (
+            <section className="bg-ivory py-28 text-center">
+                <h1 className="font-serif text-3xl font-semibold text-pine mb-4">Page not found</h1>
+                <PillButton href="/#services">See all services</PillButton>
+            </section>
+        );
+    }
+    const Icon = service.icon;
+    const others = SERVICES.filter((x) => x.title !== detail.title);
+    const List = ({ items }) => (
+        <ul className="space-y-3">
+            {items.map((t) => (
+                <li key={t} className="flex items-start gap-3 text-ink/80 leading-relaxed">
+                    <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" /> <span>{t}</span>
+                </li>
+            ))}
+        </ul>
+    );
+    return (
+        <>
+            <section className="bg-ivory pt-12 pb-10 md:pt-16">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <a href="/#services" className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:text-royal-dark mb-8">
+                        <ArrowRight className="w-4 h-4 rotate-180" /> All services
+                    </a>
+                    <div className="flex items-center gap-4 mb-5">
+                        <div className="w-14 h-14 rounded-2xl bg-pine text-ivory flex items-center justify-center"><Icon className="w-7 h-7" /></div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">Service</p>
+                    </div>
+                    <h1 className="font-serif text-4xl md:text-5xl font-semibold text-pine leading-tight mb-5">{detail.title}</h1>
+                    <p className="text-lg text-ink/80 leading-relaxed mb-8">{detail.intro}</p>
+                    <div className="flex flex-wrap items-center gap-4">
+                        <PillButton onClick={() => openBooking(service.tag)}>{service.tag} <ArrowRight className="w-4 h-4" /></PillButton>
+                        <PillButton href="tel:+17543676929" variant="outline"><Phone className="w-4 h-4" /> (754) 367-6929</PillButton>
+                        <span className="font-bold text-pine text-lg">{service.price}</span>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-cream/50 py-14">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2">
+                    <div>
+                        <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Who it is for</h2>
+                        <List items={detail.whoFor} />
+                    </div>
+                    <div>
+                        <h2 className="font-serif text-2xl font-semibold text-pine mb-4">What to have ready</h2>
+                        <List items={detail.bring} />
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-ivory py-14">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="font-serif text-2xl font-semibold text-pine mb-6">What happens during a visit</h2>
+                    <ol className="space-y-4">
+                        {detail.visit.map((t, i) => (
+                            <li key={t} className="flex items-start gap-4 bg-cream/60 border border-pine/10 rounded-2xl p-5">
+                                <span className="font-serif text-brass text-2xl leading-none w-8 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                                <span className="text-ink/85 leading-relaxed">{t}</span>
+                            </li>
+                        ))}
+                    </ol>
+                    <div className="mt-8 rounded-2xl bg-pine text-ivory p-6 leading-relaxed">
+                        <p className="font-semibold mb-1">Good to know</p>
+                        <p className="text-ivory/85">{detail.note}</p>
+                    </div>
+                    <p className="text-xs text-ink/70 mt-6">
+                        This page is general information, not medical advice. Always follow the instructions of your own doctor. Services are non-emergency. In a medical emergency, call 911.
+                    </p>
+                </div>
+            </section>
+
+            <section className="bg-cream/50 py-14">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 className="font-serif text-2xl font-semibold text-pine mb-6">Other services</h2>
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {others.map(({ title }) => (
+                            <a key={title} href={`/services/${SLUG_BY_TITLE[title]}`} className="bg-ivory border border-pine/10 rounded-2xl px-5 py-4 font-semibold text-pine hover:border-pine/30 hover:shadow-md transition-all flex items-center justify-between">
+                                {title} <ChevronRight className="w-4 h-4 text-brass" />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </>
+    );
+}
+
 function BookingModal({ isOpen, onClose, service }) {
     const [submitted, setSubmitted] = useState(false);
     useEffect(() => { if (isOpen) setSubmitted(false); }, [isOpen]);
@@ -939,10 +1039,10 @@ function Nav({ openBooking }) {
     }, []);
 
     const links = [
-        { label: 'Services', href: '#services' },
-        { label: 'Pricing', href: '#pricing' },
-        { label: 'About', href: '#about' },
-        { label: 'FAQ', href: '#faq' },
+        { label: 'Services', href: '/#services' },
+        { label: 'Pricing', href: '/#pricing' },
+        { label: 'About', href: '/#about' },
+        { label: 'FAQ', href: '/#faq' },
     ];
 
     return (
@@ -954,7 +1054,7 @@ function Nav({ openBooking }) {
 
             <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-[4.5rem]">
-                    <a href="#top" className="flex items-center gap-3 group">
+                    <a href="/" className="flex items-center gap-3 group">
                         <div className="w-10 h-10 rounded-xl bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-xl group-hover:bg-royal transition-colors">P</div>
                         <span className="font-serif text-lg font-semibold text-pine leading-tight">
                             Pierre <span className="hidden sm:inline text-ink/70 font-normal">Concierge Nursing</span>
@@ -995,7 +1095,9 @@ function Nav({ openBooking }) {
 }
 
 // --- App ----------------------------------------------------------
-export default function App() {
+export default function App({ path = '/' }) {
+    const match = path.replace(/\/+$/, '').match(/^\/services\/([a-z0-9-]+)$/);
+    const serviceSlug = match ? match[1] : null;
     const [bookingOpen, setBookingOpen] = useState(false);
     const [service, setService] = useState('General Consultation');
 
@@ -1010,6 +1112,8 @@ export default function App() {
         <div id="top" className="min-h-screen bg-ivory font-sans text-ink">
             <Nav openBooking={openBooking} />
             <main>
+                {serviceSlug ? <ServicePage slug={serviceSlug} openBooking={openBooking} /> : (
+                <>
                 <Hero openBooking={openBooking} />
                 <QuoteBand />
                 <CredentialsStrip />
@@ -1025,6 +1129,8 @@ export default function App() {
                 <ChecklistCTA />
                 <ServiceArea />
                 <FinalCTA openBooking={openBooking} />
+                </>
+                )}
             </main>
             <Footer />
             <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} service={service} />
