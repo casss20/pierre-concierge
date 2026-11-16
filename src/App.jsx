@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
     Heart,
     Stethoscope,
@@ -19,808 +19,823 @@ import {
     Award,
     BookOpen,
     HelpCircle,
-    Briefcase
+    Briefcase,
+    ShieldCheck,
+    Languages,
+    Sparkles,
 } from 'lucide-react';
 
-// --- Reusable UI Components ---
+/* ============================================================
+   Pierre Concierge Nursing — v2 redesign
+   Palette is drawn from Elda's own portraits:
+   charcoal studio backdrop, royal blue scrubs, warm beige.
+   ============================================================ */
 
-const Button = ({ children, variant = 'primary', className = '', onClick }) => {
-    const baseStyle = "px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:-translate-y-1 shadow-md inline-flex items-center justify-center";
-    const variants = {
-        primary: "bg-blue-900 text-white hover:bg-blue-800 hover:shadow-lg",
-        secondary: "bg-white text-blue-900 border-2 border-blue-900 hover:bg-blue-50",
-        accent: "bg-teal-600 text-white hover:bg-teal-700",
-        outline: "border-2 border-white text-white hover:bg-white/10"
+// --- Reveal-on-scroll hook ------------------------------------
+function useReveal() {
+    useEffect(() => {
+        const els = document.querySelectorAll('.reveal');
+        // Screenshot/print mode: reveal everything instantly (also a safe fallback)
+        if (window.location.hash === '#snap' || !('IntersectionObserver' in window)) {
+            document.documentElement.classList.add('snap');
+            els.forEach((el) => el.classList.add('is-visible'));
+            return;
+        }
+        const io = new IntersectionObserver(
+            (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('is-visible')),
+            { threshold: 0.12 }
+        );
+        els.forEach((el) => io.observe(el));
+        return () => io.disconnect();
+    });
+}
+
+// --- Small building blocks ------------------------------------
+const Eyebrow = ({ children, light = false }) => (
+    <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-4 flex items-center gap-2 ${light ? 'text-sand' : 'text-brass'}`}>
+        <span className={`inline-block h-px w-8 ${light ? 'bg-sand' : 'bg-brass'}`} />
+        {children}
+    </p>
+);
+
+const SectionHeading = ({ eyebrow, title, subtitle, centered = true, light = false }) => (
+    <div className={`reveal mb-14 ${centered ? 'text-center' : 'text-left'}`}>
+        {eyebrow && (centered
+            ? <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-4 ${light ? 'text-sand' : 'text-brass'}`}>{eyebrow}</p>
+            : <Eyebrow light={light}>{eyebrow}</Eyebrow>)}
+        <h2 className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] font-semibold mb-5 ${light ? 'text-ivory' : 'text-pine'}`}>{title}</h2>
+        {subtitle && <p className={`max-w-2xl leading-relaxed ${centered ? 'mx-auto' : ''} ${light ? 'text-ivory/70' : 'text-ink/60'}`}>{subtitle}</p>}
+    </div>
+);
+
+const PillButton = ({ children, variant = 'primary', className = '', onClick, href }) => {
+    const base = "inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer";
+    const styles = {
+        primary: "bg-pine text-ivory hover:bg-pine-dark",
+        royal: "bg-royal text-white hover:bg-royal-dark",
+        outline: "border border-pine/30 text-pine hover:border-pine hover:bg-pine hover:text-ivory",
+        light: "bg-ivory text-pine hover:bg-sand",
+        ghostLight: "border border-ivory/40 text-ivory hover:bg-ivory hover:text-pine",
     };
-
-    return (
-        <button onClick={onClick} className={`${baseStyle} ${variants[variant]} ${className}`}>
-            {children}
-        </button>
-    );
+    const cls = `${base} ${styles[variant]} ${className}`;
+    return href
+        ? <a href={href} className={cls}>{children}</a>
+        : <button onClick={onClick} className={cls}>{children}</button>;
 };
 
-const SectionHeading = ({ title, subtitle, centered = true }) => (
-    <div className={`mb-12 ${centered ? 'text-center' : 'text-left'}`}>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">{title}</h2>
-        <div className={`h-1 w-24 bg-teal-500 rounded ${centered ? 'mx-auto' : ''}`}></div>
-        {subtitle && <p className="mt-4 text-gray-600 max-w-2xl mx-auto">{subtitle}</p>}
-    </div>
-);
+// --- Data ------------------------------------------------------
+const SERVICES = [
+    {
+        icon: Syringe,
+        title: "IV Therapy & Hydration",
+        description: "Administration of prescribed fluids and medications in the comfort of your home — ideal for dehydration, recovery, or vitamin boosts. We handle setup, administration, and monitoring.",
+        price: "Starting at $200",
+        tag: "Book IV Therapy",
+    },
+    {
+        icon: ShieldAlert,
+        title: "Advanced Wound Care",
+        description: "Expert management of surgical wounds, pressure ulcers, and diabetic wounds — sterile dressing changes, measurement, and close monitoring for signs of infection.",
+        price: "Starting at $175",
+        tag: "Book Wound Care",
+    },
+    {
+        icon: Activity,
+        title: "Post-Operative Recovery",
+        description: "Peace of mind after surgery: vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal.",
+        price: "$160 per visit",
+        tag: "Book Post-Op Care",
+    },
+    {
+        icon: Heart,
+        title: "Chronic Disease Management",
+        description: "Ongoing support for diabetes, hypertension, and heart conditions — education, regular check-ins, and care plans that help keep you out of the hospital.",
+        price: "Custom Plans",
+        tag: "Book a Consultation",
+    },
+    {
+        icon: Stethoscope,
+        title: "Wellness Assessments",
+        description: "A full head-to-toe assessment — blood pressure, heart rate, oxygen levels, and lung sounds — with clear explanations and updates for family or your physician.",
+        price: "$150 per visit",
+        tag: "Book an Assessment",
+    },
+    {
+        icon: Briefcase,
+        title: "Patient Advocacy",
+        description: "Help understanding doctor's orders, attending appointments with you, and organizing your medical life — a bridge between you and your specialists.",
+        price: "Hourly Rates",
+        tag: "Book Advocacy",
+    },
+];
 
-const ServiceCard = ({ icon: Icon, title, description, price, onBook }) => (
-    <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col h-full">
-        <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
-            <Icon className="w-8 h-8 text-blue-900" />
-        </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-        <p className="text-gray-600 mb-4 leading-relaxed flex-grow">{description}</p>
-        <div className="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
-            <div className="text-teal-600 font-semibold">{price}</div>
-            <button onClick={onBook} className="text-blue-900 text-sm font-bold hover:text-teal-600 flex items-center">
-                Book <ChevronRight size={16} className="ml-1" />
-            </button>
-        </div>
-    </div>
-);
+const STEPS = [
+    { step: "01", title: "Book", desc: "Request your service or plan online, by phone, or by text." },
+    { step: "02", title: "Intake", desc: "We review your needs and verify any physician orders." },
+    { step: "03", title: "Home Visit", desc: "Elda arrives fully equipped to provide your care." },
+    { step: "04", title: "Recovery", desc: "Full documentation and updates to your doctor or family." },
+];
 
-// --- Page Components ---
+const SINGLE_VISITS = [
+    { name: "Wound Care Visit", price: "$175", desc: "Sterile dressing change, measurement & assessment." },
+    { name: "IV Hydration", price: "$200+", desc: "Fluids & meds administration (requires prescription)." },
+    { name: "Wellness Check", price: "$150", desc: "Complete physical assessment — heart, lungs, vitals." },
+    { name: "Post-Op Check-in", price: "$160", desc: "Incision check, pain assessment & medication review." },
+];
 
-const HomePage = ({ navigateTo, openBooking }) => {
-    const [activeTab, setActiveTab] = useState('subscription');
+const SUBSCRIPTION_FEATURES = [
+    { strong: "3 visits per month", rest: "included" },
+    { strong: "Mix & match services", rest: "wound care, IV, check-ups" },
+    { strong: "Priority scheduling", rest: "mornings & weekends" },
+    { strong: "Direct text line", rest: "24/7 support with Elda" },
+];
 
+const FAQS = [
+    {
+        q: "Do you accept insurance?",
+        a: "We are a private-pay (concierge) service, which allows us to provide unhurried, higher-quality care without insurance restrictions. We provide a detailed superbill you can submit to your insurance for potential out-of-network reimbursement.",
+    },
+    {
+        q: "What forms of payment do you accept?",
+        a: "All major credit cards, HSA/FSA cards, and Zelle. Payment is due at booking to secure your appointment.",
+    },
+    {
+        q: "Can you prescribe medication?",
+        a: "As a Registered Nurse, I administer medications prescribed by your physician. I cannot write new prescriptions, but I work closely with your doctor to make sure you get what you need.",
+    },
+    {
+        q: "Which areas do you serve?",
+        a: "Mobile nursing throughout Ocala, Silver Springs Shores, Belleview, and The Villages (North) — private residences, hotels, and assisted living facilities.",
+    },
+];
+
+const AREAS = ["Ocala", "Silver Springs Shores", "Belleview", "The Villages (North)"];
+
+const EXPERIENCE = [
+    {
+        role: "Registered Nurse",
+        org: "The Lodge Rehabilitation / HCA West Marion",
+        period: "2022 — Present",
+        desc: "High-quality post-operative care, medication administration, and patient education.",
+        current: true,
+    },
+    {
+        role: "Home Health Specialist",
+        org: "Trend Home Health Services",
+        period: "2022 — Present",
+        desc: "Specialized in-home care, vital monitoring, and personalized care plans.",
+        current: false,
+    },
+    {
+        role: "Certified Nursing Assistant",
+        org: "Nurse Care Inc & Synergy Health",
+        period: "2000 — 2021",
+        desc: "Decades of foundational, hands-on patient care experience.",
+        current: false,
+    },
+];
+
+const CERTIFICATIONS = [
+    "Bachelor of Science in Nursing (BSN), Grand Canyon University",
+    "Associate Degree in Nursing (ADN), Hosanna College",
+    "Licensed Registered Nurse, State of Florida",
+    "CPR & First Aid Certified",
+];
+
+// --- Section components ----------------------------------------
+function Hero({ openBooking }) {
     return (
-        <div className="animate-in fade-in duration-500">
-            {/* Hero Section */}
-            <header className="relative min-h-[90vh] flex items-center pt-20">
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="Gemini_Generated_Image_vzbkpcvzbkpcvzbk (1).jpg"
-                        onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" }}
-                        alt="Elda Marie Pierre RN in White Coat"
-                        className="w-full h-full object-cover object-top opacity-20 md:opacity-100 md:w-1/2 md:ml-auto"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-blue-50/95 to-transparent md:via-blue-50/70"></div>
-                </div>
+        <header className="relative overflow-hidden bg-ivory">
+            {/* soft decorative blobs */}
+            <div className="pointer-events-none absolute -top-32 -right-32 w-[34rem] h-[34rem] rounded-full bg-sand/25 blur-3xl" />
+            <div className="pointer-events-none absolute top-64 -left-40 w-[28rem] h-[28rem] rounded-full bg-pine/5 blur-3xl" />
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div className="md:w-1/2 pt-12 md:pt-0">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-sm font-semibold mb-6">
-                            <Star className="w-4 h-4 mr-1 fill-current" /> Premier Concierge Nursing in Ocala
-                        </div>
-                        <h1 className="text-4xl md:text-6xl font-serif font-bold text-gray-900 leading-tight mb-6">
-                            Hospital-Grade Care, <br />
-                            <span className="text-blue-900">Right at Home.</span>
-                        </h1>
-                        <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
-                            Expert post-operative support, IV therapy, and wound care by Elda Marie Pierre, RN, BSN. Skip the waiting room and recover in comfort.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Button onClick={() => navigateTo('pricing')} variant="primary">
-                                View Plans
-                            </Button>
-                            <Button onClick={() => navigateTo('services')} variant="secondary">
-                                Our Services
-                            </Button>
-                            <Button onClick={() => navigateTo('about')} variant="outline" className="border-blue-900 text-blue-900 hover:bg-blue-50 md:border-2 md:border-blue-900/20">
-                                Meet Elda
-                            </Button>
-                        </div>
-
-                        <div className="mt-12 flex items-center space-x-8 text-gray-500 text-sm font-medium">
-                            <div className="flex items-center"><CheckCircle className="w-5 h-5 text-teal-500 mr-2" /> Licensed RN</div>
-                            <div className="flex items-center"><CheckCircle className="w-5 h-5 text-teal-500 mr-2" /> Insured</div>
-                            <div className="flex items-center"><CheckCircle className="w-5 h-5 text-teal-500 mr-2" /> Bilingual</div>
-                        </div>
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-16 md:pb-24 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
+                {/* Copy */}
+                <div className="reveal order-2 lg:order-1">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pine/5 border border-pine/10 text-pine text-xs font-semibold uppercase tracking-[0.14em] mb-7">
+                        <Sparkles className="w-3.5 h-3.5 text-brass" />
+                        Premier Concierge Nursing · Ocala, FL
                     </div>
-                </div>
-            </header>
 
-            {/* Mini Features Teaser */}
-            <div className="bg-white py-16">
-                <div className="max-w-7xl mx-auto px-4 text-center">
-                    <p className="text-teal-600 font-bold uppercase tracking-wide mb-2">Why Choose Us</p>
-                    <h2 className="text-3xl font-serif font-bold text-gray-900 mb-12">Care That Revolves Around You</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <h1 className="font-serif text-[2.6rem] leading-[1.08] sm:text-5xl xl:text-[4.1rem] font-semibold text-pine mb-6">
+                        Hospital-grade care,
+                        <br />
+                        <span className="italic font-medium text-royal">right at home.</span>
+                    </h1>
+
+                    <p className="text-lg text-ink/65 leading-relaxed max-w-xl mb-9">
+                        Expert post-operative support, IV therapy, and wound care by{' '}
+                        <strong className="text-pine font-semibold">Elda Marie Pierre, RN, BSN</strong>.
+                        Skip the waiting room — recover in the comfort of your own home.
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-4 mb-10">
+                        <PillButton onClick={() => openBooking('General Consultation')}>
+                            Book a Visit <ArrowRight className="w-4 h-4" />
+                        </PillButton>
+                        <PillButton variant="outline" href="tel:+17543676929">
+                            <Phone className="w-4 h-4" /> +1 (754) 367-6929
+                        </PillButton>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm font-medium text-ink/55">
                         {[
-                            { icon: Clock, title: "Unrushed Visits", desc: "We take the time to listen, assess, and explain everything clearly. No 15-minute rush." },
-                            { icon: Calendar, title: "Flexible Scheduling", desc: "Morning, evening, and weekend appointments available to fit your lifestyle." },
-                            { icon: MapPin, title: "We Come to You", desc: "Service available throughout Ocala, Silver Springs, and Marion County homes & hotels." }
-                        ].map((item, i) => (
-                            <div key={i} className="p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors">
-                                <item.icon className="w-10 h-10 text-blue-900 mx-auto mb-4" />
-                                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                                <p className="text-gray-600 text-sm">{item.desc}</p>
-                            </div>
+                            { icon: ShieldCheck, label: "Licensed RN" },
+                            { icon: CheckCircle, label: "Fully Insured" },
+                            { icon: Languages, label: "Bilingual" },
+                        ].map(({ icon: Icon, label }) => (
+                            <span key={label} className="inline-flex items-center gap-2">
+                                <Icon className="w-4.5 h-4.5 w-5 h-5 text-pine" /> {label}
+                            </span>
                         ))}
                     </div>
                 </div>
+
+                {/* Portrait */}
+                <div className="reveal order-1 lg:order-2 relative mx-auto w-full max-w-md lg:max-w-none">
+                    <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] border border-brass/40" />
+                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-pine-dark">
+                        <img
+                            src="/elda-coat.jpg"
+                            alt="Elda Marie Pierre, RN, BSN — white coat portrait"
+                            className="w-full h-[26rem] sm:h-[32rem] lg:h-[36rem] object-cover object-top"
+                        />
+                        {/* sparkle watermark in source image sits bottom-right — cover it */}
+                        <div className="absolute bottom-0 right-0 h-16 w-16 bg-gradient-to-tl from-pine-dark/90 to-transparent" />
+                        <div className="absolute bottom-5 left-5 right-5 sm:right-auto bg-ivory/95 backdrop-blur rounded-2xl px-5 py-4 shadow-xl flex items-center gap-4">
+                            <div className="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-lg shrink-0">E</div>
+                            <div>
+                                <p className="font-serif font-semibold text-pine leading-tight">Elda Marie Pierre</p>
+                                <p className="text-xs text-ink/55 font-medium">RN, BSN · 20+ years in patient care</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            {/* Services Section on Home */}
-            <section className="py-20 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <SectionHeading
-                        title="Comprehensive Nursing Services"
-                        subtitle="Professional medical care tailored to your specific recovery and wellness needs."
-                    />
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <ServiceCard
-                            icon={Syringe}
-                            title="IV Therapy & Hydration"
-                            description="Administration of prescribed fluids and medications in the comfort of your home. Perfect for dehydration, recovery, or vitamin boosts."
-                            price="Starting at $200"
-                            onBook={() => openBooking('IV Therapy')}
-                        />
-                        <ServiceCard
-                            icon={ShieldAlert}
-                            title="Advanced Wound Care"
-                            description="Expert management of surgical wounds, pressure ulcers, and diabetic wounds. Includes sterile dressing changes and infection monitoring."
-                            price="Starting at $175"
-                            onBook={() => openBooking('Wound Care')}
-                        />
-                        <ServiceCard
-                            icon={Activity}
-                            title="Post-Operative Recovery"
-                            description="Peace of mind after surgery. Vitals monitoring, pain management assessment, medication reconciliation, and mobility assistance."
-                            price="$160 per visit"
-                            onBook={() => openBooking('Post-Op Care')}
-                        />
-                        <ServiceCard
-                            icon={Heart}
-                            title="Chronic Disease Mgmt"
-                            description="Ongoing support for diabetes, hypertension, and heart conditions. We help you stay on track with education and regular check-ins."
-                            price="Custom Plans"
-                            onBook={() => openBooking('Chronic Disease Mgmt')}
-                        />
-                        <ServiceCard
-                            icon={Stethoscope}
-                            title="Wellness Assessments"
-                            description="A full head-to-toe physical assessment including blood pressure, heart rate, oxygen levels, and lung sounds."
-                            price="$150 per visit"
-                            onBook={() => openBooking('Wellness Assessment')}
-                        />
-                        <ServiceCard
-                            icon={Briefcase}
-                            title="Patient Advocacy"
-                            description="Need help understanding doctor's orders? We attend appointments with you or help organize your medical life."
-                            price="Hourly Rates"
-                            onBook={() => openBooking('Patient Advocacy')}
-                        />
-                    </div>
-                </div>
-            </section>
-
-            {/* Pricing Section on Home */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <SectionHeading title="Simple, Transparent Pricing" subtitle="Choose a single visit for immediate needs, or save with our monthly subscription plan designed for consistent care." />
-
-                    <div className="flex justify-center mb-12">
-                        <div className="bg-gray-100 p-1 rounded-full inline-flex">
-                            <button
-                                onClick={() => setActiveTab('subscription')}
-                                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'subscription' ? 'bg-white text-blue-900 shadow-md' : 'text-gray-500 hover:text-gray-900'}`}
-                            >
-                                Monthly Subscription
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('alacarte')}
-                                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'alacarte' ? 'bg-white text-blue-900 shadow-md' : 'text-gray-500 hover:text-gray-900'}`}
-                            >
-                                Single Visits
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="flex justify-center">
-                        {activeTab === 'subscription' ? (
-                            <div className="bg-white text-gray-900 rounded-2xl shadow-2xl overflow-hidden max-w-md w-full border border-gray-100 transform transition-all hover:scale-105">
-                                <div className="bg-teal-500 p-3 text-center text-white font-bold text-sm tracking-wider uppercase">Most Popular Choice</div>
-                                <div className="p-8">
-                                    <h3 className="text-2xl font-bold text-center mb-2">The Pierre Care Plan</h3>
-                                    <div className="text-center mb-6">
-                                        <span className="text-5xl font-bold text-blue-900">$450</span>
-                                        <span className="text-gray-500">/month</span>
-                                    </div>
-                                    <p className="text-gray-600 text-center mb-8 text-sm">Ideal for post-op recovery or ongoing chronic care management.</p>
-
-                                    <ul className="space-y-4 mb-8">
-                                        <li className="flex items-start">
-                                            <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                            <span><strong>3 Visits Per Month</strong> included</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                            <span><strong>Mix & Match Services</strong> (Wound Care, IV, Check-ups)</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                            <span>Priority Scheduling (Weekends/Mornings)</span>
-                                        </li>
-                                        <li className="flex items-start">
-                                            <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                            <span>24/7 Text Support Line</span>
-                                        </li>
-                                    </ul>
-
-                                    <Button onClick={() => openBooking('Pierre Care Subscription')} variant="primary" className="w-full py-4 text-lg bg-blue-900 hover:bg-blue-800">
-                                        Start Subscription
-                                    </Button>
-                                    <p className="text-xs text-center text-gray-400 mt-4">No long-term contract. Cancel anytime.</p>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="w-full max-w-4xl grid md:grid-cols-2 gap-6">
-                                {[
-                                    { name: "Wound Care Visit", price: "$175", desc: "Sterile dressing change, measurement & assessment." },
-                                    { name: "IV Hydration", price: "$200+", desc: "Fluids & meds administration (requires prescription)." },
-                                    { name: "Wellness Check", price: "$150", desc: "Complete physical assessment (Heart, Lungs, Vitals)." },
-                                    { name: "Post-Op Check-in", price: "$160", desc: "Incision check, pain assessment & medication review." }
-                                ].map((item, idx) => (
-                                    <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-blue-200">
-                                        <div className="flex justify-between items-start mb-2">
-                                            <h4 className="font-bold text-xl text-gray-900">{item.name}</h4>
-                                            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">{item.price}</span>
-                                        </div>
-                                        <p className="text-gray-600 mb-4">{item.desc}</p>
-                                        <button onClick={() => openBooking(item.name)} className="text-teal-600 font-bold text-sm hover:text-teal-800 flex items-center">
-                                            Book Single Visit <ChevronRight size={16} />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA / Contact Section on Home */}
-            <section className="py-20 bg-teal-50">
-                <div className="max-w-4xl mx-auto px-4 text-center">
-                    <SectionHeading title="Ready to prioritize your health?" subtitle="Whether you need a one-time check-up or continuous care, I am ready to assist you. Booking is simple and secure." />
-
-                    <div className="flex flex-col sm:flex-row justify-center gap-6">
-                        <div className="bg-white px-8 py-6 rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center">
-                            <Phone className="w-10 h-10 text-teal-600 mr-4" />
-                            <div className="text-left">
-                                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider">Call or Text</div>
-                                <a href="tel:+17543676929" className="text-2xl font-bold text-blue-900 hover:text-blue-700">+1-754-367-6929</a>
-                            </div>
-                        </div>
-                        <div className="bg-white px-8 py-6 rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center">
-                            <Mail className="w-10 h-10 text-teal-600 mr-4" />
-                            <div className="text-left">
-                                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider">Email Me</div>
-                                <a href="mailto:jpjojo565@gmail.com" className="text-xl font-bold text-blue-900 hover:text-blue-700">jpjojo565@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+        </header>
     );
-};
+}
 
-const AboutPage = () => (
-    <div className="pt-24 pb-20 bg-white animate-in slide-in-from-right duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading title="About Pierre Concierge Nursing" subtitle="Professional, personal, and dedicated to your recovery." />
-
-            <div className="flex flex-col md:flex-row items-start gap-12 mb-20">
-                <div className="md:w-1/2 relative sticky top-24">
-                    {/* IMAGE NOTE: Using the scrubs image filename provided by user. */}
-                    <div className="absolute top-4 -left-4 w-full h-full bg-blue-100 rounded-2xl transform -rotate-2"></div>
-                    <img
-                        src="Gemini_Generated_Image_yca050yca050yca0.jpg"
-                        onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" }}
-                        alt="Elda Marie Pierre in Scrubs"
-                        className="relative rounded-2xl shadow-xl w-full object-cover z-10 aspect-[4/5]"
-                    />
-                </div>
-
-                <div className="md:w-1/2">
-                    <h2 className="text-teal-600 font-bold tracking-wide uppercase text-sm mb-2">My Story</h2>
-                    <h3 className="text-3xl font-serif font-bold text-gray-900 mb-6">Elda Marie Joe Pierre, RN, BSN</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed text-lg font-medium">
-                        "I believe that healing happens best where you are most comfortable—at home. But you shouldn't have to compromise on clinical safety to get there."
-                    </p>
-                    <div className="prose text-gray-600 mb-8">
-                        <p className="mb-4">
-                            I am a Registered Nurse with a Bachelor of Science in Nursing (BSN) and over a decade of hands-on experience in the medical field. My career has taken me from the fast-paced environment of rehabilitation centers to the personal setting of home health care.
-                        </p>
-                        <p>
-                            I founded <strong>Pierre Concierge Nursing</strong> because I saw a gap in the healthcare system. Too often, patients are discharged home with confusing instructions and limited support. My goal is to be your advocate, your nurse, and your peace of mind.
-                        </p>
-                    </div>
-
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 mb-8">
-                        <h4 className="font-bold text-blue-900 mb-4 flex items-center"><Briefcase className="w-5 h-5 mr-2" /> Professional Experience</h4>
-                        <div className="space-y-4">
-                            <div className="border-l-2 border-teal-500 pl-4">
-                                <div className="font-bold text-gray-900">Registered Nurse</div>
-                                <div className="text-sm text-gray-500">The Lodge Rehabilitation / HCA West Marion • 2022-Present</div>
-                                <p className="text-sm text-gray-600 mt-1">High-quality post-operative care, medication administration, and patient education.</p>
-                            </div>
-                            <div className="border-l-2 border-gray-300 pl-4">
-                                <div className="font-bold text-gray-900">Home Health Specialist</div>
-                                <div className="text-sm text-gray-500">Trend Home Health Services • 2022-Present</div>
-                                <p className="text-sm text-gray-600 mt-1">Specialized in-home care, vital monitoring, and personalized care plans.</p>
-                            </div>
-                            <div className="border-l-2 border-gray-300 pl-4">
-                                <div className="font-bold text-gray-900">Certified Nursing Assistant</div>
-                                <div className="text-sm text-gray-500">Nurse Care Inc & Synergy Health • 2000-2021</div>
-                                <p className="text-sm text-gray-600 mt-1">Decades of foundational patient care experience.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 className="font-bold text-blue-900 mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2" /> Education & Certifications</h4>
-                        <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700">
-                            <li className="flex items-center"><Award className="w-4 h-4 text-teal-500 mr-2" /> Bachelor of Science in Nursing (BSN), Grand Canyon University</li>
-                            <li className="flex items-center"><Award className="w-4 h-4 text-teal-500 mr-2" /> Associate Degree in Nursing (ADN), Hosanna College</li>
-                            <li className="flex items-center"><Award className="w-4 h-4 text-teal-500 mr-2" /> Licensed Registered Nurse (Florida)</li>
-                            <li className="flex items-center"><Award className="w-4 h-4 text-teal-500 mr-2" /> CPR & First Aid Certified</li>
-                        </ul>
-                    </div>
-                </div>
+function QuoteBand() {
+    return (
+        <section className="bg-pine text-ivory relative overflow-hidden">
+            <div className="pointer-events-none absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-pine-light/40 blur-3xl" />
+            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24 text-center reveal">
+                <Heart className="w-8 h-8 text-sand mx-auto mb-6 fill-sand/20" />
+                <blockquote className="font-serif text-2xl md:text-[2.1rem] leading-snug font-medium mb-6">
+                    “Healing happens best where you're most comfortable — at home.
+                    You should never have to compromise clinical safety to get there.”
+                </blockquote>
+                <p className="text-sand text-sm font-semibold uppercase tracking-[0.2em]">Elda Marie Pierre, RN, BSN</p>
             </div>
-        </div>
-    </div>
-);
+        </section>
+    );
+}
 
-const ServicesPage = ({ openBooking }) => (
-    <div className="pt-24 pb-20 bg-gray-50 animate-in slide-in-from-right duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeading
-                title="Our Medical Services"
-                subtitle="We bring the clinic to your living room. Professional, sterile, and compassionate care."
-            />
-
-            {/* Main Services Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-                <ServiceCard
-                    icon={Syringe}
-                    title="IV Therapy & Hydration"
-                    description="Administration of prescribed fluids and medications. Perfect for dehydration, post-viral recovery, or vitamin boosts. We handle the setup, administration, and monitoring."
-                    price="Starting at $200"
-                    onBook={() => openBooking('IV Therapy')}
+function WhyUs() {
+    const items = [
+        { icon: Clock, title: "Unrushed Visits", desc: "Time to listen, assess, and explain everything clearly — never a 15-minute conveyor belt." },
+        { icon: Calendar, title: "Flexible Scheduling", desc: "Morning, evening, and weekend appointments built around your life, not a clinic's." },
+        { icon: MapPin, title: "We Come to You", desc: "Homes, hotels, and assisted living facilities across Marion County." },
+    ];
+    return (
+        <section className="bg-ivory py-20 md:py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading
+                    eyebrow="Why Pierre Concierge"
+                    title="Care that revolves around you"
+                    subtitle="One nurse, one relationship, no waiting rooms."
                 />
-                <ServiceCard
-                    icon={ShieldAlert}
-                    title="Advanced Wound Care"
-                    description="Expert management of surgical wounds, pressure ulcers, and diabetic wounds. We ensure proper healing, change dressings sterilely, and monitor for any signs of infection."
-                    price="Starting at $175"
-                    onBook={() => openBooking('Wound Care')}
-                />
-                <ServiceCard
-                    icon={Activity}
-                    title="Post-Operative Recovery"
-                    description="Peace of mind after surgery. We provide vitals monitoring, pain management assessment, medication reconciliation, and assistance with safe mobility and transfers."
-                    price="$160 per visit"
-                    onBook={() => openBooking('Post-Op Care')}
-                />
-                <ServiceCard
-                    icon={Heart}
-                    title="Chronic Disease Mgmt"
-                    description="Ongoing support for diabetes, hypertension, and heart conditions. We help you stay on track with education, diet review, and regular health check-ins to prevent hospitalization."
-                    price="Custom Plans"
-                    onBook={() => openBooking('Chronic Disease Mgmt')}
-                />
-                <ServiceCard
-                    icon={Stethoscope}
-                    title="Wellness Assessments"
-                    description="A full head-to-toe physical assessment including blood pressure, heart rate, oxygen levels, and lung sounds. Great for peace of mind or sending updates to family members."
-                    price="$150 per visit"
-                    onBook={() => openBooking('Wellness Assessment')}
-                />
-                <ServiceCard
-                    icon={Briefcase}
-                    title="Patient Advocacy"
-                    description="Need help understanding doctor's orders? We attend appointments with you or help organize your medical life. We act as the bridge between you and your specialist."
-                    price="Hourly Rates"
-                    onBook={() => openBooking('Patient Advocacy')}
-                />
-            </div>
-
-            {/* How It Works Section */}
-            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
-                <div className="text-center mb-12">
-                    <h3 className="text-2xl font-serif font-bold text-gray-900">How It Works</h3>
-                    <p className="text-gray-600">Simple steps to getting the care you need.</p>
-                </div>
-                <div className="grid md:grid-cols-4 gap-8">
-                    {[
-                        { step: "01", title: "Book Online", desc: "Select your service or subscription plan through our secure portal." },
-                        { step: "02", title: "Intake Call", desc: "We briefly discuss your medical needs and verify physician orders if needed." },
-                        { step: "03", title: "Home Visit", desc: "Elda arrives at your home fully equipped to provide care." },
-                        { step: "04", title: "Recovery", desc: "We document everything and send updates to your doctor or family." }
-                    ].map((item, i) => (
-                        <div key={i} className="text-center relative">
-                            <div className="text-5xl font-bold text-gray-100 mb-4 font-serif">{item.step}</div>
-                            <h4 className="text-lg font-bold text-blue-900 mb-2">{item.title}</h4>
-                            <p className="text-sm text-gray-600">{item.desc}</p>
+                <div className="grid md:grid-cols-3 gap-6">
+                    {items.map(({ icon: Icon, title, desc }, i) => (
+                        <div key={title} className="reveal group relative bg-cream/60 border border-pine/10 rounded-3xl p-8 hover:bg-cream hover:border-pine/25 hover:-translate-y-1 transition-all duration-300" style={{ transitionDelay: `${i * 60}ms` }}>
+                            <div className="w-12 h-12 rounded-2xl bg-pine text-ivory flex items-center justify-center mb-6 group-hover:bg-royal transition-colors">
+                                <Icon className="w-6 h-6" />
+                            </div>
+                            <h3 className="font-serif text-xl font-semibold text-pine mb-3">{title}</h3>
+                            <p className="text-ink/60 leading-relaxed text-[0.95rem]">{desc}</p>
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
-    </div>
-);
+        </section>
+    );
+}
 
-const PricingPage = ({ openBooking }) => {
-    const [activeTab, setActiveTab] = useState('subscription');
-
+function Services({ openBooking }) {
     return (
-        <div className="pt-24 pb-20 bg-white animate-in slide-in-from-right duration-500">
+        <section id="services" className="bg-cream/50 py-20 md:py-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeading title="Transparent Pricing" subtitle="Invest in your health with flexible options. No hidden fees." />
+                <SectionHeading
+                    eyebrow="Services"
+                    title="Comprehensive nursing, delivered"
+                    subtitle="Professional medical care tailored to your recovery and wellness needs — sterile equipment, clear communication, genuine warmth."
+                />
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {SERVICES.map(({ icon: Icon, title, description, price, tag }, i) => (
+                        <article key={title} className="reveal group bg-ivory rounded-3xl p-8 border border-transparent hover:border-pine/15 shadow-sm hover:shadow-xl flex flex-col h-full transition-all duration-300 hover:-translate-y-1">
+                            <div className="flex items-start justify-between mb-7">
+                                <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center group-hover:bg-pine group-hover:text-ivory transition-colors duration-300">
+                                    <Icon className="w-6 h-6" />
+                                </div>
+                                <span className="font-serif text-brass/60 text-lg">0{i + 1}</span>
+                            </div>
+                            <h3 className="font-serif text-[1.35rem] font-semibold text-pine mb-3">{title}</h3>
+                            <p className="text-ink/60 leading-relaxed text-[0.93rem] flex-grow mb-7">{description}</p>
+                            <div className="pt-5 border-t border-pine/10 flex items-center justify-between mt-auto">
+                                <span className="text-royal font-semibold text-sm">{price}</span>
+                                <button onClick={() => openBooking(tag)} className="inline-flex items-center gap-1 text-sm font-semibold text-pine hover:text-royal transition-colors">
+                                    Book <ChevronRight className="w-4 h-4" />
+                                </button>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function HowItWorks() {
+    return (
+        <section className="bg-ivory py-20 md:py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading eyebrow="The Process" title="Simple, from first call to recovery" />
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+                    {STEPS.map(({ step, title, desc }, i) => (
+                        <div key={step} className="reveal relative text-center lg:text-left" style={{ transitionDelay: `${i * 70}ms` }}>
+                            <div className="font-serif text-[3.4rem] leading-none text-brass/35 select-none mb-4">{step}</div>
+                            <h4 className="font-serif text-lg font-semibold text-pine mb-2">{title}</h4>
+                            <p className="text-ink/60 text-sm leading-relaxed">{desc}</p>
+                            {i < STEPS.length - 1 && (
+                                <ChevronRight className="hidden lg:block absolute top-8 -right-4 w-5 h-5 text-brass/50" />
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function Pricing({ openBooking }) {
+    const [tab, setTab] = useState('subscription');
+    return (
+        <section id="pricing" className="bg-pine text-ivory relative overflow-hidden py-20 md:py-28">
+            <div className="pointer-events-none absolute -top-40 right-0 w-[30rem] h-[30rem] rounded-full bg-pine-light/30 blur-3xl" />
+            <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading
+                    light
+                    eyebrow="Pricing"
+                    title="Simple, transparent, no surprises"
+                    subtitle="One visit for immediate needs, or consistent monthly care at a better value."
+                />
 
                 <div className="flex justify-center mb-12">
-                    <div className="bg-gray-100 p-1 rounded-full inline-flex">
-                        <button
-                            onClick={() => setActiveTab('subscription')}
-                            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'subscription' ? 'bg-white text-blue-900 shadow-md' : 'text-gray-500 hover:text-gray-900'}`}
-                        >
-                            Monthly Subscription
-                        </button>
-                        <button
-                            onClick={() => setActiveTab('alacarte')}
-                            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'alacarte' ? 'bg-white text-blue-900 shadow-md' : 'text-gray-500 hover:text-gray-900'}`}
-                        >
-                            Single Visits
-                        </button>
-                    </div>
-                </div>
-
-                <div className="flex justify-center mb-20">
-                    {activeTab === 'subscription' ? (
-                        <div className="bg-white text-gray-900 rounded-2xl shadow-2xl overflow-hidden max-w-md w-full border border-gray-100 transform transition-all hover:scale-105">
-                            <div className="bg-teal-500 p-3 text-center text-white font-bold text-sm tracking-wider uppercase">Best Value for Post-Op</div>
-                            <div className="p-8">
-                                <h3 className="text-2xl font-bold text-center mb-2">The Pierre Care Plan</h3>
-                                <div className="text-center mb-6">
-                                    <span className="text-5xl font-bold text-blue-900">$450</span>
-                                    <span className="text-gray-500">/month</span>
-                                </div>
-                                <p className="text-gray-600 text-center mb-8 text-sm">Ideal for post-op recovery or ongoing chronic care management. Ensures you have a nurse on call.</p>
-
-                                <ul className="space-y-4 mb-8">
-                                    <li className="flex items-start">
-                                        <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                        <span><strong>3 Visits Per Month</strong> included</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                        <span><strong>Mix & Match Services</strong> (Wound Care, IV, Check-ups)</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                        <span>Priority Scheduling (Weekends/Mornings)</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <CheckCircle className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0 mt-0.5" />
-                                        <span>Direct Text Access to Elda</span>
-                                    </li>
-                                </ul>
-
-                                <Button onClick={() => openBooking('Pierre Care Subscription')} variant="primary" className="w-full py-4 text-lg bg-blue-900 hover:bg-blue-800">
-                                    Select Plan
-                                </Button>
-                                <p className="text-xs text-center text-gray-400 mt-4">No long-term contract. Cancel anytime.</p>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="w-full max-w-4xl grid md:grid-cols-2 gap-6">
-                            {[
-                                { name: "Wound Care Visit", price: "$175", desc: "Sterile dressing change, measurement & assessment." },
-                                { name: "IV Hydration", price: "$200+", desc: "Fluids & meds administration (requires prescription)." },
-                                { name: "Wellness Check", price: "$150", desc: "Complete physical assessment (Heart, Lungs, Vitals)." },
-                                { name: "Post-Op Check-in", price: "$160", desc: "Incision check, pain assessment & medication review." }
-                            ].map((item, idx) => (
-                                <div key={idx} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-blue-200">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <h4 className="font-bold text-xl text-gray-900">{item.name}</h4>
-                                        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">{item.price}</span>
-                                    </div>
-                                    <p className="text-gray-600 mb-4">{item.desc}</p>
-                                    <button onClick={() => openBooking(item.name)} className="text-teal-600 font-bold text-sm hover:text-teal-800 flex items-center">
-                                        Book Single Visit <ChevronRight size={16} />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-                {/* FAQ Section */}
-                <div className="max-w-3xl mx-auto">
-                    <h3 className="text-2xl font-serif font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h3>
-                    <div className="space-y-6">
-                        <div className="bg-gray-50 p-6 rounded-lg">
-                            <h4 className="font-bold text-blue-900 flex items-center mb-2"><HelpCircle className="w-5 h-5 mr-2" /> Do you accept insurance?</h4>
-                            <p className="text-gray-700">We are a private pay (concierge) service, which allows us to provide higher quality, unrushed care without insurance restrictions. However, we can provide a detailed "Superbill" for you to submit to your insurance for potential out-of-network reimbursement.</p>
-                        </div>
-                        <div className="bg-gray-50 p-6 rounded-lg">
-                            <h4 className="font-bold text-blue-900 flex items-center mb-2"><HelpCircle className="w-5 h-5 mr-2" /> What forms of payment do you accept?</h4>
-                            <p className="text-gray-700">We accept all major credit cards, HSA/FSA cards, and Zelle. Payment is due at the time of booking to secure your appointment.</p>
-                        </div>
-                        <div className="bg-gray-50 p-6 rounded-lg">
-                            <h4 className="font-bold text-blue-900 flex items-center mb-2"><HelpCircle className="w-5 h-5 mr-2" /> Can you prescribe medication?</h4>
-                            <p className="text-gray-700">As a Registered Nurse, I administer medications prescribed by your doctor. I cannot write new prescriptions, but I work closely with your physician to ensure you get what you need.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const ContactPage = () => (
-    <div className="pt-24 pb-20 bg-teal-50 animate-in slide-in-from-right duration-500">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-            <SectionHeading title="Get in Touch" subtitle="We are here to answer your questions and schedule your care." />
-
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
-                <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <Phone className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-                    <h3 className="font-bold text-xl mb-2">Call or Text</h3>
-                    <p className="text-gray-600 mb-4">Immediate response for scheduling and inquiries.</p>
-                    <a href="tel:+17543676929" className="text-2xl font-bold text-blue-900 hover:text-blue-700">+1-754-367-6929</a>
-                </div>
-                <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                    <Mail className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-                    <h3 className="font-bold text-xl mb-2">Email Us</h3>
-                    <p className="text-gray-600 mb-4">Send us your documents or detailed questions.</p>
-                    <a href="mailto:jpjojo565@gmail.com" className="text-xl font-bold text-blue-900 hover:text-blue-700">jpjojo565@gmail.com</a>
-                </div>
-            </div>
-
-            <div className="bg-blue-900 text-white p-8 rounded-2xl text-left shadow-xl">
-                <div className="flex items-start">
-                    <MapPin className="w-8 h-8 text-teal-400 mr-4 flex-shrink-0" />
-                    <div>
-                        <h3 className="font-bold text-xl mb-2">Serving Ocala & Marion County</h3>
-                        <p className="text-blue-200">We provide mobile nursing services to private residences, hotels, and assisted living facilities throughout:</p>
-                        <ul className="mt-4 grid grid-cols-2 gap-2 text-sm font-medium">
-                            <li>• Ocala</li>
-                            <li>• Silver Springs Shores</li>
-                            <li>• Belleview</li>
-                            <li>• The Villages (North)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-// --- Main Application ---
-
-export default function PierreConciergeNursing() {
-    const [currentPage, setCurrentPage] = useState('home');
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [bookingModalOpen, setBookingModalOpen] = useState(false);
-    const [selectedService, setSelectedService] = useState('');
-
-    // Handle scroll for navbar styling
-    useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Scroll to top when page changes
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [currentPage]);
-
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-    const openBooking = (serviceName) => {
-        setSelectedService(serviceName);
-        setBookingModalOpen(true);
-    };
-
-    const navigateTo = (page) => {
-        setCurrentPage(page);
-        setIsMenuOpen(false);
-    };
-
-    const navLinks = [
-        { name: 'Home', value: 'home' },
-        { name: 'About', value: 'about' },
-        { name: 'Services', value: 'services' },
-        { name: 'Pricing', value: 'pricing' },
-        { name: 'Contact', value: 'contact' },
-    ];
-
-    const renderContent = () => {
-        switch (currentPage) {
-            case 'home': return <HomePage navigateTo={navigateTo} openBooking={openBooking} />;
-            case 'about': return <AboutPage />;
-            case 'services': return <ServicesPage openBooking={openBooking} />;
-            case 'pricing': return <PricingPage openBooking={openBooking} />;
-            case 'contact': return <ContactPage />;
-            default: return <HomePage navigateTo={navigateTo} openBooking={openBooking} />;
-        }
-    };
-
-    return (
-        <div className="font-sans text-gray-800 antialiased bg-gray-50 min-h-screen flex flex-col">
-
-            {/* Navigation */}
-            <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || currentPage !== 'home' ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                    <button onClick={() => navigateTo('home')} className="flex items-center space-x-2 group">
-                        <div className="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center text-white font-serif font-bold text-xl group-hover:bg-blue-800 transition-colors">P</div>
-                        <span className={`text-xl font-bold font-serif tracking-tight ${scrolled || currentPage !== 'home' ? 'text-gray-900' : 'text-blue-900 bg-white/80 px-2 rounded'}`}>
-                            Pierre Concierge Nursing
-                        </span>
-                    </button>
-
-                    {/* Desktop Nav */}
-                    <div className="hidden md:flex space-x-8 items-center">
-                        {navLinks.map((link) => (
+                    <div className="bg-ivory/10 p-1 rounded-full inline-flex backdrop-blur">
+                        {[
+                            { key: 'subscription', label: 'Monthly Plan' },
+                            { key: 'alacarte', label: 'Single Visits' },
+                        ].map(({ key, label }) => (
                             <button
-                                key={link.name}
-                                onClick={() => navigateTo(link.value)}
-                                className={`font-medium hover:text-teal-600 transition-colors ${currentPage === link.value
-                                        ? 'text-teal-600 font-bold'
-                                        : (scrolled || currentPage !== 'home' ? 'text-gray-600' : 'text-gray-800 bg-white/80 px-2 rounded')
-                                    }`}
+                                key={key}
+                                onClick={() => setTab(key)}
+                                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${tab === key ? 'bg-ivory text-pine shadow-md' : 'text-ivory/85 hover:text-ivory hover:bg-ivory/10'}`}
                             >
-                                {link.name}
+                                {label}
                             </button>
                         ))}
-                        <Button onClick={() => openBooking('General Consultation')} variant="primary" className="py-2 px-5 text-sm h-10">
-                            Book Now
-                        </Button>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden">
-                        <button onClick={toggleMenu} className="text-gray-800 p-2 bg-white/80 rounded-md">
-                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
                     </div>
                 </div>
 
-                {/* Mobile Nav */}
-                {isMenuOpen && (
-                    <div className="md:hidden bg-white absolute top-full left-0 w-full shadow-xl border-t z-50">
-                        <div className="flex flex-col p-4 space-y-4">
-                            {navLinks.map((link) => (
-                                <button
-                                    key={link.name}
-                                    onClick={() => navigateTo(link.value)}
-                                    className={`text-left font-medium py-2 border-b border-gray-100 ${currentPage === link.value ? 'text-teal-600' : 'text-gray-800'}`}
-                                >
-                                    {link.name}
-                                </button>
-                            ))}
-                            <Button onClick={() => { openBooking('General Consultation'); setIsMenuOpen(false); }} className="w-full">
-                                Book Appointment
-                            </Button>
+                {tab === 'subscription' ? (
+                    <div className="reveal max-w-lg mx-auto bg-ivory text-ink rounded-[2rem] shadow-2xl overflow-hidden">
+                        <div className="bg-brass px-6 py-3 text-center text-ivory text-xs font-bold uppercase tracking-[0.18em]">
+                            Most popular · Best for post-op recovery
+                        </div>
+                        <div className="p-9">
+                            <h3 className="font-serif text-3xl font-semibold text-pine text-center mb-1">The Pierre Care Plan</h3>
+                            <p className="text-center text-ink/50 text-sm mb-7">A nurse on call, every month.</p>
+                            <div className="text-center mb-8">
+                                <span className="font-serif text-6xl font-semibold text-pine">$450</span>
+                                <span className="text-ink/50 font-medium">/month</span>
+                            </div>
+                            <ul className="space-y-4 mb-9">
+                                {SUBSCRIPTION_FEATURES.map(({ strong, rest }) => (
+                                    <li key={strong} className="flex items-start gap-3">
+                                        <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" />
+                                        <span className="text-ink/80"><strong className="font-semibold text-pine">{strong}</strong> — {rest}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-4 text-base">
+                                Start the Care Plan
+                            </PillButton>
+                            <p className="text-xs text-center text-ink/40 mt-4">No long-term contract. Cancel anytime.</p>
                         </div>
                     </div>
+                ) : (
+                    <div className="reveal grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+                        {SINGLE_VISITS.map(({ name, price, desc }) => (
+                            <div key={name} className="bg-ivory/[0.07] border border-ivory/15 rounded-3xl p-7 backdrop-blur hover:bg-ivory/10 hover:border-sand/40 transition-all duration-300">
+                                <div className="flex items-start justify-between gap-4 mb-3">
+                                    <h4 className="font-serif text-xl font-semibold">{name}</h4>
+                                    <span className="bg-sand/15 text-sand px-3.5 py-1 rounded-full text-sm font-semibold whitespace-nowrap">{price}</span>
+                                </div>
+                                <p className="text-ivory/65 text-sm leading-relaxed mb-5">{desc}</p>
+                                <button onClick={() => openBooking(name)} className="inline-flex items-center gap-1 text-sm font-semibold text-sand hover:text-ivory transition-colors">
+                                    Book this visit <ChevronRight className="w-4 h-4" />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 )}
-            </nav>
 
-            {/* Main Content Area */}
-            <main className="flex-grow">
-                {renderContent()}
-            </main>
+                <p className="reveal text-center text-ivory/65 text-xs mt-10 max-w-xl mx-auto leading-relaxed">
+                    Private-pay service — a detailed superbill is provided for potential out-of-network reimbursement.
+                    HSA/FSA cards, all major credit cards, and Zelle accepted.
+                </p>
+            </div>
+        </section>
+    );
+}
 
-            {/* Footer */}
-            <footer className="bg-gray-900 text-gray-300 py-12 mt-auto">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid md:grid-cols-3 gap-8 mb-8">
-                        <div>
-                            <h3 className="text-white text-xl font-serif font-bold mb-4">Pierre Concierge Nursing</h3>
-                            <p className="text-sm leading-relaxed mb-4">
-                                Providing hospital-grade nursing care in the comfort and privacy of your home. Dedicated to compassion, integrity, and clinical excellence.
-                            </p>
+function About() {
+    return (
+        <section id="about" className="bg-ivory py-20 md:py-28 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-20 items-start">
+                    {/* Portrait */}
+                    <div className="reveal relative mx-auto w-full max-w-sm lg:sticky lg:top-28">
+                        <div className="absolute -inset-3 rounded-t-full rounded-b-[2rem] border border-brass/40 translate-x-3 translate-y-3" />
+                        <div className="relative rounded-t-full rounded-b-[2rem] overflow-hidden shadow-2xl bg-sand">
+                            <img
+                                src="/elda-scrubs.jpg"
+                                alt="Elda Marie Pierre in royal blue scrubs"
+                                className="w-full h-[30rem] object-cover object-top"
+                            />
+                            <div className="absolute bottom-0 right-0 h-16 w-16 bg-gradient-to-tl from-sand/80 to-transparent" />
                         </div>
+                        <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-pine text-ivory rounded-full px-6 py-2.5 shadow-xl text-sm font-semibold whitespace-nowrap">
+                            20+ years of patient care
+                        </div>
+                    </div>
+
+                    {/* Story */}
+                    <div className="reveal pt-6">
+                        <Eyebrow>Meet your nurse</Eyebrow>
+                        <h2 className="font-serif text-3xl md:text-[2.6rem] leading-tight font-semibold text-pine mb-6">
+                            Elda Marie Joe Pierre, <span className="italic font-medium text-royal">RN, BSN</span>
+                        </h2>
+                        <p className="text-lg text-ink/70 leading-relaxed mb-5">
+                            A Registered Nurse with a Bachelor of Science in Nursing and over two decades of hands-on
+                            experience — from the fast pace of rehabilitation centers to the personal setting of home health care.
+                        </p>
+                        <p className="text-ink/60 leading-relaxed mb-10">
+                            Elda founded <strong className="text-pine">Pierre Concierge Nursing</strong> after seeing too many
+                            patients discharged home with confusing instructions and little support. Her goal: to be your
+                            advocate, your nurse, and your peace of mind.
+                        </p>
+
+                        {/* Experience timeline */}
+                        <div className="mb-10">
+                            <h4 className="flex items-center gap-2 font-bold text-pine mb-5">
+                                <Briefcase className="w-5 h-5 text-brass" /> Professional Experience
+                            </h4>
+                            <div className="space-y-0 border-l border-pine/15 ml-2">
+                                {EXPERIENCE.map(({ role, org, period, desc, current }) => (
+                                    <div key={role} className="relative pl-6 pb-6 last:pb-0">
+                                        <span className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-ivory ${current ? 'bg-brass' : 'bg-pine/30'}`} />
+                                        <div className="font-semibold text-pine">{role}</div>
+                                        <div className="text-xs text-ink/55 font-medium mb-1.5">{org} · {period}</div>
+                                        <p className="text-sm text-ink/60">{desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Education */}
                         <div>
-                            <h4 className="text-white font-bold mb-4">Navigation</h4>
-                            <ul className="space-y-2 text-sm">
-                                {navLinks.map(link => (
-                                    <li key={link.name}>
-                                        <button onClick={() => navigateTo(link.value)} className="hover:text-teal-400 transition-colors">
-                                            {link.name}
-                                        </button>
+                            <h4 className="flex items-center gap-2 font-bold text-pine mb-4">
+                                <BookOpen className="w-5 h-5 text-brass" /> Education & Certifications
+                            </h4>
+                            <ul className="grid sm:grid-cols-2 gap-3">
+                                {CERTIFICATIONS.map((cert) => (
+                                    <li key={cert} className="flex items-start gap-2.5 text-sm text-ink/70 bg-cream/60 rounded-xl px-4 py-3">
+                                        <Award className="w-4 h-4 text-brass shrink-0 mt-0.5" />
+                                        {cert}
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div>
-                            <h4 className="text-white font-bold mb-4">Contact</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li className="flex items-center"><Phone size={16} className="mr-2 text-teal-500" /> +1-754-367-6929</li>
-                                <li className="flex items-center"><Mail size={16} className="mr-2 text-teal-500" /> jpjojo565@gmail.com</li>
-                                <li className="flex items-center"><Clock size={16} className="mr-2 text-teal-500" /> Mon-Sat: 8am - 6pm</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="border-t border-gray-800 pt-8 text-center text-xs text-gray-500">
-                        <p>&copy; {new Date().getFullYear()} Pierre Concierge Nursing & Wellness. All rights reserved.</p>
-                        <p className="mt-2">Disclaimer: Services provided are non-emergency. In case of a medical emergency, please dial 911.</p>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </section>
+    );
+}
 
-            {/* Booking Modal */}
-            {bookingModalOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-                    <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 md:p-8 relative animate-in fade-in zoom-in duration-200">
-                        <button
-                            onClick={() => setBookingModalOpen(false)}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-                        >
-                            <X size={24} />
-                        </button>
+function FAQ() {
+    const [open, setOpen] = useState(0);
+    return (
+        <section className="bg-cream/50 py-20 md:py-24">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+                <div className="space-y-4">
+                    {FAQS.map(({ q, a }, i) => {
+                        const isOpen = open === i;
+                        return (
+                            <div key={q} className="reveal bg-ivory rounded-2xl border border-pine/10 overflow-hidden transition-shadow hover:shadow-md">
+                                <button
+                                    onClick={() => setOpen(isOpen ? -1 : i)}
+                                    className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                                >
+                                    <span className={`font-serif text-lg font-semibold ${isOpen ? 'text-royal' : 'text-pine'}`}>{q}</span>
+                                    <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-pine text-ivory' : 'bg-pine/5 text-pine'}`}>
+                                        {isOpen ? <X className="w-4 h-4" /> : <HelpCircle className="w-4 h-4" />}
+                                    </span>
+                                </button>
+                                <div className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                                    <div className="overflow-hidden">
+                                        <p className="px-6 pb-6 text-ink/65 leading-relaxed text-[0.95rem]">{a}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+    );
+}
 
-                        <div className="text-center mb-6">
-                            <Calendar className="w-12 h-12 text-blue-900 mx-auto mb-3" />
-                            <h3 className="text-2xl font-bold text-gray-900">Request Appointment</h3>
-                            <p className="text-gray-500">You are interested in: <span className="text-teal-600 font-semibold">{selectedService}</span></p>
+function ServiceArea() {
+    return (
+        <section className="bg-ivory py-16">
+            <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-cream/70 border border-pine/10 rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-8">
+                    <div className="w-14 h-14 rounded-2xl bg-pine text-ivory flex items-center justify-center shrink-0">
+                        <MapPin className="w-7 h-7" />
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="font-serif text-2xl font-semibold text-pine mb-2">Serving Ocala & Marion County</h3>
+                        <p className="text-ink/60 text-sm mb-5">Mobile nursing at private residences, hotels, and assisted living facilities throughout:</p>
+                        <div className="flex flex-wrap gap-2.5">
+                            {AREAS.map((area) => (
+                                <span key={area} className="px-4 py-1.5 rounded-full bg-ivory border border-pine/15 text-pine text-sm font-semibold">
+                                    {area}
+                                </span>
+                            ))}
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
 
-                        <form className="space-y-4" onSubmit={(e) => {
-                            e.preventDefault();
-                            alert("Thank you! Since this is a demo, no email was sent, but in a real version, this would alert Elda.");
-                            setBookingModalOpen(false);
-                        }}>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input required type="text" className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="Jane Doe" />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input required type="tel" className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="(555) 123-4567" />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Preferred Date/Time</label>
-                                <input type="text" className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="e.g. Monday Morning" />
-                            </div>
+function FinalCTA({ openBooking }) {
+    return (
+        <section className="bg-pine-dark text-ivory relative overflow-hidden py-20 md:py-24">
+            <div className="pointer-events-none absolute -top-24 right-10 w-80 h-80 rounded-full bg-brass/10 blur-3xl" />
+            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <SectionHeading
+                    light
+                    eyebrow="Get Started"
+                    title="Ready to put your health first?"
+                    subtitle="One-time check-up or continuous care — booking is simple, secure, and personal."
+                />
+                <div className="reveal flex flex-col sm:flex-row justify-center gap-4 mb-10">
+                    <PillButton variant="light" href="tel:+17543676929" className="text-base px-8 py-4">
+                        <Phone className="w-4 h-4" /> Call or Text: (754) 367-6929
+                    </PillButton>
+                    <PillButton variant="ghostLight" href="mailto:jpjojo565@gmail.com" className="text-base px-8 py-4">
+                        <Mail className="w-4 h-4" /> Email Elda
+                    </PillButton>
+                </div>
+                <button onClick={() => openBooking('General Consultation')} className="reveal text-sand text-sm font-semibold underline underline-offset-4 decoration-sand/40 hover:text-ivory transition-colors">
+                    Or request an appointment online →
+                </button>
+            </div>
+        </section>
+    );
+}
 
-                            <button type="submit" className="w-full bg-blue-900 text-white font-bold py-3 rounded-lg hover:bg-blue-800 transition-colors shadow-md">
-                                Send Request
-                            </button>
+function Footer() {
+    const year = new Date().getFullYear();
+    return (
+        <footer className="bg-[#101B17] text-ivory/60 py-14">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid md:grid-cols-3 gap-10 mb-10">
+                    <div>
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-xl bg-ivory text-pine flex items-center justify-center font-serif font-semibold text-xl">P</div>
+                            <span className="font-serif text-xl font-semibold text-ivory">Pierre Concierge Nursing</span>
+                        </div>
+                        <p className="text-sm leading-relaxed">
+                            Hospital-grade nursing care in the comfort and privacy of your home — compassion, integrity, and clinical excellence.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Explore</h4>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                            <a href="#services" className="hover:text-sand transition-colors">Services</a>
+                            <a href="#pricing" className="hover:text-sand transition-colors">Pricing</a>
+                            <a href="#about" className="hover:text-sand transition-colors">About Elda</a>
+                            <a href="#faq" className="hover:text-sand transition-colors">FAQ</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Contact</h4>
+                        <ul className="space-y-2.5 text-sm">
+                            <li className="flex items-center gap-2.5"><Phone size={15} className="text-brass" /> <a href="tel:+17543676929" className="hover:text-sand transition-colors">+1 (754) 367-6929</a></li>
+                            <li className="flex items-center gap-2.5"><Mail size={15} className="text-brass" /> <a href="mailto:jpjojo565@gmail.com" className="hover:text-sand transition-colors">jpjojo565@gmail.com</a></li>
+                            <li className="flex items-center gap-2.5"><Clock size={15} className="text-brass" /> Mon–Sat: 8am – 6pm</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="border-t border-ivory/10 pt-8 text-center text-xs text-ivory/60 space-y-2">
+                    <p>© {year} Pierre Concierge Nursing & Wellness. All rights reserved.</p>
+                    <p>Services are non-emergency. In case of a medical emergency, dial 911.</p>
+                </div>
+            </div>
+        </footer>
+    );
+}
 
-                            <p className="text-xs text-center text-gray-400 mt-4">
-                                Elda will contact you shortly to confirm details and pricing.
+// --- Booking modal ----------------------------------------------
+function BookingModal({ isOpen, onClose, service }) {
+    const [submitted, setSubmitted] = useState(false);
+    useEffect(() => { if (isOpen) setSubmitted(false); }, [isOpen]);
+    useEffect(() => {
+        const onKey = (e) => e.key === 'Escape' && onClose();
+        if (isOpen) window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [isOpen, onClose]);
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-pine-dark/70 backdrop-blur-sm animate-fade-in" onClick={onClose}>
+            <div
+                className="bg-ivory rounded-[1.75rem] shadow-2xl max-w-lg w-full p-7 md:p-9 relative animate-fade-up max-h-[90vh] overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <button onClick={onClose} className="absolute top-5 right-5 w-9 h-9 rounded-full bg-pine/5 text-pine/60 hover:bg-pine/15 hover:text-pine flex items-center justify-center transition-colors">
+                    <X size={18} />
+                </button>
+
+                {submitted ? (
+                    <div className="text-center py-8">
+                        <div className="w-16 h-16 rounded-full bg-pine text-ivory flex items-center justify-center mx-auto mb-6">
+                            <CheckCircle className="w-8 h-8" />
+                        </div>
+                        <h3 className="font-serif text-2xl font-semibold text-pine mb-3">Request received</h3>
+                        <p className="text-ink/60 leading-relaxed mb-8">
+                            Thank you! Elda will contact you shortly to confirm details, timing, and pricing for your
+                            <span className="text-pine font-semibold"> {service}</span>.
+                        </p>
+                        <PillButton onClick={onClose} className="w-full">Done</PillButton>
+                    </div>
+                ) : (
+                    <>
+                        <div className="mb-7">
+                            <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center mb-4">
+                                <Calendar className="w-6 h-6" />
+                            </div>
+                            <h3 className="font-serif text-2xl font-semibold text-pine">Request an appointment</h3>
+                            <p className="text-ink/55 text-sm mt-1.5">
+                                You're requesting: <span className="text-royal font-semibold">{service}</span>
                             </p>
+                        </div>
+
+                        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+                            <div>
+                                <label className="block text-sm font-semibold text-pine mb-1.5">Full Name</label>
+                                <input required type="text" placeholder="Jane Doe" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-pine mb-1.5">Phone Number</label>
+                                <input required type="tel" placeholder="(555) 123-4567" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-pine mb-1.5">Preferred Date / Time</label>
+                                <input type="text" placeholder="e.g. Monday morning" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-pine mb-1.5">Notes <span className="text-ink/35 font-normal">(optional)</span></label>
+                                <textarea rows="3" placeholder="Anything Elda should know beforehand…" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition resize-none" />
+                            </div>
+
+                            <PillButton type="submit" className="w-full py-4 text-base">
+                                Send Request <ArrowRight className="w-4 h-4" />
+                            </PillButton>
+                            <p className="text-xs text-center text-ink/40">Prefer to talk? <a href="tel:+17543676929" className="text-royal font-semibold">Call (754) 367-6929</a></p>
                         </form>
-                    </div>
-                </div>
-            )}
+                    </>
+                )}
+            </div>
         </div>
     );
 }
 
-// Icon component needed for services
-function UserCheck(props) {
+// --- Nav ---------------------------------------------------------
+function Nav({ openBooking }) {
+    const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 24);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    const links = [
+        { label: 'Services', href: '#services' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'About', href: '#about' },
+        { label: 'FAQ', href: '#faq' },
+    ];
+
     return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-            <circle cx="9" cy="7" r="4" />
-            <polyline points="16 11 18 13 22 9" />
-        </svg>
+        <>
+            {/* announcement bar */}
+            <div className="bg-pine text-ivory/90 text-xs font-medium text-center py-2 px-4 tracking-wide">
+                Now serving Ocala & Marion County — <a href="tel:+17543676929" className="text-sand font-semibold hover:text-ivory transition-colors">call or text (754) 367-6929</a>
+            </div>
+
+            <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-[4.5rem]">
+                    <a href="#top" className="flex items-center gap-3 group">
+                        <div className="w-10 h-10 rounded-xl bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-xl group-hover:bg-royal transition-colors">P</div>
+                        <span className="font-serif text-lg font-semibold text-pine leading-tight">
+                            Pierre <span className="hidden sm:inline text-ink/50 font-normal">Concierge Nursing</span>
+                        </span>
+                    </a>
+
+                    <div className="hidden md:flex items-center gap-8">
+                        {links.map(({ label, href }) => (
+                            <a key={label} href={href} className="text-sm font-semibold text-ink/60 hover:text-pine transition-colors">{label}</a>
+                        ))}
+                        <PillButton onClick={() => openBooking('General Consultation')} className="py-2.5 px-6 text-sm">
+                            Book Now
+                        </PillButton>
+                    </div>
+
+                    <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden w-10 h-10 rounded-xl bg-pine/5 text-pine flex items-center justify-center">
+                        {menuOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
+                </div>
+
+                {menuOpen && (
+                    <div className="md:hidden bg-ivory border-t border-pine/10 shadow-xl">
+                        <div className="px-4 py-4 flex flex-col gap-1">
+                            {links.map(({ label, href }) => (
+                                <a key={label} href={href} onClick={() => setMenuOpen(false)} className="py-3 px-3 rounded-xl font-semibold text-pine hover:bg-pine/5 transition-colors">
+                                    {label}
+                                </a>
+                            ))}
+                            <PillButton onClick={() => { openBooking('General Consultation'); setMenuOpen(false); }} className="w-full mt-2">
+                                Book Now
+                            </PillButton>
+                        </div>
+                    </div>
+                )}
+            </nav>
+        </>
+    );
+}
+
+// --- App ----------------------------------------------------------
+export default function App() {
+    const [bookingOpen, setBookingOpen] = useState(false);
+    const [service, setService] = useState('General Consultation');
+
+    const openBooking = useCallback((svc) => {
+        setService(svc || 'General Consultation');
+        setBookingOpen(true);
+    }, []);
+
+    useReveal();
+
+    return (
+        <div id="top" className="min-h-screen bg-ivory font-sans text-ink">
+            <Nav openBooking={openBooking} />
+            <main>
+                <Hero openBooking={openBooking} />
+                <QuoteBand />
+                <WhyUs />
+                <Services openBooking={openBooking} />
+                <HowItWorks />
+                <Pricing openBooking={openBooking} />
+                <About />
+                <FAQ />
+                <ServiceArea />
+                <FinalCTA openBooking={openBooking} />
+            </main>
+            <Footer />
+            <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} service={service} />
+        </div>
     );
 }
