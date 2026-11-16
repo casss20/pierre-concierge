@@ -1,0 +1,9 @@
+Deployed live. Push dd43c04 to main; Vercel auto-deployed — serving new bundle (index-Bnw2pjTV) at https://pierre-concierge.vercel.app.
+
+Shipped:
+- v2 boutique redesign (b3a4775): palette from Elda's portraits, one-page scroll, fixed broken images, booking modal
+- 10 services incl. 4 new demand-driven ones (554dd43): hospital-to-home transition $185, medication mgmt $150, ALF support $175, family peace-of-mind $150; referral FAQ
+- Market analysis (Census 2025 + 2022 Marion Co CHNA) backing the focus: chronic care + post-op lead; ALF channel; dehydration = 51% of avoidable discharges → IV service validated
+- Pricing benchmarked vs agency RNs ($85-110/hr + minimums): her $150-200/flat visits are 30-50% cheaper — hold prices, raise after reviews/referrals
+
+Follow-ups for Elda: Google Business Profile, ALF/surgeon relationships, Formspree wiring for booking form.

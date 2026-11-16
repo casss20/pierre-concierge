@@ -13,7 +13,6 @@ import {
     Syringe,
     Activity,
     ShieldAlert,
-    Star,
     ChevronRight,
     ArrowRight,
     Award,
@@ -22,7 +21,6 @@ import {
     Briefcase,
     ShieldCheck,
     Languages,
-    Sparkles,
     Home,
     Pill,
     Building2,
@@ -254,7 +252,6 @@ function Hero({ openBooking }) {
                 {/* Copy */}
                 <div className="reveal order-2 lg:order-1">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pine/5 border border-pine/10 text-pine text-xs font-semibold uppercase tracking-[0.14em] mb-7">
-                        <Sparkles className="w-3.5 h-3.5 text-brass" />
                         Premier Concierge Nursing · Ocala, FL
                     </div>
 
