@@ -867,6 +867,28 @@ function ChecklistCTA() {
 }
 
 // --- Service detail page -----------------------------------------
+// Banner at the top of a treatment page. Plays a silent looping video when one
+// exists, unless the visitor prefers reduced motion; the still image is the
+// poster and the fallback.
+function ServiceBanner({ detail }) {
+    const [reduceMotion, setReduceMotion] = useState(false);
+    useEffect(() => {
+        if (typeof window === 'undefined' || !window.matchMedia) return;
+        const q = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setReduceMotion(q.matches);
+    }, []);
+    const cls = 'w-full rounded-3xl object-cover aspect-[16/9] shadow-lg shadow-pine/10';
+    if (detail.video && !reduceMotion) {
+        return (
+            <video className={cls} poster={detail.image} autoPlay muted loop playsInline preload="metadata" aria-label={detail.imageAlt}>
+                <source src={detail.video} type="video/mp4" />
+            </video>
+        );
+    }
+    return <img src={detail.image} alt={detail.imageAlt} width="1600" height="900" className={cls} />;
+}
+
+
 function ServicePage({ slug, openBooking }) {
     const detail = SERVICE_BY_SLUG[slug];
     const service = SERVICES.find((x) => x.title === detail?.title);
@@ -920,7 +942,7 @@ function ServicePage({ slug, openBooking }) {
             {detail.image && (
                 <section className="bg-ivory pb-4">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <img src={detail.image} alt={detail.imageAlt} width="1600" height="900" className="w-full rounded-3xl object-cover aspect-[16/9] shadow-lg shadow-pine/10" />
+                        <ServiceBanner detail={detail} />
                     </div>
                 </section>
             )}
