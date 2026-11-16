@@ -66,7 +66,7 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = true, light = fal
             ? <p className={`text-xs font-semibold uppercase tracking-[0.22em] mb-4 ${light ? 'text-sand' : 'text-brass'}`}>{eyebrow}</p>
             : <Eyebrow light={light}>{eyebrow}</Eyebrow>)}
         <h2 className={`font-serif text-3xl md:text-[2.75rem] leading-[1.15] font-semibold mb-5 ${light ? 'text-ivory' : 'text-pine'}`}>{title}</h2>
-        {subtitle && <p className={`max-w-2xl leading-relaxed ${centered ? 'mx-auto' : ''} ${light ? 'text-ivory/70' : 'text-ink/60'}`}>{subtitle}</p>}
+        {subtitle && <p className={`max-w-2xl leading-relaxed ${centered ? 'mx-auto' : ''} ${light ? 'text-ivory/70' : 'text-ink/75'}`}>{subtitle}</p>}
     </div>
 );
 
@@ -261,10 +261,10 @@ function Hero({ openBooking }) {
                         <span className="italic font-medium text-royal">right at home.</span>
                     </h1>
 
-                    <p className="text-lg text-ink/65 leading-relaxed max-w-xl mb-9">
+                    <p className="text-lg text-ink/75 leading-relaxed max-w-xl mb-9">
                         Expert post-operative support, IV therapy, and wound care by{' '}
                         <strong className="text-pine font-semibold">Elda Marie Pierre, RN, BSN</strong>.
-                        Skip the waiting room — recover in the comfort of your own home.
+                        Skip the waiting room. Recover in the comfort of your own home.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4 mb-10">
@@ -276,7 +276,7 @@ function Hero({ openBooking }) {
                         </PillButton>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm font-medium text-ink/55">
+                    <div className="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm font-medium text-ink/70">
                         {[
                             { icon: ShieldCheck, label: "Licensed RN" },
                             { icon: CheckCircle, label: "Fully Insured" },
@@ -304,7 +304,7 @@ function Hero({ openBooking }) {
                             <div className="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-lg shrink-0">E</div>
                             <div>
                                 <p className="font-serif font-semibold text-pine leading-tight">Elda Marie Pierre</p>
-                                <p className="text-xs text-ink/55 font-medium">RN, BSN · 20+ years in patient care</p>
+                                <p className="text-xs text-ink/70 font-medium">RN, BSN · 20+ years in patient care</p>
                             </div>
                         </div>
                     </div>
@@ -351,7 +351,7 @@ function WhyUs() {
                                 <Icon className="w-6 h-6" />
                             </div>
                             <h3 className="font-serif text-xl font-semibold text-pine mb-3">{title}</h3>
-                            <p className="text-ink/60 leading-relaxed text-[0.95rem]">{desc}</p>
+                            <p className="text-ink/75 leading-relaxed text-[0.95rem]">{desc}</p>
                         </div>
                     ))}
                 </div>
@@ -376,12 +376,12 @@ function Services({ openBooking }) {
                                 <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center group-hover:bg-pine group-hover:text-ivory transition-colors duration-300">
                                     <Icon className="w-6 h-6" />
                                 </div>
-                                <span className="font-serif text-brass/60 text-lg">0{i + 1}</span>
+                                <span className="font-serif text-brass text-lg">{String(i + 1).padStart(2, "0")}</span>
                             </div>
                             <h3 className="font-serif text-[1.35rem] font-semibold text-pine mb-3">{title}</h3>
-                            <p className="text-ink/60 leading-relaxed text-[0.93rem] flex-grow mb-7">{description}</p>
+                            <p className="text-ink/75 leading-relaxed text-[0.93rem] flex-grow mb-7">{description}</p>
                             <div className="pt-5 border-t border-pine/10 flex items-center justify-between mt-auto">
-                                <span className="text-royal font-semibold text-sm">{price}</span>
+                                <span className="text-pine font-bold text-base">{price}</span>
                                 <button onClick={() => openBooking(tag)} className="inline-flex items-center gap-1 text-sm font-semibold text-pine hover:text-royal transition-colors">
                                     Book <ChevronRight className="w-4 h-4" />
                                 </button>
@@ -404,7 +404,7 @@ function HowItWorks() {
                         <div key={step} className="reveal relative text-center lg:text-left" style={{ transitionDelay: `${i * 70}ms` }}>
                             <div className="font-serif text-[3.4rem] leading-none text-brass/35 select-none mb-4">{step}</div>
                             <h4 className="font-serif text-lg font-semibold text-pine mb-2">{title}</h4>
-                            <p className="text-ink/60 text-sm leading-relaxed">{desc}</p>
+                            <p className="text-ink/75 text-sm leading-relaxed">{desc}</p>
                             {i < STEPS.length - 1 && (
                                 <ChevronRight className="hidden lg:block absolute top-8 -right-4 w-5 h-5 text-brass/50" />
                             )}
@@ -453,10 +453,10 @@ function Pricing({ openBooking }) {
                         </div>
                         <div className="p-9">
                             <h3 className="font-serif text-3xl font-semibold text-pine text-center mb-1">The Pierre Care Plan</h3>
-                            <p className="text-center text-ink/50 text-sm mb-7">A nurse on call, every month.</p>
+                            <p className="text-center text-ink/70 text-sm mb-7">A nurse on call, every month.</p>
                             <div className="text-center mb-8">
                                 <span className="font-serif text-6xl font-semibold text-pine">$450</span>
-                                <span className="text-ink/50 font-medium">/month</span>
+                                <span className="text-ink/70 font-medium">/month</span>
                             </div>
                             <ul className="space-y-4 mb-9">
                                 {SUBSCRIPTION_FEATURES.map(({ strong, rest }) => (
@@ -469,7 +469,7 @@ function Pricing({ openBooking }) {
                             <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-4 text-base">
                                 Start the Care Plan
                             </PillButton>
-                            <p className="text-xs text-center text-ink/40 mt-4">No long-term contract. Cancel anytime.</p>
+                            <p className="text-xs text-center text-ink/60 mt-4">No long-term contract. Cancel anytime.</p>
                         </div>
                     </div>
                 ) : (
@@ -529,7 +529,7 @@ function About() {
                             A Registered Nurse with a Bachelor of Science in Nursing and over two decades of hands-on
                             experience — from the fast pace of rehabilitation centers to the personal setting of home health care.
                         </p>
-                        <p className="text-ink/60 leading-relaxed mb-10">
+                        <p className="text-ink/75 leading-relaxed mb-10">
                             Elda founded <strong className="text-pine">Pierre Concierge Nursing</strong> after seeing too many
                             patients discharged home with confusing instructions and little support. Her goal: to be your
                             advocate, your nurse, and your peace of mind.
@@ -545,8 +545,8 @@ function About() {
                                     <div key={role} className="relative pl-6 pb-6 last:pb-0">
                                         <span className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-ivory ${current ? 'bg-brass' : 'bg-pine/30'}`} />
                                         <div className="font-semibold text-pine">{role}</div>
-                                        <div className="text-xs text-ink/55 font-medium mb-1.5">{org} · {period}</div>
-                                        <p className="text-sm text-ink/60">{desc}</p>
+                                        <div className="text-xs text-ink/70 font-medium mb-1.5">{org} · {period}</div>
+                                        <p className="text-sm text-ink/75">{desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -595,7 +595,7 @@ function FAQ() {
                                 </button>
                                 <div className={`grid transition-all duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                                     <div className="overflow-hidden">
-                                        <p className="px-6 pb-6 text-ink/65 leading-relaxed text-[0.95rem]">{a}</p>
+                                        <p className="px-6 pb-6 text-ink/75 leading-relaxed text-[0.95rem]">{a}</p>
                                     </div>
                                 </div>
                             </div>
@@ -617,7 +617,7 @@ function ServiceArea() {
                     </div>
                     <div className="flex-grow">
                         <h3 className="font-serif text-2xl font-semibold text-pine mb-2">Serving Ocala & Marion County</h3>
-                        <p className="text-ink/60 text-sm mb-5">Mobile nursing at private residences, hotels, and assisted living facilities throughout:</p>
+                        <p className="text-ink/75 text-sm mb-5">Mobile nursing at private residences, hotels, and assisted living facilities throughout:</p>
                         <div className="flex flex-wrap gap-2.5">
                             {AREAS.map((area) => (
                                 <span key={area} className="px-4 py-1.5 rounded-full bg-ivory border border-pine/15 text-pine text-sm font-semibold">
@@ -729,7 +729,7 @@ function BookingModal({ isOpen, onClose, service }) {
                             <CheckCircle className="w-8 h-8" />
                         </div>
                         <h3 className="font-serif text-2xl font-semibold text-pine mb-3">Request received</h3>
-                        <p className="text-ink/60 leading-relaxed mb-8">
+                        <p className="text-ink/75 leading-relaxed mb-8">
                             Thank you! Elda will contact you shortly to confirm details, timing, and pricing for your
                             <span className="text-pine font-semibold"> {service}</span>.
                         </p>
@@ -742,7 +742,7 @@ function BookingModal({ isOpen, onClose, service }) {
                                 <Calendar className="w-6 h-6" />
                             </div>
                             <h3 className="font-serif text-2xl font-semibold text-pine">Request an appointment</h3>
-                            <p className="text-ink/55 text-sm mt-1.5">
+                            <p className="text-ink/70 text-sm mt-1.5">
                                 You're requesting: <span className="text-royal font-semibold">{service}</span>
                             </p>
                         </div>
@@ -761,14 +761,14 @@ function BookingModal({ isOpen, onClose, service }) {
                                 <input type="text" placeholder="e.g. Monday morning" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold text-pine mb-1.5">Notes <span className="text-ink/35 font-normal">(optional)</span></label>
+                                <label className="block text-sm font-semibold text-pine mb-1.5">Notes <span className="text-ink/55 font-normal">(optional)</span></label>
                                 <textarea rows="3" placeholder="Anything Elda should know beforehand…" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition resize-none" />
                             </div>
 
                             <PillButton type="submit" className="w-full py-4 text-base">
                                 Send Request <ArrowRight className="w-4 h-4" />
                             </PillButton>
-                            <p className="text-xs text-center text-ink/40">Prefer to talk? <a href="tel:+17543676929" className="text-royal font-semibold">Call (754) 367-6929</a></p>
+                            <p className="text-xs text-center text-ink/60">Prefer to talk? <a href="tel:+17543676929" className="text-royal font-semibold">Call (754) 367-6929</a></p>
                         </form>
                     </>
                 )}
@@ -807,13 +807,13 @@ function Nav({ openBooking }) {
                     <a href="#top" className="flex items-center gap-3 group">
                         <div className="w-10 h-10 rounded-xl bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-xl group-hover:bg-royal transition-colors">P</div>
                         <span className="font-serif text-lg font-semibold text-pine leading-tight">
-                            Pierre <span className="hidden sm:inline text-ink/50 font-normal">Concierge Nursing</span>
+                            Pierre <span className="hidden sm:inline text-ink/70 font-normal">Concierge Nursing</span>
                         </span>
                     </a>
 
                     <div className="hidden md:flex items-center gap-8">
                         {links.map(({ label, href }) => (
-                            <a key={label} href={href} className="text-sm font-semibold text-ink/60 hover:text-pine transition-colors">{label}</a>
+                            <a key={label} href={href} className="text-sm font-semibold text-ink/75 hover:text-pine transition-colors">{label}</a>
                         ))}
                         <PillButton onClick={() => openBooking('General Consultation')} className="py-2.5 px-6 text-sm">
                             Book Now
