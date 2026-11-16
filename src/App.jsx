@@ -193,7 +193,7 @@ const SUBSCRIPTION_FEATURES = [
 const FAQS = [
     {
         q: "Do you accept insurance?",
-        a: "We are a private-pay (concierge) service, which allows us to provide unhurried, higher-quality care without insurance restrictions. We provide a detailed superbill you can submit to your insurance for potential out-of-network reimbursement.",
+        a: "Not at this time. We do not bill insurance directly. We are a private-pay (concierge) service, which allows us to provide unhurried, higher-quality care without insurance restrictions. We provide a detailed superbill you can submit to your insurance for potential out-of-network reimbursement, though coverage depends on your plan.",
     },
     {
         q: "What forms of payment do you accept?",
