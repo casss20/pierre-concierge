@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SITE_CONFIG } from './siteConfig.js';
+import PrivacyNotice from './PrivacyNotice.jsx';
 import { SERVICE_BY_SLUG, SLUG_BY_TITLE } from './serviceDetails.js';
 
 const ORDER_LABEL = { required: "Required", partial: "Depends on the care", none: "Not needed" };
@@ -709,6 +710,7 @@ function Footer() {
                             <a href="/pricing" className="hover:text-sand transition-colors">Pricing</a>
                             <a href="/about" className="hover:text-sand transition-colors">About Elda</a>
                             <a href="/faq" className="hover:text-sand transition-colors">FAQ</a>
+                            <a href="/privacy-practices" className="hover:text-sand transition-colors">Privacy (HIPAA)</a>
                         </div>
                     </div>
                     <div>
@@ -736,19 +738,20 @@ function CredentialsStrip() {
     const items = [
         { icon: ShieldCheck, title: "Licensed Florida RN", text: licenseNumber ? `License ${licenseNumber}` : "BSN prepared Registered Nurse", href: licenseNumber ? licenseLookupUrl : '' },
         insuranceDetail && { icon: Award, title: "Insured", text: insuranceDetail },
-        { icon: Lock, title: "Private and confidential", text: "Records and updates are shared only with the doctors and family you authorize." },
+        { icon: Lock, title: "Private and confidential", text: "Records and updates are shared only with the doctors and family you authorize.", href: "/privacy-practices", linkText: "Read our privacy notice" },
     ].filter(Boolean);
     return (
         <section className="bg-ivory py-12">
             <div className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-4 ${items.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
-                {items.map(({ icon: Icon, title, text, href }) => (
+                {items.map(({ icon: Icon, title, text, href, linkText }) => (
                     <div key={title} className="reveal flex items-start gap-4 bg-cream/60 border border-pine/10 rounded-2xl p-5">
                         <div className="w-11 h-11 rounded-xl bg-pine text-ivory flex items-center justify-center shrink-0"><Icon className="w-5 h-5" /></div>
                         <div>
                             <h3 className="font-serif text-lg font-semibold text-pine">{title}</h3>
                             <p className="text-sm text-ink/75 leading-relaxed">
-                                {href ? <a href={href} target="_blank" rel="noopener noreferrer" className="underline decoration-brass underline-offset-4">{text}</a> : text}
+                                {href && !linkText ? <a href={href} target="_blank" rel="noopener noreferrer" className="underline decoration-brass underline-offset-4">{text}</a> : text}
                             </p>
+                            {linkText && <a href={href} className="inline-block mt-1 text-sm font-semibold text-royal underline decoration-brass underline-offset-4">{linkText}</a>}
                         </div>
                     </div>
                 ))}
@@ -978,6 +981,7 @@ const PAGE_HEADERS = {
     '/services': { eyebrow: 'Services', title: 'Our nursing services', subtitle: 'Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.' },
     '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.' },
     '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.' },
+    '/privacy-practices': { eyebrow: 'Privacy', title: 'HIPAA Notice of Privacy Practices', subtitle: 'How your health information is used, shared, and protected, and the rights you have.' },
     '/faq': { eyebrow: 'FAQ', title: 'Frequently asked questions', subtitle: 'Insurance, payment, physician orders, and how a visit works.' },
 };
 
@@ -1159,6 +1163,8 @@ export default function App({ path = '/' }) {
         content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
         content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><CredentialsStrip /><CareTeam /><Testimonials /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+    } else if (clean === '/privacy-practices') {
+        content = (<><PageHeader {...PAGE_HEADERS['/privacy-practices']} /><PrivacyNotice /></>);
     } else if (clean === '/faq') {
         content = (<><PageHeader {...PAGE_HEADERS['/faq']} /><FAQ /><ChecklistCTA /><FinalCTA openBooking={openBooking} /></>);
     } else {

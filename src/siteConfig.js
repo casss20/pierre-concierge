@@ -15,6 +15,10 @@ export const SITE_CONFIG = {
     writtenCarePlan: false,
     // Real testimonials only, with permission: { quote: "...", name: "First name, town", role: "Patient's daughter" }
     testimonials: [],
+    // HIPAA privacy notice details. The notice must carry the date Elda adopts it.
+    privacyEffectiveDate: "",   // e.g. "December 1, 2026"
+    privacyContactEmail: "",    // email for privacy questions and requests
+    privacyMailingAddress: "",  // mailing address for written requests
     // Free downloadable resource (static page in /public)
     checklistUrl: "/going-home-checklist.html",
 };
