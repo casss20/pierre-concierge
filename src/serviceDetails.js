@@ -3,6 +3,9 @@
 export const SERVICE_DETAILS = [
     {
         slug: "post-operative-recovery",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/post-operative-recovery.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231513_0cdcebcb-a57f-4e87-97f4-7a389af27296.png",
+        imageAlt: "A calm recovery corner with a folded blanket, a glass of water, and a plant by a sunny window",
         orderLevel: "partial",
         orderText: "Checking vitals and your incision is nursing assessment and needs no order. Any treatment or medication follows your surgeon's orders.",
         title: "Post-Operative Recovery",
@@ -30,6 +33,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "chronic-disease-management",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/chronic-disease-management.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231548_4d6025f6-3bea-499a-a9e7-4ba62ceaa234.png",
+        imageAlt: "A home blood pressure cuff, a weekly pill organizer, and a notebook on a linen table",
         orderLevel: "partial",
         orderText: "Monitoring and teaching are nursing care and need no order. Medications and treatments follow your doctor's plan.",
         title: "Chronic Disease Management",
@@ -55,6 +61,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "hospital-to-home-transition",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/hospital-to-home-transition.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231512_01f64562-9a8f-4383-afb1-83b52b97a633.png",
+        imageAlt: "A tidy, welcoming home entryway with a folder and tote bag on a console table",
         orderLevel: "partial",
         orderText: "Education, coordination, and home safety checks need no order. Any treatment or medication follows your doctor's orders.",
         title: "Hospital-to-Home Transition",
@@ -80,6 +89,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "advanced-wound-care",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/advanced-wound-care.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231514_a67eaeee-a46c-4a36-a39c-d3722cd93648.png",
+        imageAlt: "Sterile gauze rolls, medical tape, and a saline bottle arranged neatly on a tray",
         orderLevel: "required",
         orderText: "Dressings and wound treatments follow the orders of your doctor or wound clinic. We confirm them at intake.",
         title: "Advanced Wound Care",
@@ -105,6 +117,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "iv-therapy-hydration",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/iv-therapy-hydration.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231513_0a091f14-0192-4a73-9780-3a26de5a091b.png",
+        imageAlt: "A comfortable armchair and an IV stand in a bright, peaceful living room",
         orderLevel: "required",
         orderText: "We verify your physician's order before every visit.",
         title: "IV Therapy & Hydration",
@@ -130,6 +145,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "medication-management",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/medication-management.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231548_17bc2ae1-4b33-4f2c-adeb-d49495129913.png",
+        imageAlt: "A weekly pill organizer, a glass of water, and a notebook on a kitchen table",
         orderLevel: "partial",
         orderText: "Giving medications and injections such as insulin or B12 requires a physician's order. Reviewing medications and organizing a pill box does not.",
         title: "Medication Management",
@@ -155,6 +173,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "assisted-living-facility-support",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/assisted-living-facility-support.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231514_2a016d47-16be-4d5c-b5df-266c33fdfaf1.png",
+        imageAlt: "A bright, cozy assisted living room with an armchair, a lamp, and a window",
         orderLevel: "required",
         orderText: "Clinical tasks such as insulin and wound care require a physician's order, which we confirm at intake.",
         title: "Assisted Living Facility Support",
@@ -179,6 +200,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "family-peace-of-mind-visits",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/family-peace-of-mind-visits.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231513_38800264-452a-49bb-b313-e1b947bb28d2.png",
+        imageAlt: "A warm living room table with two cups of tea and a phone by a sunny window",
         orderLevel: "none",
         orderText: "No order needed. These are check in visits with vitals, observations, and a report.",
         title: "Family Peace-of-Mind Visits",
@@ -203,6 +227,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "patient-advocacy",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/patient-advocacy.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231513_a706646f-8e75-45a7-860a-63f5732aaabf.png",
+        imageAlt: "A tidy desk with a folder of papers, reading glasses, a pen, and a cup of tea",
         orderLevel: "none",
         orderText: "No order needed. We explain, organize, and support. Your doctors make the medical decisions.",
         title: "Patient Advocacy",
@@ -227,6 +254,9 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "wellness-assessments",
+        // TEMPORARY: hosted by Higgsfield. Replace with /images/services/wellness-assessments.webp once the file is in the repo.
+        image: "https://d8j0ntlcm91z4.cloudfront.net/user_3J6k2NqUdop7ql5LBnexUFOwgUi/hf_20261116_231514_3daecf96-0954-4581-af88-b26672d5b915.png",
+        imageAlt: "A stethoscope, a pulse oximeter, and a blood pressure cuff arranged on linen",
         orderLevel: "none",
         orderText: "No order needed for an assessment.",
         title: "Wellness Assessments",

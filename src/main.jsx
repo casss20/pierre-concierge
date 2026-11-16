@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 
 const root = document.getElementById('root')
-const path = window.location.pathname
+const path = window.__PATH__ || window.location.pathname
 const app = (
     <React.StrictMode>
         <App path={path} />

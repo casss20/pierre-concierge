@@ -396,6 +396,9 @@ function Services({ openBooking }) {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {SERVICES.map(({ icon: Icon, title, description, price, tag }, i) => (
                         <article key={title} className="reveal group bg-ivory rounded-3xl p-8 border border-transparent hover:border-pine/15 shadow-sm hover:shadow-xl flex flex-col h-full transition-all duration-300 hover:-translate-y-1">
+                            {SERVICE_BY_SLUG[SLUG_BY_TITLE[title]]?.image && (
+                                <img src={SERVICE_BY_SLUG[SLUG_BY_TITLE[title]].image} alt="" loading="lazy" className="w-full h-40 object-cover rounded-2xl mb-6" />
+                            )}
                             <div className="flex items-start justify-between mb-7">
                                 <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center group-hover:bg-pine group-hover:text-ivory transition-colors duration-300">
                                     <Icon className="w-6 h-6" />
@@ -913,6 +916,14 @@ function ServicePage({ slug, openBooking }) {
                     </div>
                 </div>
             </section>
+
+            {detail.image && (
+                <section className="bg-ivory pb-4">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <img src={detail.image} alt={detail.imageAlt} width="1600" height="900" className="w-full rounded-3xl object-cover aspect-[16/9] shadow-lg shadow-pine/10" />
+                    </div>
+                </section>
+            )}
 
             <section className="bg-cream/50 py-14">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2">
