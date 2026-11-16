@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { SITE_CONFIG } from './siteConfig.js';
 import {
     Heart,
     Stethoscope,
@@ -25,6 +26,11 @@ import {
     Pill,
     Building2,
     PhoneCall,
+    Lock,
+    FileText,
+    Users,
+    Quote,
+    Download,
 } from 'lucide-react';
 
 /* ============================================================
@@ -118,7 +124,7 @@ const SERVICES = [
     {
         icon: Syringe,
         title: "IV Therapy & Hydration",
-        description: "Administration of prescribed fluids and medications in the comfort of your home — ideal for dehydration, recovery, or vitamin boosts. We handle setup, administration, and monitoring.",
+        description: "Physician-ordered IV fluids and medications, administered by a licensed Registered Nurse in the comfort of your home. We verify your order before every visit, then handle setup, administration, and monitoring.",
         price: "Starting at $200",
         tag: "Book IV Therapy",
     },
@@ -194,6 +200,14 @@ const FAQS = [
         a: "All major credit cards, HSA/FSA cards, and Zelle. Payment is due at booking to secure your appointment.",
     },
     {
+        q: "How is concierge nursing different from Medicare home health?",
+        a: "Medicare home health is short, task-focused, physician-ordered, and generally requires that you are homebound. Pierre Concierge Nursing is private-pay: the same nurse each time, flexible visit times, no homebound requirement, and no insurance-imposed time limit. The two can work side by side, and we are glad to coordinate with your home health team.",
+    },
+    {
+        q: "Is my health information kept private?",
+        a: "Yes. Your records and visit updates are shared only with the doctors and family members you authorize.",
+    },
+    {
         q: "Can you prescribe medication?",
         a: "As a Registered Nurse, I administer medications prescribed by your physician. I cannot write new prescriptions, but I work closely with your doctor to make sure you get what you need.",
     },
@@ -206,6 +220,12 @@ const FAQS = [
         a: "No — most families contact us directly, often the week of a hospital discharge or when a loved one needs more care than an assisted living facility can provide. We're also happy to receive referrals from physicians, surgeons, senior living communities, and home-health agencies.",
     },
 ];
+
+const POLICY_FAQS = [
+    SITE_CONFIG.cancellationPolicy && { q: "What is your cancellation policy?", a: SITE_CONFIG.cancellationPolicy },
+    SITE_CONFIG.backupPlan && { q: "What if my nurse is unavailable?", a: SITE_CONFIG.backupPlan },
+    SITE_CONFIG.writtenCarePlan && { q: "Will I get a written care plan?", a: "Yes. Before care begins you receive a written plan that lists the specific care and the cost, so there are no surprises." },
+].filter(Boolean);
 
 const AREAS = ["Ocala", "Silver Springs Shores", "Belleview", "The Villages (North)"];
 
@@ -580,7 +600,7 @@ function FAQ() {
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeading eyebrow="FAQ" title="Questions, answered" />
                 <div className="space-y-4">
-                    {FAQS.map(({ q, a }, i) => {
+                    {[...FAQS, ...POLICY_FAQS].map(({ q, a }, i) => {
                         const isOpen = open === i;
                         return (
                             <div key={q} className="reveal bg-ivory rounded-2xl border border-pine/10 overflow-hidden transition-shadow hover:shadow-md">
@@ -702,6 +722,136 @@ function Footer() {
 }
 
 // --- Booking modal ----------------------------------------------
+// --- Trust and education sections -------------------------------
+function CredentialsStrip() {
+    const { licenseNumber, licenseLookupUrl, insuranceDetail } = SITE_CONFIG;
+    const items = [
+        { icon: ShieldCheck, title: "Licensed Florida RN", text: licenseNumber ? `License ${licenseNumber}` : "BSN prepared Registered Nurse", href: licenseNumber ? licenseLookupUrl : '' },
+        insuranceDetail && { icon: Award, title: "Insured", text: insuranceDetail },
+        { icon: Lock, title: "Private and confidential", text: "Records and updates are shared only with the doctors and family you authorize." },
+    ].filter(Boolean);
+    return (
+        <section className="bg-ivory py-12">
+            <div className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-4 ${items.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+                {items.map(({ icon: Icon, title, text, href }) => (
+                    <div key={title} className="reveal flex items-start gap-4 bg-cream/60 border border-pine/10 rounded-2xl p-5">
+                        <div className="w-11 h-11 rounded-xl bg-pine text-ivory flex items-center justify-center shrink-0"><Icon className="w-5 h-5" /></div>
+                        <div>
+                            <h3 className="font-serif text-lg font-semibold text-pine">{title}</h3>
+                            <p className="text-sm text-ink/75 leading-relaxed">
+                                {href ? <a href={href} target="_blank" rel="noopener noreferrer" className="underline decoration-brass underline-offset-4">{text}</a> : text}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+}
+
+function CompareHomeHealth() {
+    const rows = [
+        ["Who visits", "Often different clinicians", "The same nurse, every visit"],
+        ["Visit style", "Short, task-focused visits", "Unrushed visits built around your needs"],
+        ["Schedule", "Set by the agency, for a limited period", "Mornings, evenings, and weekends"],
+        ["Eligibility", "Physician order and generally homebound", "No homebound requirement"],
+        ["Payment", "Usually covered by Medicare when you qualify", "Private pay, with a superbill for possible reimbursement"],
+    ];
+    return (
+        <section className="bg-cream/50 py-20 md:py-24">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading
+                    eyebrow="Concierge nursing vs. home health"
+                    title="Why families add a private nurse"
+                    subtitle="Medicare home health is valuable when you qualify, and it has limits. Concierge nursing fills the gaps, and the two can work together."
+                />
+                <div className="reveal overflow-x-auto rounded-2xl border border-pine/10 bg-ivory">
+                    <table className="w-full text-left text-sm">
+                        <thead>
+                            <tr className="bg-pine text-ivory">
+                                <th className="px-5 py-4 font-semibold"><span className="sr-only">Topic</span></th>
+                                <th className="px-5 py-4 font-semibold">Medicare home health</th>
+                                <th className="px-5 py-4 font-semibold">Pierre Concierge Nursing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rows.map(([topic, a, b]) => (
+                                <tr key={topic} className="border-t border-pine/10 align-top">
+                                    <th scope="row" className="px-5 py-4 font-serif text-pine font-semibold whitespace-nowrap">{topic}</th>
+                                    <td className="px-5 py-4 text-ink/75">{a}</td>
+                                    <td className="px-5 py-4 text-ink/90 font-medium">{b}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function CareTeam() {
+    const points = [
+        { icon: FileText, title: "We verify physician orders", desc: "Before IV therapy, injections, or wound treatments, we confirm your doctor's order at intake." },
+        { icon: Stethoscope, title: "Your doctor stays informed", desc: "After visits, you and your physician receive clear documentation and updates, with family included if you wish." },
+        { icon: Users, title: "Referrals welcome", desc: "Surgeons, senior living communities, and home health agencies can send patients directly." },
+    ];
+    return (
+        <section className="bg-ivory py-20 md:py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading eyebrow="Working with your care team" title="Coordinated with your doctors" />
+                <div className="grid gap-6 md:grid-cols-3">
+                    {points.map(({ icon: Icon, title, desc }) => (
+                        <div key={title} className="reveal bg-cream/60 border border-pine/10 rounded-3xl p-8">
+                            <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center mb-5"><Icon className="w-6 h-6" /></div>
+                            <h3 className="font-serif text-xl font-semibold text-pine mb-2">{title}</h3>
+                            <p className="text-ink/75 leading-relaxed text-[0.95rem]">{desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function Testimonials() {
+    const list = SITE_CONFIG.testimonials;
+    if (!list.length) return null;
+    return (
+        <section className="bg-ivory py-20 md:py-24">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <SectionHeading eyebrow="Kind words" title="What families say" />
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {list.map(({ quote, name, role }) => (
+                        <figure key={name + quote} className="reveal bg-cream/60 border border-pine/10 rounded-3xl p-8">
+                            <Quote className="w-7 h-7 text-brass mb-4" />
+                            <blockquote className="text-ink/90 leading-relaxed mb-5">{quote}</blockquote>
+                            <figcaption className="text-sm"><span className="font-semibold text-pine">{name}</span>{role ? <span className="text-ink/70">, {role}</span> : null}</figcaption>
+                        </figure>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function ChecklistCTA() {
+    return (
+        <section className="bg-cream/50 py-16">
+            <div className="reveal max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-pine text-ivory rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6">
+                    <div className="w-14 h-14 rounded-2xl bg-ivory/10 flex items-center justify-center shrink-0"><Download className="w-7 h-7" /></div>
+                    <div className="flex-grow">
+                        <h3 className="font-serif text-2xl font-semibold mb-2">Free: Going Home After Surgery checklist</h3>
+                        <p className="text-ivory/80 text-sm leading-relaxed">Questions to ask before discharge and a simple plan for the first 72 hours. Print it and bring it to the hospital.</p>
+                    </div>
+                    <PillButton href={SITE_CONFIG.checklistUrl} variant="light">Open the checklist <ArrowRight className="w-4 h-4" /></PillButton>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 function BookingModal({ isOpen, onClose, service }) {
     const [submitted, setSubmitted] = useState(false);
     useEffect(() => { if (isOpen) setSubmitted(false); }, [isOpen]);
@@ -862,12 +1012,17 @@ export default function App() {
             <main>
                 <Hero openBooking={openBooking} />
                 <QuoteBand />
+                <CredentialsStrip />
                 <WhyUs />
                 <Services openBooking={openBooking} />
                 <HowItWorks />
+                <CompareHomeHealth />
+                <CareTeam />
                 <Pricing openBooking={openBooking} />
+                <Testimonials />
                 <About />
                 <FAQ />
+                <ChecklistCTA />
                 <ServiceArea />
                 <FinalCTA openBooking={openBooking} />
             </main>
