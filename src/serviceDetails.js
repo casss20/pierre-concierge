@@ -3,6 +3,8 @@
 export const SERVICE_DETAILS = [
     {
         slug: "post-operative-recovery",
+        orderLevel: "partial",
+        orderText: "Checking vitals and your incision is nursing assessment and needs no order. Any treatment or medication follows your surgeon's orders.",
         title: "Post-Operative Recovery",
         seoDescription: "In home post surgery nursing in Ocala, FL: incision checks, vitals, pain assessment, medication review, and safe mobility help from a licensed RN.",
         intro: "Recovery after surgery is easier when a nurse watches for small problems early. We come to your home in the days and weeks after surgery to check how you are healing and to make sure the plan from your surgeon is actually being followed.",
@@ -28,6 +30,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "chronic-disease-management",
+        orderLevel: "partial",
+        orderText: "Monitoring and teaching are nursing care and need no order. Medications and treatments follow your doctor's plan.",
         title: "Chronic Disease Management",
         seoDescription: "Ongoing in home nursing support in Ocala, FL for diabetes, high blood pressure, and heart conditions: monitoring, medication oversight, and clear care plans.",
         intro: "Long term conditions such as diabetes, high blood pressure, and heart disease are managed day by day. Regular nurse visits help catch small changes before they turn into an emergency room trip.",
@@ -51,6 +55,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "hospital-to-home-transition",
+        orderLevel: "partial",
+        orderText: "Education, coordination, and home safety checks need no order. Any treatment or medication follows your doctor's orders.",
         title: "Hospital-to-Home Transition",
         seoDescription: "Hospital to home transition nursing in Ocala, FL: discharge coordination, medication setup, home safety checks, and wound or incision checks in the first days.",
         intro: "The first days after leaving the hospital are when confusion about medications, equipment, and instructions is most likely. We help you land safely at home so nothing falls through the cracks.",
@@ -74,6 +80,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "advanced-wound-care",
+        orderLevel: "required",
+        orderText: "Dressings and wound treatments follow the orders of your doctor or wound clinic. We confirm them at intake.",
         title: "Advanced Wound Care",
         seoDescription: "In home wound care in Ocala, FL for surgical wounds, pressure ulcers, and diabetic wounds: sterile dressing changes, measurement, and infection monitoring.",
         intro: "Wounds heal best when they are cleaned, dressed, and measured the same careful way each time. We bring supplies and sterile technique to your home so you can avoid repeated trips to a wound clinic.",
@@ -97,6 +105,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "iv-therapy-hydration",
+        orderLevel: "required",
+        orderText: "We verify your physician's order before every visit.",
         title: "IV Therapy & Hydration",
         seoDescription: "Physician ordered IV fluids and medications at home in Ocala, FL, given by a licensed RN. Order verified before every visit.",
         intro: "Some people need fluids or medications through a vein but would rather not sit in a clinic or infusion center. With a physician's order, a licensed Registered Nurse can give them at home and monitor you the whole time.",
@@ -120,6 +130,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "medication-management",
+        orderLevel: "partial",
+        orderText: "Giving medications and injections such as insulin or B12 requires a physician's order. Reviewing medications and organizing a pill box does not.",
         title: "Medication Management",
         seoDescription: "In home medication management in Ocala, FL: medication reconciliation, weekly pill organizers, injections such as insulin or B12, and pharmacy coordination.",
         intro: "When someone takes many prescriptions, a missed or doubled dose is easy and can be dangerous. We help organize medications so they are taken correctly and consistently.",
@@ -143,6 +155,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "assisted-living-facility-support",
+        orderLevel: "required",
+        orderText: "Clinical tasks such as insulin and wound care require a physician's order, which we confirm at intake.",
         title: "Assisted Living Facility Support",
         seoDescription: "Clinical nursing inside assisted living communities in Ocala, FL: insulin, wound care, and monitoring so residents can stay where they live.",
         intro: "Assisted living communities help with daily living, but many cannot perform clinical tasks. We provide those clinical services right inside the facility so a resident may not need to move to a higher level of care.",
@@ -165,6 +179,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "family-peace-of-mind-visits",
+        orderLevel: "none",
+        orderText: "No order needed. These are check in visits with vitals, observations, and a report.",
         title: "Family Peace-of-Mind Visits",
         seoDescription: "Scheduled RN check in visits for aging parents in Ocala, FL, with a same day report on vitals, medications, and how they are really doing.",
         intro: "When you manage a parent or relative from far away, you want honest answers. A scheduled nurse visit gives you a clear picture, with a report the same day.",
@@ -187,6 +203,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "patient-advocacy",
+        orderLevel: "none",
+        orderText: "No order needed. We explain, organize, and support. Your doctors make the medical decisions.",
         title: "Patient Advocacy",
         seoDescription: "Nurse patient advocacy in Ocala, FL: help understanding doctor's orders, attending appointments, and organizing medical records and questions.",
         intro: "Medical visits move fast and the language can be confusing. A nurse at your side helps you understand your options, ask the right questions, and keep your care organized.",
@@ -209,6 +227,8 @@ export const SERVICE_DETAILS = [
     },
     {
         slug: "wellness-assessments",
+        orderLevel: "none",
+        orderText: "No order needed for an assessment.",
         title: "Wellness Assessments",
         seoDescription: "Head to toe nursing wellness assessments at home in Ocala, FL: blood pressure, heart rate, oxygen levels, lung sounds, and clear explanations.",
         intro: "A wellness assessment is a full nursing check up at home. It gives you a baseline, and a nurse's explanation of what the numbers and findings mean.",

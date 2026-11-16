@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SITE_CONFIG } from './siteConfig.js';
 import { SERVICE_BY_SLUG, SLUG_BY_TITLE } from './serviceDetails.js';
+
+const ORDER_LABEL = { required: "Required", partial: "Depends on the care", none: "Not needed" };
 import {
     Heart,
     Stethoscope,
@@ -218,7 +220,7 @@ const FAQS = [
     },
     {
         q: "Do I need a referral from a hospital or doctor?",
-        a: "No — most families contact us directly, often the week of a hospital discharge or when a loved one needs more care than an assisted living facility can provide. We're also happy to receive referrals from physicians, surgeons, senior living communities, and home-health agencies.",
+        a: "No referral is needed to book. Most families contact us directly, often the week of a hospital discharge or when a loved one needs more care than an assisted living facility can provide. Treatments and medications, such as IV therapy, injections, and wound dressings, do require your doctor's order, which we verify at intake. We're also happy to receive referrals from physicians, surgeons, senior living communities, and home-health agencies.",
     },
 ];
 
@@ -899,6 +901,13 @@ function ServicePage({ slug, openBooking }) {
                         <PillButton href="tel:+17543676929" variant="outline"><Phone className="w-4 h-4" /> (754) 367-6929</PillButton>
                         <span className="font-bold text-pine text-lg">{service.price}</span>
                     </div>
+                    <div className="mt-6 flex items-start gap-3 rounded-2xl border border-pine/15 bg-cream/60 p-4">
+                        <FileText className="w-5 h-5 text-brass shrink-0 mt-0.5" />
+                        <p className="text-sm leading-relaxed text-ink/85">
+                            <span className="font-semibold text-pine">Physician's order: {ORDER_LABEL[detail.orderLevel]}.</span>{' '}
+                            {detail.orderText}
+                        </p>
+                    </div>
                 </div>
             </section>
 
@@ -1009,6 +1018,17 @@ function BookingModal({ isOpen, onClose, service }) {
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Preferred Date / Time</label>
                                 <input type="text" placeholder="e.g. Monday morning" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-semibold text-pine mb-1.5">Do you have a physician's order for this care?</label>
+                                <select defaultValue="" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition">
+                                    <option value="" disabled>Select one</option>
+                                    <option>Yes, I have an order</option>
+                                    <option>Not yet, I am waiting on one</option>
+                                    <option>I am not sure if I need one</option>
+                                    <option>No order needed (assessment or check in)</option>
+                                </select>
+                                <p className="text-xs text-ink/70 mt-1.5">Medications, IV therapy, injections, and wound treatments require your doctor's order. Elda will confirm this with you.</p>
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Notes <span className="text-ink/55 font-normal">(optional)</span></label>
