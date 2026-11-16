@@ -23,6 +23,10 @@ import {
     ShieldCheck,
     Languages,
     Sparkles,
+    Home,
+    Pill,
+    Building2,
+    PhoneCall,
 } from 'lucide-react';
 
 /* ============================================================
@@ -86,6 +90,34 @@ const PillButton = ({ children, variant = 'primary', className = '', onClick, hr
 // --- Data ------------------------------------------------------
 const SERVICES = [
     {
+        icon: Activity,
+        title: "Post-Operative Recovery",
+        description: "Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal — care Medicare's few-and-far-between visits don't cover.",
+        price: "$160 per visit",
+        tag: "Book Post-Op Care",
+    },
+    {
+        icon: Heart,
+        title: "Chronic Disease Management",
+        description: "Ongoing support for diabetes, hypertension, and heart conditions — regular monitoring, medication oversight, and care plans that catch small problems before they become ER visits.",
+        price: "Custom Plans",
+        tag: "Book a Consultation",
+    },
+    {
+        icon: Home,
+        title: "Hospital-to-Home Transition",
+        description: "The first 72 hours home are the riskiest. We coordinate your discharge, set up your medications and equipment, check incisions or wounds, and make sure your home is safe — so you never land alone.",
+        price: "$185 per visit",
+        tag: "Book Transition Care",
+    },
+    {
+        icon: ShieldAlert,
+        title: "Advanced Wound Care",
+        description: "Expert management of surgical wounds, pressure ulcers, and diabetic wounds — sterile dressing changes, measurement, and close monitoring for signs of infection, all without the wheelchair-van trips to a wound clinic.",
+        price: "Starting at $175",
+        tag: "Book Wound Care",
+    },
+    {
         icon: Syringe,
         title: "IV Therapy & Hydration",
         description: "Administration of prescribed fluids and medications in the comfort of your home — ideal for dehydration, recovery, or vitamin boosts. We handle setup, administration, and monitoring.",
@@ -93,32 +125,25 @@ const SERVICES = [
         tag: "Book IV Therapy",
     },
     {
-        icon: ShieldAlert,
-        title: "Advanced Wound Care",
-        description: "Expert management of surgical wounds, pressure ulcers, and diabetic wounds — sterile dressing changes, measurement, and close monitoring for signs of infection.",
-        price: "Starting at $175",
-        tag: "Book Wound Care",
-    },
-    {
-        icon: Activity,
-        title: "Post-Operative Recovery",
-        description: "Peace of mind after surgery: vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal.",
-        price: "$160 per visit",
-        tag: "Book Post-Op Care",
-    },
-    {
-        icon: Heart,
-        title: "Chronic Disease Management",
-        description: "Ongoing support for diabetes, hypertension, and heart conditions — education, regular check-ins, and care plans that help keep you out of the hospital.",
-        price: "Custom Plans",
-        tag: "Book a Consultation",
-    },
-    {
-        icon: Stethoscope,
-        title: "Wellness Assessments",
-        description: "A full head-to-toe assessment — blood pressure, heart rate, oxygen levels, and lung sounds — with clear explanations and updates for family or your physician.",
+        icon: Pill,
+        title: "Medication Management",
+        description: "Ten prescriptions and a missed dose shouldn't end in a hospital trip. We reconcile your medications, organize weekly pill systems, administer injections like insulin or B12, and coordinate refills with your pharmacy.",
         price: "$150 per visit",
-        tag: "Book an Assessment",
+        tag: "Book Medication Support",
+    },
+    {
+        icon: Building2,
+        title: "Assisted Living Facility Support",
+        description: "Assisted living communities can't perform clinical tasks — we can, right inside your facility. Insulin administration, wound care, and clinical monitoring that let your loved one stay in their home, not move to a higher level of care. Monthly contracts available.",
+        price: "$175 per visit",
+        tag: "Book a Facility Visit",
+    },
+    {
+        icon: PhoneCall,
+        title: "Family Peace-of-Mind Visits",
+        description: "For families managing Mom or Dad from Orlando — or anywhere. Scheduled RN visits with a same-day report: vitals, medication status, how they really look, straight answers to your questions.",
+        price: "$150 per visit",
+        tag: "Book a Check-In",
     },
     {
         icon: Briefcase,
@@ -126,6 +151,13 @@ const SERVICES = [
         description: "Help understanding doctor's orders, attending appointments with you, and organizing your medical life — a bridge between you and your specialists.",
         price: "Hourly Rates",
         tag: "Book Advocacy",
+    },
+    {
+        icon: Stethoscope,
+        title: "Wellness Assessments",
+        description: "A full head-to-toe assessment — blood pressure, heart rate, oxygen levels, and lung sounds — with clear explanations and updates for family or your physician.",
+        price: "$150 per visit",
+        tag: "Book an Assessment",
     },
 ];
 
@@ -137,10 +169,14 @@ const STEPS = [
 ];
 
 const SINGLE_VISITS = [
-    { name: "Wound Care Visit", price: "$175", desc: "Sterile dressing change, measurement & assessment." },
-    { name: "IV Hydration", price: "$200+", desc: "Fluids & meds administration (requires prescription)." },
-    { name: "Wellness Check", price: "$150", desc: "Complete physical assessment — heart, lungs, vitals." },
     { name: "Post-Op Check-in", price: "$160", desc: "Incision check, pain assessment & medication review." },
+    { name: "Hospital-to-Home Transition", price: "$185", desc: "Discharge coordination, med setup, safety & wound check." },
+    { name: "Wound Care Visit", price: "$175", desc: "Sterile dressing change, measurement & assessment." },
+    { name: "Medication Management", price: "$150", desc: "Reconciliation, pill organization & injections." },
+    { name: "IV Hydration", price: "$200+", desc: "Fluids & meds administration (requires prescription)." },
+    { name: "ALF / Facility Visit", price: "$175", desc: "Insulin, wound care & monitoring inside your community." },
+    { name: "Family Check-In", price: "$150", desc: "Visit + same-day report for out-of-town family." },
+    { name: "Wellness Check", price: "$150", desc: "Complete physical assessment — heart, lungs, vitals." },
 ];
 
 const SUBSCRIPTION_FEATURES = [
@@ -166,6 +202,10 @@ const FAQS = [
     {
         q: "Which areas do you serve?",
         a: "Mobile nursing throughout Ocala, Silver Springs Shores, Belleview, and The Villages (North) — private residences, hotels, and assisted living facilities.",
+    },
+    {
+        q: "Do I need a referral from a hospital or doctor?",
+        a: "No — most families contact us directly, often the week of a hospital discharge or when a loved one needs more care than an assisted living facility can provide. We're also happy to receive referrals from physicians, surgeons, senior living communities, and home-health agencies.",
     },
 ];
 
