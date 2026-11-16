@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pierre-concierge.vercel.app/sitemap.xml
