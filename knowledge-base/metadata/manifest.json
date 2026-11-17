@@ -10,8 +10,8 @@
       "route": "/",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "d2393fc8d07c53a6",
-      "words": 1471
+      "hash": "2e11d344d980ed5f",
+      "words": 1527
     },
     {
       "file": "services/overview.md",
@@ -180,8 +180,8 @@
       "route": "/safe-home-playbook",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "388cc57ff2d421e5",
-      "words": 571
+      "hash": "fc4ef34154586158",
+      "words": 638
     },
     {
       "file": "pages/resources.md",

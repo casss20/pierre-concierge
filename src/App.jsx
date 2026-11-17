@@ -10,6 +10,7 @@ import {
     Stethoscope,
     Calendar,
     Clock,
+    ChevronLeft,
     CheckCircle,
     Phone,
     Mail,
@@ -993,6 +994,49 @@ const PLAYBOOK_POINTS = [
     'A 14 day plan with Day 7 and Day 14 review worksheets',
     'Local Ocala and Marion County help numbers',
 ];
+const PLAYBOOK_SLIDES = [
+    { src: '/playbook/p1.webp', cap: 'Cover' },
+    { src: '/playbook/p2.webp', cap: 'How it works' },
+    { src: '/playbook/p3.webp', cap: 'The first 14 days at a glance' },
+    { src: '/playbook/p4.webp', cap: 'One of nine problems, with steps and scripts' },
+    { src: '/playbook/p8.webp', cap: 'Pain and medicine, step by step' },
+    { src: '/playbook/p13.webp', cap: 'Your 14 day plan' },
+    { src: '/playbook/p14.webp', cap: 'Day 7 and Day 14 review' },
+    { src: '/playbook/p15.webp', cap: 'Local help in Ocala and Marion County' },
+];
+function PlaybookCarousel({ compact = false }) {
+    const trackRef = useRef(null);
+    const [idx, setIdx] = useState(0);
+    const go = (i) => {
+        const el = trackRef.current; if (!el) return;
+        const n = Math.max(0, Math.min(PLAYBOOK_SLIDES.length - 1, i));
+        el.scrollTo({ left: n * el.clientWidth, behavior: 'smooth' });
+    };
+    const onScroll = () => {
+        const el = trackRef.current; if (!el) return;
+        setIdx(Math.round(el.scrollLeft / el.clientWidth));
+    };
+    return (
+        <div className={`relative mx-auto ${compact ? 'max-w-xs' : 'max-w-md'}`} role="region" aria-roledescription="carousel" aria-label="Preview pages of The Safe Home Playbook">
+            <div ref={trackRef} onScroll={onScroll} className="flex overflow-x-auto snap-x snap-mandatory rounded-2xl shadow-xl bg-white" style={{ scrollbarWidth: 'none' }}>
+                {PLAYBOOK_SLIDES.map((s, i) => (
+                    <figure key={s.src} className="snap-center shrink-0 w-full m-0" aria-label={`${i + 1} of ${PLAYBOOK_SLIDES.length}: ${s.cap}`}>
+                        <img src={s.src} width="680" height="880" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" alt={`Playbook preview: ${s.cap}`} className="w-full h-auto block" />
+                    </figure>
+                ))}
+            </div>
+            <button type="button" onClick={() => go(idx - 1)} disabled={idx === 0} aria-label="Previous page" className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
+            <button type="button" onClick={() => go(idx + 1)} disabled={idx === PLAYBOOK_SLIDES.length - 1} aria-label="Next page" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
+            <p className="mt-3 text-center text-sm text-ink/70" aria-live="polite">{PLAYBOOK_SLIDES[idx].cap}</p>
+            <div className="mt-2 flex justify-center gap-1">
+                {PLAYBOOK_SLIDES.map((s, i) => (
+                    <button key={s.src} type="button" onClick={() => go(i)} aria-label={`Go to page ${i + 1}`} className="w-6 h-6 flex items-center justify-center"><span className={`block rounded-full transition-all ${i === idx ? 'w-5 h-2 bg-pine' : 'w-2 h-2 bg-pine/25'}`} /></button>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function PlaybookAction({ light = false }) {
     const { playbookCheckoutUrl, playbookPrice } = SITE_CONFIG;
     if (playbookCheckoutUrl) {
@@ -1014,7 +1058,7 @@ function PlaybookCTA() {
         <section className="bg-ivory py-16 md:py-20">
             <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10">
-                    <img src="/playbook-cover.webp" width="520" height="673" loading="lazy" decoding="async" alt="Cover of The Safe Home Playbook by Pierre Concierge Nursing" className="w-48 md:w-full max-w-[16rem] mx-auto rounded-xl shadow-xl" />
+                    <PlaybookCarousel compact />
                     <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">Guide for families</p>
                         <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">The Safe Home Playbook</h2>
@@ -1201,6 +1245,7 @@ function LocalPage({ found, openBooking }) {
                         </div>
                     ) : (
                         <>
+                            {page.path === '/safe-home-playbook' && <div className="mb-12"><PlaybookCarousel /></div>}
                             {page.sections.map((sec, i) => <LocalSection key={i} section={sec} />)}
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">

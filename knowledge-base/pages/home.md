@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: d2393fc8d07c53a6
+content_hash: 2e11d344d980ed5f
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -281,7 +281,23 @@ Questions to ask before discharge and a simple plan for the first 72 hours. Prin
 
 [Open the checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)
 
-*(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
+*(Image: Playbook preview: Cover)*
+
+*(Image: Playbook preview: How it works)*
+
+*(Image: Playbook preview: The first 14 days at a glance)*
+
+*(Image: Playbook preview: One of nine problems, with steps and scripts)*
+
+*(Image: Playbook preview: Pain and medicine, step by step)*
+
+*(Image: Playbook preview: Your 14 day plan)*
+
+*(Image: Playbook preview: Day 7 and Day 14 review)*
+
+*(Image: Playbook preview: Local help in Ocala and Marion County)*
+
+Cover
 
 Guide for families
 
