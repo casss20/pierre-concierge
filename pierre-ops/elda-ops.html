@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pierre Concierge Nursing — Practice Manager</title>
+<style>
+/* ============================================================
+   Pierre Ops — local practice manager for Elda
+   Brand: pine #1E3D34 / pine-dark #142B24 / ivory #FAF7F0 /
+          sand #E8D5B0 / brass #A97E3F / ink #1F2933
+   Data lives ONLY in this browser's localStorage (this device).
+   ============================================================ */
+:root{
+  --pine:#1E3D34; --pine-dark:#142B24; --pine-light:#2C5546;
+  --ivory:#FAF7F0; --cream:#F3EDE0; --sand:#E8D5B0;
+  --brass:#A97E3F; --ink:#1F2933; --line:#E3DCCB;
+  --danger:#B3402A; --ok:#2F7D4F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.5;font-size:15px}
+h1,h2,h3,h4,.serif{font-family:Georgia,"Times New Roman",serif;color:var(--pine)}
+button{font:inherit;cursor:pointer;border:none}
+input,select,textarea{font:inherit;padding:.55rem .7rem;border:1px solid var(--line);border-radius:.6rem;background:#fff;width:100%;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--brass);outline-offset:1px}
+label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--pine);margin-bottom:.25rem}
+.field{margin-bottom:.85rem}
+.row{display:grid;gap:.85rem}
+.row.c2{grid-template-columns:1fr 1fr}
+.row.c3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:640px){.row.c2,.row.c3{grid-template-columns:1fr}}
+
+/* lock screen */
+#lock{position:fixed;inset:0;background:var(--pine-dark);display:flex;align-items:center;justify-content:center;z-index:200}
+#lock .card{background:var(--ivory);padding:2.2rem;border-radius:1.2rem;width:min(90vw,380px);text-align:center}
+#lock input{text-align:center;font-size:1.1rem;margin:1rem 0}
+
+/* layout */
+.app{display:none;min-height:100vh}
+.app.on{display:block}
+header.top{background:var(--pine);color:var(--ivory);padding:.85rem 1.2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;flex-wrap:wrap;gap:.5rem}
+header.top .brand{font-family:Georgia,serif;font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:.6rem}
+header.top .brand .mark{width:32px;height:32px;border-radius:.55rem;background:var(--sand);color:var(--pine);display:flex;align-items:center;justify-content:center;font-weight:700}
+nav.tabs{display:flex;gap:.25rem;background:var(--pine-dark);padding:.4rem .8rem;overflow-x:auto;position:sticky;top:53px;z-index:49}
+nav.tabs button{background:transparent;color:var(--ivory);opacity:.65;padding:.5rem 1rem;border-radius:.6rem;font-weight:600;font-size:.85rem;white-space:nowrap}
+nav.tabs button.active{background:var(--pine-light);opacity:1}
+main{max-width:1040px;margin:0 auto;padding:1.4rem 1rem 5rem}
+
+/* cards & tables */
+.card{background:#fff;border:1px solid var(--line);border-radius:1rem;padding:1.3rem;margin-bottom:1.1rem;box-shadow:0 1px 3px rgba(30,61,52,.06)}
+.card h3{margin-bottom:.9rem;font-size:1.15rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--pine);padding:.55rem .6rem;border-bottom:2px solid var(--line)}
+td{padding:.6rem;border-bottom:1px solid #EFE9DA;vertical-align:top}
+tr.clickable{cursor:pointer}
+tr.clickable:hover{background:var(--cream)}
+.empty{color:#8A8577;text-align:center;padding:2.2rem 1rem;font-style:italic;font-family:Georgia,serif}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.15rem;border-radius:999px;font-weight:600;font-size:.88rem;text-decoration:none;transition:.15s}
+.btn-p{background:var(--pine);color:var(--ivory)} .btn-p:hover{background:var(--pine-dark)}
+.btn-b{background:var(--brass);color:#fff} .btn-b:hover{filter:brightness(1.1)}
+.btn-o{border:1.5px solid var(--pine);color:var(--pine);background:transparent} .btn-o:hover{background:var(--pine);color:var(--ivory)}
+.btn-s{padding:.35rem .8rem;font-size:.78rem}
+.btn-d{background:transparent;color:var(--danger);border:1.5px solid var(--danger)} .btn-d:hover{background:var(--danger);color:#fff}
+.btnrow{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+
+/* stat tiles */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin-bottom:1.2rem}
+.stat{background:#fff;border:1px solid var(--line);border-radius:.9rem;padding:.95rem 1.1rem}
+.stat .n{font-family:Georgia,serif;font-size:1.7rem;color:var(--pine);font-weight:700}
+.stat .l{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#8A8577}
+
+/* badges */
+.badge{display:inline-block;padding:.18rem .6rem;border-radius:999px;font-size:.72rem;font-weight:700}
+.b-p{background:#E4EEE9;color:var(--pine)} .b-s{background:var(--sand);color:#6B4F22}
+.b-w{background:#F6E3DC;color:var(--danger)} .b-g{background:#E0EFE5;color:var(--ok)}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(20,43,36,.55);display:none;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;z-index:100}
+.modal.open{display:flex}
+.modal .box{background:var(--ivory);border-radius:1.2rem;width:min(96vw,760px);padding:1.6rem;margin-bottom:2rem}
+.modal .box h3{margin-bottom:1.1rem}
+.mclose{float:right;background:transparent;font-size:1.4rem;color:#8A8577;line-height:1}
+
+/* toasts */
+#toasts{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:.5rem;align-items:center}
+.toast{background:var(--pine-dark);color:var(--ivory);padding:.65rem 1.2rem;border-radius:999px;font-size:.85rem;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+
+/* doc preview area */
+#docArea{display:none}
+#docArea.open{display:block}
+.docpage{background:#fff;border:1px solid var(--line);border-radius:.8rem;padding:2.2rem 2.4rem;max-width:8.5in;margin:0 auto;font-size:.92rem}
+.docpage h1{font-size:1.45rem;margin-bottom:.15rem}
+.docpage .sub{color:#6B6455;font-size:.85rem;margin-bottom:1.2rem}
+.docpage h4{margin:1.1rem 0 .4rem;font-size:.95rem}
+.docpage table{font-size:.86rem;margin-bottom:.6rem}
+.docpage td,.docpage th{padding:.4rem .5rem}
+.dkv{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.4rem .9rem;margin-bottom:1rem;font-size:.88rem}
+.dkv b{color:var(--pine)}
+.sigrow{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.2rem}
+.sigrow .sig{border-top:1.5px solid var(--ink);padding-top:.3rem;font-size:.78rem;color:#6B6455}
+.note{font-size:.78rem;color:#8A8577;font-style:italic;margin-top:.4rem}
+.warn{background:#FBF3E4;border:1px solid var(--sand);border-radius:.7rem;padding:.7rem .95rem;font-size:.83rem;color:#6B4F22;margin-bottom:1rem}
+
+@media print{
+  body{background:#fff}
+  #view:has(+ #docArea.open){display:none!important}
+  header.top,nav.tabs,.btnrow,#toasts,.noprint{display:none!important}
+  main{padding:0;max-width:none}
+  #docArea .docpage{border:none;border-radius:0;padding:0;max-width:none}
+  .card{box-shadow:none;border:none}
+  @page{margin:.7in}
+}
+</style>
+</head>
+<body>
+
+<!-- PASSCODE LOCK -->
+<div id="lock" style="display:none">
+  <div class="card">
+    <h3 style="margin-bottom:.2rem">Pierre Practice Manager</h3>
+    <p style="font-size:.85rem;color:#8A8577">This device is locked. Enter your passcode.</p>
+    <input type="password" id="lockInput" placeholder="Passcode" autocomplete="off">
+    <div><button class="btn btn-p" style="width:100%" onclick="tryUnlock()">Unlock</button></div>
+    <p class="note">Passcode set in Settings. Forgot it? Clear this browser's site data — <b>this erases local records</b>, so keep backups.</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand"><img src="assets/logo-mark.png" alt="" style="width:30px;height:36px;background:var(--ivory);border-radius:.5rem;padding:2px"> Pierre Concierge Nursing <span style="opacity:.55;font-size:.8rem;font-weight:400">Practice Manager</span></div>
+    <div style="display:flex;gap:.5rem;align-items:center">
+      <button class="btn btn-s btn-b" onclick="exportBackup()">Backup</button>
+      <button class="btn btn-s" style="background:var(--pine-light);color:var(--ivory)" onclick="showImport()">Restore</button>
+    </div>
+  </header>
+  <nav class="tabs">
+    <button data-tab="dash" class="active" onclick="go('dash')">Dashboard</button>
+    <button data-tab="clients" onclick="go('clients')">Clients</button>
+    <button data-tab="visits" onclick="go('visits')">Visits</button>
+    <button data-tab="docs" onclick="go('docs')">Documents</button>
+    <button data-tab="settings" onclick="go('settings')">Settings</button>
+  </nav>
+  <main>
+    <div id="view"></div>
+    <div id="docArea"></div>
+  </main>
+</div>
+
+<div id="toasts"></div>
+
+<!-- GENERIC MODAL -->
+<div class="modal" id="modal"><div class="box">
+  <button class="mclose" onclick="closeModal()">×</button>
+  <h3 id="modalTitle"></h3>
+  <div id="modalBody"></div>
+</div></div>
+
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="doImport(event)">
+
+<script>
+/* ============================== STATE ============================== */
+const LS_KEY='pierre_ops_v1';
+let S=load();
+function load(){try{const r=localStorage.getItem(LS_KEY);if(r)return JSON.parse(r)}catch(e){}return fresh()}
+function fresh(){return{settings:{name:'Elda Marie Joe Pierre, RN, BSN',title:'Pierre Concierge Nursing & Wellness',phone:'(754) 367-6929',email:'jpjojo565@gmail.com',license:'FL RN (add license #)',npi:'',address:'Ocala & Marion County, FL',googleReview:'',pass:'',rates:{'Post-Operative Recovery':160,'Hospital-to-Home Transition':185,'Advanced Wound Care':175,'IV Therapy & Hydration':200,'Medication Management':150,'Assisted Living Facility Support':175,'Family Peace-of-Mind Visits':150,'Wellness Assessments':150,'Chronic Disease Management':450,'Patient Advocacy':75}},clients:[],visits:[]}}
+function save(){localStorage.setItem(LS_KEY,JSON.stringify(S))}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const today=()=>new Date().toISOString().slice(0,10);
+const fmt$=n=>'$'+(+n||0).toLocaleString(undefined,{maximumFractionDigits:2});
+const dFmt=d=>{if(!d)return'—';const x=new Date(d+'T00:00:00');return x.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})};
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;$('#toasts').appendChild(t);setTimeout(()=>t.remove(),2600)}
+function clientById(id){return S.clients.find(c=>c.id===id)}
+function clientName(id){const c=clientById(id);return c?c.name:'—'}
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+
+/* ============================== LOCK ============================== */
+(async()=>{if(S.settings.pass){$('#lock').style.display='flex'}else{$('#app').classList.add('on')}})();
+$('#lockInput')?.addEventListener('keydown',e=>{if(e.key==='Enter')tryUnlock()});
+async function tryUnlock(){const h=await sha($('#lockInput').value);if(h===S.settings.pass){$('#lock').style.display='none';$('#app').classList.add('on')}else{$('#lockInput').value='';toast('Wrong passcode')}}
+
+/* ============================== NAV ============================== */
+let TAB='dash';
+function go(t){TAB=t;document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));$('#docArea').classList.remove('open');$('#docArea').innerHTML='';render()}
+function render(){({dash:vDash,clients:vClients,visits:vVisits,docs:vDocs,settings:vSettings}[TAB])()}
+function openModal(title,html){$('#modalTitle').textContent=title;$('#modalBody').innerHTML=html;$('#modal').classList.add('open')}
+function closeModal(){$('#modal').classList.remove('open')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+
+/* ============================== DASHBOARD ============================== */
+function vDash(){
+  const t=today();
+  const todays=S.visits.filter(v=>v.date===t).sort((a,b)=>(a.timeIn||'').localeCompare(b.timeIn||''));
+  const week=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return d.toISOString().slice(0,10)});
+  const upcoming=S.visits.filter(v=>v.date>=t).sort((a,b)=>(a.date+a.timeIn).localeCompare(b.date+b.timeIn)).slice(0,8);
+  const mrr=S.clients.filter(c=>c.status==='Active'&&c.billing==='Monthly plan').reduce((a,c)=>a+(+c.rate||0),0);
+  const month=t.slice(0,7);
+  const earned=S.visits.filter(v=>v.date?.startsWith(month)&&v.paid).reduce((a,v)=>a+(+v.rate||(clientById(v.clientId)?.rate)||0),0);
+  const act=S.clients.filter(c=>c.status==='Active').length;
+  $('#view').innerHTML=`
+  <div class="stats">
+    <div class="stat"><div class="n">${todays.length}</div><div class="l">Today's visits</div></div>
+    <div class="stat"><div class="n">${act}</div><div class="l">Active clients</div></div>
+    <div class="stat"><div class="n">${fmt$(mrr)}</div><div class="l">Monthly plan rev</div></div>
+    <div class="stat"><div class="n">${fmt$(earned)}</div><div class="l">Collected this month</div></div>
+  </div>
+  <div class="card">
+    <h3>Today's schedule</h3>
+    ${todays.length?`<table><tr><th>Time</th><th>Client</th><th>Service</th><th>Status</th><th></th></tr>${todays.map(v=>`<tr><td>${esc(v.timeIn||'—')}</td><td><b>${esc(clientName(v.clientId))}</b></td><td>${esc(v.service||'')}</td><td>${v.done?'<span class="badge b-g">Done</span>':'<span class="badge b-s">Scheduled</span>'}</td><td><button class="btn btn-s btn-o" onclick="editVisit('${v.id}')">Open</button></td></tr>`).join('')}</table>`:`<div class="empty">Nothing scheduled today. <button class="btn btn-s btn-b" style="margin-top:.8rem" onclick="newVisit()">+ Schedule a visit</button></div>`}
+  </div>
+  <div class="card">
+    <h3>Upcoming</h3>
+    ${upcoming.length?`<table><tr><th>Date</th><th>Time</th><th>Client</th><th>Service</th></tr>${upcoming.map(v=>`<tr class="clickable" onclick="editVisit('${v.id}')"><td>${dFmt(v.date)}</td><td>${esc(v.timeIn||'—')}</td><td>${esc(clientName(v.clientId))}</td><td>${esc(v.service||'')}</td></tr>`).join('')}</table>`:'<div class="empty">No upcoming visits scheduled.</div>'}
+  </div>
+  <div class="card">
+    <h3>Quick actions</h3>
+    <div class="btnrow">
+      <button class="btn btn-p" onclick="newClient()">+ New client</button>
+      <button class="btn btn-b" onclick="newVisit()">+ Schedule visit</button>
+      <button class="btn btn-o" onclick="go('docs')">Create a document</button>
+    </div>
+    <p class="note">Tip: after each completed visit, open it and press “Mark report sent” — families get their same-day report, and the client shows up in your review-request list at the right moment.</p>
+  </div>`;
+}
+
+/* ============================== CLIENTS ============================== */
+function vClients(){
+  const cs=[...S.clients].sort((a,b)=>a.name.localeCompare(b.name));
+  $('#view').innerHTML=`
+  <div class="btnrow" style="margin-bottom:1rem">
+    <button class="btn btn-p" onclick="newClient()">+ New client</button>
+  </div>
+  <div class="card">
+  ${cs.length?`<table><tr><th>Name</th><th>Service</th><th>Phone</th><th>Status</th><th></th></tr>
+  ${cs.map(c=>`<tr class="clickable" onclick="viewClient('${c.id}')"><td><b>${esc(c.name)}</b><br><span style="font-size:.78rem;color:#8A8577">${esc(c.address||'')}</span></td><td>${esc(c.service||'—')}<br><span style="font-size:.78rem;color:#8A8577">${c.billing==='Monthly plan'?fmt$(c.rate)+'/mo':fmt$(c.rate)+'/visit'}</span></td><td>${esc(c.phone||'—')}</td><td>${c.status==='Active'?'<span class="badge b-p">Active</span>':c.status==='Waitlist'?'<span class="badge b-s">Waitlist</span>':'<span class="badge b-g">Archived</span>'}</td><td><button class="btn btn-s btn-o" onclick="event.stopPropagation();viewClient('${c.id}')">Open</button></td></tr>`).join('')}</table>`
+  :'<div class="empty">No clients yet. Add your first client to start building care plans, visit reports and invoices.</div>'}
+  </div>`;
+}
+function newClient(){clientForm({})}
+function editClient(id){clientForm(clientById(id))}
+function clientForm(c){
+  const isNew=!c.id; if(isNew)c={id:uid(),meds:[],status:'Active',billing:'Per visit',rate:150,createdAt:today()};
+  openModal(isNew?'New client':'Edit client',`
+  <div class="row c2">
+    <div class="field"><label>Full name *</label><input id="f_name" value="${esc(c.name||'')}"></div>
+    <div class="field"><label>Date of birth</label><input id="f_dob" type="date" value="${esc(c.dob||'')}"></div>
+  </div>
+  <div class="field"><label>Address</label><input id="f_addr" value="${esc(c.address||'')}" placeholder="Street, City, ZIP"></div>
+  <div class="row c2">
+    <div class="field"><label>Client phone</label><input id="f_phone" value="${esc(c.phone||'')}"></div>
+    <div class="field"><label>Client email</label><input id="f_email" value="${esc(c.email||'')}"></div>
+  </div>
+  <div class="row c2">
+    <div class="field"><label>Diagnoses / conditions</label><input id="f_dx" value="${esc((c.dx||[]).join(', '))}" placeholder="e.g. HTN, T2DM, post-op R hip"></div>
+    <div class="field"><label>Allergies</label><input id="f_all" value="${esc(c.allergies||'')}" placeholder="NKDA if none"></div>
+  </div>
+  <div class="row c2">
+    <div class="field"><label>Physician & phone</label><input id="f_phys" value="${esc(c.physician||'')}"></div>
+    <div class="field"><label>Pharmacy</label><input id="f_pharm" value="${esc(c.pharmacy||'')}"></div>
+  </div>
+  <div class="row c3">
+    <div class="field"><label>Emergency contact</label><input id="f_ecn" value="${esc(c.ecName||'')}" placeholder="Name (relation)"></div>
+    <div class="field"><label>Emergency contact phone</label><input id="f_ecp" value="${esc(c.ecPhone||'')}"></div>
+    <div class="field"><label>Mobility</label><select id="f_mob">${['Independent','Walker','Cane','Wheelchair','Bedbound','Other'].map(m=>`<option ${c.mobility===m?'selected':''}>${m}</option>`).join('')}</select></div>
+  </div>
+  <div class="row c3">
+    <div class="field"><label>Service</label><select id="f_svc">${Object.keys(S.settings.rates).map(s=>`<option ${c.service===s?'selected':''}>${s}</option>`).join('')}</select></div>
+    <div class="field"><label>Billing</label><select id="f_bill"><option ${c.billing==='Per visit'?'selected':''}>Per visit</option><option ${c.billing==='Monthly plan'?'selected':''}>Monthly plan</option></select></div>
+    <div class="field"><label>Rate ($)</label><input id="f_rate" type="number" value="${+c.rate||0}"></div>
+  </div>
+  <div class="field"><label>Status</label><select id="f_status">${['Active','Waitlist','Archived'].map(s=>`<option ${c.status===s?'selected':''}>${s}</option>`).join('')}</select></div>
+  <div class="field"><label>Notes (private)</label><textarea id="f_notes" rows="2">${esc(c.notes||'')}</textarea></div>
+  <div class="btnrow">
+    <button class="btn btn-p" onclick="saveClient('${c.id}',${isNew})">${isNew?'Add client':'Save changes'}</button>
+    ${!isNew?`<button class="btn btn-d" onclick="delClient('${c.id}')">Delete</button>`:''}
+  </div>`);
+  setTimeout(()=>{$('#f_name')?.focus()},50);
+}
+function saveClient(id,isNew){
+  const c=clientById(id)||{id,meds:[],createdAt:today()};
+  Object.assign(c,{name:$('#f_name').value.trim(),dob:$('#f_dob').value,address:$('#f_addr').value.trim(),phone:$('#f_phone').value.trim(),email:$('#f_email').value.trim(),dx:$('#f_dx').value.split(',').map(x=>x.trim()).filter(Boolean),allergies:$('#f_all').value.trim(),physician:$('#f_phys').value.trim(),pharmacy:$('#f_pharm').value.trim(),ecName:$('#f_ecn').value.trim(),ecPhone:$('#f_ecp').value.trim(),mobility:$('#f_mob').value,service:$('#f_svc').value,billing:$('#f_bill').value,rate:+$('#f_rate').value||0,status:$('#f_status').value,notes:$('#f_notes').value.trim()});
+  if(!c.name){toast('Name is required');return}
+  if(isNew)S.clients.push(c);
+  save();closeModal();toast(isNew?'Client added':'Saved');viewClient(id);
+}
+function delClient(id){
+  if(!confirm('Delete this client and ALL their visits? Consider Archiving instead.'))return;
+  S.clients=S.clients.filter(c=>c.id!==id);S.visits=S.visits.filter(v=>v.clientId!==id);save();closeModal();go('clients');toast('Client deleted');
+}
+function viewClient(id){
+  const c=clientById(id);if(!c)return;
+  const vs=S.visits.filter(v=>v.clientId===id).sort((a,b)=>b.date.localeCompare(a.date));
+  const bal=vs.filter(v=>!v.paid).reduce((a,v)=>a+(+v.rate||(c.rate)||0),0);
+  openModal(c.name,`
+  <div class="btnrow" style="margin-top:0">
+    <button class="btn btn-s btn-p" onclick="editClient('${id}')">Edit</button>
+    <button class="btn btn-s btn-b" onclick="newVisit('${id}')">+ Visit</button>
+    <button class="btn btn-s btn-o" onclick="closeModal();makeDoc('${id}','careplan')">Care plan</button>
+    <button class="btn-s btn btn-o" onclick="closeModal();makeDoc('${id}','report')">Family report</button>
+    <button class="btn-s btn btn-o" onclick="closeModal();makeDoc('${id}','invoice')">Invoice</button>
+    <button class="btn-s btn btn-o" onclick="closeModal();makeDoc('${id}','medsched')">Med schedule</button>
+  </div>
+  <h4 style="margin:1rem 0 .4rem">Profile</h4>
+  <div class="dkv">
+    <span><b>DOB:</b> ${esc(c.dob||'—')}</span><span><b>Phone:</b> ${esc(c.phone||'—')}</span>
+    <span><b>Service:</b> ${esc(c.service||'—')} (${c.billing==='Monthly plan'?fmt$(c.rate)+'/mo':fmt$(c.rate)+'/visit'})</span>
+    <span><b>Status:</b> ${esc(c.status)}</span>
+    <span><b>Conditions:</b> ${esc((c.dx||[]).join(', ')||'—')}</span><span><b>Allergies:</b> ${esc(c.allergies||'—')}</span>
+    <span><b>Physician:</b> ${esc(c.physician||'—')}</span><span><b>Pharmacy:</b> ${esc(c.pharmacy||'—')}</span>
+    <span><b>Emergency:</b> ${esc(c.ecName||'—')} ${esc(c.ecPhone||'')}</span><span><b>Mobility:</b> ${esc(c.mobility||'—')}</span>
+  </div>
+  <h4 style="margin:1rem 0 .4rem">Medications (${(c.meds||[]).length}) <button class="btn btn-s btn-o" style="margin-left:.5rem" onclick="editMeds('${id}')">Manage</button></h4>
+  ${(c.meds||[]).length?`<table><tr><th>Medication</th><th>Dose</th><th>Schedule</th><th>Notes</th></tr>${c.meds.map(m=>`<tr><td>${esc(m.name)}</td><td>${esc(m.dose)}</td><td>${esc(m.freq)}</td><td>${esc(m.notes||'')}</td></tr>`).join('')}</table>`:'<p class="note">No medications recorded.</p>'}
+  <h4 style="margin:1rem 0 .4rem">Visits (${vs.length}) — balance due ${fmt$(bal)}</h4>
+  ${vs.length?`<table><tr><th>Date</th><th>Service</th><th>Vitals</th><th>Status</th><th></th></tr>${vs.slice(0,10).map(v=>`<tr><td>${dFmt(v.date)}</td><td>${esc(v.service||'')}</td><td style="font-size:.8rem">${esc(v.bp||'')}${v.bp?' BP':''}${v.spo2?' · '+esc(v.spo2)+' SpO₂':''}</td><td>${v.done?(v.paid?'<span class="badge b-g">Done · Paid</span>':'<span class="badge b-w">Done · Unpaid</span>'):'<span class="badge b-s">Scheduled</span>'}</td><td><button class="btn btn-s btn-o" onclick="editVisit('${v.id}')">Open</button></td></tr>`).join('')}</table>`:'<p class="note">No visits yet.</p>'}`);
+}
+function editMeds(cid){
+  const c=clientById(cid);
+  openModal('Medications — '+c.name,`
+  <p class="note" style="margin-bottom:.8rem">One per line: <b>Name | Dose | Schedule | Notes</b> — e.g. <i>Metoprolol | 25mg | 2× daily AM/PM | with food</i></p>
+  <textarea id="medsTa" rows="10" style="font-family:ui-monospace,monospace;font-size:.85rem">${esc((c.meds||[]).map(m=>[m.name,m.dose,m.freq,m.notes||''].join(' | ')).join('\n'))}</textarea>
+  <div class="btnrow"><button class="btn btn-p" onclick="saveMeds('${cid}')">Save medications</button></div>`);
+}
+function saveMeds(cid){
+  const c=clientById(cid);
+  c.meds=$('#medsTa').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{const p=l.split('|').map(x=>x.trim());return{name:p[0]||'',dose:p[1]||'',freq:p[2]||'',notes:p[3]||''}});
+  save();closeModal();toast('Medications saved');viewClient(cid);
+}
+
+/* ============================== VISITS ============================== */
+function vVisits(){
+  const vs=[...S.visits].sort((a,b)=>b.date.localeCompare(a.date)||(b.timeIn||'').localeCompare(a.timeIn||'')).slice(0,200);
+  $('#view').innerHTML=`
+  <div class="btnrow" style="margin-bottom:1rem"><button class="btn btn-p" onclick="newVisit()">+ Schedule visit</button></div>
+  <div class="card">
+  ${vs.length?`<table><tr><th>Date</th><th>Client</th><th>Service</th><th>Vitals captured</th><th>Status</th><th></th></tr>
+  ${vs.map(v=>`<tr class="clickable" onclick="editVisit('${v.id}')"><td>${dFmt(v.date)} ${esc(v.timeIn||'')}</td><td><b>${esc(clientName(v.clientId))}</b></td><td>${esc(v.service||'')}</td><td style="font-size:.8rem">${[v.bp&&'BP',v.hr&&'HR',v.spo2&&'SpO₂',v.temp&&'Temp',v.pain!==''&&v.pain!=null&&'Pain'].filter(Boolean).join(', ')||'—'}</td><td>${v.done?(v.paid?'<span class="badge b-g">Done · Paid</span>':(v.reportSent?'<span class="badge b-p">Report sent · Unpaid</span>':'<span class="badge b-w">Done · Unpaid</span>')):'<span class="badge b-s">Scheduled</span>'}</td><td><button class="btn btn-s btn-o" onclick="event.stopPropagation();editVisit('${v.id}')">Open</button></td></tr>`).join('')}</table>`
+  :'<div class="empty">No visits recorded yet.</div>'}
+  </div>`;
+}
+function newVisit(presetClient){
+  const c=presetClient?clientById(presetClient):null;
+  visitForm({id:uid(),clientId:c?.id||'',date:today(),service:c?.service||Object.keys(S.settings.rates)[0],rate:c?.rate||S.settings.rates[c?.service]||150,timeIn:'09:00',vitals:{}});
+}
+function editVisit(id){const v=S.visits.find(x=>x.id===id);if(v)visitForm(v)}
+function visitForm(v){
+  const isNew=!S.visits.some(x=>x.id===v.id);
+  const opts=S.clients.filter(c=>c.status!=='Archived').map(c=>`<option value="${c.id}" ${v.clientId===c.id?'selected':''}>${esc(c.name)}</option>`).join('');
+  openModal((isNew?'Schedule visit':'Visit — ')+dFmt(v.date),`
+  <div class="row c3">
+    <div class="field"><label>Client *</label><select id="v_cli"><option value="">— select —</option>${opts}</select></div>
+    <div class="field"><label>Date *</label><input id="v_date" type="date" value="${esc(v.date||'')}"></div>
+    <div class="field"><label>Time</label><input id="v_time" type="time" value="${esc(v.timeIn||'')}"></div>
+  </div>
+  <div class="row c3">
+    <div class="field"><label>Service</label><select id="v_svc">${Object.keys(S.settings.rates).map(s=>`<option ${v.service===s?'selected':''}>${s}</option>`).join('')}</select></div>
+    <div class="field"><label>Rate ($)</label><input id="v_rate" type="number" value="${+v.rate||0}"></div>
+    <div class="field"><label>Next visit due</label><input id="v_next" type="date" value="${esc(v.nextVisit||'')}"></div>
+  </div>
+  <h4 style="margin:.6rem 0 .4rem">Vitals</h4>
+  <div class="row c3">
+    <div class="field"><label>Blood pressure</label><input id="v_bp" value="${esc(v.bp||'')}" placeholder="120/78"></div>
+    <div class="field"><label>Heart rate</label><input id="v_hr" value="${esc(v.hr||'')}" placeholder="72 bpm"></div>
+    <div class="field"><label>SpO₂</label><input id="v_spo2" value="${esc(v.spo2||'')}" placeholder="97%"></div>
+  </div>
+  <div class="row c3">
+    <div class="field"><label>Temperature</label><input id="v_temp" value="${esc(v.temp||'')}" placeholder="98.6°F"></div>
+    <div class="field"><label>Pain (0–10)</label><input id="v_pain" value="${esc(v.pain??'')}" placeholder="0"></div>
+    <div class="field"><label>Weight (optional)</label><input id="v_wt" value="${esc(v.weight||'')}" placeholder="lbs"></div>
+  </div>
+  <div class="field"><label>What was done (interventions)</label><textarea id="v_intv" rows="3" placeholder="Wound assessed & redressed, med set organized, gait training…">${esc(v.interventions||'')}</textarea></div>
+  <div class="field"><label>Observations</label><textarea id="v_obs" rows="2" placeholder="Alert & oriented ×4, steady gait, good appetite…">${esc(v.observations||'')}</textarea></div>
+  <div class="field"><label>Recommendations / changes</label><textarea id="v_rec" rows="2" placeholder="Increase fluids, follow up with Dr. re: swelling…">${esc(v.recommendations||'')}</textarea></div>
+  <div class="btnrow">
+    <button class="btn btn-p" onclick="saveVisit('${v.id}',${isNew})">${isNew?'Schedule visit':'Save visit'}</button>
+    <button class="btn btn-b" onclick="saveVisit('${v.id}',${isNew},true)">Save & make family report</button>
+    ${!isNew?`<button class="btn btn-d" onclick="delVisit('${v.id}')">Delete</button>`:''}
+  </div>
+  ${!isNew?`<div class="btnrow" style="margin-top:.6rem">
+    <button class="btn btn-s ${v.done?'btn-p':'btn-o'}" onclick="toggleVisit('${v.id}','done')">${v.done?'✓ Completed':'Mark completed'}</button>
+    <button class="btn btn-s ${v.reportSent?'btn-p':'btn-o'}" onclick="toggleVisit('${v.id}','report')">${v.reportSent?'✓ Report sent':'Mark report sent'}</button>
+    <button class="btn btn-s ${v.paid?'btn-p':'btn-o'}" onclick="toggleVisit('${v.id}','paid')">${v.paid?'✓ Paid':'Mark paid'}</button>
+    <button class="btn btn-s btn-b" title="Copies a ready-to-send review request text" onclick="copyReviewAsk('${v.clientId}')">Copy review ask</button>
+  </div>`:''}`);
+}
+function saveVisit(id,isNew,toReport){
+  const v=S.visits.find(x=>x.id===id)||{id};
+  Object.assign(v,{clientId:$('#v_cli').value,date:$('#v_date').value,timeIn:$('#v_time').value,service:$('#v_svc').value,rate:+$('#v_rate').value||0,nextVisit:$('#v_next').value,bp:$('#v_bp').value.trim(),hr:$('#v_hr').value.trim(),spo2:$('#v_spo2').value.trim(),temp:$('#v_temp').value.trim(),pain:$('#v_pain').value.trim(),weight:$('#v_wt').value.trim(),interventions:$('#v_intv').value.trim(),observations:$('#v_obs').value.trim(),recommendations:$('#v_rec').value.trim()});
+  if(!v.clientId||!v.date){toast('Client and date are required');return}
+  if(isNew)S.visits.push(v);else v.done=true;
+  save();closeModal();toast(isNew?'Visit scheduled':'Visit saved');
+  if(toReport){const cid=v.clientId;const vid=v.id;go('docs');makeDoc(cid,'report',vid)}
+  else render();
+}
+function copyReviewAsk(cid){
+  const c=clientById(cid);if(!c)return;
+  const link=S.settings.googleReview||'(your Google review link — set it in Settings after GBP is live)';
+  const who=c.ecName||'there';
+  const txt=`Hi ${who} — it was a pleasure caring for ${c.name.split(' ')[0]} today. If you have 60 seconds, an honest Google review helps other local families find this kind of care: ${link} — thank you so much, ${S.settings.name.split(',')[0]}`;
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('Review request copied — paste it into a text')).catch(()=>{prompt('Copy this text:',txt)});
+}
+function toggleVisit(id,k){const v=S.visits.find(x=>x.id===id);if(!v)return;
+  if(k==='done')v.done=!v.done; if(k==='report')v.reportSent=!v.reportSent; if(k==='paid')v.paid=!v.paid;
+  save();editVisit(id);}
+function delVisit(id){if(!confirm('Delete this visit?'))return;S.visits=S.visits.filter(v=>v.id!==id);save();closeModal();render();toast('Visit deleted')}
+
+/* ============================== DOCUMENTS ============================== */
+function vDocs(){
+  const act=S.clients.filter(c=>c.status!=='Archived');
+  $('#view').innerHTML=`
+  <div class="warn"><b>Print → PDF or paper.</b> Choose a client and document below. Use your browser's Print dialog (Ctrl/Cmd-P) and pick “Save as PDF” to email documents, or print to paper for clipboards and packets. Everything is generated on this device — nothing is uploaded anywhere.</div>
+  <div class="card">
+    <h3>Create a document</h3>
+    <div class="row c3">
+      <div class="field"><label>Client</label><select id="d_cli"><option value="">— select client —</option>${act.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div>
+      <div class="field"><label>Document type</label><select id="d_type">
+        <option value="careplan">Personal Care Plan (give to client/family)</option>
+        <option value="report">Same-Day Family Visit Report</option>
+        <option value="invoice">Invoice / Superbill</option>
+        <option value="medsched">Medication Schedule (pill organizer sheet)</option>
+      </select></div>
+      <div class="field" id="d_visitwrap" style="display:none"><label>Visit (for report)</label><select id="d_visit"></select></div>
+    </div>
+    <div class="btnrow"><button class="btn btn-p" onclick="docFromPicker()">Generate</button>
+    <button class="btn btn-o noprint" onclick="window.print()">Print / Save PDF</button></div>
+  </div>
+  <div class="card">
+    <h3>Blank templates (print anytime)</h3>
+    <div class="btnrow">
+      <button class="btn btn-s btn-o" onclick="blankTemplate('intake')">New-Client Intake Form</button>
+      <button class="btn btn-s btn-o" onclick="blankTemplate('safety')">Home Safety Checklist</button>
+      <button class="btn btn-s btn-o" onclick="blankTemplate('superbill')">Blank Superbill</button>
+    </div>
+    <p class="note">The full intake packet, HIPAA Notice of Privacy Practices + consent, referral one-pager, Google Business setup, and detailed checklists are in the <b>print/</b> folder that came with this app.</p>
+  </div>`;
+  $('#d_type').addEventListener('change',()=>{$('#d_visitwrap').style.display=$('#d_type').value==='report'?'block':'none';fillVisits()});
+  $('#d_cli').addEventListener('change',fillVisits);
+}
+function fillVisits(){
+  const cid=$('#d_cli').value;const vs=S.visits.filter(v=>v.clientId===cid).sort((a,b)=>b.date.localeCompare(a.date));
+  $('#d_visit').innerHTML=vs.map(v=>`<option value="${v.id}">${dFmt(v.date)} — ${esc(v.service||'visit')}${v.done?' (done)':''}</option>`).join('')||'<option value="">No visits on record</option>';
+}
+function docFromPicker(){
+  const cid=$('#d_cli').value,type=$('#d_type').value,vid=$('#d_visit').value;
+  if(!cid){toast('Select a client');return}
+  makeDoc(cid,type,vid);
+}
+function letterhead(sub){
+  const s=S.settings;
+  return `<div style="text-align:center;margin-bottom:.5rem"><img src="assets/logo-mark.png" alt="" style="width:42px;height:51px"></div><h1 style="text-align:center">${esc(s.name)}</h1><div class="sub" style="text-align:center">${esc(s.title)} · ${esc(s.phone)} · ${esc(s.email)}<br>${esc(s.address)}${s.license?' · '+esc(s.license):''}</div>${sub?`<h4 style="text-align:center;margin-top:.6rem">${sub}</h4>`:''}<hr style="border:none;border-top:1.5px solid var(--sand);margin:.9rem 0 1.1rem">`;
+}
+function makeDoc(cid,type,vid){
+  const c=clientById(cid);if(!c)return toast('Client not found');
+  let html='';
+  if(type==='report'){
+    let v=S.visits.find(x=>x.id===vid&&x.clientId===cid);
+    if(!v)v=[...S.visits].filter(x=>x.clientId===cid).sort((a,b)=>b.date.localeCompare(a.date))[0];
+    if(!v)return toast('No visit found for this client — save a visit first');
+    html=familyReport(c,v);
+  }
+  else if(type==='careplan')html=carePlan(c);
+  else if(type==='invoice')html=invoice(c);
+  else if(type==='medsched')html=medSched(c);
+  $('#docArea').innerHTML=`<div class="btnrow noprint" style="justify-content:center;margin:0 0 1rem"><button class="btn btn-p" onclick="window.print()">Print / Save as PDF</button><button class="btn btn-o" onclick="$('#docArea').classList.remove('open');$('#docArea').innerHTML=''">Close</button></div><div class="docpage">${html}</div>`;
+  $('#docArea').classList.add('open');
+  $('#docArea').scrollIntoView({behavior:'smooth'});
+}
+function vitalsBlock(v){
+  const cells=[['Blood pressure',v.bp],['Heart rate',v.hr],['SpO₂',v.spo2],['Temperature',v.temp],['Pain (0–10)',v.pain],['Weight',v.weight]].filter(x=>x[1]);
+  if(!cells.length)return '<p style="font-size:.86rem;color:#6B6455">—</p>';
+  return `<table><tr>${cells.map(x=>`<th>${x[0]}</th>`).join('')}</tr><tr>${cells.map(x=>`<td>${esc(x[1])}</td>`).join('')}</tr></table>`;
+}
+function familyReport(c,v){
+  return `${letterhead('SAME-DAY VISIT REPORT FOR FAMILY')}
+  <div class="dkv">
+    <span><b>Client:</b> ${esc(c.name)}</span><span><b>Date:</b> ${dFmt(v.date)} ${esc(v.timeIn||'')}</span>
+    <span><b>Service:</b> ${esc(v.service||'')}</span><span><b>Seen by:</b> ${esc(S.settings.name)}</span>
+  </div>
+  <h4>Vital signs</h4>${vitalsBlock(v)}
+  <h4>What was done</h4><p>${esc(v.interventions||'—')}</p>
+  <h4>How they looked today</h4><p>${esc(v.observations||'—')}</p>
+  <h4>Recommendations & changes</h4><p>${esc(v.recommendations||'—')}</p>
+  ${v.nextVisit?`<p><b>Next scheduled visit:</b> ${dFmt(v.nextVisit)}</p>`:''}
+  <p class="note">This report summarizes a non-emergency private-duty nursing visit. Pierre Concierge Nursing is not an emergency service — in a medical emergency, call 911.</p>
+  <div class="sigrow"><div class="sig">RN signature & date</div><div class="sig">Family acknowledgment (optional)</div></div>`;
+}
+function carePlan(c){
+  const vs=S.visits.filter(v=>v.clientId===c.id);
+  const last=[...vs].sort((a,b)=>b.date.localeCompare(a.date))[0];
+  return `${letterhead('PERSONAL CARE PLAN')}
+  <div class="dkv">
+    <span><b>Client:</b> ${esc(c.name)}</span><span><b>DOB:</b> ${esc(c.dob||'—')}</span>
+    <span><b>Start date:</b> ${dFmt(c.createdAt)}</span><span><b>Status:</b> ${esc(c.status)}</span>
+    <span><b>Address:</b> ${esc(c.address||'—')}</span><span><b>Phone:</b> ${esc(c.phone||'—')}</span>
+    <span><b>Service:</b> ${esc(c.service||'—')}</span><span><b>Billing:</b> ${esc(c.billing)} — ${fmt$(c.rate)}${c.billing==='Monthly plan'?'/mo':'/visit'}</span>
+    <span><b>Conditions:</b> ${esc((c.dx||[]).join(', ')||'—')}</span><span><b>Allergies:</b> ${esc(c.allergies||'NKDA')}</span>
+    <span><b>Physician:</b> ${esc(c.physician||'—')}</span><span><b>Pharmacy:</b> ${esc(c.pharmacy||'—')}</span>
+    <span><b>Emergency contact:</b> ${esc(c.ecName||'—')} ${esc(c.ecPhone||'')}</span><span><b>Mobility:</b> ${esc(c.mobility||'—')}</span>
+  </div>
+  <h4>Plan of care</h4>
+  <p>• Scheduled ${esc(c.service||'nursing care')} visits${last?.nextVisit?`, next visit ${dFmt(last.nextVisit)}`:''}.<br>
+  • Vital signs and condition monitoring at every visit.<br>
+  • Medication management per the attached medication schedule.<br>
+  • Physician orders on file will be followed as prescribed and updated with the physician as needed.<br>
+  • Same-day written report to family after every visit, upon request.</p>
+  <h4>Medications</h4>
+  ${(c.meds||[]).length?`<table><tr><th>Medication</th><th>Dose</th><th>Schedule</th><th>Notes</th></tr>${c.meds.map(m=>`<tr><td>${esc(m.name)}</td><td>${esc(m.dose)}</td><td>${esc(m.freq)}</td><td>${esc(m.notes||'')}</td></tr>`).join('')}</table>`:'<p>—</p>'}
+  <h4>Call Elda if you notice</h4>
+  <p>New or worsening swelling · fever above 100.4°F · confusion or unusual drowsiness · redness, drainage or opening at any incision or wound · a fall — even if they say they're fine · missed medications for more than one dose.</p>
+  <h4>Call 911 immediately for</h4>
+  <p>Chest pain or pressure · trouble breathing · signs of stroke (face droop, arm weakness, speech trouble) · severe bleeding · unresponsiveness.</p>
+  <div class="sigrow"><div class="sig">Client / representative signature & date</div><div class="sig">${esc(S.settings.name)} — RN signature & date</div></div>
+  <p class="note">Care plans are reviewed and updated as the client's condition changes. This plan accompanies, and does not replace, physician orders.</p>`;
+}
+function invoice(c){
+  const vs=S.visits.filter(v=>v.clientId===c.id&&v.done).sort((a,b)=>a.date.localeCompare(b.date));
+  const rows=vs.map((v,i)=>`<tr><td>${dFmt(v.date)}</td><td>${esc(v.service||'Nursing visit')}</td><td style="text-align:right">${fmt$(v.rate)}</td><td style="text-align:center">${v.paid?'✓':'—'}</td></tr>`).join('');
+  const total=vs.reduce((a,v)=>a+(+v.rate||0),0);
+  const paid=vs.filter(v=>v.paid).reduce((a,v)=>a+(+v.rate||0),0);
+  return `${letterhead('INVOICE / SUPERBILL')}
+  <div class="dkv"><span><b>Bill to:</b> ${esc(c.name)}</span><span>${esc(c.address||'')}</span><span><b>Client phone:</b> ${esc(c.phone||'—')}</span><span><b>Date:</b> ${dFmt(today())}</span></div>
+  <table><tr><th>Date of service</th><th>Service</th><th style="text-align:right">Charge</th><th>Paid</th></tr>${rows||'<tr><td colspan="4">No completed visits on record.</td></tr>'}</table>
+  <table style="max-width:280px;margin-left:auto"><tr><td><b>Total</b></td><td style="text-align:right"><b>${fmt$(total)}</b></td></tr><tr><td>Paid to date</td><td style="text-align:right">${fmt$(paid)}</td></tr><tr><td><b>Balance due</b></td><td style="text-align:right"><b>${fmt$(total-paid)}</b></td></tr></table>
+  <p class="note">Payment due at time of service unless a monthly plan is in effect. We accept credit cards, HSA/FSA cards, and Zelle. A superbill is provided for potential out-of-network reimbursement — submit to your insurer; reimbursement is not guaranteed. Diagnosis codes (if needed for your claim): ${esc((c.dx||[]).join('; ')||'on file with RN')}. Provider: ${esc(S.settings.name)}${S.settings.license?', '+esc(S.settings.license):''}${S.settings.npi?', NPI '+esc(S.settings.npi):''}.</p>`;
+}
+function medSched(c){
+  return `${letterhead('MEDICATION SCHEDULE')}
+  <div class="dkv"><span><b>Client:</b> ${esc(c.name)}</span><span><b>Prepared:</b> ${dFmt(today())}</span><span><b>Allergies:</b> ${esc(c.allergies||'NKDA')}</span></div>
+  ${(c.meds||[]).length?`<table><tr><th>Medication</th><th>Dose</th><th>Morning</th><th>Midday</th><th>Evening</th><th>Bedtime</th><th>Notes</th></tr>
+  ${c.meds.map(m=>{const f=(m.freq||'').toLowerCase();const has=(...xs)=>xs.some(x=>f.includes(x))?'✓':'';
+    return `<tr><td>${esc(m.name)}</td><td>${esc(m.dose)}</td><td style="text-align:center">${has('am','morning','daily','2×','twice','2x')||(/1x|once/.test(f)?'✓':'')}</td><td style="text-align:center">${has('midday','noon','3×','three')}</td><td style="text-align:center">${has('pm','evening','2×','twice','2x','3×','three')}</td><td style="text-align:center">${has('bedtime','night','hs')}</td><td>${esc(m.notes||'')}</td></tr>`}).join('')}</table>`
+  :'<p>No medications recorded. Add them in the client profile first.</p>'}
+  <p class="note">Give one copy to the client/family and keep one in the home. Update whenever a medication changes and send the update to the physician and pharmacy.</p>
+  <div class="sigrow"><div class="sig">RN signature & date</div><div class="sig">Client / representative & date</div></div>`;
+}
+/* ---- blank templates ---- */
+function blankTemplate(kind){
+  let html='';
+  if(kind==='intake'){html=`${letterhead('NEW CLIENT INTAKE FORM')}
+  <div class="dkv"><span><b>Date:</b> ______________</span><span><b>Referred by:</b> ______________</span></div>
+  <h4>Client information</h4>
+  <p>Name: ______________________________ &nbsp; DOB: ______________ &nbsp; Phone: ______________________________<br><br>
+  Address: ______________________________________________________________________________________<br><br>
+  Email: ______________________________ &nbsp; Preferred contact: ☐ Call &nbsp; ☐ Text &nbsp; ☐ Email</p>
+  <h4>Health summary</h4>
+  <p>Diagnoses / conditions: ____________________________________________________________________________<br><br>
+  Allergies: ______________________________ &nbsp; Mobility: ☐ Independent ☐ Walker ☐ Cane ☐ Wheelchair ☐ Bedbound<br><br>
+  Recent hospitalizations / surgeries: _____________________________________________________________________<br><br>
+  Home health or hospice involved? ☐ No ☐ Yes: ______________________________</p>
+  <h4>Physician & pharmacy</h4>
+  <p>Primary physician & phone: ______________________________ &nbsp; Pharmacy: ______________________________</p>
+  <h4>Emergency contact</h4>
+  <p>Name: ______________________________ &nbsp; Relationship: ______________ &nbsp; Phone: ______________________________</p>
+  <h4>Service requested</h4>
+  <p>☐ Post-operative recovery &nbsp; ☐ Hospital-to-home transition &nbsp; ☐ Wound care &nbsp; ☐ IV therapy &nbsp; ☐ Medication management<br>☐ Chronic care plan ($450/mo) &nbsp; ☐ ALF facility visit &nbsp; ☐ Family check-in &nbsp; ☐ Wellness assessment &nbsp; ☐ Patient advocacy</p>
+  <h4>Consent & signature</h4>
+  <p style="font-size:.85rem">I consent to nursing care provided by ${esc(S.settings.name)} and understand services are non-emergency private-pay care. I understand payment is due at time of service and that a superbill can be provided for possible insurance reimbursement. I authorize the RN to communicate with my physician, pharmacy, and designated family members about my care.</p>
+  <div class="sigrow"><div class="sig">Client / representative signature & date</div><div class="sig">RN signature & date</div></div>`}
+  if(kind==='safety'){html=`${letterhead('HOME SAFETY CHECKLIST')}
+  <div class="dkv"><span><b>Client:</b> ______________________________</span><span><b>Date:</b> ______________</span></div>
+  <table><tr><th>Area</th><th>Check</th><th>Notes / fixed</th></tr>
+  ${[['Lighting','Bright bulbs in halls, stairs, bathrooms; night lights to bathroom'],['Bathroom','Grab bars installed, non-slip mats, raised toilet seat if needed'],['Floors','Rugs secured/taped down or removed, cords out of walkways'],['Stairs','Handrails both sides, clear of objects, contrast tape on edges'],['Bedroom','Phone & flashlight within reach, clear path to bathroom'],['Kitchen','Frequently used items at waist height, working smoke detector'],['Medications','Organized, labeled, expired items discarded, list up to date'],['Mobility','Walker/cane fitted & rubber tips intact, wheelchair brakes work'],['Exits','Doorways clear, spare key arrangement, address visible'],['Emergency','911 list by phone, emergency contacts posted, phone charged']].map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>☐ &nbsp;__________________</td></tr>`).join('')}</table>
+  <div class="sigrow"><div class="sig">RN signature & date</div><div class="sig">Client / family & date</div></div>`}
+  if(kind==='superbill'){html=`${letterhead('SUPERBILL (INSURANCE CLAIM RECEIPT)')}
+  <div class="dkv"><span><b>Client:</b> ______________________________</span><span><b>DOB:</b> ______________</span></div>
+  <table><tr><th>Date</th><th>Service / procedure</th><th>DX code(s)</th><th>Charge</th><th>Paid</th></tr>
+  ${[...Array(8)].map(()=>'<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>').join('')}</table>
+  <div class="sigrow"><div class="sig">Provider signature & date</div><div class="sig">Client signature (authorizes submission) & date</div></div>
+  <p class="note">Submit to your insurer for possible out-of-network reimbursement — not guaranteed. Attach itemized receipts.</p>`}
+  $('#docArea').innerHTML=`<div class="btnrow noprint" style="justify-content:center;margin:0 0 1rem"><button class="btn btn-p" onclick="window.print()">Print / Save as PDF</button><button class="btn btn-o" onclick="$('#docArea').classList.remove('open');$('#docArea').innerHTML=''">Close</button></div><div class="docpage">${html}</div>`;
+  $('#docArea').classList.add('open');$('#docArea').scrollIntoView({behavior:'smooth'});
+}
+
+/* ============================== SETTINGS ============================== */
+function vSettings(){
+  const s=S.settings;
+  $('#view').innerHTML=`
+  <div class="card">
+    <h3>Practice information (appears on every document)</h3>
+    <div class="field"><label>Your name & credentials</label><input id="s_name" value="${esc(s.name)}"></div>
+    <div class="row c2">
+      <div class="field"><label>Practice name</label><input id="s_title" value="${esc(s.title)}"></div>
+      <div class="field"><label>Phone</label><input id="s_phone" value="${esc(s.phone)}"></div>
+    </div>
+    <div class="row c2">
+      <div class="field"><label>Email</label><input id="s_email" value="${esc(s.email)}"></div>
+      <div class="field"><label>Service area</label><input id="s_addr" value="${esc(s.address)}"></div>
+    </div>
+    <div class="row c2">
+      <div class="field"><label>FL RN license # (optional, prints on superbills)</label><input id="s_lic" value="${esc(s.license)}"></div>
+      <div class="field"><label>NPI (optional)</label><input id="s_npi" value="${esc(s.npi)}"></div>
+    </div>
+    <div class="field"><label>Google review link (from your Business Profile — see print/google-business-setup.html)</label><input id="s_grev" value="${esc(s.googleReview)}" placeholder="https://g.page/r/.../review"></div>
+    <div class="btnrow"><button class="btn btn-p" onclick="saveSettings()">Save</button></div>
+  </div>
+  <div class="card">
+    <h3>Service rates (default for new clients/visits)</h3>
+    <table>${Object.entries(s.rates).map(([k,v])=>`<tr><td>${esc(k)}</td><td style="width:140px"><input type="number" data-rate="${esc(k)}" value="${+v}" style="width:110px"></td></tr>`).join('')}</table>
+    <div class="btnrow"><button class="btn btn-p" onclick="saveRates()">Save rates</button></div>
+  </div>
+  <div class="card">
+    <h3>Security & data</h3>
+    <div class="warn"><b>Important.</b> All records live only in <b>this browser on this device</b> — nothing is sent to any server. That's strong privacy, but it means: (1) set a device passcode, (2) lock the app below, (3) press <b>Backup</b> regularly and keep the file somewhere safe (encrypted drive/USB). Losing the device without a backup loses the records. Confirm details with your liability insurer.</div>
+    <div class="field" style="max-width:320px"><label>${s.pass?'Change app passcode':'Set app passcode (recommended)'}</label><input type="password" id="s_pass" placeholder="${s.pass?'new passcode (blank = keep current)':'4+ digits or a word'}"></div>
+    <div class="btnrow">
+      <button class="btn btn-p" onclick="setPass()">${s.pass?'Update passcode':'Set passcode'}</button>
+      ${s.pass?'<button class="btn btn-d" onclick="clearPass()">Remove passcode</button>':''}
+    </div>
+    <div class="btnrow" style="margin-top:1rem">
+      <button class="btn btn-o" onclick="exportBackup()">Export backup file</button>
+      <button class="btn btn-o" onclick="showImport()">Restore from backup</button>
+      <button class="btn btn-d" onclick="wipeAll()">Erase everything</button>
+    </div>
+  </div>`;
+}
+function saveSettings(){const s=S.settings;s.name=$('#s_name').value;s.title=$('#s_title').value;s.phone=$('#s_phone').value;s.email=$('#s_email').value;s.address=$('#s_addr').value;s.license=$('#s_lic').value;s.npi=$('#s_npi').value;s.googleReview=$('#s_grev').value.trim();save();toast('Settings saved')}
+function saveRates(){document.querySelectorAll('[data-rate]').forEach(i=>{S.settings.rates[i.dataset.rate]=+i.value||0});save();toast('Rates saved')}
+async function setPass(){const p=$('#s_pass').value;if(p.length<4){toast('Passcode too short');return}S.settings.pass=await sha(p);save();toast('Passcode set — applies on next load')}
+async function clearPass(){if(!confirm('Remove the app passcode?'))return;S.settings.pass='';save();toast('Passcode removed')}
+function wipeAll(){if(!confirm('ERASE ALL clients, visits and settings on this device? This cannot be undone without a backup file.'))return;if(!confirm('Really sure? Consider exporting a backup first.'))return;localStorage.removeItem(LS_KEY);S=fresh();save();toast('All data erased');go('dash')}
+
+/* ============================== BACKUP ============================== */
+function exportBackup(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='pierre-ops-backup-'+today()+'.json';a.click();URL.revokeObjectURL(a.href);
+  toast('Backup downloaded — store it somewhere safe');
+}
+function showImport(){$('#importFile').click()}
+function doImport(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);if(!d.settings||!Array.isArray(d.clients))throw 0;
+    if(!confirm('Replace ALL current data with this backup ('+d.clients.length+' clients, '+(d.visits||[]).length+' visits)?'))return;
+    S=d;save();toast('Backup restored');go('dash');}catch(x){toast('That file is not a valid backup')}};
+  r.readAsText(f);e.target.value='';
+}
+
+/* boot */
+document.addEventListener('DOMContentLoaded',()=>{render();
+  const q=new URLSearchParams(location.search),demo=q.get('doc');
+  if(demo){const cid=S.clients[0]?.id;if(cid&&['careplan','report','invoice','medsched'].includes(demo))makeDoc(cid,demo);}
+});
+</script>
+</body>
+</html>
