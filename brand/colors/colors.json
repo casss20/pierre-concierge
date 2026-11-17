@@ -1,0 +1,110 @@
+{
+  "ivory": {
+    "hex": "#FAF7F2",
+    "rgb": [
+      250,
+      247,
+      242
+    ],
+    "name": "Page background",
+    "use": "Main background of the site and documents"
+  },
+  "cream": {
+    "hex": "#F3EDE3",
+    "rgb": [
+      243,
+      237,
+      227
+    ],
+    "name": "Soft section background",
+    "use": "Cards, alternating sections, product tiles"
+  },
+  "sand": {
+    "hex": "#E8D5B0",
+    "rgb": [
+      232,
+      213,
+      176
+    ],
+    "name": "Warm accent",
+    "use": "Subtle highlights and dividers"
+  },
+  "pine": {
+    "hex": "#1E3D34",
+    "rgb": [
+      30,
+      61,
+      52
+    ],
+    "name": "Primary brand color",
+    "use": "Headings, buttons, navigation, cover pages"
+  },
+  "pine-dark": {
+    "hex": "#152B24",
+    "rgb": [
+      21,
+      43,
+      36
+    ],
+    "name": "Deep pine",
+    "use": "Footers, hover and pressed states"
+  },
+  "pine-light": {
+    "hex": "#2A5246",
+    "rgb": [
+      42,
+      82,
+      70
+    ],
+    "name": "Light pine",
+    "use": "Gradients and secondary surfaces"
+  },
+  "royal": {
+    "hex": "#1B4AA8",
+    "rgb": [
+      27,
+      74,
+      168
+    ],
+    "name": "Link and icon blue",
+    "use": "Links, checkmarks, interactive accents"
+  },
+  "royal-dark": {
+    "hex": "#14397F",
+    "rgb": [
+      20,
+      57,
+      127
+    ],
+    "name": "Deep royal",
+    "use": "Link hover"
+  },
+  "brass": {
+    "hex": "#B08D57",
+    "rgb": [
+      176,
+      141,
+      87
+    ],
+    "name": "Brass gold accent",
+    "use": "Eyebrow labels, rules, badges, logo accent"
+  },
+  "ink": {
+    "hex": "#1C2321",
+    "rgb": [
+      28,
+      35,
+      33
+    ],
+    "name": "Body text",
+    "use": "Paragraph text on light backgrounds"
+  },
+  "_contrast": {
+    "ink on ivory": 14.98,
+    "pine on ivory": 11.09,
+    "ivory on pine": 11.09,
+    "royal on ivory": 7.58,
+    "brass on ivory": 2.89,
+    "brass on pine": 3.83
+  }
+}

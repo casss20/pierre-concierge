@@ -1,0 +1,6 @@
+colors: {
+  ivory: "#FAF7F2", cream: "#F3EDE3", sand: "#E8D5B0",
+  pine: { DEFAULT: "#1E3D34", dark: "#152B24", light: "#2A5246" },
+  royal: { DEFAULT: "#1B4AA8", dark: "#14397F" },
+  brass: "#B08D57", ink: "#1C2321",
+}
