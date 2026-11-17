@@ -7,7 +7,7 @@ import { pathToFileURL } from 'node:url'
 const root = process.cwd()
 const distDir = path.join(root, 'dist')
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8')
-const { render, serviceRoutes, pageRoutes } = await import(pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href)
+const { render, serviceRoutes, pageRoutes, localRoutes } = await import(pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href)
 
 const ROOT_TAG = '<div id="root"></div>'
 if (!template.includes(ROOT_TAG)) throw new Error('prerender: <div id="root"></div> not found in dist/index.html')
@@ -21,7 +21,7 @@ fs.writeFileSync(path.join(distDir, 'index.html'), template.replace(ROOT_TAG, `<
 // Service pages
 const FAQ_SCHEMA = /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "FAQPage"[\s\S]*?<\/script>\s*/
 
-for (const { path: route, title, description } of [...pageRoutes, ...serviceRoutes]) {
+for (const { path: route, title, description } of [...pageRoutes, ...serviceRoutes, ...localRoutes]) {
     let html = template
         .replace(FAQ_SCHEMA, (m) => (route === '/faq' ? m : ''))
         .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
@@ -39,4 +39,4 @@ for (const { path: route, title, description } of [...pageRoutes, ...serviceRout
 }
 
 fs.rmSync(path.join(root, 'dist-ssr'), { recursive: true, force: true })
-console.log(`prerender: homepage + ${pageRoutes.length} pages and ${serviceRoutes.length} service pages written`)
+console.log(`prerender: homepage + ${pageRoutes.length} pages and ${serviceRoutes.length} service pages and ${localRoutes.length} local pages written`)

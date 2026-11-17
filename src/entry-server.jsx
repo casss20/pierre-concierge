@@ -2,6 +2,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import App from './App.jsx'
 import { SERVICE_DETAILS } from './serviceDetails.js'
+import { LOCAL_ROUTES } from './localPages.js'
 
 export function render(path = '/') {
     return renderToString(
@@ -24,3 +25,5 @@ export const serviceRoutes = SERVICE_DETAILS.map(({ slug, title, seoDescription 
     title: `${title} at Home in Ocala, FL | Pierre Concierge Nursing`,
     description: seoDescription,
 }))
+
+export const localRoutes = LOCAL_ROUTES

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SITE_CONFIG } from './siteConfig.js';
 import PrivacyNotice from './PrivacyNotice.jsx';
 import { SERVICE_BY_SLUG, SLUG_BY_TITLE } from './serviceDetails.js';
+import { findLocalPage } from './localPages.js';
 
 const ORDER_LABEL = { required: "Required", partial: "Depends on the care", none: "Not needed" };
 import {
@@ -19,6 +20,7 @@ import {
     Activity,
     ShieldAlert,
     ChevronRight,
+    ChevronDown,
     ArrowRight,
     Award,
     BookOpen,
@@ -713,6 +715,13 @@ function Footer() {
                             <a href="/pricing" className="hover:text-sand transition-colors">Pricing</a>
                             <a href="/about" className="hover:text-sand transition-colors">About Elda</a>
                             <a href="/faq" className="hover:text-sand transition-colors">FAQ</a>
+                            <a href="/conditions" className="hover:text-sand transition-colors">Conditions</a>
+                            <a href="/areas" className="hover:text-sand transition-colors">Areas we serve</a>
+                            <a href="/compare" className="hover:text-sand transition-colors">Compare care options</a>
+                            <a href="/paying-for-care" className="hover:text-sand transition-colors">Paying for care</a>
+                            <a href="/resources" className="hover:text-sand transition-colors">Resources</a>
+                            <a href="/contact" className="hover:text-sand transition-colors">Contact</a>
+                            <a href="/accessibility" className="hover:text-sand transition-colors">Accessibility</a>
                             <a href="/privacy-practices" className="hover:text-sand transition-colors">Privacy (HIPAA)</a>
                         </div>
                     </div>
@@ -886,6 +895,145 @@ function ServiceBanner({ detail }) {
         );
     }
     return <img src={detail.image} alt={detail.imageAlt} width="1600" height="900" className={cls} />;
+}
+
+
+// --- Locally focused content pages (compare, conditions, areas, etc.) ---
+function LocalFaq({ faqs }) {
+    const [open, setOpen] = useState(0);
+    return (
+        <div className="space-y-3">
+            {faqs.map(({ q, a }, i) => {
+                const isOpen = open === i;
+                return (
+                    <div key={q} className="bg-ivory rounded-2xl border border-pine/10 overflow-hidden">
+                        <button onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen} className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
+                            <span className={`font-serif text-lg font-semibold ${isOpen ? 'text-royal' : 'text-pine'}`}>{q}</span>
+                            <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${isOpen ? 'bg-pine text-ivory' : 'bg-pine/5 text-pine'}`}>
+                                {isOpen ? <X className="w-4 h-4" /> : <HelpCircle className="w-4 h-4" />}
+                            </span>
+                        </button>
+                        {isOpen && <p className="px-6 pb-6 text-ink/75 leading-relaxed text-[0.95rem]">{a}</p>}
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+
+function LocalSection({ section }) {
+    const { h, p, ul, steps, table, note, link } = section;
+    return (
+        <div className="mb-10">
+            {h && <h2 className="font-serif text-2xl font-semibold text-pine mb-4">{h}</h2>}
+            {p && p.map((t) => <p key={t} className="text-ink/80 leading-relaxed mb-4">{t}</p>)}
+            {ul && (
+                <ul className="space-y-2.5 mb-2">
+                    {ul.map((t) => (
+                        <li key={t} className="flex gap-3 text-ink/80 leading-relaxed">
+                            <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" />
+                            <span>{t}</span>
+                        </li>
+                    ))}
+                </ul>
+            )}
+            {steps && (
+                <ol className="space-y-4">
+                    {steps.map((t, i) => (
+                        <li key={t} className="flex gap-4 items-start">
+                            <span className="w-8 h-8 rounded-full bg-pine text-ivory flex items-center justify-center text-sm font-bold shrink-0">{i + 1}</span>
+                            <span className="text-ink/80 leading-relaxed pt-1">{t}</span>
+                        </li>
+                    ))}
+                </ol>
+            )}
+            {table && (
+                <div className="overflow-x-auto rounded-2xl border border-pine/10">
+                    <table className="w-full text-left text-sm">
+                        <thead className="bg-pine text-ivory">
+                            <tr>{table.cols.map((c, i) => <th key={i} className="px-4 py-3 font-semibold">{c}</th>)}</tr>
+                        </thead>
+                        <tbody>
+                            {table.rows.map((row, ri) => (
+                                <tr key={ri} className="border-t border-pine/10 odd:bg-ivory even:bg-cream/50">
+                                    {row.map((c, ci) => <td key={ci} className={`px-4 py-3 ${ci === 0 ? 'font-semibold text-pine' : 'text-ink/80'}`}>{c}</td>)}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
+            {note && (
+                <p className="flex gap-3 items-start rounded-2xl bg-cream/70 border border-pine/10 px-5 py-4 text-sm text-pine">
+                    <ShieldAlert className="w-5 h-5 text-brass shrink-0 mt-0.5" />
+                    <span>{note}</span>
+                </p>
+            )}
+            {link && <a href={link.href} className="inline-flex items-center gap-2 font-semibold text-royal hover:underline">{link.label} <ArrowRight className="w-4 h-4" /></a>}
+        </div>
+    );
+}
+
+function LocalPage({ found, openBooking }) {
+    const { page, kind, base, siblings } = found;
+    const parentLabel = { '/compare': 'Compare care options', '/conditions': 'Conditions', '/care-settings': 'Care settings', '/areas': 'Areas we serve' }[base];
+    return (
+        <>
+            <section className="bg-ivory pt-14 pb-6 md:pt-20">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {kind === 'detail' && (
+                        <a href={base} className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:underline mb-5">← {parentLabel}</a>
+                    )}
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-4">{page.eyebrow}</p>
+                    <h1 className="font-serif text-4xl md:text-5xl font-semibold text-pine leading-tight mb-4">{page.title}</h1>
+                    {page.intro && <p className="text-lg text-ink/80 leading-relaxed">{page.intro}</p>}
+                </div>
+            </section>
+
+            <section className="bg-ivory py-10">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {kind === 'index' ? (
+                        <div className="grid sm:grid-cols-2 gap-5">
+                            {page.items.map((it) => (
+                                <a key={it.slug} href={`${page.base}/${it.slug}`} className="group block bg-cream/60 border border-pine/10 rounded-3xl p-6 hover:shadow-lg hover:-translate-y-0.5 transition">
+                                    <h2 className="font-serif text-xl font-semibold text-pine mb-2 group-hover:text-royal">{it.title}</h2>
+                                    <p className="text-sm text-ink/70 leading-relaxed mb-4">{it.intro}</p>
+                                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-royal">Read more <ArrowRight className="w-4 h-4" /></span>
+                                </a>
+                            ))}
+                        </div>
+                    ) : (
+                        <>
+                            {page.sections.map((sec, i) => <LocalSection key={i} section={sec} />)}
+                            {page.faqs && page.faqs.length > 0 && (
+                                <div className="mt-12">
+                                    <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Questions, answered</h2>
+                                    <LocalFaq faqs={page.faqs} />
+                                </div>
+                            )}
+                            <p className="mt-10 text-xs text-ink/60 leading-relaxed">
+                                This page is general information, not medical advice. Always follow the instructions of your own doctor. Services are non-emergency. In a medical emergency, call 911.
+                            </p>
+                        </>
+                    )}
+                </div>
+            </section>
+
+            {kind === 'detail' && siblings && (
+                <section className="bg-cream/50 py-12">
+                    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 className="font-serif text-xl font-semibold text-pine mb-4">More in {parentLabel}</h2>
+                        <div className="flex flex-wrap gap-2.5">
+                            {siblings.filter((x) => x.slug !== page.slug).map((x) => (
+                                <a key={x.slug} href={`${base}/${x.slug}`} className="px-4 py-2 rounded-full bg-ivory border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{x.title}</a>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+            <FinalCTA openBooking={openBooking} />
+        </>
+    );
 }
 
 
@@ -1122,10 +1270,21 @@ function Nav({ openBooking, path = '/' }) {
 
     const links = [
         { label: 'Services', href: '/services' },
+        { label: 'Conditions', href: '/conditions' },
+        { label: 'Areas', href: '/areas' },
         { label: 'Pricing', href: '/pricing' },
         { label: 'About', href: '/about' },
-        { label: 'FAQ', href: '/faq' },
     ];
+    const moreLinks = [
+        { label: 'Care Settings', href: '/care-settings' },
+        { label: 'Compare Care Options', href: '/compare' },
+        { label: 'Paying for Care', href: '/paying-for-care' },
+        { label: 'How It Works', href: '/how-it-works' },
+        { label: 'Resources', href: '/resources' },
+        { label: 'FAQ', href: '/faq' },
+        { label: 'Contact', href: '/contact' },
+    ];
+    const moreActive = moreLinks.some(({ href }) => current === href || current.startsWith(href + '/'));
 
     return (
         <>
@@ -1161,6 +1320,18 @@ function Nav({ openBooking, path = '/' }) {
                         {links.map(({ label, href }) => (
                             <a key={label} href={href} aria-current={current === href || current.startsWith(href + '/') ? 'page' : undefined} className={`text-sm font-semibold transition-colors hover:text-pine ${current === href || current.startsWith(href + '/') ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>{label}</a>
                         ))}
+                        <div className="relative group">
+                            <button type="button" aria-haspopup="true" className={`text-sm font-semibold transition-colors hover:text-pine inline-flex items-center gap-1 ${moreActive ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>
+                                More <ChevronDown size={14} />
+                            </button>
+                            <div className="hidden group-hover:block group-focus-within:block absolute right-0 top-full pt-3 z-50">
+                                <div className="w-60 bg-ivory border border-pine/10 rounded-2xl shadow-xl shadow-pine/10 py-2">
+                                    {moreLinks.map(({ label, href }) => (
+                                        <a key={label} href={href} className="block px-4 py-2.5 text-sm font-semibold text-pine hover:bg-pine/5">{label}</a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                         <PillButton onClick={() => openBooking('General Consultation')} className="py-2.5 px-6 text-sm">
                             Book Now
                         </PillButton>
@@ -1176,6 +1347,12 @@ function Nav({ openBooking, path = '/' }) {
                         <div className="px-4 py-4 flex flex-col gap-1">
                             {links.map(({ label, href }) => (
                                 <a key={label} href={href} onClick={() => setMenuOpen(false)} className="py-3 px-3 rounded-xl font-semibold text-pine hover:bg-pine/5 transition-colors">
+                                    {label}
+                                </a>
+                            ))}
+                            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-brass">More</p>
+                            {moreLinks.map(({ label, href }) => (
+                                <a key={label} href={href} onClick={() => setMenuOpen(false)} className="py-2.5 px-3 rounded-xl font-semibold text-pine hover:bg-pine/5 transition-colors">
                                     {label}
                                 </a>
                             ))}
@@ -1206,8 +1383,11 @@ export default function App({ path = '/' }) {
     useReveal();
 
     let content;
+    const local = serviceSlug ? null : findLocalPage(clean);
     if (serviceSlug) {
         content = <ServicePage slug={serviceSlug} openBooking={openBooking} />;
+    } else if (local) {
+        content = <LocalPage found={local} openBooking={openBooking} />;
     } else if (clean === '/services') {
         content = (<><PageHeader {...PAGE_HEADERS['/services']} /><Services openBooking={openBooking} /><HowItWorks /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/pricing') {
