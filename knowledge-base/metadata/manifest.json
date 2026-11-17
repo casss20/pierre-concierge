@@ -10,8 +10,8 @@
       "route": "/",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "a3fea705fb97d54f",
-      "words": 1351
+      "hash": "ef4bfab95a4769c2",
+      "words": 1366
     },
     {
       "file": "services/overview.md",
@@ -20,8 +20,8 @@
       "route": "/services",
       "category": "services-overview",
       "extracted": "2026-11-17",
-      "hash": "459d9c14f6872b36",
-      "words": 545
+      "hash": "d91f220629a2e1ec",
+      "words": 559
     },
     {
       "file": "pages/pricing.md",
@@ -50,8 +50,8 @@
       "route": "/our-values",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "a74301536cd8dc60",
-      "words": 273
+      "hash": "68a0318b89c6a5f7",
+      "words": 274
     },
     {
       "file": "policies/privacy-practices.md",
@@ -140,8 +140,8 @@
       "route": "/services/assisted-living-facility-support",
       "category": "services",
       "extracted": "2026-11-17",
-      "hash": "94f16b68ef9a52b2",
-      "words": 262
+      "hash": "e5c0049a7c70f68c",
+      "words": 271
     },
     {
       "file": "services/family-peace-of-mind-visits.md",
@@ -560,8 +560,8 @@
       "route": "(footer)",
       "category": "site-info",
       "extracted": "2026-11-17",
-      "hash": "31b648ef06d462cf",
-      "words": 64
+      "hash": "a85c7f4522d2dc22",
+      "words": 63
     }
   ]
 }

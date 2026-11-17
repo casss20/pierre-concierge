@@ -6,7 +6,7 @@ category: services-overview
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 459d9c14f6872b36
+content_hash: d91f220629a2e1ec
 ---
 
 # Home Nursing Services in Ocala, FL | Pierre Concierge Nursing
@@ -29,7 +29,7 @@ Professional medical care tailored to your recovery and wellness needs — steri
 
 ### [Post-Operative Recovery](https://pierre-concierge.vercel.app/services/post-operative-recovery)
 
-Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal — care Medicare's few-and-far-between visits don't cover.
+Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal. It works alongside your doctor and any Medicare home health visits, adding more time and attention between them.
 
 [What is this treatment?](https://pierre-concierge.vercel.app/services/post-operative-recovery)
 
@@ -89,7 +89,7 @@ $150 per visit
 
 ### [Assisted Living Facility Support](https://pierre-concierge.vercel.app/services/assisted-living-facility-support)
 
-Assisted living communities can't perform clinical tasks — we can, right inside your facility. Insulin administration, wound care, and clinical monitoring that let your loved one stay in their home, not move to a higher level of care. Monthly contracts available.
+Many assisted living communities limit the clinical tasks their staff can perform. We can provide them right inside your facility, with your doctor's orders: insulin administration, wound care, and clinical monitoring that may help your loved one stay where they live. Monthly contracts available.
 
 [What is this treatment?](https://pierre-concierge.vercel.app/services/assisted-living-facility-support)
 

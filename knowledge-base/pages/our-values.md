@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: a74301536cd8dc60
+content_hash: 68a0318b89c6a5f7
 ---
 
 # Our Values | Pierre Concierge Nursing, Ocala, FL
@@ -29,7 +29,7 @@ Pierre Concierge Nursing exists to close that gap. One Registered Nurse, who tak
 
 What it means
 
-## Hospital-grade care, at home
+## Skilled, RN-led care, at home
 
 Concierge nursing is private pay, nurse led care that comes to you. You choose the visits you need, and treatments follow your doctor’s orders.
 

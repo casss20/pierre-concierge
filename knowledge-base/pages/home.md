@@ -1,12 +1,12 @@
 ---
 title: "Pierre Concierge Nursing | Home Nursing in Ocala, FL"
 source_url: https://pierre-concierge.vercel.app/
-description: "Hospital-grade post-operative care, IV therapy, and wound care at home in Ocala and Marion County, FL, by Elda Marie Pierre, RN, BSN."
+description: "Skilled, RN-led post-operative care, IV therapy, and wound care at home in Ocala and Marion County, FL, by Elda Marie Pierre, RN, BSN."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: a3fea705fb97d54f
+content_hash: ef4bfab95a4769c2
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -15,7 +15,7 @@ content_hash: a3fea705fb97d54f
 
 Premier Concierge Nursing · Ocala, FL
 
-# Hospital-grade care,
+# Skilled, RN-led care,
 right at home.
 
 Expert post-operative support, IV therapy, and wound care by **Elda Marie Pierre, RN, BSN**. Skip the waiting room. Recover in the comfort of your own home.
@@ -66,7 +66,7 @@ Professional medical care tailored to your recovery and wellness needs — steri
 
 ### [Post-Operative Recovery](https://pierre-concierge.vercel.app/services/post-operative-recovery)
 
-Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal — care Medicare's few-and-far-between visits don't cover.
+Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal. It works alongside your doctor and any Medicare home health visits, adding more time and attention between them.
 
 [What is this treatment?](https://pierre-concierge.vercel.app/services/post-operative-recovery)
 
@@ -126,7 +126,7 @@ $150 per visit
 
 ### [Assisted Living Facility Support](https://pierre-concierge.vercel.app/services/assisted-living-facility-support)
 
-Assisted living communities can't perform clinical tasks — we can, right inside your facility. Insulin administration, wound care, and clinical monitoring that let your loved one stay in their home, not move to a higher level of care. Monthly contracts available.
+Many assisted living communities limit the clinical tasks their staff can perform. We can provide them right inside your facility, with your doctor's orders: insulin administration, wound care, and clinical monitoring that may help your loved one stay where they live. Monthly contracts available.
 
 [What is this treatment?](https://pierre-concierge.vercel.app/services/assisted-living-facility-support)
 

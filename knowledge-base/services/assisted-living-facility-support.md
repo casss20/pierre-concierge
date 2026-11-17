@@ -6,7 +6,7 @@ category: services
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 94f16b68ef9a52b2
+content_hash: e5c0049a7c70f68c
 ---
 
 # Assisted Living Facility Support at Home in Ocala, FL | Pierre Concierge Nursing
@@ -19,7 +19,7 @@ Service
 
 # Assisted Living Facility Support
 
-Assisted living communities help with daily living, but many cannot perform clinical tasks. We provide those clinical services right inside the facility so a resident may not need to move to a higher level of care.
+Assisted living communities help with daily living, and many limit the clinical tasks their staff can perform. With your doctor's orders, we can provide those clinical services right inside the facility, so a resident may not need to move to a higher level of care.
 
 [(754) 367-6929](tel:+17543676929)$175 per visit
 
