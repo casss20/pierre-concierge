@@ -1331,9 +1331,9 @@ function ScrollBackdrop() {
     }, []);
     return (
         <div ref={ref} className="scroll-backdrop" aria-hidden="true">
-            <div className="sb-glow sb-glow-gold" />
-            <div className="sb-glow sb-glow-green" />
-            <img className="sb-mark" src="/logo-mark-bg.webp" alt="" width="390" height="465" />
+            <div className="sb-glow sb-glow-gold"><div className="sb-idle sb-idle-a" /></div>
+            <div className="sb-glow sb-glow-green"><div className="sb-idle sb-idle-b" /></div>
+            <div className="sb-mark"><img className="sb-idle sb-idle-c" src="/logo-mark-bg.webp" alt="" width="390" height="465" /></div>
         </div>
     );
 }
