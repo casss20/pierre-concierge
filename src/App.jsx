@@ -1144,6 +1144,47 @@ const PRODUCTS = [
     },
 ];
 
+const BUNDLES = [
+    {
+        id: 'starter', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $4',
+        blurb: 'The two guides most families need first when a loved one is coming home.',
+        ids: ['playbook', 'kit'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit'], was: '$53', priceKey: 'bundlePrice', urlKey: 'starterBundleUrl',
+    },
+    {
+        id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $77',
+        blurb: 'Every guide we make, for every stage of caring for an aging parent. New guides will be added.',
+        ids: ['playbook', 'kit', 'ldk', 'alf', 'binder'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$166', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
+    },
+];
+
+function BundleCards() {
+    return (
+        <div id="bundles" className="mt-12 scroll-mt-24">
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-pine mb-2 text-center">Bundles</h2>
+            <p className="text-center text-sm text-ink/70 mb-6">Buy together and save.</p>
+            <div className="grid md:grid-cols-2 gap-6">
+                {BUNDLES.map((b) => (
+                    <div key={b.id} className="bg-cream/60 border border-pine/10 rounded-3xl p-6 flex flex-col">
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">{b.eyebrow}</p>
+                            <span className="shrink-0 rounded-full bg-pine text-ivory text-xs font-semibold px-3 py-1">{b.badge}</span>
+                        </div>
+                        <h3 className="font-serif text-2xl font-semibold text-pine mb-2">{b.title}</h3>
+                        <p className="text-sm text-ink/80 leading-relaxed mb-4">{b.blurb}</p>
+                        <ul className="space-y-2 mb-5">
+                            {b.items.map((t) => (
+                                <li key={t} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>
+                            ))}
+                        </ul>
+                        <p className="mt-auto mb-3 text-sm text-ink/70">Separately {b.was}. Together <span className="font-semibold text-pine">{SITE_CONFIG[b.priceKey]}</span>.</p>
+                        <div><ProductAction url={SITE_CONFIG[b.urlKey]} price={SITE_CONFIG[b.priceKey]} /></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function ProductCards() {
     return (
         <div className="space-y-8">
@@ -1166,12 +1207,90 @@ function ProductCards() {
                     </div>
                 </div>
             ))}
-            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">The Safe Home Playbook and the Discharge Readiness Kit together: {SITE_CONFIG.bundlePrice}.</p>}
         </div>
     );
 }
 
-function PlaybookCTA() {
+const CATEGORIES = { playbook: 'recovery', kit: 'recovery', ldk: 'caregiving', alf: 'caregiving', binder: 'caregiving' };
+const CATALOG_FILTERS = [
+    { id: 'all', label: 'All' },
+    { id: 'recovery', label: 'Hospital and recovery' },
+    { id: 'caregiving', label: 'Family caregiving' },
+    { id: 'bundle', label: 'Bundles' },
+];
+
+function ProductCatalog() {
+    const [filter, setFilter] = useState('all');
+    const covers = Object.fromEntries(PRODUCTS.map((p) => [p.id, p.cover]));
+    const items = [
+        ...PRODUCTS.map((p) => ({ kind: 'product', id: p.id, cat: CATEGORIES[p.id] || 'all', title: p.title, blurb: p.blurb, href: p.href, cover: p.cover, price: SITE_CONFIG[p.priceKey], url: SITE_CONFIG[p.urlKey], tag: p.eyebrow })),
+        ...BUNDLES.map((b) => ({ kind: 'bundle', id: b.id, cat: 'bundle', title: b.title, blurb: b.blurb, href: null, covers: b.ids.map((i) => covers[i]), price: SITE_CONFIG[b.priceKey], was: b.was, url: SITE_CONFIG[b.urlKey], tag: b.badge, count: b.ids.length })),
+    ].filter((x) => filter === 'all' || x.cat === filter);
+    return (
+        <div>
+            <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter products">
+                {CATALOG_FILTERS.map((f) => (
+                    <button key={f.id} type="button" onClick={() => setFilter(f.id)} aria-pressed={filter === f.id}
+                        className={`min-h-[44px] rounded-full px-5 text-sm font-semibold border transition-colors ${filter === f.id ? 'bg-pine text-ivory border-pine' : 'bg-ivory text-pine border-pine/20 hover:border-pine/50'}`}>{f.label}</button>
+                ))}
+            </div>
+            <ul className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 sm:gap-x-8">
+                {items.map((x) => {
+                    const media = x.kind === 'bundle' ? (
+                        <div className="relative aspect-[17/22] bg-cream rounded-2xl overflow-hidden flex items-center justify-center">
+                            {x.covers.slice(0, 3).map((c, i) => (
+                                <img key={c} src={c} alt="" loading="lazy" decoding="async" width="680" height="880" className="absolute w-[46%] rounded-lg shadow-lg" style={{ transform: `translateX(${(i - 1) * 40}%) rotate(${(i - 1) * 7}deg)`, zIndex: 3 - i }} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="aspect-[17/22] bg-cream rounded-2xl overflow-hidden flex items-center justify-center p-3 sm:p-6">
+                            <img src={x.cover} alt={`Cover of ${x.title}`} loading="lazy" decoding="async" width="680" height="880" className="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.03]" />
+                        </div>
+                    );
+                    return (
+                        <li key={x.id} className="group flex flex-col">
+                            <div className="relative">
+                                {x.href ? <a href={x.href} aria-label={`See what is inside ${x.title}`} className="block">{media}</a> : <a href="#bundle-contents" className="block" tabIndex={-1} aria-hidden="true">{media}</a>}
+                                <span className="absolute top-2 left-2 rounded-full bg-ivory/95 text-pine text-[11px] font-semibold px-2.5 py-1 shadow">{x.kind === 'bundle' ? x.tag : (x.url ? 'Available' : 'Coming soon')}</span>
+                            </div>
+                            <h2 className="font-serif text-base sm:text-xl font-semibold text-pine mt-3 leading-snug">
+                                {x.href ? <a href={x.href} className="hover:underline">{x.title}</a> : x.title}
+                            </h2>
+                            <p className="mt-1 text-sm text-ink/70 leading-snug">
+                                {x.kind === 'bundle' ? `${x.count} guides in one` : x.tag}
+                            </p>
+                            <p className="mt-2 text-sm">
+                                <span className="font-semibold text-pine text-base">{x.price}</span>
+                                {x.was && <span className="ml-2 text-ink/50 line-through">{x.was}</span>}
+                            </p>
+                            <div className="mt-3 mt-auto pt-3 flex flex-wrap items-center gap-3">
+                                {x.url
+                                    ? <ProductAction url={x.url} price={x.price} />
+                                    : <span className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold border border-brass/60 text-pine bg-brass/10"><Clock className="w-3.5 h-3.5" /> Coming soon</span>}
+                                {x.href && <a href={x.href} className="inline-flex items-center gap-1 min-h-[44px] text-sm font-semibold text-royal hover:underline">See inside <ArrowRight className="w-4 h-4" /></a>}
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+            {(filter === 'all' || filter === 'bundle') && (
+                <div id="bundle-contents" className="mt-14 grid md:grid-cols-2 gap-6 scroll-mt-24">
+                    {BUNDLES.map((b) => (
+                        <div key={b.id} className="bg-cream/60 border border-pine/10 rounded-3xl p-6">
+                            <h3 className="font-serif text-xl font-semibold text-pine mb-1">{b.title} includes</h3>
+                            <p className="text-xs text-ink/60 mb-3">Separately {b.was}. Together {SITE_CONFIG[b.priceKey]}.</p>
+                            <ul className="space-y-2">
+                                {b.items.map((t) => (<li key={t} className="flex gap-3 text-sm text-ink/80"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function PlaybookCTA({ standalone = false }) {
     const [idx, setIdx] = useState(0);
     const [paused, setPaused] = useState(false);
     const [reduced, setReduced] = useState(true);
@@ -1192,21 +1311,23 @@ function PlaybookCTA() {
     const go = (i) => setIdx((i + PRODUCTS.length) % PRODUCTS.length);
     const { bundlePrice } = SITE_CONFIG;
     return (
-        <section className="bg-ivory py-16 md:py-20">
-            <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className={standalone ? 'py-4' : 'bg-ivory py-16 md:py-20'}>
+            <div className={standalone ? 'max-w-5xl mx-auto' : 'reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'}>
+                {!standalone && (
                 <div className="text-center mb-8">
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">Our products</p>
                     <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight">Guides for the first weeks at home</h2>
                     <a href="/products" className="mt-3 inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See all our products <ArrowRight className="w-4 h-4" /></a>
                 </div>
+                )}
                 <div className="relative bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10"
                     role="region" aria-roledescription="carousel" aria-label="Guides for families"
                     onMouseEnter={() => { hold.current = true; }} onMouseLeave={() => { hold.current = false; }}
                     onFocus={() => { hold.current = true; }} onBlur={() => { hold.current = false; }}
                     onTouchStart={(e) => { hold.current = true; const t = e.touches[0]; swipe.current = e.target.closest('[aria-roledescription="carousel"] [aria-roledescription="carousel"]') ? null : { x: t.clientX, y: t.clientY }; }}
                     onTouchEnd={(e) => { const s = swipe.current; swipe.current = null; if (s) { const t = e.changedTouches[0]; const dx = t.clientX - s.x; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(t.clientY - s.y) * 1.5) go(idx + (dx < 0 ? 1 : -1)); } setTimeout(() => { hold.current = false; }, 4000); }}>
-                    <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="absolute z-10 left-1 md:-left-5 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronLeft className="w-5 h-5" /></button>
-                    <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="absolute z-10 right-1 md:-right-5 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronRight className="w-5 h-5" /></button>
+                    <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="absolute z-10 left-1 md:-left-5 lg:-left-16 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronLeft className="w-5 h-5" /></button>
+                    <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="absolute z-10 right-1 md:-right-5 lg:-right-16 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronRight className="w-5 h-5" /></button>
                     <div className="grid">
                         {PRODUCTS.map((p, i) => {
                             const active = i === idx;
@@ -1241,7 +1362,7 @@ function PlaybookCTA() {
                         )}
                     </div>
                     <p className="sr-only" aria-live="polite">{PRODUCTS[idx].title}</p>
-                    {bundlePrice && <p className="mt-2 text-center text-sm text-ink/70">Get both together for {bundlePrice}.</p>}
+                    {bundlePrice && <p className="mt-2 text-center text-sm text-ink/70">Bundles from {bundlePrice}. <a href="/products#bundles" className="font-semibold text-royal hover:underline">See the bundles</a></p>}
                 </div>
             </div>
         </section>
@@ -1405,10 +1526,10 @@ function LocalPage({ found, openBooking }) {
             </section>
 
             <section className="bg-ivory py-10">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className={`${page.path === '/products' ? 'max-w-6xl' : 'max-w-3xl'} mx-auto px-4 sm:px-6 lg:px-8`}>
                     {page.path === '/products' ? (
                         <>
-                            <ProductCards />
+                            <ProductCatalog />
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">
                                     <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Questions, answered</h2>

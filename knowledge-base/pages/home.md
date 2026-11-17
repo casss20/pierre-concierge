@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 409324d8c544b98f
+content_hash: 7fb914e919508c8d
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -354,7 +354,7 @@ Coming soon · $34[See what is inside](https://pierre-concierge.vercel.app/safe-
 
 The Safe Home Playbook
 
-Get both together for $49.
+Bundles from $49. [See the bundles](https://pierre-concierge.vercel.app/products#bundles)
 
 *(Image: A senior couple resting together at home)*
 
