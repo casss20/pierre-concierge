@@ -497,15 +497,17 @@ function WhyUs() {
     );
 }
 
-function Services({ openBooking }) {
+function Services({ openBooking, hideHeading = false }) {
     return (
         <section id="services" className="bg-cream/50 py-20 md:py-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeading
-                    eyebrow="Services"
-                    title="Comprehensive nursing, delivered"
-                    subtitle="Professional medical care tailored to your recovery and wellness needs — sterile equipment, clear communication, genuine warmth."
-                />
+                {!hideHeading && (
+                    <SectionHeading
+                        eyebrow="Services"
+                        title="Comprehensive nursing, delivered"
+                        subtitle="Professional medical care tailored to your recovery and wellness needs, with sterile equipment, clear communication, and genuine warmth."
+                    />
+                )}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {SERVICES.map(({ icon: Icon, title, description, price, tag }, i) => (
                         <article key={title} className="reveal group bg-ivory rounded-3xl p-8 border border-transparent hover:border-pine/15 shadow-sm hover:shadow-xl flex flex-col h-full transition-all duration-300 hover:-translate-y-1">
@@ -558,18 +560,20 @@ function HowItWorks() {
     );
 }
 
-function Pricing({ openBooking }) {
+function Pricing({ openBooking, hideHeading = false }) {
     const [tab, setTab] = useState('subscription');
     return (
         <section id="pricing" className="bg-pine text-ivory relative overflow-hidden py-20 md:py-28">
             <div className="pointer-events-none absolute -top-40 right-0 w-[30rem] h-[30rem] rounded-full bg-pine-light/30 blur-3xl" />
             <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeading
-                    light
-                    eyebrow="Pricing"
-                    title="Simple, transparent, no surprises"
-                    subtitle="One visit for immediate needs, or consistent monthly care at a better value."
-                />
+                {!hideHeading && (
+                    <SectionHeading
+                        light
+                        eyebrow="Pricing"
+                        title="Simple, transparent, no surprises"
+                        subtitle="One visit for immediate needs, or consistent monthly care at a better value."
+                    />
+                )}
 
                 <div className="flex justify-center mb-12">
                     <div className="bg-ivory/10 p-1 rounded-full inline-flex backdrop-blur">
@@ -640,7 +644,7 @@ function Pricing({ openBooking }) {
     );
 }
 
-function About() {
+function About({ hideEyebrow = false }) {
     return (
         <section id="about" className="bg-ivory py-20 md:py-28 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -664,7 +668,7 @@ function About() {
 
                     {/* Story */}
                     <div className="reveal pt-6">
-                        <Eyebrow>Meet your nurse</Eyebrow>
+                        {!hideEyebrow && <Eyebrow>Meet your nurse</Eyebrow>}
                         <h2 className="font-serif text-3xl md:text-[2.6rem] leading-tight font-semibold text-pine mb-6">
                             Elda Marie Joe Pierre, <span className="italic font-medium text-royal">RN, BSN</span>
                         </h2>
@@ -727,12 +731,12 @@ function About() {
     );
 }
 
-function FAQ() {
+function FAQ({ hideHeading = false }) {
     const [open, setOpen] = useState(0);
     return (
         <section className="bg-cream/50 py-20 md:py-24">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+                {!hideHeading && <SectionHeading eyebrow="FAQ" title="Questions, answered" />}
                 <div className="space-y-4">
                     {[...FAQS, ...POLICY_FAQS].map(({ q, a }, i) => {
                         const isOpen = open === i;
@@ -2050,17 +2054,17 @@ export default function App({ path = '/' }) {
     } else if (local) {
         content = <LocalPage found={local} openBooking={openBooking} />;
     } else if (clean === '/services') {
-        content = (<><PageHeader {...PAGE_HEADERS['/services']} /><Services openBooking={openBooking} /><HowItWorks /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/services']} /><Services openBooking={openBooking} hideHeading /><HowItWorks /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/pricing') {
-        content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} hideHeading /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/our-values') {
         content = (<><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
-        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About hideEyebrow /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/privacy-practices') {
         content = (<><PageHeader {...PAGE_HEADERS['/privacy-practices']} /><PrivacyNotice /></>);
     } else if (clean === '/faq') {
-        content = (<><PageHeader {...PAGE_HEADERS['/faq']} /><FAQ /><ChecklistCTA /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/faq']} /><FAQ hideHeading /><ChecklistCTA /><FinalCTA openBooking={openBooking} /></>);
     } else {
         content = (
             <>
