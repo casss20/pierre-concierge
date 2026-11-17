@@ -451,7 +451,14 @@ function ValuesTeaser() {
 
 function QuoteBand() {
     return (
-        <section className="bg-pine text-ivory relative overflow-hidden">
+        <section className="relative bg-pine text-ivory overflow-hidden">
+            <img
+                src="/care-outdoors.jpg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 w-full h-full object-cover opacity-20"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-pine/85" />
             <div className="pointer-events-none absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-pine-light/40 blur-3xl" />
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24 text-center reveal">
                 <Heart className="w-8 h-8 text-sand mx-auto mb-6 fill-sand/20" />
@@ -679,6 +686,17 @@ function About() {
                             advocate, your nurse, and your peace of mind.
                         </p>
 
+                        <figure className="reveal mb-10 rounded-[1.5rem] overflow-hidden shadow-lg border border-pine/10">
+                            <img
+                                src="/care-couple.jpg"
+                                alt="An older couple together in their living room at home"
+                                className="w-full h-60 sm:h-72 object-cover"
+                            />
+                            <figcaption className="bg-cream/80 px-5 py-3 text-xs text-ink/55 font-medium leading-relaxed">
+                                Most families come to us the week of a hospital discharge — or the day caring for Mom or Dad starts feeling bigger than the family.
+                            </figcaption>
+                        </figure>
+
                         {/* Experience timeline */}
                         <div className="mb-10">
                             <h4 className="flex items-center gap-2 font-bold text-pine mb-5">
@@ -755,11 +773,18 @@ function ServiceArea() {
     return (
         <section className="bg-ivory py-16">
             <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-cream/70 border border-pine/10 rounded-[2rem] p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-8">
-                    <div className="w-14 h-14 rounded-2xl bg-pine text-ivory flex items-center justify-center shrink-0">
-                        <MapPin className="w-7 h-7" />
+                <div className="bg-cream/70 border border-pine/10 rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-sm">
+                    <div className="md:w-[42%] shrink-0">
+                        <img
+                            src="/senior-couple.jpg"
+                            alt="A senior couple resting together at home"
+                            className="w-full h-56 md:h-full object-cover"
+                        />
                     </div>
-                    <div className="flex-grow">
+                    <div className="p-8 md:p-10 flex-grow flex flex-col justify-center">
+                        <div className="w-12 h-12 rounded-2xl bg-pine text-ivory flex items-center justify-center mb-5">
+                            <MapPin className="w-6 h-6" />
+                        </div>
                         <h3 className="font-serif text-2xl font-semibold text-pine mb-2">Serving Ocala & Marion County</h3>
                         <p className="text-ink/75 text-sm mb-5">Mobile nursing at private residences, hotels, and assisted living facilities throughout:</p>
                         <div className="flex flex-wrap gap-2.5">
@@ -848,6 +873,7 @@ function Footer() {
                 <div className="border-t border-ivory/10 pt-8 text-center text-xs text-ivory/60 space-y-2">
                     <p>© {year} Pierre Concierge Nursing & Wellness. All rights reserved.</p>
                     <p className="font-semibold text-ivory/90">In case of a medical emergency, call 911. Pierre Concierge Nursing is not an emergency service.</p>
+                    <p className="text-ivory/40">Stock photography: Pexels (free license).</p>
                 </div>
             </div>
         </footer>
