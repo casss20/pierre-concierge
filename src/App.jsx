@@ -1015,6 +1015,33 @@ const KIT_SLIDES = [
     { t: 'When to get help', d: 'Warning signs to know before you need them, and a contacts and appointments page for the fridge.', cap: 'Keep it on the fridge' },
     { t: 'Family care schedule', d: 'Who is with the patient, and when, so everyone shares the load.', cap: 'Sharing the care' },
 ];
+const LDK_SLIDES = [
+    { cover: true, src: '/playbook/ldk-cover.webp', title: 'The Long Distance Caregiver Kit', cap: 'The Long Distance Caregiver Kit' },
+    { t: 'Your care team sheet', d: 'One page that lists every doctor, neighbor, and helper, ready to share with the whole family.', cap: 'Who is who' },
+    { t: 'Permissions and papers', d: 'The forms that let you speak with doctors and act in a crisis, and when to ask an attorney.', cap: 'Before a crisis' },
+    { t: 'Call scripts', d: 'The exact words for hard calls: with your parent, a doctor, a neighbor, and an agency.', cap: 'What to say' },
+    { t: 'Check in system and weekly log', d: 'A simple rhythm of calls and visits, plus a log that shows change over time.', cap: 'Notice changes early' },
+    { t: 'Hiring help and crisis plan', d: 'How to hire from out of state, what to ask an agency, and a plan for the day you get the call.', cap: 'Be ready' },
+    { t: 'A nurse on the ground', d: 'How a Registered Nurse in Ocala can be your eyes in the home.', cap: 'Ocala and Marion County' },
+];
+const ALF_SLIDES = [
+    { cover: true, src: '/playbook/alf-cover.webp', title: 'The Florida Assisted Living Family Guide', cap: 'The Florida Assisted Living Family Guide' },
+    { t: 'Is assisted living the right level?', d: 'A needs checklist that shows when assisted living fits and when more care is needed.', cap: 'Start here' },
+    { t: 'Florida license types', d: 'Plain language on what each Florida assisted living license allows.', cap: 'Know the license' },
+    { t: 'Tour checklists and scorecard', d: 'What to notice, what to ask about staffing and care, and a side by side scorecard.', cap: 'Compare facilities' },
+    { t: 'Understand the contract', d: 'What to look for before you sign, including rates, fees, and move out notice.', cap: 'Before you sign' },
+    { t: 'Medicines, costs, and the move', d: 'What staff can and cannot do with medicines, how families pay, and a move in countdown.', cap: 'Plan the move' },
+    { t: 'Rights and who to call', d: 'Resident rights and the Florida numbers to call with concerns.', cap: 'You have power' },
+];
+const BINDER_SLIDES = [
+    { cover: true, src: '/playbook/binder-cover.webp', title: 'The Care Plan Binder', cap: 'The Care Plan Binder' },
+    { t: 'Emergency card', d: 'A one page summary for the refrigerator, ready for a paramedic or ER nurse.', cap: 'Tab 1' },
+    { t: 'Medicine list and schedule', d: 'Every medicine, dose, and time on a page you can bring to any visit.', cap: 'Tab 2' },
+    { t: 'Contacts and health history', d: 'Your care team, health history, vital signs, and daily care notes in one place.', cap: 'Tabs 3 to 5' },
+    { t: 'Appointments and visit pages', d: 'Track every visit and bring a one page summary to the doctor.', cap: 'Tab 6' },
+    { t: 'Legal papers, money, and home safety', d: 'Know what documents exist and where they are, plus a home and hurricane check.', cap: 'Tabs 7 and 8' },
+    { t: 'Logs and notes', d: 'Daily care logs and note pages for shared caregivers.', cap: 'Tab 9' },
+];
 function PlaybookCarousel({ compact = false, arrows = true, slides = PLAYBOOK_SLIDES, label = 'What The Safe Home Playbook includes' }) {
     const trackRef = useRef(null);
     const [idx, setIdx] = useState(0);
@@ -1097,18 +1124,41 @@ const PRODUCTS = [
         points: ['Questions to ask before discharge day', 'A medication list and daily schedule', 'A home preparation checklist', 'A daily log for the first two weeks'],
         slides: KIT_SLIDES, href: '/discharge-readiness-kit', hrefLabel: 'See what is inside', priceKey: 'kitPrice', urlKey: 'kitCheckoutUrl',
     },
+    {
+        id: 'ldk', eyebrow: 'Kit for far away families', title: 'The Long Distance Caregiver Kit', cover: '/playbook/ldk-cover.webp',
+        blurb: 'Care for a parent in Florida from anywhere. A plan for building a local team, scripts for hard calls, a check in rhythm, and a crisis plan, written by a Registered Nurse.',
+        points: ['A care team sheet to share with family', 'Call scripts for parents, doctors, and neighbors', 'A weekly check in log', 'A plan for the day you get the call'],
+        slides: LDK_SLIDES, href: '/long-distance-caregiver-kit', hrefLabel: 'See what is inside', priceKey: 'ldkPrice', urlKey: 'ldkCheckoutUrl',
+    },
+    {
+        id: 'alf', eyebrow: 'Guide for families', title: 'The Florida Assisted Living Family Guide', cover: '/playbook/alf-cover.webp',
+        blurb: 'How to choose, tour, pay for, and settle into an assisted living facility in Florida, with the questions that protect your parent.',
+        points: ['What each Florida license allows', 'Tour checklists and a scorecard', 'What to look for in the contract', 'Rights and who to call'],
+        slides: ALF_SLIDES, href: '/florida-assisted-living-family-guide', hrefLabel: 'See what is inside', priceKey: 'alfPrice', urlKey: 'alfCheckoutUrl',
+    },
+    {
+        id: 'binder', eyebrow: 'Printable organizer', title: 'The Care Plan Binder', cover: '/playbook/binder-cover.webp',
+        blurb: 'One organized place for everything about a loved one\'s care. Print it, put it in a binder, and keep it where anyone can find it.',
+        points: ['An emergency card for the refrigerator', 'Medicine list and schedule', 'Contacts, appointments, and logs', 'Legal papers and home safety checks'],
+        slides: BINDER_SLIDES, href: '/care-plan-binder', hrefLabel: 'See what is inside', priceKey: 'binderPrice', urlKey: 'binderCheckoutUrl',
+    },
 ];
 
 function ProductCards() {
     return (
         <div className="space-y-8">
             {PRODUCTS.map((p) => (
-                <div key={p.id} className="grid sm:grid-cols-[11rem_1fr] gap-6 items-center bg-cream/60 border border-pine/10 rounded-3xl p-6">
-                    <img src={p.cover} width="680" height="880" loading="lazy" decoding="async" alt={`Cover of ${p.title}`} className="w-40 sm:w-full mx-auto rounded-xl shadow-lg" />
+                <div key={p.id} className="grid md:grid-cols-[0.8fr_1.2fr] gap-6 md:gap-10 items-center bg-cream/60 border border-pine/10 rounded-3xl p-6">
+                    <PlaybookCarousel compact slides={p.slides} label={`What ${p.title} includes`} />
                     <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-2">{p.eyebrow}</p>
-                        <h2 className="font-serif text-2xl font-semibold text-pine mb-2">{p.title}</h2>
+                        <h2 className="font-serif text-2xl font-semibold text-pine mb-2"><a href={p.href} className="hover:underline">{p.title}</a></h2>
                         <p className="text-sm text-ink/80 leading-relaxed mb-4">{p.blurb}</p>
+                        <ul className="space-y-2 mb-5">
+                            {p.points.map((t) => (
+                                <li key={t} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>
+                            ))}
+                        </ul>
                         <div className="flex flex-wrap items-center gap-4">
                             <ProductAction url={SITE_CONFIG[p.urlKey]} price={SITE_CONFIG[p.priceKey]} />
                             <a href={p.href} className="inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See what is inside <ArrowRight className="w-4 h-4" /></a>
@@ -1116,7 +1166,7 @@ function ProductCards() {
                     </div>
                 </div>
             ))}
-            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">Get both together for {SITE_CONFIG.bundlePrice}.</p>}
+            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">The Safe Home Playbook and the Discharge Readiness Kit together: {SITE_CONFIG.bundlePrice}.</p>}
         </div>
     );
 }
@@ -1347,6 +1397,9 @@ function LocalPage({ found, openBooking }) {
                     <h1 className="font-serif text-4xl md:text-5xl font-semibold text-pine leading-tight mb-4">{page.title}</h1>
                     {page.intro && <p className="text-lg text-ink/80 leading-relaxed">{page.intro}</p>}
                     {page.path === '/safe-home-playbook' && <div className="mt-6"><PlaybookAction /></div>}
+                    {page.path === '/long-distance-caregiver-kit' && <div className="mt-6"><ProductAction url={SITE_CONFIG.ldkCheckoutUrl} price={SITE_CONFIG.ldkPrice} /></div>}
+                    {page.path === '/florida-assisted-living-family-guide' && <div className="mt-6"><ProductAction url={SITE_CONFIG.alfCheckoutUrl} price={SITE_CONFIG.alfPrice} /></div>}
+                    {page.path === '/care-plan-binder' && <div className="mt-6"><ProductAction url={SITE_CONFIG.binderCheckoutUrl} price={SITE_CONFIG.binderPrice} /></div>}
                     {page.path === '/discharge-readiness-kit' && <div className="mt-6"><ProductAction url={SITE_CONFIG.kitCheckoutUrl} price={SITE_CONFIG.kitPrice} /></div>}
                 </div>
             </section>
@@ -1377,6 +1430,9 @@ function LocalPage({ found, openBooking }) {
                     ) : (
                         <>
                             {page.path === '/safe-home-playbook' && <div className="mb-12"><PlaybookCarousel /></div>}
+                            {page.path === '/long-distance-caregiver-kit' && <div className="mb-12"><PlaybookCarousel slides={LDK_SLIDES} label="What The Long Distance Caregiver Kit includes" /></div>}
+                            {page.path === '/florida-assisted-living-family-guide' && <div className="mb-12"><PlaybookCarousel slides={ALF_SLIDES} label="What The Florida Assisted Living Family Guide includes" /></div>}
+                            {page.path === '/care-plan-binder' && <div className="mb-12"><PlaybookCarousel slides={BINDER_SLIDES} label="What The Care Plan Binder includes" /></div>}
                             {page.path === '/discharge-readiness-kit' && <div className="mb-12"><PlaybookCarousel slides={KIT_SLIDES} label="What The Discharge Readiness Kit includes" /></div>}
                             {page.sections.map((sec, i) => <LocalSection key={i} section={sec} />)}
                             {page.faqs && page.faqs.length > 0 && (
@@ -1762,7 +1818,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Conditions', href: '/conditions', children: kids(CONDITION_PAGES, '/conditions') },
         { label: 'Areas', href: '/areas', children: kids(AREA_PAGES, '/areas') },
         { label: 'Pricing', href: '/pricing' },
-        { label: 'Our Products', href: '/products', children: [{ label: 'The Safe Home Playbook', href: '/safe-home-playbook' }, { label: 'The Discharge Readiness Kit', href: '/discharge-readiness-kit' }] },
+        { label: 'Our Products', href: '/products', children: [{ label: 'The Safe Home Playbook', href: '/safe-home-playbook' }, { label: 'The Discharge Readiness Kit', href: '/discharge-readiness-kit' }, { label: 'The Long Distance Caregiver Kit', href: '/long-distance-caregiver-kit' }, { label: 'The Florida Assisted Living Family Guide', href: '/florida-assisted-living-family-guide' }, { label: 'The Care Plan Binder', href: '/care-plan-binder' }] },
         { label: 'How It Works', href: '/how-it-works' },
         { label: 'FAQs', href: '/faq' },
         { label: 'More', children: [

@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: c1f385a3e8d00ab6
+content_hash: 41d545dcda2eba92
 ---
 
 # Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing
@@ -38,6 +38,36 @@ Printable workbook
 Everything you need to bring your loved one home from the hospital with confidence. Print it, bring it to the hospital, and write the answers down as the nurse speaks.
 
 Coming soon · $19[See what is inside](https://pierre-concierge.vercel.app/discharge-readiness-kit)
+
+*(Image: Cover of The Long Distance Caregiver Kit)*
+
+Kit for far away families
+
+## The Long Distance Caregiver Kit
+
+Care for a parent in Florida from anywhere. A plan for building a local team, scripts for hard calls, a check in rhythm, and a crisis plan, written by a Registered Nurse.
+
+Coming soon · $29[See what is inside](https://pierre-concierge.vercel.app/long-distance-caregiver-kit)
+
+*(Image: Cover of The Florida Assisted Living Family Guide)*
+
+Guide for families
+
+## The Florida Assisted Living Family Guide
+
+How to choose, tour, pay for, and settle into an assisted living facility in Florida, with the questions that protect your parent.
+
+Coming soon · $25[See what is inside](https://pierre-concierge.vercel.app/florida-assisted-living-family-guide)
+
+*(Image: Cover of The Care Plan Binder)*
+
+Printable organizer
+
+## The Care Plan Binder
+
+One organized place for everything about a loved one's care. Print it, put it in a binder, and keep it where anyone can find it.
+
+Coming soon · $59[See what is inside](https://pierre-concierge.vercel.app/care-plan-binder)
 
 Get both together for $49.
 

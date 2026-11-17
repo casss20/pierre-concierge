@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-17",
   "site": "https://pierre-concierge.vercel.app",
-  "count": 59,
+  "count": 62,
   "documents": [
     {
       "file": "pages/home.md",
@@ -180,8 +180,8 @@
       "route": "/products",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "c1f385a3e8d00ab6",
-      "words": 296
+      "hash": "41d545dcda2eba92",
+      "words": 448
     },
     {
       "file": "pages/discharge-readiness-kit.md",
@@ -192,6 +192,36 @@
       "extracted": "2026-11-17",
       "hash": "42a1914fe3b62f8e",
       "words": 630
+    },
+    {
+      "file": "pages/long-distance-caregiver-kit.md",
+      "title": "The Long Distance Caregiver Kit | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/long-distance-caregiver-kit",
+      "route": "/long-distance-caregiver-kit",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "a7093cb068e57b91",
+      "words": 580
+    },
+    {
+      "file": "pages/florida-assisted-living-family-guide.md",
+      "title": "The Florida Assisted Living Family Guide | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/florida-assisted-living-family-guide",
+      "route": "/florida-assisted-living-family-guide",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "61851e187d54c100",
+      "words": 530
+    },
+    {
+      "file": "pages/care-plan-binder.md",
+      "title": "The Care Plan Binder | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/care-plan-binder",
+      "route": "/care-plan-binder",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "0644ba1a803d19a3",
+      "words": 497
     },
     {
       "file": "pages/safe-home-playbook.md",

@@ -27,6 +27,13 @@ export const SITE_CONFIG = {
     // Discharge Readiness Kit (printable workbook). Same rule: empty link shows "Coming soon".
     kitCheckoutUrl: "",
     kitPrice: "$19",
+    // Long Distance Caregiver Kit, Florida Assisted Living Family Guide, Care Plan Binder. Empty link shows "Coming soon".
+    ldkCheckoutUrl: "",
+    ldkPrice: "$29",
+    alfCheckoutUrl: "",
+    alfPrice: "$25",
+    binderCheckoutUrl: "",
+    binderPrice: "$59",
     // Optional bundle price for both guides, shown under the product carousel
     bundlePrice: "$49",
     // Free downloadable resource (static page in /public)
