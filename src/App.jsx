@@ -1056,7 +1056,7 @@ function PlaybookAction({ light = false }) {
     }
     return (
         <span className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border ${light ? 'border-ivory/40 text-ivory' : 'border-brass/60 text-pine bg-brass/10'}`}>
-            <Clock className="w-4 h-4" /> Coming soon
+            <Clock className="w-4 h-4" /> Coming soon{playbookPrice ? ` · ${playbookPrice}` : ''}
         </span>
     );
 }
