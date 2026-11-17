@@ -9,6 +9,7 @@ All client data stays on her device.
 |---|---|
 | `elda-ops.html` | **The practice manager app** — clients, visits, dashboard, documents. Open in any browser. |
 | `print/intake-packet.html` | 4-page new-client packet (welcome, meds, services, consents) — print blanks, keep a clipboard stack in the car |
+| `print/who-we-are.html` | Client-facing brand story + value one-pager — the 'why call her' document for families
 | `print/referral-onepager.html` | Leave-behind for discharge planners, surgeons, ALF admins, home-health liaisons |
 | `print/home-safety-checklist.html` | Detailed safety walk-through used with Hospital-to-Home Transition visits |
 | `print/google-business-setup.html` | Step-by-step Google Business Profile setup with copy-paste text + the review engine SOP |
