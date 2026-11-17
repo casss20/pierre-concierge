@@ -1011,7 +1011,7 @@ const KIT_SLIDES = [
     { t: 'Home preparation checklist', d: 'Get the home ready before your loved one arrives, room by room.', cap: 'Getting the home ready' },
     { t: 'A daily log', d: 'Track the first two weeks in one place, so nothing is forgotten when you call the doctor.', cap: 'The first two weeks' },
 ];
-function PlaybookCarousel({ compact = false, slides = PLAYBOOK_SLIDES, label = 'What The Safe Home Playbook includes' }) {
+function PlaybookCarousel({ compact = false, arrows = true, slides = PLAYBOOK_SLIDES, label = 'What The Safe Home Playbook includes' }) {
     const trackRef = useRef(null);
     const [idx, setIdx] = useState(0);
     const go = (i) => {
@@ -1040,8 +1040,8 @@ function PlaybookCarousel({ compact = false, slides = PLAYBOOK_SLIDES, label = '
                     </figure>
                 ))}
             </div>
-            <button type="button" onClick={() => go(idx - 1)} disabled={idx === 0} aria-label="Previous" className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
-            <button type="button" onClick={() => go(idx + 1)} disabled={idx === slides.length - 1} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
+            {arrows && <button type="button" onClick={() => go(idx - 1)} disabled={idx === 0} aria-label="Previous" className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>}
+            {arrows && <button type="button" onClick={() => go(idx + 1)} disabled={idx === slides.length - 1} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>}
             <p className="mt-3 text-center text-sm text-ink/70" aria-live="polite">{slides[idx].cap}</p>
             <div className="mt-2 flex justify-center gap-1">
                 {slides.map((s, i) => (
@@ -1100,6 +1100,7 @@ function PlaybookCTA() {
     const [paused, setPaused] = useState(false);
     const [reduced, setReduced] = useState(true);
     const hold = useRef(false);
+    const swipe = useRef(null);
     useEffect(() => {
         const q = window.matchMedia('(prefers-reduced-motion: reduce)');
         setReduced(q.matches);
@@ -1109,7 +1110,7 @@ function PlaybookCTA() {
     }, []);
     useEffect(() => {
         if (paused || reduced) return undefined;
-        const t = setInterval(() => { if (!hold.current) setIdx((i) => (i + 1) % PRODUCTS.length); }, 7000);
+        const t = setInterval(() => { if (!hold.current) setIdx((i) => (i + 1) % PRODUCTS.length); }, 9000);
         return () => clearInterval(t);
     }, [paused, reduced]);
     const go = (i) => setIdx((i + PRODUCTS.length) % PRODUCTS.length);
@@ -1121,14 +1122,17 @@ function PlaybookCTA() {
                     role="region" aria-roledescription="carousel" aria-label="Guides for families"
                     onMouseEnter={() => { hold.current = true; }} onMouseLeave={() => { hold.current = false; }}
                     onFocus={() => { hold.current = true; }} onBlur={() => { hold.current = false; }}
-                    onTouchStart={() => { hold.current = true; }} onTouchEnd={() => { setTimeout(() => { hold.current = false; }, 4000); }}>
+                    onTouchStart={(e) => { hold.current = true; const t = e.touches[0]; swipe.current = e.target.closest('[aria-roledescription="carousel"] [aria-roledescription="carousel"]') ? null : { x: t.clientX, y: t.clientY }; }}
+                    onTouchEnd={(e) => { const s = swipe.current; swipe.current = null; if (s) { const t = e.changedTouches[0]; const dx = t.clientX - s.x; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(t.clientY - s.y) * 1.5) go(idx + (dx < 0 ? 1 : -1)); } setTimeout(() => { hold.current = false; }, 4000); }}>
+                    <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="absolute z-10 left-1 md:-left-5 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronLeft className="w-5 h-5" /></button>
+                    <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="absolute z-10 right-1 md:-right-5 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronRight className="w-5 h-5" /></button>
                     <div className="grid">
                         {PRODUCTS.map((p, i) => {
                             const active = i === idx;
                             return (
                                 <div key={p.id} aria-hidden={!active} {...(!active ? { inert: '' } : {})}
-                                    className={`[grid-area:1/1] grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center transition-opacity duration-[1400ms] ease-in-out ${active ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                                    <PlaybookCarousel compact slides={p.slides} label={`What ${p.title} includes`} />
+                                    className={`[grid-area:1/1] grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center transition-opacity duration-[2200ms] ease-in-out ${active ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                                    <PlaybookCarousel compact arrows={false} slides={p.slides} label={`What ${p.title} includes`} />
                                     <div>
                                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">{p.eyebrow}</p>
                                         <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">{p.title}</h2>
@@ -1148,11 +1152,9 @@ function PlaybookCTA() {
                         })}
                     </div>
                     <div className="mt-8 flex items-center justify-center gap-1">
-                        <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="w-11 h-11 rounded-full text-pine hover:bg-pine/10 flex items-center justify-center"><ChevronLeft className="w-5 h-5" /></button>
                         {PRODUCTS.map((p, i) => (
                             <button key={p.id} type="button" onClick={() => go(i)} aria-label={`Show ${p.title}`} className="w-8 h-11 flex items-center justify-center"><span className={`block rounded-full transition-all ${i === idx ? 'w-6 h-2 bg-pine' : 'w-2 h-2 bg-pine/25'}`} /></button>
                         ))}
-                        <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="w-11 h-11 rounded-full text-pine hover:bg-pine/10 flex items-center justify-center"><ChevronRight className="w-5 h-5" /></button>
                         {!reduced && (
                             <button type="button" onClick={() => setPaused((v) => !v)} aria-label={paused ? 'Play slideshow' : 'Pause slideshow'} className="ml-2 min-h-[44px] px-3 text-xs font-semibold text-pine/70 hover:text-pine">{paused ? 'Play' : 'Pause'}</button>
                         )}
