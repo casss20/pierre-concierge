@@ -1436,7 +1436,6 @@ export default function App({ path = '/' }) {
                 <CareTeam />
                 <Pricing openBooking={openBooking} />
                 <Testimonials />
-                <About />
                 <FAQ />
                 <ChecklistCTA />
                 <ServiceArea />
