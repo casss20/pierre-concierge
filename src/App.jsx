@@ -318,28 +318,42 @@ function Hero({ openBooking }) {
                 {/* Portrait */}
                 <div className="reveal order-1 lg:order-2 relative mx-auto w-full max-w-md lg:max-w-none">
                     <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] border border-brass/40" />
-                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-pine-dark">
-                        <img
-                            src="/elda-coat.jpg"
-                            width="848" height="1024"
-                            alt="Elda Marie Pierre, RN, BSN — white coat portrait"
-                            className="w-full h-[26rem] sm:h-[32rem] lg:h-[36rem] object-cover object-top"
-                        />
-                        {/* sparkle watermark in source image sits bottom-right — cover it */}
-                        <div className="absolute bottom-0 right-0 h-16 w-16 bg-gradient-to-tl from-pine-dark/90 to-transparent" />
-                        <div className="absolute bottom-5 left-5 right-5 sm:right-auto bg-ivory/95 backdrop-blur rounded-2xl px-5 py-4 shadow-xl flex items-center gap-4">
-                            <div className="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-lg shrink-0">E</div>
-                            <div>
-                                <p className="font-serif font-semibold text-pine leading-tight">Elda Marie Pierre</p>
-                                <p className="text-xs text-ink/70 font-medium">RN, BSN · 20+ years in patient care</p>
-                            </div>
-                        </div>
-                    </div>
+                    <Logo3D />
                 </div>
             </div>
         </header>
     );
 }
+
+// 3D Pierre logo: stacked layers give the mark real depth as it sways.
+function Logo3D() {
+    const layers = Array.from({ length: 16 }, (_, i) => i);
+    return (
+        <div className="logo3d-stage relative rounded-[2rem] overflow-hidden shadow-2xl h-[26rem] sm:h-[32rem] lg:h-[36rem] flex items-center justify-center" role="img" aria-label="Pierre Concierge Nursing logo">
+            <div className="logo3d-glow" aria-hidden="true" />
+            <div className="logo3d-scene" aria-hidden="true">
+                <div className="logo3d-object">
+                    {layers.map((i) => (
+                        <img key={i} src="/logo-3d-side.png" alt="" width="380" height="461" className="logo3d-layer" style={{ transform: `translateZ(${-i * 2.2}px)` }} />
+                    ))}
+                    <img src="/logo-3d-front.png" alt="" width="380" height="461" className="logo3d-layer logo3d-front" style={{ transform: 'translateZ(3px)' }} />
+                </div>
+                <div className="logo3d-shadow" />
+            </div>
+            <span className="logo3d-spark logo3d-spark-1" aria-hidden="true" />
+            <span className="logo3d-spark logo3d-spark-2" aria-hidden="true" />
+            <span className="logo3d-spark logo3d-spark-3" aria-hidden="true" />
+            <div className="absolute bottom-5 left-5 right-5 sm:right-auto bg-ivory/95 backdrop-blur rounded-2xl px-5 py-4 shadow-xl flex items-center gap-4">
+                <div className="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-lg shrink-0">E</div>
+                <div>
+                    <p className="font-serif font-semibold text-pine leading-tight">Elda Marie Pierre</p>
+                    <p className="text-xs text-ink/70 font-medium">RN, BSN · 20+ years in patient care</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 
 function QuoteBand() {
     return (
