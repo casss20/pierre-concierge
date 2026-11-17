@@ -1056,31 +1056,102 @@ function PlaybookAction({ light = false }) {
     }
     return (
         <span className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border ${light ? 'border-ivory/40 text-ivory' : 'border-brass/60 text-pine bg-brass/10'}`}>
-            <Clock className="w-4 h-4" /> Coming soon
+            <Clock className="w-4 h-4" /> Coming soon{playbookPrice ? ` · ${playbookPrice}` : ''}
         </span>
     );
 }
 
+function ProductAction({ url, price }) {
+    if (url) {
+        return <PillButton href={url} variant="primary">Get it{price ? ` · ${price}` : ''} <ArrowRight className="w-4 h-4" /></PillButton>;
+    }
+    return (
+        <span className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border border-brass/60 text-pine bg-brass/10">
+            <Clock className="w-4 h-4" /> Coming soon{price ? ` · ${price}` : ''}
+        </span>
+    );
+}
+
+// Home page product carousel. Slow auto loop with a gentle crossfade; pauses on hover, focus, touch, or the pause button.
+// Add another PDF by adding one entry here. Real guide pages are never shown, only covers and descriptions.
+const PRODUCTS = [
+    {
+        id: 'playbook', eyebrow: 'Guide for families', title: 'The Safe Home Playbook', cover: '/playbook/p1.webp',
+        blurb: 'A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.',
+        points: PLAYBOOK_POINTS, href: '/safe-home-playbook', hrefLabel: 'See what is inside', priceKey: 'playbookPrice', urlKey: 'playbookCheckoutUrl',
+    },
+    {
+        id: 'kit', eyebrow: 'Printable workbook', title: 'The Discharge Readiness Kit', cover: '/playbook/kit-cover.webp',
+        blurb: 'Everything you need to bring your loved one home from the hospital with confidence. Print it, bring it to the hospital, and write the answers down as the nurse speaks.',
+        points: ['Questions to ask before discharge day', 'A medication list and daily schedule', 'A home preparation checklist', 'A daily log for the first two weeks'],
+        priceKey: 'kitPrice', urlKey: 'kitCheckoutUrl',
+    },
+];
+
 function PlaybookCTA() {
+    const [idx, setIdx] = useState(0);
+    const [paused, setPaused] = useState(false);
+    const [reduced, setReduced] = useState(true);
+    const hold = useRef(false);
+    useEffect(() => {
+        const q = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setReduced(q.matches);
+        const on = (e) => setReduced(e.matches);
+        q.addEventListener && q.addEventListener('change', on);
+        return () => q.removeEventListener && q.removeEventListener('change', on);
+    }, []);
+    useEffect(() => {
+        if (paused || reduced) return undefined;
+        const t = setInterval(() => { if (!hold.current) setIdx((i) => (i + 1) % PRODUCTS.length); }, 7000);
+        return () => clearInterval(t);
+    }, [paused, reduced]);
+    const go = (i) => setIdx((i + PRODUCTS.length) % PRODUCTS.length);
+    const { bundlePrice } = SITE_CONFIG;
     return (
         <section className="bg-ivory py-16 md:py-20">
             <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10">
-                    <PlaybookCarousel compact />
-                    <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">Guide for families</p>
-                        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">The Safe Home Playbook</h2>
-                        <p className="text-ink/80 leading-relaxed mb-5">A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.</p>
-                        <ul className="space-y-2 mb-6">
-                            {PLAYBOOK_POINTS.map((p) => (
-                                <li key={p} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{p}</span></li>
-                            ))}
-                        </ul>
-                        <div className="flex flex-wrap items-center gap-4">
-                            <PlaybookAction />
-                            <a href="/safe-home-playbook" className="inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See what is inside <ArrowRight className="w-4 h-4" /></a>
-                        </div>
+                <div className="relative bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10"
+                    role="region" aria-roledescription="carousel" aria-label="Guides for families"
+                    onMouseEnter={() => { hold.current = true; }} onMouseLeave={() => { hold.current = false; }}
+                    onFocus={() => { hold.current = true; }} onBlur={() => { hold.current = false; }}
+                    onTouchStart={() => { hold.current = true; }} onTouchEnd={() => { setTimeout(() => { hold.current = false; }, 4000); }}>
+                    <div className="grid">
+                        {PRODUCTS.map((p, i) => {
+                            const active = i === idx;
+                            return (
+                                <div key={p.id} aria-hidden={!active} {...(!active ? { inert: '' } : {})}
+                                    className={`[grid-area:1/1] grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center transition-opacity duration-[1400ms] ease-in-out ${active ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                                    <img src={p.cover} width="680" height="880" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" alt={`Cover of ${p.title} by Pierre Concierge Nursing`} className="w-48 md:w-full max-w-[16rem] mx-auto rounded-xl shadow-xl" />
+                                    <div>
+                                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">{p.eyebrow}</p>
+                                        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">{p.title}</h2>
+                                        <p className="text-ink/80 leading-relaxed mb-5">{p.blurb}</p>
+                                        <ul className="space-y-2 mb-6">
+                                            {p.points.map((t) => (
+                                                <li key={t} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>
+                                            ))}
+                                        </ul>
+                                        <div className="flex flex-wrap items-center gap-4">
+                                            <ProductAction url={SITE_CONFIG[p.urlKey]} price={SITE_CONFIG[p.priceKey]} />
+                                            {p.href && <a href={p.href} className="inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">{p.hrefLabel} <ArrowRight className="w-4 h-4" /></a>}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
+                    <div className="mt-8 flex items-center justify-center gap-1">
+                        <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="w-11 h-11 rounded-full text-pine hover:bg-pine/10 flex items-center justify-center"><ChevronLeft className="w-5 h-5" /></button>
+                        {PRODUCTS.map((p, i) => (
+                            <button key={p.id} type="button" onClick={() => go(i)} aria-label={`Show ${p.title}`} className="w-8 h-11 flex items-center justify-center"><span className={`block rounded-full transition-all ${i === idx ? 'w-6 h-2 bg-pine' : 'w-2 h-2 bg-pine/25'}`} /></button>
+                        ))}
+                        <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="w-11 h-11 rounded-full text-pine hover:bg-pine/10 flex items-center justify-center"><ChevronRight className="w-5 h-5" /></button>
+                        {!reduced && (
+                            <button type="button" onClick={() => setPaused((v) => !v)} aria-label={paused ? 'Play slideshow' : 'Pause slideshow'} className="ml-2 min-h-[44px] px-3 text-xs font-semibold text-pine/70 hover:text-pine">{paused ? 'Play' : 'Pause'}</button>
+                        )}
+                    </div>
+                    <p className="sr-only" aria-live="polite">{PRODUCTS[idx].title}</p>
+                    {bundlePrice && <p className="mt-2 text-center text-sm text-ink/70">Get both together for {bundlePrice}.</p>}
                 </div>
             </div>
         </section>
