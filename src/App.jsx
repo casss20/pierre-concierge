@@ -437,6 +437,18 @@ function AboutFaqNext() {
     );
 }
 
+function ValuesTeaser() {
+    return (
+        <section className="bg-cream/50 py-12">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 className="font-serif text-2xl md:text-3xl font-semibold text-pine mb-3">Why Pierre exists, and what we stand for</h2>
+                <p className="text-ink/75 leading-relaxed mb-5">Personal attention, clear communication, advocacy, privacy, honest pricing, and care rooted in Marion County.</p>
+                <a href="/our-values" className="inline-flex items-center gap-2 font-semibold text-royal hover:underline min-h-[44px]">Read our values <ArrowRight className="w-4 h-4" /></a>
+            </div>
+        </section>
+    );
+}
+
 function QuoteBand() {
     return (
         <section className="bg-pine text-ivory relative overflow-hidden">
@@ -812,6 +824,7 @@ function Footer() {
                             <a href="/services" className="inline-block py-2 hover:text-sand transition-colors">Services</a>
                             <a href="/pricing" className="inline-block py-2 hover:text-sand transition-colors">Pricing</a>
                             <a href="/about" className="inline-block py-2 hover:text-sand transition-colors">About Elda</a>
+                            <a href="/our-values" className="inline-block py-2 hover:text-sand transition-colors">Our values</a>
                             <a href="/faq" className="inline-block py-2 hover:text-sand transition-colors">FAQ</a>
                             <a href="/conditions" className="inline-block py-2 hover:text-sand transition-colors">Conditions</a>
                             <a href="/areas" className="inline-block py-2 hover:text-sand transition-colors">Areas we serve</a>
@@ -1277,6 +1290,7 @@ const PAGE_HEADERS = {
     '/services': { eyebrow: 'Services', title: 'Our nursing services', subtitle: 'Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.' },
     '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.' },
     '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.' },
+    '/our-values': { eyebrow: 'About', title: 'Our values', subtitle: 'Why Pierre Concierge Nursing exists, and the principles behind every visit.' },
     '/privacy-practices': { eyebrow: 'Privacy', title: 'HIPAA Notice of Privacy Practices', subtitle: 'How your health information is used, shared, and protected, and the rights you have.' },
     '/faq': { eyebrow: 'FAQ', title: 'Frequently asked questions', subtitle: 'Insurance, payment, physician orders, and how a visit works.' },
 };
@@ -1445,6 +1459,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'About', href: '/about' },
     ];
     const moreLinks = [
+        { label: 'Our Values', href: '/our-values' },
         { label: 'Care Settings', href: '/care-settings' },
         { label: 'Compare Care Options', href: '/compare' },
         { label: 'Paying for Care', href: '/paying-for-care' },
@@ -1457,7 +1472,7 @@ function Nav({ openBooking, path = '/' }) {
     const kids = (list, base) => list.map((x) => ({ label: x.title, href: `${base}/${x.slug}` }));
     const mobileItems = [
         { label: 'Home', href: '/' },
-        { label: 'About', href: '/about' },
+        { label: 'About', children: [{ label: 'About Elda', href: '/about' }, { label: 'Our Values', href: '/our-values' }] },
         { label: 'Services', href: '/services', children: Object.values(SERVICE_BY_SLUG).map((x) => ({ label: x.title, href: `/services/${x.slug}` })) },
         { label: 'Care Settings', href: '/care-settings', children: kids(SETTING_PAGES, '/care-settings') },
         { label: 'Conditions', href: '/conditions', children: kids(CONDITION_PAGES, '/conditions') },
@@ -1576,8 +1591,10 @@ export default function App({ path = '/' }) {
         content = (<><PageHeader {...PAGE_HEADERS['/services']} /><Services openBooking={openBooking} /><HowItWorks /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/pricing') {
         content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
+    } else if (clean === '/our-values') {
+        content = (<><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
-        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><AboutWhy /><AboutValues /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/privacy-practices') {
         content = (<><PageHeader {...PAGE_HEADERS['/privacy-practices']} /><PrivacyNotice /></>);
     } else if (clean === '/faq') {
