@@ -4,137 +4,119 @@
 <meta charset="UTF-8">
 <title>The Holiday Parent Checkup — Pierre Concierge Nursing</title>
 <style>
-:root{--pine:#1E3D34;--pine-dark:#142B24;--ivory:#FAF7F0;--cream:#F3EDE0;--sand:#E8D5B0;--brass:#A97E3F;--ink:#1F2933;--red:#8C3B2E;--green:#3E6B4F}
+:root{--pine:#1E3D34;--ivory:#FAF7F0;--cream:#F3EDE0;--sand:#E8D5B0;--brass:#A97E3F;--ink:#1F2933;--line:#E3DCCB}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,"Segoe UI",Inter,sans-serif;background:#E9E4D6;padding:1.2rem .6rem;font-size:12px;line-height:1.5;color:var(--ink)}
-.page{background:#fff;max-width:8.5in;margin:0 auto .9rem;padding:.5in;box-shadow:0 2px 10px rgba(30,61,52,.15);page-break-after:always;position:relative}
-.page:last-child{page-break-after:auto}
-h1{font-family:Georgia,serif;font-size:1.6rem;color:var(--pine)}
-h2{font-family:Georgia,serif;font-size:1.1rem;color:var(--pine);margin-bottom:.3rem}
-h3{font-family:Georgia,serif;color:var(--pine);font-size:.95rem;margin:.45rem 0 .2rem}
-.masthead{background:var(--pine);color:var(--ivory);border-radius:.7rem;padding:.8rem 1rem;margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.masthead img{width:38px;height:46px;background:var(--ivory);border-radius:.5rem;padding:3px}
-.check{display:grid;grid-template-columns:22px 1fr;gap:.4rem;margin:.28rem 0;align-items:start}
-.check .box{width:14px;height:14px;border:1.5px solid var(--pine);border-radius:3px;margin-top:2px}
-.check p{margin:0}
-.flag{font-weight:700}
-.flag.worry{color:var(--red)}
-.flag.ok{color:var(--green)}
-.mod{border:1.5px solid var(--sand);border-radius:.6rem;padding:.55rem .8rem;margin:.5rem 0}
-.remember{background:var(--cream);border-left:4px solid var(--brass);border-radius:.35rem;padding:.5rem .7rem;margin:.45rem 0;font-size:.92em}
-.callout{background:#FBEFEA;border:1.5px solid var(--red);border-radius:.5rem;padding:.5rem .7rem;margin:.45rem 0}
-.callout b{color:var(--red)}
-.greenbox{background:#EFF6F0;border:1.5px solid var(--green);border-radius:.5rem;padding:.5rem .7rem;margin:.45rem 0}
-table{width:100%;border-collapse:collapse;margin:.4rem 0;font-size:.92em}
-th{background:var(--cream);color:var(--pine);text-align:left;padding:.3rem .45rem;border:1px solid #B9B2A0}
-td{padding:.3rem .45rem;border:1px solid #B9B2A0;vertical-align:top}
-.wline{display:block;border-bottom:1px solid #8A8474;height:1.15em;margin:.35rem 0 .5rem}
+body{font-family:-apple-system,"Segoe UI",Inter,sans-serif;background:#E9E4D6;padding:1.2rem .6rem;font-size:10.5px;line-height:1.38;color:var(--ink)}
+.page{background:#fff;max-width:8.5in;margin:0 auto 1.2rem;padding:.6in;box-shadow:0 2px 10px rgba(30,61,52,.15);page-break-after:always}
+h1{font-family:Georgia,serif;color:var(--pine);font-size:1.25rem;text-align:center}
+h2{font-family:Georgia,serif;color:var(--pine);font-size:.95rem;margin:.45rem 0 .12rem}
+.sub{text-align:center;color:#6B6455;font-size:.78rem;margin:.25rem 0 .5rem}
+p{margin:.25rem 0}
+ul{margin-left:1.3rem}
+li{margin:.16rem 0}
+.note{background:var(--cream);border-left:4px solid var(--brass);padding:.5rem .85rem;border-radius:.4rem;font-size:.8rem;margin:.45rem 0}
+.small{font-size:.78rem;color:#6B6455}
+table{width:100%;border-collapse:collapse;margin:.25rem 0}
+th{text-align:left;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--pine);border-bottom:1.5px solid var(--line);padding:.18rem .35rem}
+td{border-bottom:1px solid #EFE9DA;padding:.17rem .35rem;vertical-align:top}
+.chk{width:20px;text-align:center;font-size:.95rem}
+.why{color:#6B6455;font-style:italic;font-size:.93em}
+.contact{background:var(--pine);color:var(--ivory);border-radius:.7rem;padding:.7rem 1.1rem;margin-top:.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.contact .big{font-family:Georgia,serif;font-size:1.15rem;font-weight:700}
 .center{text-align:center}
-.italic{font-style:italic}
-.small{font-size:.85em;color:#55503F}
-.qr{display:flex;gap:.8rem;align-items:center;background:var(--pine);color:var(--ivory);border-radius:.7rem;padding:.8rem 1rem;margin-top:.6rem}
-.qr img{width:76px;height:76px;background:#fff;border-radius:.4rem;padding:4px}
-.footer-note{font-size:.78rem;color:#6B6455;text-align:center;margin-top:.8rem}
-@media print{body{zoom:.85;background:#fff;padding:0}.page{box-shadow:none;margin:0 auto}@page{margin:.55in}}
+@media print{body{zoom:.8;background:#fff;padding:0}.page{box-shadow:none;margin:0 auto}.page:last-child{page-break-after:auto}@page{margin:.6in}}
 </style>
 </head>
 <body>
 
 <!-- PAGE 1 -->
 <div class="page">
-  <div class="masthead">
-    <div style="display:flex;align-items:center;gap:.7rem">
-      <img src="../assets/logo-mark.png" alt="Pierre Concierge Nursing logo">
-      <div><div style="font-family:Georgia,serif;font-size:1.05rem;font-weight:700">Pierre Concierge Nursing</div>
-      <div style="font-size:.75rem;opacity:.85">Elda Marie Joe Pierre, RN, BSN · Ocala &amp; Marion County, FL</div></div>
-    </div>
-    <div style="font-size:.72rem;opacity:.85;text-align:right">A 20-minute guide for<br>adult children home<br>for the holidays</div>
-  </div>
+  <div style="text-align:center;margin-bottom:.4rem"><img src="../assets/logo-mark.png" alt="" style="width:40px;height:48px"></div>
+  <h1>The Holiday Parent Checkup</h1>
+  <div class="sub">You're home for a few days. Here's how to really see how Mom or Dad is doing —<br>and what to do if what you see worries you.<br>Pierre Concierge Nursing &middot; Elda Marie Joe Pierre, RN, BSN &middot; Ocala &amp; Marion County, FL</div>
 
-  <h1 class="center" style="margin:.8rem 0 .2rem">The Holiday Parent Checkup</h1>
-  <p class="center italic pine" style="margin-bottom:.7rem">You're home for a few days. Here's how to really see how Mom or Dad is doing —<br>and what to do if what you see worries you.</p>
+  <p>Every November and December, adult children fly home and notice it: the fridge is empty in a new way, Dad's lost weight, there are dents in the car. You've got <b>one short visit</b> to see how they're really doing. This guide turns it into a structured assessment — the same categories a nurse checks first. Work through it casually, over normal moments. Don't interrogate — observe, note, check boxes. About 20 minutes total.</p>
 
-  <p style="max-width:6in;margin:0 auto .6rem">Every November and December, adult children fly home and notice it: the fridge is empty in a new way, Dad's lost weight, there are dents in the car, pills are scattered on the counter. You've got <b>one short visit</b> to figure out how they're really doing. This guide turns that visit into a structured assessment — the same categories a nurse checks first.</p>
-  <p style="max-width:6in;margin:0 auto .7rem">Work through it casually, over the visit. Don't interrogate — observe, note, and check boxes. It takes about 20 minutes total, spread across normal moments.</p>
+  <h2>1. Appearance &amp; weight <span style="font-weight:400;font-size:.8em;color:#6B6455">— when you hug them hello</span></h2>
+  <table>
+    <tr><th class="chk">&nbsp;</th><th>What to check — and what it can mean</th></tr>
+    <tr><td class="chk">&#9744;</td><td>Clothes fit the same as last visit? <span class="why">Loose rings, cinched belts, baggy clothes = weight loss — a worry flag.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Skin and eyes look healthy — not gray, sunken, or dehydrated. <span class="why">Dehydration drives most senior ER visits.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Steady standing up from a low chair — watch the push-off. <span class="why">Both arms pushing off = new weakness.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Personal hygiene unchanged — hair, nails, teeth, grooming. <span class="why">A sudden slide is usually cognition, not vanity.</span></td></tr>
+  </table>
 
-  <div class="mod">
-    <h3>1️⃣ Appearance &amp; weight <span class="small">(when you hug them hello)</span></h3>
-    <div class="check"><div class="box"></div><p>Clothes fit the same as last visit? Loose rings, belts cinched tight, or baggy clothes = <span class="flag worry">worry</span></p></div>
-    <div class="check"><div class="box"></div><p>Skin and eyes look healthy — not gray, sunken, or dehydrated</p></div>
-    <div class="check"><div class="box"></div><p>They're steady on their feet when they stand up from a chair <span class="small">(watch the push-off with both arms — that's a tell)</span></p></div>
-    <div class="check"><div class="box"></div><p>Personal hygiene unchanged — hair, nails, teeth, grooming</p></div>
-  </div>
+  <h2>2. The kitchen &amp; the pills <span style="font-weight:400;font-size:.8em;color:#6B6455">— offer to make coffee</span></h2>
+  <table>
+    <tr><th class="chk">&nbsp;</th><th>What to check — and what it can mean</th></tr>
+    <tr><td class="chk">&#9744;</td><td>Fridge has fresh, varied food — not just condiments and old leftovers. <span class="why">A "food desert" fridge = shopping, transport, or money trouble.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Dishes done, trash out, no smell of spoiled food or scorched pans. <span class="why">Scorched pans = forgetting the stove — check smoke detectors today.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Pill organizer is current — today's compartment is what's open, not a jumble. <span class="why">A jumble = the system broke down weeks ago.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>New pill bottles from new doctors — count them against last year. <span class="why">More doctors = more conflicting advice, nobody coordinating.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Any unopened prescriptions? <span class="why">The most common post-hospital failure I see.</span></td></tr>
+  </table>
 
-  <div class="mod">
-    <h3>2️⃣ The kitchen &amp; the pills <span class="small">(offer to make coffee)</span></h3>
-    <div class="check"><div class="box"></div><p>Fridge has fresh, varied food — not just condiments and old leftovers</p></div>
-    <div class="check"><div class="box"></div><p>Dishes done, trash out, no smell of spoiled food or scorched pans</p></div>
-    <div class="check"><div class="box"></div><p>Pill organizer is current — today's compartment is what's open, not a jumble</p></div>
-    <div class="check"><div class="box"></div><p>Look for new pill bottles from new doctors. Count them against what you knew about last year — more doctors = more conflicting advice</p></div>
-    <div class="check"><div class="box"></div><p>Any unopened prescriptions? <span class="small">That's the most common post-hospital failure I see.</span></p></div>
-  </div>
+  <h2>3. Movement &amp; falls <span style="font-weight:400;font-size:.8em;color:#6B6455">— walk with them, don't watch from the couch</span></h2>
+  <table>
+    <tr><th class="chk">&nbsp;</th><th>What to check — and what it can mean</th></tr>
+    <tr><td class="chk">&#9744;</td><td>Rises from a low chair without using both arms to push. <span class="why">New two-arm push-off = leg weakness.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Stairs handled confidently — no new white-knuckle grip on the rail. <span class="why">New stair fear = a fall they've hidden from you.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Bathroom set up: grab bars, non-slip mat, night light on the bed-to-bath path. <span class="why">Most falls happen at night, on that exact path.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td><b>Ask directly:</b> "Any falls this year? Even one?" <span class="why">Most seniors don't report falls. One is common; two or more in six months is a pattern that needs a plan.</span></td></tr>
+  </table>
 
-  <div class="mod">
-    <h3>3️⃣ Movement &amp; falls <span class="small">(walk with them, don't watch from the couch)</span></h3>
-    <div class="check"><div class="box"></div><p>They rise from a low chair without using both arms to push</p></div>
-    <div class="check"><div class="box"></div><p>Stairs handled confidently — no white-knuckle rail grip or one-step-at-a-time caution that's new</p></div>
-    <div class="check"><div class="box"></div><p>Check the bathroom: grab bars? Non-slip mat? Night light on the path from bed?</p></div>
-    <div class="check"><div class="box"></div><p><span class="flag worry">Ask directly:</span> "Any falls this year? Even one?" Most seniors don't report falls. One fall is common; two or more in six months is a pattern that needs a plan.</p></div>
-  </div>
+  <h2>4. Car &amp; driving <span style="font-weight:400;font-size:.8em;color:#6B6455">— ask them to drive you somewhere</span></h2>
+  <table>
+    <tr><th class="chk">&nbsp;</th><th>What to check — and what it can mean</th></tr>
+    <tr><td class="chk">&#9744;</td><td>New dents, scrapes, or a side mirror held on with tape. <span class="why">The car tells the truth the parent won't.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Misses turns on familiar routes, confuses pedals, crawls far under traffic speed. <span class="why">These patterns mean it's time for a formal driving evaluation.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Ask a sibling or neighbor casually: has anyone stopped riding with them? <span class="why">Families whisper this tell — collect it gently.</span></td></tr>
+  </table>
 
-  <div class="mod">
-    <h3>4️⃣ Car &amp; driving <span class="small">(ask them to drive you somewhere — the grocery store counts)</span></h3>
-    <div class="check"><div class="box"></div><p>New dents, scrapes, or a side mirror held on with tape</p></div>
-    <div class="check"><div class="box"></div><p>They miss turns on familiar routes, confuse pedals, or drive noticeably under the speed of traffic</p></div>
-    <div class="check"><div class="box"></div><p>Passengers or neighbors have stopped riding with them <span class="small">(ask a sibling or neighbor casually — this is the tell families whisper about)</span></p></div>
-  </div>
-
-  <div class="remember"><b>One thing to remember:</b> you're not looking for perfection. You're looking for <i>change from last visit</i>. Decline between visits is the signal; the direction matters more than any single snapshot.</div>
+  <div class="note"><b>One thing to remember:</b> you're not looking for perfection — you're looking for <i>change from last visit</i>. The direction matters more than any single snapshot.</div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page">
-  <div class="mod">
-    <h3>5️⃣ Mind &amp; mood <span class="small">(over a meal — the longest unhurried conversation you'll get)</span></h3>
-    <div class="check"><div class="box"></div><p>Conversation flows — they follow stories, remember the names you're talking about, finish thoughts</p></div>
-    <div class="check"><div class="box"></div><p>They ask you questions back — interest in your life is a strong cognition signal</p></div>
-    <div class="check"><div class="box"></div><p>Ask about their week: do their answers have specifics, or vague "oh, same as always"?</p></div>
-    <div class="check"><div class="box"></div><p>Unopened mail stacked up? Missed bills, late notices, or renewed subscriptions to things they don't remember buying — money confusion is often the <i>first</i> sign, before memory</p></div>
-    <div class="check"><div class="box"></div><p>Mood: some holiday sadness is normal. Withdrawal, stopped hobbies, or "what's the point" talk that persists is different — mention it to their doctor</p></div>
+  <h2>5. Mind &amp; mood <span style="font-weight:400;font-size:.8em;color:#6B6455">— over a meal, the longest unhurried conversation you'll get</span></h2>
+  <table>
+    <tr><th class="chk">&nbsp;</th><th>What to check — and what it can mean</th></tr>
+    <tr><td class="chk">&#9744;</td><td>Conversation flows — they follow stories, remember names, finish thoughts. <span class="why">Repeating the same story three times in one evening is a flag.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>They ask you questions back. <span class="why">Interest in your life is a strong cognition signal.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Ask about their week: specifics, or vague "same as always"? <span class="why">Vagueness that shields decline is common.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Unopened mail stacked up? Late notices, unpaid bills? <span class="why">Money confusion is often the <i>first</i> sign — before memory.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>Mood: holiday sadness is normal; withdrawal and "what's the point" talk that persists is not. <span class="why">Persistent low mood deserves a doctor mention — and 988 if it ever sounds dangerous.</span></td></tr>
+  </table>
+
+  <h2>6. The conversation starters <span style="font-weight:400;font-size:.8em;color:#6B6455">— pick the moment: a drive, a dish-drying session</span></h2>
+  <table>
+    <tr><th class="chk">&nbsp;</th><th>Say this — and why it works</th></tr>
+    <tr><td class="chk">&#9744;</td><td>"What has been the hardest part of the week?" <span class="why">Open-ended — listen for what's NOT mentioned: friends, outings, church.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>"If you needed help with something, who would you call?" <span class="why">Tests their real support network, not the imagined one.</span></td></tr>
+    <tr><td class="chk">&#9744;</td><td>"Have you two talked about what happens if one of you can't manage alone?" <span class="why">The door-opener for healthcare surrogate, POA, and care planning. Awkward for 30 seconds; priceless for the next decade.</span></td></tr>
+  </table>
+
+  <h2>What your checklist is telling you</h2>
+  <div class="note"><b>GREEN — mostly checked, nothing alarming:</b> enjoy the holiday. Do the "before you leave" setup below, and schedule a real check-in for spring.</div>
+  <div class="note"><b>YELLOW — a few unchecked boxes, or one worry flag:</b> book a professional wellness assessment within 30 days, get the medication list reconciled, and set up weekly calls with a script.</div>
+  <div class="note"><b>RED — weight loss + falls + med chaos + money confusion, or any sudden change:</b> that's not aging, that's a problem. Get a nurse or geriatrician's eyes on them <i>this month</i>. In Ocala/Marion County, this is exactly what I do — often within 24–48 hours.</div>
+
+  <h2>Before you fly home — the 30-minute setup</h2>
+  <ul>
+    <li>Fill in the refrigerator emergency card (in The Home Care Playbook) and photograph it</li>
+    <li>Photograph every medication bottle + the insurance card — full label, both sides</li>
+    <li>Save their doctor's, pharmacy's, and one neighbor's number in your phone</li>
+    <li>Ask them to sign a Release of Information at their next appointment so doctors can talk to you</li>
+    <li>Agree on a weekly call time — and who notices if they don't answer</li>
+    <li>If anything worried you today: book the assessment <i>before</i> you leave the house. "Later" is where this goes to die.</li>
+  </ul>
+
+  <div class="contact">
+    <div><div class="big">Worried about what you saw?</div><div class="small" style="opacity:.9">Wellness assessments, medication reviews, and family consults in Ocala &amp; Marion County — and I answer my own phone. (754) 367-6929 &middot; jpjojo565@gmail.com &middot; pierre-concierge.vercel.app</div></div>
+    <div><img src="../assets/qr-booking.png" alt="QR code to Pierre Concierge Nursing website" style="width:70px;height:70px;background:#fff;border-radius:.4rem;padding:3px"></div>
   </div>
 
-  <div class="mod">
-    <h3>6️⃣ The conversation starters <span class="small">(pick the moment — a drive, a dish-drying session)</span></h3>
-    <p>These three questions open more doors than any interrogation:</p>
-    <div class="check"><div class="box"></div><p><b>"What has been the hardest part of the week?"</b> — open-ended; listen for what's NOT mentioned (friends, outings, church)</p></div>
-    <div class="check"><div class="box"></div><p><b>"If you needed help with something, who would you call?"</b> — tests their real support network, not the imagined one</p></div>
-    <div class="check"><div class="box"></div><p><b>"Have you and Dad/Mom talked about what happens if one of you can't manage alone?"</b> — the door-opener for healthcare surrogate, POA, and care planning conversations. Awkward for 30 seconds; priceless for the next decade</p></div>
-  </div>
-
-  <h3>What your checklist is telling you</h3>
-  <div class="greenbox"><b>Mostly checked, nothing alarming</b> — enjoy the holiday. Do the "before you leave" setup below, and schedule a real check-in for spring.</div>
-  <div style="background:#FBF6E7;border:1.5px solid var(--brass);border-radius:.5rem;padding:.5rem .7rem;margin:.45rem 0"><b style="color:#6B4F22">A few unchecked boxes, or one "worry" flag</b> — don't panic, but don't fly home pretending you didn't see it. Book a professional wellness assessment in the next 30 days, get their medication list reconciled, and set up weekly calls with a script (see my Long-Distance Caregiver Kit).</div>
-  <div class="callout"><b>Weight loss + falls + med chaos + money confusion, or any sudden change</b> — that's not aging, that's a problem. Get a nurse or geriatrician eyes on them <i>this month</i>. If they're in Ocala/Marion County, this is exactly what I do — often within 24–48 hours.</div>
-
-  <h3>Before you fly home — the 30-minute setup</h3>
-  <div class="check"><div class="box"></div><p>Fill in the refrigerator emergency card (in The Home Care Playbook) and photograph it</p></div>
-  <div class="check"><div class="box"></div><p>Photograph every medication bottle + the insurance card — full label, both sides</p></div>
-  <div class="check"><div class="box"></div><p>Save their doctor's, pharmacy's, and one neighbor's number in your phone</p></div>
-  <div class="check"><div class="box"></div><p>Ask them to sign a Release of Information at their next appointment so doctors can talk to you</p></div>
-  <div class="check"><div class="box"></div><p>Agree on a weekly call time — and who notices if they don't answer</p></div>
-  <div class="check"><div class="box"></div><p>If anything worried you today: book the assessment <i>before</i> you leave the house. "Later" is where this goes to die.</p></div>
-
-  <div class="qr">
-    <img src="../assets/qr-booking.png" alt="QR code to Pierre Concierge Nursing website">
-    <div>
-      <div style="font-family:Georgia,serif;font-size:1.05rem;font-weight:700">Worried about what you saw?</div>
-      <div style="font-size:.85rem;margin-top:.15rem">I do wellness assessments, medication reviews, and family consults in Ocala &amp; Marion County — and I answer my own phone.</div>
-      <div style="font-size:1.1rem;font-weight:700;margin-top:.2rem">(754) 367-6929 · jpjojo565@gmail.com</div>
-      <div style="font-size:.75rem;opacity:.85;margin-top:.1rem">pierre-concierge.vercel.app · Scan for services &amp; booking</div>
-    </div>
-  </div>
-
-  <p class="footer-note">This guide is education, not medical advice, and does not create a nurse–patient relationship. For medical concerns, consult a physician. © Pierre Concierge Nursing, Ocala, FL. Share this guide freely with siblings.</p>
+  <p class="small center" style="margin-top:.8rem">This guide is education, not medical advice, and does not create a nurse–patient relationship. For medical concerns, consult a physician. &copy; Pierre Concierge Nursing, Ocala, FL. Share this guide freely with your siblings.</p>
 </div>
 
 </body>
