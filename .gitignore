@@ -4,3 +4,5 @@ dist
 .DS_Store
 .gemini
 dist-ssr
+
+.kb-ssr

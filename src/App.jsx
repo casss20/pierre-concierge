@@ -1012,10 +1012,12 @@ function ServiceBanner({ detail }) {
 // --- Locally focused content pages (compare, conditions, areas, etc.) ---
 function LocalFaq({ faqs }) {
     const [open, setOpen] = useState(0);
+    // The knowledge base build sets this flag so every answer is rendered. It is unset on the live site.
+    const expandAll = typeof globalThis !== 'undefined' && globalThis.__KB_EXPAND_ALL__ === true;
     return (
         <div className="space-y-3">
             {faqs.map(({ q, a }, i) => {
-                const isOpen = open === i;
+                const isOpen = open === i || expandAll;
                 return (
                     <div key={q} className="bg-ivory rounded-2xl border border-pine/10 overflow-hidden">
                         <button onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen} className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left">
