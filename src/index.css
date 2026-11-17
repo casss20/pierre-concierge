@@ -42,3 +42,16 @@
     scroll-behavior: auto;
   }
 }
+
+/* Announcement ticker: scrolls the notice in a loop, pauses on hover/focus,
+   and falls back to static centered text for reduced motion. */
+.ticker { overflow: hidden; white-space: nowrap; }
+.ticker-track { display: inline-flex; width: max-content; animation: ticker-scroll 28s linear infinite; }
+.ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+.ticker-item { padding-right: 4rem; }
+@keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-static { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { display: none; }
+  .ticker-static { display: block; white-space: normal; }
+}

@@ -1129,12 +1129,23 @@ function Nav({ openBooking, path = '/' }) {
 
     return (
         <>
-            {/* announcement bar */}
-            <div className="bg-pine text-ivory/90 text-xs font-medium text-center py-2 px-4 tracking-wide">
-                Now serving Ocala & Marion County — <a href="tel:+17543676929" className="text-sand font-semibold hover:text-ivory transition-colors">call or text (754) 367-6929</a>
-                <span className="block sm:inline sm:ml-3 sm:pl-3 sm:border-l sm:border-ivory/30">
-                    Medical emergency? <a href="tel:911" className="font-bold text-ivory underline underline-offset-2">Call 911</a>
-                </span>
+            {/* announcement bar: looping ticker (static for reduced motion) */}
+            <div className="ticker bg-pine text-ivory/90 text-xs font-medium py-2 tracking-wide" role="region" aria-label="Announcements">
+                <div className="ticker-track">
+                    {[0, 1, 2, 3, 4, 5].map((n) => (
+                        <span className="ticker-item" key={n} aria-hidden={n > 0 ? 'true' : undefined}>
+                            Now serving Ocala &amp; Marion County — <a href="tel:+17543676929" tabIndex={n > 0 ? -1 : undefined} className="text-sand font-semibold hover:text-ivory transition-colors">call or text (754) 367-6929</a>
+                            <span className="mx-4 text-ivory/40">•</span>
+                            Medical emergency? <a href="tel:911" tabIndex={n > 0 ? -1 : undefined} className="font-bold text-ivory underline underline-offset-2">Call 911</a>
+                            <span className="mx-4 text-ivory/40">•</span>
+                            Private-pay mobile nursing · Mon–Sat 8am–6pm
+                        </span>
+                    ))}
+                </div>
+                <p className="ticker-static text-center px-4">
+                    Now serving Ocala &amp; Marion County — <a href="tel:+17543676929" className="text-sand font-semibold">call or text (754) 367-6929</a>
+                    <span className="block sm:inline sm:ml-3 sm:pl-3 sm:border-l sm:border-ivory/30">Medical emergency? <a href="tel:911" className="font-bold text-ivory underline underline-offset-2">Call 911</a></span>
+                </p>
             </div>
 
             <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
