@@ -996,7 +996,7 @@ const PLAYBOOK_POINTS = [
 ];
 // Sales preview only: the cover plus short descriptions. The guide's real pages are not shown on the site.
 const PLAYBOOK_SLIDES = [
-    { cover: true, cap: 'The Safe Home Playbook' },
+    { cover: true, src: '/playbook/p1.webp', title: 'The Safe Home Playbook', cap: 'The Safe Home Playbook' },
     { t: 'Nine problems, solved', d: 'Rushed discharge, confusing medicines, pain at home, tasks nobody taught you, no one calling back, and more.', cap: 'What it covers' },
     { t: 'Numbered steps', d: 'Each problem has clear steps you can start today, in order, with nothing to figure out.', cap: 'Step by step' },
     { t: 'Words to say', d: 'Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.', cap: 'Scripts' },
@@ -1004,12 +1004,19 @@ const PLAYBOOK_SLIDES = [
     { t: 'Day 7 and Day 14 reviews', d: 'Simple worksheets to decide whether to carry on, add help, or call the doctor.', cap: 'Reviews' },
     { t: 'Local help', d: 'Phone numbers and agencies for Ocala and Marion County, plus when to call 911.', cap: 'Ocala and Marion County' },
 ];
-function PlaybookCarousel({ compact = false }) {
+const KIT_SLIDES = [
+    { cover: true, src: '/playbook/kit-cover.webp', title: 'The Discharge Readiness Kit', cap: 'The Discharge Readiness Kit' },
+    { t: 'Questions to ask', d: 'Printable question pages for before discharge, with space to write each answer as the nurse speaks.', cap: 'Before discharge' },
+    { t: 'Medication list and schedule', d: 'Fill in the medicines from the discharge papers, then build a simple daily schedule.', cap: 'Day of discharge' },
+    { t: 'Home preparation checklist', d: 'Get the home ready before your loved one arrives, room by room.', cap: 'Getting the home ready' },
+    { t: 'A daily log', d: 'Track the first two weeks in one place, so nothing is forgotten when you call the doctor.', cap: 'The first two weeks' },
+];
+function PlaybookCarousel({ compact = false, slides = PLAYBOOK_SLIDES, label = 'What The Safe Home Playbook includes' }) {
     const trackRef = useRef(null);
     const [idx, setIdx] = useState(0);
     const go = (i) => {
         const el = trackRef.current; if (!el) return;
-        const n = Math.max(0, Math.min(PLAYBOOK_SLIDES.length - 1, i));
+        const n = Math.max(0, Math.min(slides.length - 1, i));
         el.scrollTo({ left: n * el.clientWidth, behavior: 'smooth' });
     };
     const onScroll = () => {
@@ -1017,15 +1024,15 @@ function PlaybookCarousel({ compact = false }) {
         setIdx(Math.round(el.scrollLeft / el.clientWidth));
     };
     return (
-        <div className={`relative mx-auto ${compact ? 'max-w-xs' : 'max-w-md'}`} role="region" aria-roledescription="carousel" aria-label="What The Safe Home Playbook includes">
+        <div className={`relative mx-auto ${compact ? 'max-w-xs' : 'max-w-md'}`} role="region" aria-roledescription="carousel" aria-label={label}>
             <div ref={trackRef} onScroll={onScroll} className="flex overflow-x-auto snap-x snap-mandatory rounded-2xl shadow-xl bg-white" style={{ scrollbarWidth: 'none' }}>
-                {PLAYBOOK_SLIDES.map((s, i) => (
-                    <figure key={s.cap} className="snap-center shrink-0 w-full m-0" style={{ aspectRatio: '680 / 880' }} aria-label={`${i + 1} of ${PLAYBOOK_SLIDES.length}: ${s.cap}`}>
+                {slides.map((s, i) => (
+                    <figure key={s.cap} className="snap-center shrink-0 w-full m-0" style={{ aspectRatio: '680 / 880' }} aria-label={`${i + 1} of ${slides.length}: ${s.cap}`}>
                         {s.cover ? (
-                            <img src="/playbook/p1.webp" width="680" height="880" loading="eager" decoding="async" alt="Cover of The Safe Home Playbook by Pierre Concierge Nursing" className="w-full h-full block object-cover" />
+                            <img src={s.src} width="680" height="880" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" alt={`Cover of ${s.title} by Pierre Concierge Nursing`} className="w-full h-full block object-cover" />
                         ) : (
-                            <div className="w-full h-full bg-pine text-ivory flex flex-col justify-center px-10 text-center">
-                                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-4">{i} of {PLAYBOOK_SLIDES.length - 1}</p>
+                            <div className="w-full h-full bg-pine text-ivory flex flex-col justify-center px-14 text-center">
+                                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-4">{i} of {slides.length - 1}</p>
                                 <h3 className="font-serif text-3xl font-semibold leading-tight mb-4">{s.t}</h3>
                                 <p className="text-ivory/85 leading-relaxed">{s.d}</p>
                             </div>
@@ -1034,10 +1041,10 @@ function PlaybookCarousel({ compact = false }) {
                 ))}
             </div>
             <button type="button" onClick={() => go(idx - 1)} disabled={idx === 0} aria-label="Previous" className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
-            <button type="button" onClick={() => go(idx + 1)} disabled={idx === PLAYBOOK_SLIDES.length - 1} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
-            <p className="mt-3 text-center text-sm text-ink/70" aria-live="polite">{PLAYBOOK_SLIDES[idx].cap}</p>
+            <button type="button" onClick={() => go(idx + 1)} disabled={idx === slides.length - 1} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
+            <p className="mt-3 text-center text-sm text-ink/70" aria-live="polite">{slides[idx].cap}</p>
             <div className="mt-2 flex justify-center gap-1">
-                {PLAYBOOK_SLIDES.map((s, i) => (
+                {slides.map((s, i) => (
                     <button key={s.cap} type="button" onClick={() => go(i)} aria-label={`Go to slide ${i + 1}`} className="w-6 h-6 flex items-center justify-center"><span className={`block rounded-full transition-all ${i === idx ? 'w-5 h-2 bg-pine' : 'w-2 h-2 bg-pine/25'}`} /></button>
                 ))}
             </div>
@@ -1078,13 +1085,13 @@ const PRODUCTS = [
     {
         id: 'playbook', eyebrow: 'Guide for families', title: 'The Safe Home Playbook', cover: '/playbook/p1.webp',
         blurb: 'A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.',
-        points: PLAYBOOK_POINTS, href: '/safe-home-playbook', hrefLabel: 'See what is inside', priceKey: 'playbookPrice', urlKey: 'playbookCheckoutUrl',
+        slides: PLAYBOOK_SLIDES, points: PLAYBOOK_POINTS, href: '/safe-home-playbook', hrefLabel: 'See what is inside', priceKey: 'playbookPrice', urlKey: 'playbookCheckoutUrl',
     },
     {
         id: 'kit', eyebrow: 'Printable workbook', title: 'The Discharge Readiness Kit', cover: '/playbook/kit-cover.webp',
         blurb: 'Everything you need to bring your loved one home from the hospital with confidence. Print it, bring it to the hospital, and write the answers down as the nurse speaks.',
         points: ['Questions to ask before discharge day', 'A medication list and daily schedule', 'A home preparation checklist', 'A daily log for the first two weeks'],
-        priceKey: 'kitPrice', urlKey: 'kitCheckoutUrl',
+        slides: KIT_SLIDES, priceKey: 'kitPrice', urlKey: 'kitCheckoutUrl',
     },
 ];
 
@@ -1121,7 +1128,7 @@ function PlaybookCTA() {
                             return (
                                 <div key={p.id} aria-hidden={!active} {...(!active ? { inert: '' } : {})}
                                     className={`[grid-area:1/1] grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center transition-opacity duration-[1400ms] ease-in-out ${active ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                                    <img src={p.cover} width="680" height="880" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" alt={`Cover of ${p.title} by Pierre Concierge Nursing`} className="w-48 md:w-full max-w-[16rem] mx-auto rounded-xl shadow-xl" />
+                                    <PlaybookCarousel compact slides={p.slides} label={`What ${p.title} includes`} />
                                     <div>
                                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">{p.eyebrow}</p>
                                         <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">{p.title}</h2>
