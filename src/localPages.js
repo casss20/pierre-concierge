@@ -629,7 +629,7 @@ export const SINGLE_PAGES = {
         description: 'A nurse written, step by step guide for the first 14 days after surgery or a hospital stay: nine common problems, scripts, and when to call for help.',
         eyebrow: 'Guide for families',
         path: '/safe-home-playbook',
-        intro: 'Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 17 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.',
+        intro: 'Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 20 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.',
         sections: [
             { h: 'The nine problems it solves', p: ['We built it from what families report most, in published research and in caregiver communities.'], ul: [
                 'A rushed discharge with no written plan',
@@ -653,6 +653,8 @@ export const SINGLE_PAGES = {
                 { t: 'Review worksheets', d: 'A Day 7 and Day 14 review to decide whether to carry on, add help, or call the doctor.' },
                 { t: 'Call scripts and templates', d: 'A four part call script, a Recovery Rules sheet, and a weekly family update.' },
                 { t: 'Local help', d: 'Phone numbers and agencies for Ocala and Marion County.' },
+                { t: 'Emergency ladder and fridge card', d: 'A red, yellow, green guide to what can wait and what cannot, with a card for the refrigerator.' },
+                { t: 'Doctors, forms, and family meeting', d: 'The forms that let you speak with the care team, five questions for every appointment, and an agenda for the family.' },
             ] },
             { h: 'Who it is for', ul: ['Families bringing a parent, spouse, or relative home after surgery or a hospital stay', 'Adult children organizing care from a distance', 'Anyone who wants a clear plan before discharge day'] },
             { h: 'Availability', p: ['The Playbook is coming soon as a downloadable PDF. When it launches, the Get the Playbook button will appear on this page.', 'Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.'], links: [

@@ -1002,6 +1002,8 @@ const PLAYBOOK_SLIDES = [
     { t: 'Words to say', d: 'Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.', cap: 'Scripts' },
     { t: 'A 14 day plan', d: 'Tick boxes from before you leave the hospital through the first two weeks at home.', cap: 'The plan' },
     { t: 'Day 7 and Day 14 reviews', d: 'Simple worksheets to decide whether to carry on, add help, or call the doctor.', cap: 'Reviews' },
+    { t: 'Red, yellow, green', d: 'An emergency ladder and fridge card, so you know what can wait and what cannot.', cap: 'The 2 a.m. question' },
+    { t: 'Doctors and family', d: 'Forms that let you speak with the care team, five questions for every visit, and a family meeting agenda.', cap: 'Doctors and family' },
     { t: 'Local help', d: 'Phone numbers and agencies for Ocala and Marion County, plus when to call 911.', cap: 'Ocala and Marion County' },
 ];
 const KIT_SLIDES = [
