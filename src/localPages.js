@@ -157,6 +157,141 @@ export const COMPARE_PAGES = [
             { q: 'Who decides between home and rehab?', a: 'Your doctor, the hospital case manager, and you. Ask for their recommendation and the reasons behind it. A nurse can help you prepare questions.' },
         ],
     },
+    {
+        slug: 'concierge-nurse-vs-home-health-aide',
+        title: 'Concierge Nurse vs. Home Health Aide',
+        seoTitle: 'Private Nurse vs. Home Health Aide in Ocala, FL | Pierre Concierge Nursing',
+        description: 'What a Registered Nurse does that a home health aide does not, and when families in Ocala and Marion County need one, the other, or both.',
+        eyebrow: 'Compare care options',
+        intro: 'A home health aide helps with personal care. A Registered Nurse assesses, monitors, and carries out medical orders. Here is how they differ.',
+        sections: [
+            {
+                h: 'Side by side',
+                table: {
+                    cols: ['', 'Home health aide', 'Registered Nurse'],
+                    rows: [
+                        ['Main job', 'Bathing, dressing, meals, mobility help', 'Assessment, medications, treatments, teaching'],
+                        ['Training', 'Aide training and certification', 'Nursing degree and state license'],
+                        ['Can give injections or IV therapy', 'No', 'Yes, with a doctor\'s order'],
+                        ['Notices medical changes', 'May report what they see', 'Assesses and acts, or calls the doctor'],
+                        ['Typical cost', 'Lower per hour', 'Higher per hour'],
+                    ],
+                },
+            },
+            {
+                h: 'When an aide is enough',
+                p: ['If your loved one is medically stable and mainly needs hands on help with daily tasks, an aide may be all you need.'],
+            },
+            {
+                h: 'When you want a nurse',
+                ul: ['New or changed medications', 'Wounds, injections, or IV therapy', 'A recent hospital stay or surgery', 'Worry that something is changing and no one is checking'],
+            },
+        ],
+        faqs: [
+            { q: 'Can a nurse and an aide work together?', a: 'Yes. Many families use an aide for daily help and a nurse for periodic clinical checks. The nurse can tell you when needs have changed.' },
+        ],
+    },
+    {
+        slug: 'concierge-nursing-vs-assisted-living',
+        title: 'Concierge Nursing vs. Assisted Living',
+        seoTitle: 'Concierge Nursing vs. Assisted Living in Ocala, FL | Pierre Concierge Nursing',
+        description: 'How private nursing at home compares with assisted living for older adults in Ocala and Marion County, and how a nurse can also support someone already living in a facility.',
+        eyebrow: 'Compare care options',
+        intro: 'Assisted living is a place to live with help built in. Concierge nursing is a nurse who comes to you, wherever you live.',
+        sections: [
+            {
+                h: 'Side by side',
+                table: {
+                    cols: ['', 'Assisted living', 'Concierge nursing'],
+                    rows: [
+                        ['Where', 'A community you move into', 'Your own home or your facility room'],
+                        ['What you get', 'Housing, meals, and help with daily tasks', 'Visits from a Registered Nurse'],
+                        ['Nursing', 'Varies by facility, often limited', 'A Registered Nurse for assessment and orders'],
+                        ['Cost', 'Monthly fees', 'Per visit or a monthly plan'],
+                        ['Moving required', 'Yes', 'No'],
+                    ],
+                },
+            },
+            {
+                h: 'They can work together',
+                p: ['If your loved one already lives in an assisted living facility, a private nurse can add one on one attention, check medications, and attend doctor visits. Ask the facility about its policy on outside nurses first.'],
+            },
+            {
+                h: 'Questions to ask a facility',
+                ul: ['What nursing is on site and during which hours?', 'What happens if care needs increase?', 'What does the monthly fee include?', 'May we bring in a private nurse?'],
+            },
+        ],
+        faqs: [
+            { q: 'Do you serve people in assisted living facilities?', a: 'Yes, with the facility\'s permission. Call to confirm travel to the address.' },
+        ],
+    },
+    {
+        slug: 'concierge-nursing-vs-nursing-home',
+        title: 'Concierge Nursing vs. a Nursing Home',
+        seoTitle: 'Concierge Nursing vs. a Nursing Home in Ocala, FL | Pierre Concierge Nursing',
+        description: 'How private nursing at home compares with a nursing home, and what to consider for someone in Ocala or Marion County who prefers to stay at home.',
+        eyebrow: 'Compare care options',
+        intro: 'A nursing home provides round the clock skilled care in a facility. Some people need that. Others do better at home with the right support.',
+        sections: [
+            {
+                h: 'Side by side',
+                table: {
+                    cols: ['', 'Nursing home', 'Concierge nursing'],
+                    rows: [
+                        ['Where', 'A licensed facility', 'Your own home'],
+                        ['Care available', 'Skilled nursing around the clock', 'Scheduled visits from a Registered Nurse'],
+                        ['Best for', 'People who need constant skilled care', 'People who are stable and want to stay home'],
+                        ['Familiar surroundings', 'No', 'Yes'],
+                        ['Who pays', 'Private pay, insurance, or Medicaid, depending on the stay', 'Private pay'],
+                    ],
+                },
+            },
+            {
+                h: 'Staying home safely',
+                p: ['Many people can stay at home with family help, a caregiver for daily tasks, and regular nurse visits for medications and health checks. If needs grow beyond what visits can safely cover, a nurse will tell you honestly.'],
+            },
+            {
+                h: 'When a facility may be the safer choice',
+                ul: ['Care is needed all day and night by skilled staff', 'Falls or confusion make being alone unsafe', 'Family cannot provide the help in between visits'],
+            },
+        ],
+        faqs: [
+            { q: 'Does Medicare pay for a nursing home?', a: 'Medicare covers a limited stay in a skilled nursing facility in certain cases, such as after a qualifying hospital stay. It does not pay for long term custodial care. Call 1-800-MEDICARE to check your situation.' },
+        ],
+    },
+    {
+        slug: 'concierge-nursing-vs-private-duty-nursing',
+        title: 'Concierge Nursing vs. Private Duty Nursing',
+        seoTitle: 'Concierge Nursing vs. Private Duty Nursing in Ocala, FL | Pierre Concierge Nursing',
+        description: 'The difference between concierge nursing and traditional private duty nursing, and how to choose in Ocala and Marion County.',
+        eyebrow: 'Compare care options',
+        intro: 'The terms overlap. Here is how we use them, so you can compare like with like when you call around.',
+        sections: [
+            {
+                h: 'Private duty nursing',
+                p: ['Usually long shifts of one on one nursing, often through an agency, for people who need continuous skilled care at home.'],
+            },
+            {
+                h: 'Concierge nursing',
+                p: ['Scheduled visits from a Registered Nurse you know by name, with time to assess, explain, and coordinate with your doctors. Pricing is posted, and you choose the visits you need.'],
+            },
+            {
+                h: 'Side by side',
+                table: {
+                    cols: ['', 'Private duty nursing', 'Concierge nursing'],
+                    rows: [
+                        ['Format', 'Long shifts', 'Scheduled visits'],
+                        ['Best for', 'Continuous skilled care', 'Check ins, treatments, and guidance'],
+                        ['Same nurse each time', 'Depends on the agency', 'Yes'],
+                        ['Pricing', 'Hourly, often by agency quote', 'Posted per visit or monthly plan'],
+                    ],
+                },
+            },
+        ],
+        faqs: [
+            { q: 'Do you offer 24 hour nursing?', a: 'No. Pierre Concierge Nursing provides scheduled visits, Monday to Saturday. If you need round the clock nursing, ask your doctor about private duty agencies.' },
+        ],
+    },
 ];
 
 export const CONDITION_PAGES = [
@@ -375,13 +510,12 @@ export const AREA_PAGES = [
     },
 ];
 
-export const AREA_NAMES = AREA_PAGES.map((a) => a.title);
 
-// Single pages (no sub pages)
-export const SINGLE_PAGES = {
-    '/paying-for-care': {
-        title: 'Paying for Care',
-        seoTitle: 'Paying for Home Nursing Care in Ocala, FL | Pierre Concierge Nursing',
+export const PAYING_PAGES = [
+    {
+        slug: 'how-to-pay-for-a-private-nurse',
+        title: 'How to Pay for a Private Nurse',
+        seoTitle: 'How to Pay for a Private Nurse in Ocala, FL | Pierre Concierge Nursing',
         description: 'How families in Ocala and Marion County pay for private home nursing: private pay, long term care insurance, HSA and FSA, and veterans benefits.',
         eyebrow: 'Paying for care',
         intro: 'Here is a plain guide to the ways families cover private nursing, and what to ask.',
@@ -390,7 +524,7 @@ export const SINGLE_PAGES = {
             { h: 'Medicare and insurance', p: ['Medicare can cover part time skilled home health if you qualify. It does not pay for ongoing help with daily living on its own, and it does not pay for private nursing visits from us. Call 1-800-MEDICARE or visit Medicare.gov to check your coverage.'] },
             { h: 'Long term care insurance', p: ['Policies differ. Ask your carrier what triggers benefits, whether there is a waiting period, and whether they reimburse a private nurse. Keep your receipts.'] },
             { h: 'HSA and FSA', p: ['Some nursing services may be eligible for reimbursement from a health savings or flexible spending account. Check with your plan administrator before you pay.'] },
-            { h: 'Veterans benefits', p: ['Marion County Veterans Services helps veterans and families with VA benefits, including questions about Aid and Attendance, at (352) 671-8422. The Ocala VA Clinic is at 4826 SW 49th Road, Ocala. Benefits and rules change, so confirm details with the VA.'] },
+            { h: 'Veterans benefits', p: ['Marion County Veterans Services helps veterans and families with VA benefits at (352) 671-8422. Benefits and rules change, so confirm details with the VA.'] },
             { h: 'Questions about cost', p: ['Call or text (754) 367-6929 and we will walk you through it.'] },
         ],
         faqs: [
@@ -398,6 +532,97 @@ export const SINGLE_PAGES = {
             { q: 'Can I get a receipt?', a: 'Yes. Ask Elda for a receipt for your records.' },
         ],
     },
+    {
+        slug: 'does-medicare-cover-a-private-nurse',
+        title: 'Does Medicare Cover a Private Nurse?',
+        seoTitle: 'Does Medicare Cover a Private Nurse at Home? | Pierre Concierge Nursing, Ocala, FL',
+        description: 'What Medicare does and does not cover for nursing at home, and how private nursing in Ocala and Marion County fits alongside it.',
+        eyebrow: 'Paying for care',
+        intro: 'Short answer: Medicare covers some skilled home health care, but not private nursing visits like ours. Here is the difference.',
+        sections: [
+            {
+                h: 'What Medicare may cover',
+                ul: [
+                    'Part time skilled nursing or therapy at home, if you qualify',
+                    'Your doctor must certify that you need it and set a plan of care',
+                    'You generally must be homebound and use a Medicare certified agency',
+                    'A limited stay in a skilled nursing facility after a qualifying hospital stay',
+                ],
+            },
+            {
+                h: 'What Medicare generally does not cover',
+                ul: ['Round the clock care at home', 'Help with bathing, meals, and daily tasks when that is all you need', 'Private nursing visits from an independent nurse'],
+            },
+            {
+                h: 'How private nursing fits',
+                p: ['Many families use Medicare home health for the skilled care it covers and add private nursing for extra time, explanations, and coordination. Pierre Concierge Nursing is private pay and does not bill Medicare.'],
+            },
+            { note: 'Rules and coverage change. For your own situation, call 1-800-MEDICARE or visit Medicare.gov.' },
+        ],
+        faqs: [
+            { q: 'Can I use Medicare home health and a private nurse together?', a: 'Yes. They serve different purposes. Tell both teams what each is doing so care stays coordinated.' },
+        ],
+    },
+    {
+        slug: 'long-term-care-insurance-home-nursing',
+        title: 'Long Term Care Insurance and Home Nursing',
+        seoTitle: 'Long Term Care Insurance for Home Nursing | Pierre Concierge Nursing, Ocala, FL',
+        description: 'Questions to ask your long term care insurance company about paying for a private nurse at home in Ocala and Marion County.',
+        eyebrow: 'Paying for care',
+        intro: 'Some long term care policies can reimburse private nursing at home. Every policy is different, so ask before you rely on it.',
+        sections: [
+            {
+                h: 'Questions to ask your carrier',
+                ul: [
+                    'What needs trigger benefits, and how do I start a claim?',
+                    'Is there a waiting period before payments begin?',
+                    'Does the policy pay for a Registered Nurse at home, and for independent providers?',
+                    'Is there a daily or monthly limit?',
+                    'What paperwork do you need from the provider?',
+                ],
+            },
+            {
+                h: 'What we can provide',
+                p: ['Elda can give you a receipt for your records. We do not bill your insurer directly at this time, so you would pay and then submit for reimbursement if your policy allows it.'],
+            },
+            { note: 'This is general information, not insurance advice. Your policy and carrier decide what is covered.' },
+        ],
+        faqs: [
+            { q: 'Will my policy pay you directly?', a: 'We do not bill insurance directly. You pay and submit receipts if your policy reimburses.' },
+        ],
+    },
+    {
+        slug: 'veterans-benefits-home-nursing',
+        title: 'Veterans Benefits and Home Nursing',
+        seoTitle: 'Veterans Benefits for Home Nursing | Pierre Concierge Nursing, Ocala, FL',
+        description: 'Where Marion County veterans and families can learn about VA benefits, including Aid and Attendance, for help at home.',
+        eyebrow: 'Paying for care',
+        intro: 'Veterans and surviving spouses may qualify for benefits that help with the cost of care at home. A local officer can tell you what applies.',
+        sections: [
+            {
+                h: 'Where to start in Marion County',
+                ul: ['Marion County Veterans Services: (352) 671-8422', 'Ocala VA Clinic: 4826 SW 49th Road, Ocala', 'Veterans Crisis Line: dial 988, then press 1'],
+            },
+            {
+                h: 'Aid and Attendance',
+                p: ['Aid and Attendance is an added amount some veterans and surviving spouses can receive with a VA pension when they need help with daily activities. Eligibility depends on service, income, assets, and medical need. A county veterans service officer can help you apply.'],
+            },
+            {
+                h: 'How we help',
+                p: ['Pierre Concierge Nursing is private pay and does not bill the VA. Elda can provide a receipt for your records and talk through what level of care your loved one needs.'],
+            },
+            { note: 'Benefits and rules change. Always confirm details with the VA or your county veterans service officer.' },
+        ],
+        faqs: [
+            { q: 'Does the VA pay you directly?', a: 'No. We do not bill the VA or any insurer at this time.' },
+        ],
+    },
+];
+
+export const AREA_NAMES = AREA_PAGES.map((a) => a.title);
+
+// Single pages (no sub pages)
+export const SINGLE_PAGES = {
     '/resources': {
         title: 'Resources for Ocala and Marion County Families',
         seoTitle: 'Healthcare Resources for Ocala and Marion County Families | Pierre Concierge Nursing',
@@ -413,14 +638,44 @@ export const SINGLE_PAGES = {
         ],
     },
     '/how-it-works': {
-        title: 'How It Works',
+        title: 'How Pierre Concierge Nursing Works',
         seoTitle: 'How Concierge Nursing Works | Pierre Concierge Nursing, Ocala, FL',
-        description: 'How to get started with private nursing at home in Ocala and Marion County: call, confirm your doctor\'s order, schedule a visit, and get clear notes.',
+        description: 'How to get started with private nursing at home in Ocala and Marion County: call or text, talk with Elda, a home visit, clear notes, and a plan that adapts.',
         eyebrow: 'How it works',
-        intro: 'Getting started is simple.',
+        intro: 'A Registered Nurse is part of your care from the first conversation. There is no clinic visit and no waiting room. Elda comes to you.',
         sections: [
-            { steps: ['Call or text (754) 367-6929, or send a request. Tell us what is going on.', 'Elda talks with you about what you need and confirms whether a doctor\'s order is required.', 'She visits you at home, Monday through Saturday, at a time that works.', 'You and your family get clear notes on what was done and what to watch.', 'Visits continue as you need them, per visit or on the monthly Care Plan.'] },
+            { h: 'From first call to care at home', steps: [
+                'You reach out. Call or text (754) 367-6929, or send a request. A family member, the patient, or a discharge planner can contact us.',
+                'Elda talks with you. She asks what is going on, what you need, and whether a doctor\'s order is required for the care you want.',
+                'She visits you at home, Monday through Saturday, at a time that works for you.',
+                'You get clear notes on what was done and what to watch for, so family stays in the loop.',
+                'You have the same nurse each time. Elda stays familiar with your history and notices changes early.',
+                'Care adapts as things change. Visits can be one time, per visit as needed, or on the monthly Care Plan, and Elda can coordinate with your doctors.',
+            ] },
             { h: 'Before the first visit', ul: ['Have a current list of medications', 'Have your doctor\'s orders or discharge papers handy', 'Know who the family contact is'] },
+            { h: 'What makes Pierre different', features: [
+                { t: 'A nurse, not a call center', d: 'Elda Marie Pierre, RN, BSN, answers and visits herself.' },
+                { t: 'Registered Nurse care', d: 'Assessment, medications, and treatments by a licensed RN, following your doctor\'s orders.' },
+                { t: 'The same nurse each time', d: 'You do not have to repeat your story to someone new.' },
+                { t: 'Care at home in Marion County', d: 'Mobile visits across Ocala and Marion County, with no clinic trip.' },
+                { t: 'Clear, posted pricing', d: 'Per visit rates and a monthly Care Plan, with no surprises.' },
+                { t: 'Coordination with your doctors', d: 'With your permission, Elda shares what she sees so your care team can act on it.' },
+            ] },
+            { h: 'Where to next', links: [
+                { href: '/pricing', label: 'Pricing and payment' },
+                { href: '/services', label: 'All services' },
+                { href: '/conditions', label: 'Conditions we support' },
+                { href: '/paying-for-care', label: 'Paying for care' },
+                { href: '/faq', label: 'FAQ' },
+            ] },
+        ],
+        faqs: [
+            { q: 'How do I get started?', a: 'Call or text (754) 367-6929, or use the request form. Tell us what is going on and Elda will call you back.' },
+            { q: 'How quickly can care begin?', a: 'It depends on Elda\'s schedule and your needs. Call or text and we will tell you the soonest time she can visit. Visits are Monday to Saturday.' },
+            { q: 'Do I need a doctor\'s referral?', a: 'Not to start. Assessments and check ins do not need one. Medications, IV therapy, injections, and wound treatments need your doctor\'s order, and Elda will confirm that with you.' },
+            { q: 'Will I see the same nurse?', a: 'Yes. Elda is your nurse.' },
+            { q: 'Does insurance pay?', a: 'We are private pay and do not bill insurance at this time. We can give you a receipt for your records.' },
+            { q: 'Can the plan change?', a: 'Yes. Visits and plans are adjusted as your needs change. Just tell Elda.' },
         ],
     },
     '/contact': {
@@ -449,6 +704,7 @@ export const SINGLE_PAGES = {
 
 export const INDEX_PAGES = {
     '/compare': { title: 'Compare Care Options', seoTitle: 'Compare Home Care Options | Pierre Concierge Nursing, Ocala, FL', description: 'Plain language comparisons of home care, home health, concierge nursing, caregivers, and rehab for families in Ocala and Marion County.', eyebrow: 'Compare care options', intro: 'Straight answers on the choices families face.', items: COMPARE_PAGES, base: '/compare' },
+    '/paying-for-care': { title: 'Paying for Care', seoTitle: 'Paying for Home Nursing Care in Ocala, FL | Pierre Concierge Nursing', description: 'How families in Ocala and Marion County pay for private home nursing: private pay, Medicare, long term care insurance, and veterans benefits.', eyebrow: 'Paying for care', intro: 'Plain answers on the cost of care and what covers what.', items: PAYING_PAGES, base: '/paying-for-care' },
     '/conditions': { title: 'Conditions We Support', seoTitle: 'Conditions We Support at Home | Pierre Concierge Nursing, Ocala, FL', description: 'Nursing support at home for diabetes, heart failure, COPD, high blood pressure, stroke recovery, and dementia in Ocala and Marion County.', eyebrow: 'Conditions', intro: 'General information and how a nurse can help. This is not medical advice.', items: CONDITION_PAGES, base: '/conditions' },
     '/care-settings': { title: 'Care Settings', seoTitle: 'Care Settings | Pierre Concierge Nursing, Ocala, FL', description: 'Nursing care at home, after a hospital stay, or while visiting Ocala and Marion County.', eyebrow: 'Care settings', intro: 'Wherever you are recovering in Marion County.', items: SETTING_PAGES, base: '/care-settings' },
     '/areas': { title: 'Areas We Serve', seoTitle: 'Areas We Serve | Pierre Concierge Nursing, Ocala and Marion County, FL', description: 'Mobile nursing in Ocala, Belleview, Dunnellon, Silver Springs, Marion Oaks, Summerfield, and On Top of the World.', eyebrow: 'Areas we serve', intro: 'Mobile nursing across Ocala and Marion County.', items: AREA_PAGES, base: '/areas' },
@@ -456,6 +712,7 @@ export const INDEX_PAGES = {
 
 export const DETAIL_GROUPS = {
     '/compare': COMPARE_PAGES,
+    '/paying-for-care': PAYING_PAGES,
     '/conditions': CONDITION_PAGES,
     '/care-settings': SETTING_PAGES,
     '/areas': AREA_PAGES,

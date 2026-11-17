@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { SITE_CONFIG } from './siteConfig.js';
 import PrivacyNotice from './PrivacyNotice.jsx';
 import { SERVICE_BY_SLUG, SLUG_BY_TITLE } from './serviceDetails.js';
-import { findLocalPage } from './localPages.js';
+import { findLocalPage, COMPARE_PAGES, CONDITION_PAGES, SETTING_PAGES, AREA_PAGES, PAYING_PAGES } from './localPages.js';
 
 const ORDER_LABEL = { required: "Required", partial: "Depends on the care", none: "Not needed" };
 import {
@@ -924,7 +924,7 @@ function LocalFaq({ faqs }) {
 }
 
 function LocalSection({ section }) {
-    const { h, p, ul, steps, table, note, link } = section;
+    const { h, p, ul, steps, table, note, link, links, features } = section;
     return (
         <div className="mb-10">
             {h && <h2 className="font-serif text-2xl font-semibold text-pine mb-4">{h}</h2>}
@@ -971,6 +971,23 @@ function LocalSection({ section }) {
                     <span>{note}</span>
                 </p>
             )}
+            {features && (
+                <div className="grid sm:grid-cols-2 gap-4">
+                    {features.map((f) => (
+                        <div key={f.t} className="rounded-2xl bg-cream/60 border border-pine/10 p-5">
+                            <h3 className="font-serif text-lg font-semibold text-pine mb-1">{f.t}</h3>
+                            <p className="text-sm text-ink/75 leading-relaxed">{f.d}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+            {links && (
+                <div className="flex flex-wrap gap-2.5">
+                    {links.map((l) => (
+                        <a key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-ivory border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>
+                    ))}
+                </div>
+            )}
             {link && <a href={link.href} className="inline-flex items-center gap-2 font-semibold text-royal hover:underline">{link.label} <ArrowRight className="w-4 h-4" /></a>}
         </div>
     );
@@ -978,7 +995,7 @@ function LocalSection({ section }) {
 
 function LocalPage({ found, openBooking }) {
     const { page, kind, base, siblings } = found;
-    const parentLabel = { '/compare': 'Compare care options', '/conditions': 'Conditions', '/care-settings': 'Care settings', '/areas': 'Areas we serve' }[base];
+    const parentLabel = { '/compare': 'Compare care options', '/conditions': 'Conditions', '/care-settings': 'Care settings', '/areas': 'Areas we serve', '/paying-for-care': 'Paying for care' }[base];
     return (
         <>
             <section className="bg-ivory pt-14 pb-6 md:pt-20">
@@ -1282,6 +1299,37 @@ function BookingModal({ isOpen, onClose, service }) {
 }
 
 // --- Nav ---------------------------------------------------------
+
+function MobileGroup({ item, current, onNavigate, depth = 0 }) {
+    const isActive = (href) => current === href || current.startsWith(href + '/');
+    const hasKids = item.children && item.children.length > 0;
+    const [open, setOpen] = useState(() => hasKids && item.children.some((c) => (c.href && isActive(c.href)) || (c.children && c.children.some((g) => isActive(g.href)))));
+    const pad = depth === 0 ? 'px-4' : depth === 1 ? 'pl-8 pr-4' : 'pl-12 pr-4';
+    if (!hasKids) {
+        return (
+            <a href={item.href} onClick={onNavigate} aria-current={current === item.href ? 'page' : undefined} className={`flex items-center min-h-[48px] ${pad} font-semibold ${depth === 0 ? 'text-pine text-base' : 'text-pine/90 text-[0.95rem]'} hover:bg-pine/5 transition-colors`}>
+                {item.label}
+            </a>
+        );
+    }
+    return (
+        <div className={open && depth === 0 ? 'bg-cream/60' : ''}>
+            <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} className={`w-full flex items-center justify-between min-h-[48px] ${pad} font-semibold text-left ${open ? 'text-royal' : 'text-pine'} ${depth === 0 ? 'text-base' : 'text-[0.95rem]'} hover:bg-pine/5 transition-colors`}>
+                <span>{item.label}</span>
+                <ChevronDown className={`w-4 h-4 text-brass transition-transform ${open ? 'rotate-180' : ''}`} />
+            </button>
+            {open && (
+                <div className="pb-2">
+                    {item.href && (
+                        <a href={item.href} onClick={onNavigate} className={`flex items-center min-h-[44px] ${depth === 0 ? 'pl-8' : 'pl-12'} pr-4 text-[0.95rem] font-semibold text-pine hover:bg-pine/5`}>All {item.label}</a>
+                    )}
+                    {item.children.map((c) => <MobileGroup key={c.label} item={c} current={current} onNavigate={onNavigate} depth={depth + 1} />)}
+                </div>
+            )}
+        </div>
+    );
+}
+
 function Nav({ openBooking, path = '/' }) {
     const current = path.replace(/\/+$/, '') || '/';
     const [scrolled, setScrolled] = useState(false);
@@ -1310,6 +1358,26 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Contact', href: '/contact' },
     ];
     const moreActive = moreLinks.some(({ href }) => current === href || current.startsWith(href + '/'));
+    const kids = (list, base) => list.map((x) => ({ label: x.title, href: `${base}/${x.slug}` }));
+    const mobileItems = [
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about' },
+        { label: 'Services', href: '/services', children: Object.values(SERVICE_BY_SLUG).map((x) => ({ label: x.title, href: `/services/${x.slug}` })) },
+        { label: 'Care Settings', href: '/care-settings', children: kids(SETTING_PAGES, '/care-settings') },
+        { label: 'Conditions', href: '/conditions', children: kids(CONDITION_PAGES, '/conditions') },
+        { label: 'Areas', href: '/areas', children: kids(AREA_PAGES, '/areas') },
+        { label: 'Pricing', href: '/pricing' },
+        { label: 'How It Works', href: '/how-it-works' },
+        { label: 'FAQs', href: '/faq' },
+        { label: 'More', children: [
+            { label: 'Compare Care Options', href: '/compare', children: kids(COMPARE_PAGES, '/compare') },
+            { label: 'Paying for Care', href: '/paying-for-care', children: kids(PAYING_PAGES, '/paying-for-care') },
+            { label: 'Resources', href: '/resources' },
+            { label: 'Accessibility', href: '/accessibility' },
+            { label: 'Privacy (HIPAA)', href: '/privacy-practices' },
+            { label: 'Contact', href: '/contact' },
+        ] },
+    ];
 
     return (
         <>
@@ -1368,22 +1436,17 @@ function Nav({ openBooking, path = '/' }) {
                 </div>
 
                 {menuOpen && (
-                    <div id="mobile-menu" className="md:hidden bg-ivory border-t border-pine/10 shadow-xl">
-                        <div className="px-4 py-4 flex flex-col gap-1">
-                            {links.map(({ label, href }) => (
-                                <a key={label} href={href} onClick={() => setMenuOpen(false)} className="py-3 px-3 rounded-xl font-semibold text-pine hover:bg-pine/5 transition-colors">
-                                    {label}
-                                </a>
-                            ))}
-                            <p className="px-3 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-brass">More</p>
-                            {moreLinks.map(({ label, href }) => (
-                                <a key={label} href={href} onClick={() => setMenuOpen(false)} className="py-2.5 px-3 rounded-xl font-semibold text-pine hover:bg-pine/5 transition-colors">
-                                    {label}
-                                </a>
-                            ))}
-                            <PillButton onClick={() => { openBooking('General Consultation'); setMenuOpen(false); }} className="w-full mt-2">
-                                Book Now
-                            </PillButton>
+                    <div id="mobile-menu" className="md:hidden bg-ivory border-t border-pine/10 shadow-xl max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain">
+                        <div className="divide-y divide-pine/10">
+                            {mobileItems.map((it) => <MobileGroup key={it.label} item={it} current={current} onNavigate={() => setMenuOpen(false)} />)}
+                        </div>
+                        <div className="sticky bottom-0 bg-ivory border-t border-pine/10 p-3 grid grid-cols-2 gap-3">
+                            <button type="button" onClick={() => { openBooking('General Consultation'); setMenuOpen(false); }} className="min-h-[48px] rounded-full border-2 border-pine text-pine font-semibold inline-flex items-center justify-center gap-2 hover:bg-pine hover:text-ivory transition-colors">
+                                <Calendar className="w-4 h-4" /> Request Care
+                            </button>
+                            <a href="tel:+17543676929" className="min-h-[48px] rounded-full bg-brass text-pine-dark font-semibold inline-flex items-center justify-center gap-2">
+                                <Phone className="w-4 h-4" /> Call
+                            </a>
                         </div>
                     </div>
                 )}

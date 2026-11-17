@@ -162,4 +162,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nurse-vs-home-health-aide</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-assisted-living</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-nursing-home</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-private-duty-nursing</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/does-medicare-cover-a-private-nurse</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/how-to-pay-for-a-private-nurse</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/long-term-care-insurance-home-nursing</loc></url>
+  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/veterans-benefits-home-nursing</loc></url>
 </urlset>
