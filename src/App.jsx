@@ -325,19 +325,30 @@ function Hero({ openBooking }) {
     );
 }
 
-// Hero logo animation: plays once, then holds on the finished logo.
+// Hero logo animation: plays, holds on the finished logo for a few seconds, then plays again.
 function LogoAnimation() {
+    const ref = useRef(null);
     const [still, setStill] = useState(false);
     useEffect(() => {
         const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduce) setStill(true);
     }, []);
+    useEffect(() => {
+        const v = ref.current;
+        if (!v) return;
+        let timer;
+        const onEnded = () => {
+            timer = setTimeout(() => { v.currentTime = 0; const p = v.play(); if (p && p.catch) p.catch(() => {}); }, 3000);
+        };
+        v.addEventListener('ended', onEnded);
+        return () => { v.removeEventListener('ended', onEnded); clearTimeout(timer); };
+    }, [still]);
     return (
         <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-[#FDF7ED] aspect-square w-full">
             {still ? (
                 <img src="/pierre-logo-animation-poster.webp" width="1080" height="1080" alt="Pierre Concierge Nursing logo" className="w-full h-full object-contain" />
             ) : (
-                <video src="/videos/pierre-logo-animation.mp4" poster="/pierre-logo-animation-poster.webp" width="1080" height="1080" autoPlay muted playsInline preload="auto" aria-label="Pierre Concierge Nursing logo animation" className="w-full h-full object-contain" />
+                <video ref={ref} src="/videos/pierre-logo-animation.mp4" poster="/pierre-logo-animation-poster.webp" width="1080" height="1080" autoPlay muted playsInline preload="auto" aria-label="Pierre Concierge Nursing logo animation" className="w-full h-full object-contain" />
             )}
         </div>
     );
