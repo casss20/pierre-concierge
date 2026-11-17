@@ -623,13 +623,63 @@ export const AREA_NAMES = AREA_PAGES.map((a) => a.title);
 
 // Single pages (no sub pages)
 export const SINGLE_PAGES = {
+    '/products': {
+        title: 'Our Products',
+        seoTitle: 'Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing',
+        description: 'Nurse written guides for families: The Safe Home Playbook and the Discharge Readiness Kit. Steps, scripts, lists, and logs for the first weeks at home.',
+        eyebrow: 'Our products',
+        path: '/products',
+        intro: 'Guides written by a Registered Nurse to help families through the first weeks at home. Both are downloadable PDFs you can print. They are general information, not medical advice.',
+        sections: [],
+        faqs: [
+            { q: 'Which one should I start with?', a: 'Start with the Discharge Readiness Kit if discharge is near and you want lists to fill in. Choose the Safe Home Playbook for the steps, scripts, and emergency guide for the first 14 days. Many families use both.' },
+            { q: 'How will I receive them?', a: 'They will be downloadable PDFs that you can print. Details will be posted here when they launch.' },
+            { q: 'Is this medical advice?', a: 'No. These are general guides. Always follow your own doctor and care team, and call 911 in an emergency.' },
+        ],
+    },
+    '/discharge-readiness-kit': {
+        title: 'The Discharge Readiness Kit',
+        seoTitle: 'The Discharge Readiness Kit | Pierre Concierge Nursing, Ocala',
+        description: 'A printable 15 page workbook for families: questions to ask before discharge, a medication list and schedule, a home checklist, and a 14 day recovery log.',
+        eyebrow: 'Printable workbook',
+        path: '/discharge-readiness-kit',
+        intro: 'Discharge day moves fast, and most families remember only half of it later. This 15 page printable workbook slows things down so you can ask the right questions, write the answers down, and walk out with a plan.',
+        sections: [
+            { h: 'What is inside', features: [
+                { t: 'Questions to ask before you leave', d: 'Two pages of questions for the recovery plan, medicines, equipment, and help, with room to write each answer.' },
+                { t: 'Medication list and daily schedule', d: 'Fill in every medicine from the discharge papers, then build a simple chart for the week.' },
+                { t: 'Home checklist and first 72 hours', d: 'Get the house ready before you arrive, then follow a simple plan one day at a time.' },
+                { t: 'Daily recovery log', d: 'One line a day for the first two weeks, to bring to follow up visits.' },
+                { t: 'Warning signs, contacts, and family schedule', d: 'When to get help, a contacts and appointments page for the fridge, and a schedule of who is with the patient and when.' },
+            ] },
+            { h: 'How to use it', steps: [
+                'Before discharge: print the question pages, bring them to the hospital, and write the answers as the nurse speaks.',
+                'Day of discharge: fill in the medication list and build the daily schedule.',
+                'Before you arrive home: walk through the home checklist.',
+                'First two weeks: fill in one line each day and bring it to follow up visits.',
+            ] },
+            { h: 'Who it is for', ul: ['Families preparing for a loved one to come home from the hospital', 'Anyone who wants lists and logs ready before discharge day'] },
+            { h: 'Pairs well with', links: [
+                { href: '/safe-home-playbook', label: 'The Safe Home Playbook' },
+                { href: '/services/hospital-to-home-transition', label: 'Hospital to Home Transition visit' },
+                { href: '/products', label: 'All our products' },
+            ] },
+            { h: 'Availability', p: ['The Kit is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.'] },
+            { note: 'The Kit is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.' },
+        ],
+        faqs: [
+            { q: 'Do I need to print it?', a: 'It is designed to be printed so you can write on it and take it to the hospital. You can also fill it in on a tablet.' },
+            { q: 'Is it only for one kind of surgery or illness?', a: 'No. It is a general workbook that works for most hospital stays and surgeries.' },
+            { q: 'Do I also need the Safe Home Playbook?', a: 'No. They work separately. The Kit holds your lists and logs, and the Playbook gives steps, scripts, and an emergency guide.' },
+        ],
+    },
     '/safe-home-playbook': {
         title: 'The Safe Home Playbook',
         seoTitle: 'The Safe Home Playbook | Pierre Concierge Nursing, Ocala',
         description: 'A nurse written, step by step guide for the first 14 days after surgery or a hospital stay: nine common problems, scripts, and when to call for help.',
         eyebrow: 'Guide for families',
         path: '/safe-home-playbook',
-        intro: 'Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 17 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.',
+        intro: 'Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 20 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.',
         sections: [
             { h: 'The nine problems it solves', p: ['We built it from what families report most, in published research and in caregiver communities.'], ul: [
                 'A rushed discharge with no written plan',
@@ -653,6 +703,8 @@ export const SINGLE_PAGES = {
                 { t: 'Review worksheets', d: 'A Day 7 and Day 14 review to decide whether to carry on, add help, or call the doctor.' },
                 { t: 'Call scripts and templates', d: 'A four part call script, a Recovery Rules sheet, and a weekly family update.' },
                 { t: 'Local help', d: 'Phone numbers and agencies for Ocala and Marion County.' },
+                { t: 'Emergency ladder and fridge card', d: 'A red, yellow, green guide to what can wait and what cannot, with a card for the refrigerator.' },
+                { t: 'Doctors, forms, and family meeting', d: 'The forms that let you speak with the care team, five questions for every appointment, and an agenda for the family.' },
             ] },
             { h: 'Who it is for', ul: ['Families bringing a parent, spouse, or relative home after surgery or a hospital stay', 'Adult children organizing care from a distance', 'Anyone who wants a clear plan before discharge day'] },
             { h: 'Availability', p: ['The Playbook is coming soon as a downloadable PDF. When it launches, the Get the Playbook button will appear on this page.', 'Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.'], links: [

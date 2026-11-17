@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-17",
   "site": "https://pierre-concierge.vercel.app",
-  "count": 57,
+  "count": 59,
   "documents": [
     {
       "file": "pages/home.md",
@@ -10,8 +10,8 @@
       "route": "/",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "9d384251fb8a77e6",
-      "words": 1624
+      "hash": "409324d8c544b98f",
+      "words": 1686
     },
     {
       "file": "services/overview.md",
@@ -174,14 +174,34 @@
       "words": 258
     },
     {
+      "file": "pages/products.md",
+      "title": "Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/products",
+      "route": "/products",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "c1f385a3e8d00ab6",
+      "words": 296
+    },
+    {
+      "file": "pages/discharge-readiness-kit.md",
+      "title": "The Discharge Readiness Kit | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/discharge-readiness-kit",
+      "route": "/discharge-readiness-kit",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "42a1914fe3b62f8e",
+      "words": 630
+    },
+    {
       "file": "pages/safe-home-playbook.md",
       "title": "The Safe Home Playbook | Pierre Concierge Nursing, Ocala",
       "source_url": "https://pierre-concierge.vercel.app/safe-home-playbook",
       "route": "/safe-home-playbook",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "527e9b12c0daea2a",
-      "words": 726
+      "hash": "5ceaf005a69563c9",
+      "words": 825
     },
     {
       "file": "pages/resources.md",

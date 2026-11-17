@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 9d384251fb8a77e6
+content_hash: 409324d8c544b98f
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -281,39 +281,57 @@ Questions to ask before discharge and a simple plan for the first 72 hours. Prin
 
 [Open the checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)
 
+Our products
+
+## Guides for the first weeks at home
+
+[See all our products](https://pierre-concierge.vercel.app/products)
+
 *(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
 
-1 of 6
+1 of 8
 
 ### Nine problems, solved
 
 Rushed discharge, confusing medicines, pain at home, tasks nobody taught you, no one calling back, and more.
 
-2 of 6
+2 of 8
 
 ### Numbered steps
 
 Each problem has clear steps you can start today, in order, with nothing to figure out.
 
-3 of 6
+3 of 8
 
 ### Words to say
 
 Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.
 
-4 of 6
+4 of 8
 
 ### A 14 day plan
 
 Tick boxes from before you leave the hospital through the first two weeks at home.
 
-5 of 6
+5 of 8
 
 ### Day 7 and Day 14 reviews
 
 Simple worksheets to decide whether to carry on, add help, or call the doctor.
 
-6 of 6
+6 of 8
+
+### Red, yellow, green
+
+An emergency ladder and fridge card, so you know what can wait and what cannot.
+
+7 of 8
+
+### Doctors and family
+
+Forms that let you speak with the care team, five questions for every visit, and a family meeting agenda.
+
+8 of 8
 
 ### Local help
 
@@ -323,7 +341,7 @@ The Safe Home Playbook
 
 Guide for families
 
-## The Safe Home Playbook
+### The Safe Home Playbook
 
 A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.
 

@@ -16,14 +16,14 @@ All client data stays on her device.
 | `print/hipaa-notice.html` | Notice of Privacy Practices + consent (HIPAA format, 3pp) + authorization-to-disclose form |
 | `print/service-agreement.html` | Independent Practice Service Agreement + Missed-Visit & Cancellation Policy (3pp) — sign with every client |
 | `print/referral-form.html` | Referral pad form (1p) + referral acknowledgment card (1p) — how referrers send patients in, and how we close the loop |
-| `print/home-care-playbook.html` | **The flagship product** — 8-page step-by-step family guide (5 modules + templates + services back page). Sell standalone ($35), include with first visits, free with Care Plan |
 | `print/holiday-parent-checkup.html` | **Digital product #2** — 2-page 'home for the holidays' parent assessment for adult children. $12 download, seasonal push Nov–Dec. Funnels to Wellness Assessment $150 |
 
 ### Digital products (Payhip/Gumroad store — TBD)
 
 | Product | Price | Funnels to |
 |---|---|---|
-| Home Care Playbook (8pp) | $35 | all services |
+| The Safe Home Playbook (20pp, PDF + Word, see `products/`) | $34 | all services |
+| Discharge Readiness Kit (15pp, see `products/`) | $19 | Hospital to Home Transition $185 |
 | Holiday Parent Checkup (2pp) | $12 | Wellness Assessment $150 |
 | 2 A.M. Fridge Pack | $15 | Wellness Assessment $150 |
 | Long-Distance Caregiver Kit | $29 | Care Plan $450/mo |
