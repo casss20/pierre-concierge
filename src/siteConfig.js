@@ -36,6 +36,11 @@ export const SITE_CONFIG = {
     binderPrice: "$59",
     // Optional bundle price for both guides, shown under the product carousel
     bundlePrice: "$49",
+    // Bundles. Empty link shows "Coming soon". Starter Bundle = Safe Home Playbook + Discharge Readiness Kit.
+    starterBundleUrl: "",
+    // Full Shelf = all five guides (Playbook, Discharge Kit, Long Distance Kit, Assisted Living Guide, Care Plan Binder)
+    fullShelfUrl: "",
+    fullShelfPrice: "$89",
     // Free downloadable resource (static page in /public)
     checklistUrl: "/going-home-checklist.html",
 };

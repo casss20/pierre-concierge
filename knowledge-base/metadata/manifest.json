@@ -10,8 +10,8 @@
       "route": "/",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "409324d8c544b98f",
-      "words": 1686
+      "hash": "7fb914e919508c8d",
+      "words": 1687
     },
     {
       "file": "services/overview.md",
@@ -180,8 +180,8 @@
       "route": "/products",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "41d545dcda2eba92",
-      "words": 448
+      "hash": "472a159511f63038",
+      "words": 1483
     },
     {
       "file": "pages/discharge-readiness-kit.md",

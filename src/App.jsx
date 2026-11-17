@@ -1144,6 +1144,47 @@ const PRODUCTS = [
     },
 ];
 
+const BUNDLES = [
+    {
+        id: 'starter', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $4',
+        blurb: 'The two guides most families need first when a loved one is coming home.',
+        items: ['The Safe Home Playbook', 'The Discharge Readiness Kit'], was: '$53', priceKey: 'bundlePrice', urlKey: 'starterBundleUrl',
+    },
+    {
+        id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $77',
+        blurb: 'Every guide we make, for every stage of caring for an aging parent. New guides will be added.',
+        items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$166', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
+    },
+];
+
+function BundleCards() {
+    return (
+        <div id="bundles" className="mt-12 scroll-mt-24">
+            <h2 className="font-serif text-2xl md:text-3xl font-semibold text-pine mb-2 text-center">Bundles</h2>
+            <p className="text-center text-sm text-ink/70 mb-6">Buy together and save.</p>
+            <div className="grid md:grid-cols-2 gap-6">
+                {BUNDLES.map((b) => (
+                    <div key={b.id} className="bg-cream/60 border border-pine/10 rounded-3xl p-6 flex flex-col">
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">{b.eyebrow}</p>
+                            <span className="shrink-0 rounded-full bg-pine text-ivory text-xs font-semibold px-3 py-1">{b.badge}</span>
+                        </div>
+                        <h3 className="font-serif text-2xl font-semibold text-pine mb-2">{b.title}</h3>
+                        <p className="text-sm text-ink/80 leading-relaxed mb-4">{b.blurb}</p>
+                        <ul className="space-y-2 mb-5">
+                            {b.items.map((t) => (
+                                <li key={t} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>
+                            ))}
+                        </ul>
+                        <p className="mt-auto mb-3 text-sm text-ink/70">Separately {b.was}. Together <span className="font-semibold text-pine">{SITE_CONFIG[b.priceKey]}</span>.</p>
+                        <div><ProductAction url={SITE_CONFIG[b.urlKey]} price={SITE_CONFIG[b.priceKey]} /></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function ProductCards() {
     return (
         <div className="space-y-8">
@@ -1166,7 +1207,6 @@ function ProductCards() {
                     </div>
                 </div>
             ))}
-            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">The Safe Home Playbook and the Discharge Readiness Kit together: {SITE_CONFIG.bundlePrice}.</p>}
         </div>
     );
 }
@@ -1241,7 +1281,7 @@ function PlaybookCTA() {
                         )}
                     </div>
                     <p className="sr-only" aria-live="polite">{PRODUCTS[idx].title}</p>
-                    {bundlePrice && <p className="mt-2 text-center text-sm text-ink/70">Get both together for {bundlePrice}.</p>}
+                    {bundlePrice && <p className="mt-2 text-center text-sm text-ink/70">Bundles from {bundlePrice}. <a href="/products#bundles" className="font-semibold text-royal hover:underline">See the bundles</a></p>}
                 </div>
             </div>
         </section>
@@ -1408,7 +1448,7 @@ function LocalPage({ found, openBooking }) {
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                     {page.path === '/products' ? (
                         <>
-                            <ProductCards />
+                            <><ProductCards /><BundleCards /></>
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">
                                     <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Questions, answered</h2>
