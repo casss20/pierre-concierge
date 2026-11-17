@@ -343,6 +343,89 @@ function LogoAnimation() {
     );
 }
 
+// About page: why we exist, what concierge nursing means, and our values.
+const ABOUT_VALUES = [
+    { icon: Heart, t: 'Personal attention', d: 'You get one nurse who knows you, your history, and what matters to your family.' },
+    { icon: BookOpen, t: 'Clear communication', d: 'Plain language, written notes after each visit, and answers to your questions.' },
+    { icon: ShieldCheck, t: 'Advocacy', d: 'Elda speaks up for you with your doctors so nothing is missed or misunderstood.' },
+    { icon: Lock, t: 'Privacy and discretion', d: 'Your information is shared only with the doctors and family you authorize.' },
+    { icon: FileText, t: 'Honest pricing', d: 'Posted per visit rates and a monthly Care Plan, with no surprises.' },
+    { icon: MapPin, t: 'Rooted in Marion County', d: 'Care at home across Ocala and Marion County, close to the people we serve.' },
+];
+const ABOUT_FAQS = [
+    { q: 'What is concierge nursing?', a: 'A Registered Nurse comes to your home for scheduled, private pay visits. You get more time, one familiar nurse, and clear communication, without a clinic trip.' },
+    { q: 'How is it different from home health?', a: 'Home health is short term skilled care ordered by your doctor and often covered by Medicare if you qualify. Concierge nursing is private pay, has no homebound rule, and is scheduled around your life. Many families use both.' },
+    { q: 'Who provides the care?', a: 'Elda Marie Pierre, RN, BSN, provides your care herself.' },
+    { q: 'Do I need a doctor\'s referral?', a: 'Not to start. Assessments and check ins do not need one. Medications, IV therapy, injections, and wound treatments need your doctor\'s order, and Elda will confirm that with you.' },
+    { q: 'Does insurance pay?', a: 'We are private pay and do not bill insurance at this time. Some long term care policies and veterans benefits may reimburse you. We can give you a receipt.' },
+    { q: 'Where do you serve?', a: 'Ocala and Marion County, Florida. Call or text (754) 367-6929 to confirm travel to your address.' },
+];
+function AboutWhy() {
+    return (
+        <section className="bg-cream/50 py-16 md:py-20">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 md:gap-14">
+                <div>
+                    <Eyebrow>Why we exist</Eyebrow>
+                    <h2 className="font-serif text-3xl font-semibold text-pine leading-tight mb-5">Care the way it <span className="italic font-medium text-royal">should be</span></h2>
+                    <p className="text-ink/80 leading-relaxed mb-4">Too many people go home from the hospital with confusing instructions and little support. Visits are rushed, the person changes every time, and no one explains what the doctor said.</p>
+                    <p className="text-ink/80 leading-relaxed">Pierre Concierge Nursing exists to close that gap. One Registered Nurse, who takes the time to listen, explain, and follow through, in the comfort of your own home.</p>
+                </div>
+                <div>
+                    <Eyebrow>What it means</Eyebrow>
+                    <h2 className="font-serif text-3xl font-semibold text-pine leading-tight mb-5">Hospital-grade care, <span className="italic font-medium text-royal">at home</span></h2>
+                    <p className="text-ink/80 leading-relaxed mb-4">Concierge nursing is private pay, nurse led care that comes to you. You choose the visits you need, and treatments follow your doctor&rsquo;s orders.</p>
+                    <ul className="space-y-2.5">
+                        {['Recovery after surgery or a hospital stay', 'Help managing a chronic condition', 'Medication reviews and health checks for an aging parent'].map((t) => (
+                            <li key={t} className="flex gap-3 text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" /><span>{t}</span></li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    );
+}
+function AboutValues() {
+    return (
+        <section className="bg-ivory py-16 md:py-20">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center max-w-2xl mx-auto mb-10">
+                    <div className="flex justify-center"><Eyebrow>Our values</Eyebrow></div>
+                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight">What we stand <span className="italic font-medium text-royal">for</span></h2>
+                </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {ABOUT_VALUES.map(({ icon: Icon, t, d }) => (
+                        <div key={t} className="rounded-3xl bg-cream/60 border border-pine/10 p-6">
+                            <div className="w-11 h-11 rounded-2xl bg-pine text-ivory flex items-center justify-center mb-4"><Icon className="w-5 h-5" /></div>
+                            <h3 className="font-serif text-xl font-semibold text-pine mb-2">{t}</h3>
+                            <p className="text-sm text-ink/75 leading-relaxed">{d}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+function AboutFaqNext() {
+    const links = [
+        { href: '/services', label: 'All services' }, { href: '/how-it-works', label: 'How it works' },
+        { href: '/pricing', label: 'Pricing' }, { href: '/conditions', label: 'Conditions' },
+        { href: '/care-settings', label: 'Care settings' }, { href: '/areas', label: 'Areas we serve' }, { href: '/contact', label: 'Contact' },
+    ];
+    return (
+        <section className="bg-ivory py-16 md:py-20">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="font-serif text-3xl font-semibold text-pine mb-6">Questions, answered</h2>
+                <LocalFaq faqs={ABOUT_FAQS} />
+                <h2 className="font-serif text-2xl font-semibold text-pine mt-14 mb-4">Where to next</h2>
+                <div className="flex flex-wrap gap-2.5">
+                    {links.map((l) => <a key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-cream/70 border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>)}
+                </div>
+                <p className="mt-10 text-xs text-ink/60 leading-relaxed">This page is general information, not medical advice. Services are non-emergency. In a medical emergency, call 911.</p>
+            </div>
+        </section>
+    );
+}
+
 function QuoteBand() {
     return (
         <section className="bg-pine text-ivory relative overflow-hidden">
@@ -1483,7 +1566,7 @@ export default function App({ path = '/' }) {
     } else if (clean === '/pricing') {
         content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
-        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><CredentialsStrip /><CareTeam /><Testimonials /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><AboutWhy /><AboutValues /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/privacy-practices') {
         content = (<><PageHeader {...PAGE_HEADERS['/privacy-practices']} /><PrivacyNotice /></>);
     } else if (clean === '/faq') {
