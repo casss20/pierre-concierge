@@ -15,13 +15,24 @@ if (!template.includes(ROOT_TAG)) throw new Error('prerender: <div id="root"></d
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 const SITE = 'https://pierre-concierge.vercel.app'
 
+// Keep titles within about 60 characters so search results do not cut them off.
+const BRAND = 'Pierre Concierge Nursing'
+function fitTitle(t) {
+    if (t.length <= 60) return t
+    const main = t.replace(new RegExp(`\\s*\\|\\s*${BRAND}.*$`), '')
+    const noPlace = main.replace(/ in Ocala, FL$/, '').replace(/ at Home in Ocala, FL$/, ' at Home')
+    const tries = [`${noPlace} | ${BRAND}`, main, `${noPlace} | Ocala`, noPlace]
+    return tries.find((x) => x.length <= 60) || noPlace
+}
+const allRoutes = [...pageRoutes, ...serviceRoutes, ...localRoutes].map((r) => ({ ...r, title: fitTitle(r.title) }))
+
 // Homepage
 fs.writeFileSync(path.join(distDir, 'index.html'), template.replace(ROOT_TAG, `<div id="root">${render('/')}</div>`))
 
 // Service pages
 const FAQ_SCHEMA = /<script type="application\/ld\+json">\s*\{\s*"@context": "https:\/\/schema\.org",\s*"@type": "FAQPage"[\s\S]*?<\/script>\s*/
 
-for (const { path: route, title, description } of [...pageRoutes, ...serviceRoutes, ...localRoutes]) {
+for (const { path: route, title, description } of allRoutes) {
     let html = template
         .replace(FAQ_SCHEMA, (m) => (route === '/faq' ? m : ''))
         .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
@@ -37,6 +48,12 @@ for (const { path: route, title, description } of [...pageRoutes, ...serviceRout
     fs.mkdirSync(outDir, { recursive: true })
     fs.writeFileSync(path.join(outDir, 'index.html'), html)
 }
+
+// Sitemap with last updated dates
+const today = new Date().toISOString().slice(0, 10)
+const urls = ['/', ...allRoutes.map((r) => r.path), '/going-home-checklist.html']
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`
+fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap)
 
 fs.rmSync(path.join(root, 'dist-ssr'), { recursive: true, force: true })
 console.log(`prerender: homepage + ${pageRoutes.length} pages and ${serviceRoutes.length} service pages and ${localRoutes.length} local pages written`)

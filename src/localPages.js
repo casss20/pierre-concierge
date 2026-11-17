@@ -195,7 +195,7 @@ export const COMPARE_PAGES = [
         slug: 'concierge-nursing-vs-assisted-living',
         title: 'Concierge Nursing vs. Assisted Living',
         seoTitle: 'Concierge Nursing vs. Assisted Living in Ocala, FL | Pierre Concierge Nursing',
-        description: 'How private nursing at home compares with assisted living for older adults in Ocala and Marion County, and how a nurse can also support someone already living in a facility.',
+        description: 'How private nursing at home compares with assisted living in Ocala and Marion County, and how a nurse can also support someone already living in a facility.',
         eyebrow: 'Compare care options',
         intro: 'Assisted living is a place to live with help built in. Concierge nursing is a nurse who comes to you, wherever you live.',
         sections: [
