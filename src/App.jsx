@@ -1657,9 +1657,9 @@ export default function App({ path = '/' }) {
     } else if (clean === '/pricing') {
         content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/our-values') {
-        content = (<><ScrollBackdrop /><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
-        content = (<><ScrollBackdrop /><PageHeader {...PAGE_HEADERS['/about']} /><About /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/privacy-practices') {
         content = (<><PageHeader {...PAGE_HEADERS['/privacy-practices']} /><PrivacyNotice /></>);
     } else if (clean === '/faq') {
@@ -1689,6 +1689,7 @@ export default function App({ path = '/' }) {
         <div id="top" className="min-h-screen bg-ivory font-sans text-ink">
             <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:bg-pine focus:text-ivory focus:px-5 focus:py-3 focus:rounded-xl focus:font-semibold">Skip to main content</a>
             <Nav openBooking={openBooking} path={clean} />
+            <ScrollBackdrop />
             <main id="main" tabIndex={-1} className="outline-none">{content}</main>
             <Footer />
             <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} service={service} />
