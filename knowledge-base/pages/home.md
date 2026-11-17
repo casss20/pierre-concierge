@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: c38f5077f878acd4
+content_hash: a3fea705fb97d54f
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -280,6 +280,8 @@ No referral is needed to book. Most families contact us directly, often the week
 Questions to ask before discharge and a simple plan for the first 72 hours. Print it and bring it to the hospital.
 
 [Open the checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)
+
+*(Image: A senior couple resting together at home)*
 
 ### Serving Ocala & Marion County
 

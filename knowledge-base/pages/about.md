@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 88831671530772af
+content_hash: 90e1fe1f1f723369
 ---
 
 # About Elda Pierre, RN, BSN | Pierre Concierge Nursing
@@ -30,6 +30,10 @@ Meet your nurse
 A Registered Nurse with a Bachelor of Science in Nursing and over two decades of hands-on experience — from the fast pace of rehabilitation centers to the personal setting of home health care.
 
 Elda founded **Pierre Concierge Nursing** after seeing too many patients discharged home with confusing instructions and little support. Her goal: to be your advocate, your nurse, and your peace of mind.
+
+*(Image: An older couple together in their living room at home)*
+
+Most families come to us the week of a hospital discharge — or the day caring for Mom or Dad starts feeling bigger than the family.
 
 #### Professional Experience
 
@@ -121,6 +125,8 @@ Ocala and Marion County, Florida. Call or text (754) 367-6929 to confirm travel 
 [All services](https://pierre-concierge.vercel.app/services)[How it works](https://pierre-concierge.vercel.app/how-it-works)[Pricing](https://pierre-concierge.vercel.app/pricing)[Conditions](https://pierre-concierge.vercel.app/conditions)[Care settings](https://pierre-concierge.vercel.app/care-settings)[Areas we serve](https://pierre-concierge.vercel.app/areas)[Contact](https://pierre-concierge.vercel.app/contact)
 
 This page is general information, not medical advice. Services are non-emergency. In a medical emergency, call 911.
+
+*(Image: A senior couple resting together at home)*
 
 ### Serving Ocala & Marion County
 

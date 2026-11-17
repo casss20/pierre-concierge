@@ -10,8 +10,8 @@
       "route": "/",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "c38f5077f878acd4",
-      "words": 1343
+      "hash": "a3fea705fb97d54f",
+      "words": 1351
     },
     {
       "file": "services/overview.md",
@@ -40,8 +40,8 @@
       "route": "/about",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "88831671530772af",
-      "words": 585
+      "hash": "90e1fe1f1f723369",
+      "words": 630
     },
     {
       "file": "pages/our-values.md",
@@ -560,8 +560,8 @@
       "route": "(footer)",
       "category": "site-info",
       "extracted": "2026-11-17",
-      "hash": "84d5d9f53204d569",
-      "words": 59
+      "hash": "31b648ef06d462cf",
+      "words": 64
     }
   ]
 }
