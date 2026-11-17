@@ -924,7 +924,7 @@ function LocalFaq({ faqs }) {
 }
 
 function LocalSection({ section }) {
-    const { h, p, ul, steps, table, note, link } = section;
+    const { h, p, ul, steps, table, note, link, links, features } = section;
     return (
         <div className="mb-10">
             {h && <h2 className="font-serif text-2xl font-semibold text-pine mb-4">{h}</h2>}
@@ -971,6 +971,23 @@ function LocalSection({ section }) {
                     <span>{note}</span>
                 </p>
             )}
+            {features && (
+                <div className="grid sm:grid-cols-2 gap-4">
+                    {features.map((f) => (
+                        <div key={f.t} className="rounded-2xl bg-cream/60 border border-pine/10 p-5">
+                            <h3 className="font-serif text-lg font-semibold text-pine mb-1">{f.t}</h3>
+                            <p className="text-sm text-ink/75 leading-relaxed">{f.d}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+            {links && (
+                <div className="flex flex-wrap gap-2.5">
+                    {links.map((l) => (
+                        <a key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-ivory border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>
+                    ))}
+                </div>
+            )}
             {link && <a href={link.href} className="inline-flex items-center gap-2 font-semibold text-royal hover:underline">{link.label} <ArrowRight className="w-4 h-4" /></a>}
         </div>
     );
@@ -978,7 +995,7 @@ function LocalSection({ section }) {
 
 function LocalPage({ found, openBooking }) {
     const { page, kind, base, siblings } = found;
-    const parentLabel = { '/compare': 'Compare care options', '/conditions': 'Conditions', '/care-settings': 'Care settings', '/areas': 'Areas we serve' }[base];
+    const parentLabel = { '/compare': 'Compare care options', '/conditions': 'Conditions', '/care-settings': 'Care settings', '/areas': 'Areas we serve', '/paying-for-care': 'Paying for care' }[base];
     return (
         <>
             <section className="bg-ivory pt-14 pb-6 md:pt-20">
