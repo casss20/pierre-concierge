@@ -1,0 +1,16 @@
+{
+  "generated": "2026-11-17",
+  "routes_expected": 55,
+  "documents_written": 56,
+  "problems": [],
+  "checks": {
+    "phone": true,
+    "hours": true,
+    "per_visit_price": true,
+    "monthly_plan": true,
+    "service_area": true,
+    "emergency_911": true,
+    "private_pay": true,
+    "physician_order": true
+  }
+}

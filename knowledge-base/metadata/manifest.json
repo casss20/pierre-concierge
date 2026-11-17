@@ -1,0 +1,567 @@
+{
+  "generated": "2026-11-17",
+  "site": "https://pierre-concierge.vercel.app",
+  "count": 56,
+  "documents": [
+    {
+      "file": "pages/home.md",
+      "title": "Pierre Concierge Nursing | Home Nursing in Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/",
+      "route": "/",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "c38f5077f878acd4",
+      "words": 1343
+    },
+    {
+      "file": "services/overview.md",
+      "title": "Home Nursing Services in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services",
+      "route": "/services",
+      "category": "services-overview",
+      "extracted": "2026-11-17",
+      "hash": "459d9c14f6872b36",
+      "words": 545
+    },
+    {
+      "file": "pages/pricing.md",
+      "title": "Pricing | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/pricing",
+      "route": "/pricing",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "6e1bd57c9db8a4fa",
+      "words": 277
+    },
+    {
+      "file": "pages/about.md",
+      "title": "About Elda Pierre, RN, BSN | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/about",
+      "route": "/about",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "88831671530772af",
+      "words": 585
+    },
+    {
+      "file": "pages/our-values.md",
+      "title": "Our Values | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/our-values",
+      "route": "/our-values",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "a74301536cd8dc60",
+      "words": 273
+    },
+    {
+      "file": "policies/privacy-practices.md",
+      "title": "HIPAA Notice of Privacy Practices | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/privacy-practices",
+      "route": "/privacy-practices",
+      "category": "policy",
+      "extracted": "2026-11-17",
+      "hash": "6b233f8b44c90e30",
+      "words": 964
+    },
+    {
+      "file": "pages/faq.md",
+      "title": "FAQ | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/faq",
+      "route": "/faq",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "0552a4eab5037913",
+      "words": 385
+    },
+    {
+      "file": "services/post-operative-recovery.md",
+      "title": "Post-Operative Recovery at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/post-operative-recovery",
+      "route": "/services/post-operative-recovery",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "1603dc214cb2ffde",
+      "words": 304
+    },
+    {
+      "file": "services/chronic-disease-management.md",
+      "title": "Chronic Disease Management at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/chronic-disease-management",
+      "route": "/services/chronic-disease-management",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "424ee224cd2525be",
+      "words": 264
+    },
+    {
+      "file": "services/hospital-to-home-transition.md",
+      "title": "Hospital-to-Home Transition at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/hospital-to-home-transition",
+      "route": "/services/hospital-to-home-transition",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "6f6ef93811a1a1c1",
+      "words": 273
+    },
+    {
+      "file": "services/advanced-wound-care.md",
+      "title": "Advanced Wound Care at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/advanced-wound-care",
+      "route": "/services/advanced-wound-care",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "c303b4eaec923cf6",
+      "words": 269
+    },
+    {
+      "file": "services/iv-therapy-hydration.md",
+      "title": "IV Therapy & Hydration at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/iv-therapy-hydration",
+      "route": "/services/iv-therapy-hydration",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "e02a3dbaa9e7b0de",
+      "words": 261
+    },
+    {
+      "file": "services/medication-management.md",
+      "title": "Medication Management at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/medication-management",
+      "route": "/services/medication-management",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "e17c2eb2945111d1",
+      "words": 275
+    },
+    {
+      "file": "services/assisted-living-facility-support.md",
+      "title": "Assisted Living Facility Support at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/assisted-living-facility-support",
+      "route": "/services/assisted-living-facility-support",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "94f16b68ef9a52b2",
+      "words": 262
+    },
+    {
+      "file": "services/family-peace-of-mind-visits.md",
+      "title": "Family Peace-of-Mind Visits at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/family-peace-of-mind-visits",
+      "route": "/services/family-peace-of-mind-visits",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "a716b18f96c9da79",
+      "words": 266
+    },
+    {
+      "file": "services/patient-advocacy.md",
+      "title": "Patient Advocacy at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/patient-advocacy",
+      "route": "/services/patient-advocacy",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "962aed397931606a",
+      "words": 254
+    },
+    {
+      "file": "services/wellness-assessments.md",
+      "title": "Wellness Assessments at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/services/wellness-assessments",
+      "route": "/services/wellness-assessments",
+      "category": "services",
+      "extracted": "2026-11-17",
+      "hash": "d044e9a87afb36f0",
+      "words": 258
+    },
+    {
+      "file": "pages/resources.md",
+      "title": "Healthcare Resources for Ocala and Marion County Families | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/resources",
+      "route": "/resources",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "06a8b09ae3f09168",
+      "words": 177
+    },
+    {
+      "file": "pages/how-it-works.md",
+      "title": "How Concierge Nursing Works | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/how-it-works",
+      "route": "/how-it-works",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "d008e6865e1f0fe8",
+      "words": 531
+    },
+    {
+      "file": "pages/contact.md",
+      "title": "Contact Pierre Concierge Nursing | Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/contact",
+      "route": "/contact",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "c95b1fc07040803f",
+      "words": 116
+    },
+    {
+      "file": "policies/accessibility.md",
+      "title": "Accessibility | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/accessibility",
+      "route": "/accessibility",
+      "category": "policy",
+      "extracted": "2026-11-17",
+      "hash": "d2a51006bd0b495e",
+      "words": 128
+    },
+    {
+      "file": "compare/overview.md",
+      "title": "Compare Home Care Options | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/compare",
+      "route": "/compare",
+      "category": "compare-overview",
+      "extracted": "2026-11-17",
+      "hash": "00adbdb0f38b2430",
+      "words": 308
+    },
+    {
+      "file": "paying-for-care/overview.md",
+      "title": "Paying for Home Nursing Care in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/paying-for-care",
+      "route": "/paying-for-care",
+      "category": "paying-for-care-overview",
+      "extracted": "2026-11-17",
+      "hash": "4ebb87408c0d7db4",
+      "words": 167
+    },
+    {
+      "file": "conditions/overview.md",
+      "title": "Conditions We Support at Home | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/conditions",
+      "route": "/conditions",
+      "category": "conditions-overview",
+      "extracted": "2026-11-17",
+      "hash": "a743c4aa6046071b",
+      "words": 209
+    },
+    {
+      "file": "care-settings/overview.md",
+      "title": "Care Settings | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/care-settings",
+      "route": "/care-settings",
+      "category": "care-settings-overview",
+      "extracted": "2026-11-17",
+      "hash": "f26a5fd6e03a3aec",
+      "words": 124
+    },
+    {
+      "file": "areas/overview.md",
+      "title": "Areas We Serve | Pierre Concierge Nursing, Ocala and Marion County, FL",
+      "source_url": "https://pierre-concierge.vercel.app/areas",
+      "route": "/areas",
+      "category": "areas-overview",
+      "extracted": "2026-11-17",
+      "hash": "8fce1859fba89bec",
+      "words": 212
+    },
+    {
+      "file": "compare/home-care-vs-home-health.md",
+      "title": "Home Care vs. Home Health Care in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/home-care-vs-home-health",
+      "route": "/compare/home-care-vs-home-health",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "f748b5a9145391c5",
+      "words": 606
+    },
+    {
+      "file": "compare/concierge-nursing-vs-home-health.md",
+      "title": "Concierge Nursing vs. Medicare Home Health | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-home-health",
+      "route": "/compare/concierge-nursing-vs-home-health",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "db841884b68c2d3e",
+      "words": 420
+    },
+    {
+      "file": "compare/nurse-vs-caregiver.md",
+      "title": "Private Nurse vs. Caregiver for Home Care in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/nurse-vs-caregiver",
+      "route": "/compare/nurse-vs-caregiver",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "5eda17465c8bee5a",
+      "words": 315
+    },
+    {
+      "file": "compare/recovering-at-home-vs-rehab.md",
+      "title": "Recovering at Home vs. a Rehab Facility in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/recovering-at-home-vs-rehab",
+      "route": "/compare/recovering-at-home-vs-rehab",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "3295baf23a5ac224",
+      "words": 308
+    },
+    {
+      "file": "compare/concierge-nurse-vs-home-health-aide.md",
+      "title": "Private Nurse vs. Home Health Aide in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/concierge-nurse-vs-home-health-aide",
+      "route": "/compare/concierge-nurse-vs-home-health-aide",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "56df9ba460a1f947",
+      "words": 328
+    },
+    {
+      "file": "compare/concierge-nursing-vs-assisted-living.md",
+      "title": "Concierge Nursing vs. Assisted Living in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-assisted-living",
+      "route": "/compare/concierge-nursing-vs-assisted-living",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "38c0ee456a3dfd84",
+      "words": 327
+    },
+    {
+      "file": "compare/concierge-nursing-vs-nursing-home.md",
+      "title": "Concierge Nursing vs. a Nursing Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-nursing-home",
+      "route": "/compare/concierge-nursing-vs-nursing-home",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "2dc567f20a0a973c",
+      "words": 351
+    },
+    {
+      "file": "compare/concierge-nursing-vs-private-duty-nursing.md",
+      "title": "Concierge Nursing vs. Private Duty Nursing in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-private-duty-nursing",
+      "route": "/compare/concierge-nursing-vs-private-duty-nursing",
+      "category": "compare",
+      "extracted": "2026-11-17",
+      "hash": "715cbb98e0f65a74",
+      "words": 292
+    },
+    {
+      "file": "paying-for-care/how-to-pay-for-a-private-nurse.md",
+      "title": "How to Pay for a Private Nurse in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/paying-for-care/how-to-pay-for-a-private-nurse",
+      "route": "/paying-for-care/how-to-pay-for-a-private-nurse",
+      "category": "paying-for-care",
+      "extracted": "2026-11-17",
+      "hash": "0cf1737ee27e5714",
+      "words": 321
+    },
+    {
+      "file": "paying-for-care/does-medicare-cover-a-private-nurse.md",
+      "title": "Does Medicare Cover a Private Nurse at Home? | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/paying-for-care/does-medicare-cover-a-private-nurse",
+      "route": "/paying-for-care/does-medicare-cover-a-private-nurse",
+      "category": "paying-for-care",
+      "extracted": "2026-11-17",
+      "hash": "7be9380832ed7cec",
+      "words": 286
+    },
+    {
+      "file": "paying-for-care/long-term-care-insurance-home-nursing.md",
+      "title": "Long Term Care Insurance for Home Nursing | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/paying-for-care/long-term-care-insurance-home-nursing",
+      "route": "/paying-for-care/long-term-care-insurance-home-nursing",
+      "category": "paying-for-care",
+      "extracted": "2026-11-17",
+      "hash": "2f1c9854fe541b02",
+      "words": 249
+    },
+    {
+      "file": "paying-for-care/veterans-benefits-home-nursing.md",
+      "title": "Veterans Benefits for Home Nursing | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierre-concierge.vercel.app/paying-for-care/veterans-benefits-home-nursing",
+      "route": "/paying-for-care/veterans-benefits-home-nursing",
+      "category": "paying-for-care",
+      "extracted": "2026-11-17",
+      "hash": "dac16efb072c582f",
+      "words": 268
+    },
+    {
+      "file": "conditions/diabetes.md",
+      "title": "Diabetes Nursing Care at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/conditions/diabetes",
+      "route": "/conditions/diabetes",
+      "category": "conditions",
+      "extracted": "2026-11-17",
+      "hash": "051e5042da48228a",
+      "words": 221
+    },
+    {
+      "file": "conditions/heart-failure.md",
+      "title": "Heart Failure Nursing Care at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/conditions/heart-failure",
+      "route": "/conditions/heart-failure",
+      "category": "conditions",
+      "extracted": "2026-11-17",
+      "hash": "52148afc93162bb2",
+      "words": 230
+    },
+    {
+      "file": "conditions/copd.md",
+      "title": "COPD Nursing Care at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/conditions/copd",
+      "route": "/conditions/copd",
+      "category": "conditions",
+      "extracted": "2026-11-17",
+      "hash": "87f8b1fcd6c7ccdc",
+      "words": 228
+    },
+    {
+      "file": "conditions/high-blood-pressure.md",
+      "title": "High Blood Pressure Monitoring at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/conditions/high-blood-pressure",
+      "route": "/conditions/high-blood-pressure",
+      "category": "conditions",
+      "extracted": "2026-11-17",
+      "hash": "ca2fe8054c2a1911",
+      "words": 176
+    },
+    {
+      "file": "conditions/stroke-recovery.md",
+      "title": "Stroke Recovery Nursing Support at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/conditions/stroke-recovery",
+      "route": "/conditions/stroke-recovery",
+      "category": "conditions",
+      "extracted": "2026-11-17",
+      "hash": "1b169a90e98daac0",
+      "words": 217
+    },
+    {
+      "file": "conditions/dementia.md",
+      "title": "Dementia Care Support at Home in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/conditions/dementia",
+      "route": "/conditions/dementia",
+      "category": "conditions",
+      "extracted": "2026-11-17",
+      "hash": "44579564601d2f98",
+      "words": 219
+    },
+    {
+      "file": "care-settings/in-home-nursing.md",
+      "title": "In-Home Nursing in Ocala and Marion County, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/care-settings/in-home-nursing",
+      "route": "/care-settings/in-home-nursing",
+      "category": "care-settings",
+      "extracted": "2026-11-17",
+      "hash": "18777474ba135457",
+      "words": 220
+    },
+    {
+      "file": "care-settings/after-a-hospital-stay.md",
+      "title": "Care After a Hospital Stay in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/care-settings/after-a-hospital-stay",
+      "route": "/care-settings/after-a-hospital-stay",
+      "category": "care-settings",
+      "extracted": "2026-11-17",
+      "hash": "2681dfc4979982e0",
+      "words": 245
+    },
+    {
+      "file": "care-settings/visitors-and-travelers.md",
+      "title": "Nursing for Visitors and Travelers in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/care-settings/visitors-and-travelers",
+      "route": "/care-settings/visitors-and-travelers",
+      "category": "care-settings",
+      "extracted": "2026-11-17",
+      "hash": "7d63383de0af46db",
+      "words": 200
+    },
+    {
+      "file": "areas/ocala.md",
+      "title": "Home Nursing in Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/ocala",
+      "route": "/areas/ocala",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "0cafafa88176522a",
+      "words": 186
+    },
+    {
+      "file": "areas/belleview.md",
+      "title": "Home Nursing in Belleview, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/belleview",
+      "route": "/areas/belleview",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "65a15d0e02df1970",
+      "words": 153
+    },
+    {
+      "file": "areas/dunnellon.md",
+      "title": "Home Nursing in Dunnellon, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/dunnellon",
+      "route": "/areas/dunnellon",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "faea01b4a58c082f",
+      "words": 139
+    },
+    {
+      "file": "areas/silver-springs.md",
+      "title": "Home Nursing in Silver Springs and Silver Springs Shores, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/silver-springs",
+      "route": "/areas/silver-springs",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "586dd8c2dc0bb100",
+      "words": 123
+    },
+    {
+      "file": "areas/marion-oaks.md",
+      "title": "Home Nursing in Marion Oaks, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/marion-oaks",
+      "route": "/areas/marion-oaks",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "958ada9ac7a74ed6",
+      "words": 124
+    },
+    {
+      "file": "areas/summerfield.md",
+      "title": "Home Nursing in Summerfield, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/summerfield",
+      "route": "/areas/summerfield",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "eb3aea2a973a1cda",
+      "words": 122
+    },
+    {
+      "file": "areas/on-top-of-the-world.md",
+      "title": "Home Nursing in On Top of the World, Ocala, FL | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/areas/on-top-of-the-world",
+      "route": "/areas/on-top-of-the-world",
+      "category": "areas",
+      "extracted": "2026-11-17",
+      "hash": "8280d9815efc3c2b",
+      "words": 149
+    },
+    {
+      "file": "resources/going-home-checklist.md",
+      "title": "Going Home After Surgery Checklist | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/going-home-checklist.html",
+      "route": "/going-home-checklist.html",
+      "category": "resource",
+      "extracted": "2026-11-17",
+      "hash": "1e37105bcb259e2d",
+      "words": 473
+    },
+    {
+      "file": "pages/site-info.md",
+      "title": "Site-wide information (footer)",
+      "source_url": "https://pierre-concierge.vercel.app/",
+      "route": "(footer)",
+      "category": "site-info",
+      "extracted": "2026-11-17",
+      "hash": "84d5d9f53204d569",
+      "words": 59
+    }
+  ]
+}
