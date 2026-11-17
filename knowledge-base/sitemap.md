@@ -2,7 +2,7 @@
 
 Every page of https://pierre-concierge.vercel.app and the Markdown file that holds its content.
 
-Last updated: 2026-11-17. Documents: 56.
+Last updated: 2026-11-17. Documents: 59.
 
 ## areas
 
@@ -82,6 +82,8 @@ Last updated: 2026-11-17. Documents: 56.
 | Our Values / Pierre Concierge Nursing, Ocala, FL | https://pierre-concierge.vercel.app/our-values | `pages/our-values.md` |
 | FAQ / Pierre Concierge Nursing, Ocala, FL | https://pierre-concierge.vercel.app/faq | `pages/faq.md` |
 | Healthcare Resources for Ocala and Marion County Families / Pierre Concierge Nursing | https://pierre-concierge.vercel.app/resources | `pages/resources.md` |
+| Post-Op Recovery Package at Home / Pierre Concierge Nursing, Ocala | https://pierre-concierge.vercel.app/post-op-recovery-package | `pages/post-op-recovery-package.md` |
+| Free Discharge Readiness Kit / Pierre Concierge Nursing, Ocala | https://pierre-concierge.vercel.app/discharge-readiness-kit | `pages/discharge-readiness-kit.md` |
 | How Concierge Nursing Works / Pierre Concierge Nursing, Ocala, FL | https://pierre-concierge.vercel.app/how-it-works | `pages/how-it-works.md` |
 | Contact Pierre Concierge Nursing / Ocala, FL | https://pierre-concierge.vercel.app/contact | `pages/contact.md` |
 
@@ -112,6 +114,7 @@ Last updated: 2026-11-17. Documents: 56.
 | Page | URL | File |
 | --- | --- | --- |
 | Going Home After Surgery Checklist / Pierre Concierge Nursing | https://pierre-concierge.vercel.app/going-home-checklist.html | `resources/going-home-checklist.md` |
+| Discharge Readiness Kit / Pierre Concierge Nursing | https://pierre-concierge.vercel.app/discharge-readiness-kit.html | `resources/discharge-readiness-kit.md` |
 
 ## services
 

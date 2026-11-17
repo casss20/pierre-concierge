@@ -1529,6 +1529,8 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Compare Care Options', href: '/compare' },
         { label: 'Paying for Care', href: '/paying-for-care' },
         { label: 'How It Works', href: '/how-it-works' },
+        { label: 'Post-Op Recovery Package', href: '/post-op-recovery-package' },
+        { label: 'Discharge Readiness Kit', href: '/discharge-readiness-kit' },
         { label: 'Resources', href: '/resources' },
         { label: 'FAQ', href: '/faq' },
         { label: 'Contact', href: '/contact' },
@@ -1548,6 +1550,8 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'More', children: [
             { label: 'Compare Care Options', href: '/compare', children: kids(COMPARE_PAGES, '/compare') },
             { label: 'Paying for Care', href: '/paying-for-care', children: kids(PAYING_PAGES, '/paying-for-care') },
+            { label: 'Post-Op Recovery Package', href: '/post-op-recovery-package' },
+            { label: 'Discharge Readiness Kit', href: '/discharge-readiness-kit' },
             { label: 'Resources', href: '/resources' },
             { label: 'Accessibility', href: '/accessibility' },
             { label: 'Privacy (HIPAA)', href: '/privacy-practices' },

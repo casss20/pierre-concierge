@@ -6,7 +6,7 @@ category: care-settings
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 2681dfc4979982e0
+content_hash: c8147ab14fee1b66
 ---
 
 # Care After a Hospital Stay in Ocala, FL | Pierre Concierge Nursing
@@ -36,6 +36,8 @@ Families in Marion County are commonly discharged from AdventHealth Ocala, HCA F
 ## Related
 
 See our Hospital to Home Transition and Post Operative Recovery service pages for the details.
+
+[Post-Op Recovery Package](https://pierre-concierge.vercel.app/post-op-recovery-package)[Free Discharge Readiness Kit](https://pierre-concierge.vercel.app/discharge-readiness-kit)
 
 ## Questions, answered
 

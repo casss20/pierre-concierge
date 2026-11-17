@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-17",
   "site": "https://pierre-concierge.vercel.app",
-  "count": 56,
+  "count": 59,
   "documents": [
     {
       "file": "pages/home.md",
@@ -180,8 +180,28 @@
       "route": "/resources",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "06a8b09ae3f09168",
-      "words": 177
+      "hash": "2daa3c16d5c5fdc5",
+      "words": 187
+    },
+    {
+      "file": "pages/post-op-recovery-package.md",
+      "title": "Post-Op Recovery Package at Home | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/post-op-recovery-package",
+      "route": "/post-op-recovery-package",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "7e106248f5696d6f",
+      "words": 657
+    },
+    {
+      "file": "pages/discharge-readiness-kit.md",
+      "title": "Free Discharge Readiness Kit | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/discharge-readiness-kit",
+      "route": "/discharge-readiness-kit",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "ed1d7bbfc6db3af5",
+      "words": 204
     },
     {
       "file": "pages/how-it-works.md",
@@ -190,8 +210,8 @@
       "route": "/how-it-works",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "d008e6865e1f0fe8",
-      "words": 531
+      "hash": "490669201ad8547e",
+      "words": 533
     },
     {
       "file": "pages/contact.md",
@@ -460,8 +480,8 @@
       "route": "/care-settings/after-a-hospital-stay",
       "category": "care-settings",
       "extracted": "2026-11-17",
-      "hash": "2681dfc4979982e0",
-      "words": 245
+      "hash": "c8147ab14fee1b66",
+      "words": 251
     },
     {
       "file": "care-settings/visitors-and-travelers.md",
@@ -550,8 +570,18 @@
       "route": "/going-home-checklist.html",
       "category": "resource",
       "extracted": "2026-11-17",
-      "hash": "1e37105bcb259e2d",
-      "words": 473
+      "hash": "ebf16caff3f35390",
+      "words": 470
+    },
+    {
+      "file": "resources/discharge-readiness-kit.md",
+      "title": "Discharge Readiness Kit | Pierre Concierge Nursing",
+      "source_url": "https://pierre-concierge.vercel.app/discharge-readiness-kit.html",
+      "route": "/discharge-readiness-kit.html",
+      "category": "resource",
+      "extracted": "2026-11-17",
+      "hash": "23e598dadd3e2b0c",
+      "words": 971
     },
     {
       "file": "pages/site-info.md",

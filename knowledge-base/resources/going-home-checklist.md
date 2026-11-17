@@ -6,7 +6,7 @@ category: resource
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 1e37105bcb259e2d
+content_hash: ebf16caff3f35390
 ---
 
 # Going Home After Surgery Checklist | Pierre Concierge Nursing
@@ -57,4 +57,4 @@ A checklist from Pierre Concierge Nursing, Ocala, FL. Bring it to the hospital a
 
 **This is general information, not medical advice.** Always follow the instructions from your own doctor and surgical team. In an emergency, call 911.
 
-Print this checklist [Call or text (754) 367-6929](tel:+17543676929) [Back to Pierre Concierge Nursing](/)
+[Call or text (754) 367-6929](tel:+17543676929) [Back to Pierre Concierge Nursing](/)

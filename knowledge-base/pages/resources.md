@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 06a8b09ae3f09168
+content_hash: 2daa3c16d5c5fdc5
 ---
 
 # Healthcare Resources for Ocala and Marion County Families | Pierre Concierge Nursing
@@ -46,6 +46,10 @@ Helpful numbers and official sites. We are not affiliated with any of them.
 Download our printable Going Home Checklist for the first days after a hospital stay.
 
 [Open the checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)
+
+## More from us
+
+[Free Discharge Readiness Kit](https://pierre-concierge.vercel.app/discharge-readiness-kit)[Post-Op Recovery Package](https://pierre-concierge.vercel.app/post-op-recovery-package)
 
 This page is general information, not medical advice. Always follow the instructions of your own doctor. Services are non-emergency. In a medical emergency, call 911.
 

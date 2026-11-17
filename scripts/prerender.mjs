@@ -51,7 +51,7 @@ for (const { path: route, title, description } of allRoutes) {
 
 // Sitemap with last updated dates
 const today = new Date().toISOString().slice(0, 10)
-const urls = ['/', ...allRoutes.map((r) => r.path), '/going-home-checklist.html']
+const urls = ['/', ...allRoutes.map((r) => r.path), '/going-home-checklist.html', '/discharge-readiness-kit.html']
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap)
 

@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: d008e6865e1f0fe8
+content_hash: 490669201ad8547e
 ---
 
 # How Concierge Nursing Works | Pierre Concierge Nursing, Ocala, FL
@@ -62,7 +62,7 @@ With your permission, Elda shares what she sees so your care team can act on it.
 
 ## Where to next
 
-[Pricing and payment](https://pierre-concierge.vercel.app/pricing)[All services](https://pierre-concierge.vercel.app/services)[Conditions we support](https://pierre-concierge.vercel.app/conditions)[Paying for care](https://pierre-concierge.vercel.app/paying-for-care)[FAQ](https://pierre-concierge.vercel.app/faq)
+[Pricing and payment](https://pierre-concierge.vercel.app/pricing)[All services](https://pierre-concierge.vercel.app/services)[Conditions we support](https://pierre-concierge.vercel.app/conditions)[Paying for care](https://pierre-concierge.vercel.app/paying-for-care)[Post-Op Recovery Package](https://pierre-concierge.vercel.app/post-op-recovery-package)[FAQ](https://pierre-concierge.vercel.app/faq)
 
 ## Questions, answered
 

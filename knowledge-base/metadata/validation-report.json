@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-17",
-  "routes_expected": 55,
-  "documents_written": 56,
+  "routes_expected": 58,
+  "documents_written": 59,
   "problems": [],
   "checks": {
     "phone": true,

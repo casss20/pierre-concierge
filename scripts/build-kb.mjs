@@ -99,17 +99,24 @@ for (const r of routes) {
     docs.push({ file, category, url, route: r.path, title: r.title.replace(/&amp;/g, '&'), description: r.description, body })
 }
 
-// Static printable checklist (a standalone HTML file in public/)
-const checklistPath = path.join(root, 'public', 'going-home-checklist.html')
-if (fs.existsSync(checklistPath)) {
-    const dom = parse(fs.readFileSync(checklistPath, 'utf8'))
-    dom.querySelectorAll('script,style').forEach((n) => n.remove())
+// Static printable resources (standalone HTML files in public/)
+const STATIC_PRINTABLES = [
+    { file: 'going-home-checklist', fallback: 'Going Home Checklist', description: 'Printable checklist for the first days at home after a hospital stay.' },
+    { file: 'discharge-readiness-kit', fallback: 'Discharge Readiness Kit', description: 'Printable kit for hospital discharge: questions, medication list, home setup, recovery log, warning signs, and contacts.' },
+]
+let printableCount = 0
+for (const s of STATIC_PRINTABLES) {
+    const pth = path.join(root, 'public', `${s.file}.html`)
+    if (!fs.existsSync(pth)) continue
+    printableCount++
+    const dom = parse(fs.readFileSync(pth, 'utf8'))
+    dom.querySelectorAll('script,style,button').forEach((n) => n.remove())
     const bodyNode = dom.querySelector('body') || dom
     const body = td.turndown(bodyNode.innerHTML).replace(/\n{3,}/g, '\n\n').trim()
     docs.push({
-        file: 'resources/going-home-checklist.md', category: 'resource', url: `${SITE}/going-home-checklist.html`,
-        route: '/going-home-checklist.html', title: (dom.querySelector('title')?.text || 'Going Home Checklist').trim(),
-        description: 'Printable checklist for the first days at home after a hospital stay.', body,
+        file: `resources/${s.file}.md`, category: 'resource', url: `${SITE}/${s.file}.html`,
+        route: `/${s.file}.html`, title: (dom.querySelector('title')?.text || s.fallback).trim(),
+        description: s.description, body,
     })
 }
 
@@ -188,7 +195,7 @@ for (const cat of Object.keys(byCat).sort()) {
 fs.writeFileSync(path.join(KB, 'sitemap.md'), sm)
 
 // ---------- 7. Validation ----------
-const report = { generated: TODAY, routes_expected: routes.length + (fs.existsSync(checklistPath) ? 1 : 0), documents_written: manifest.length, problems: [], checks: {} }
+const report = { generated: TODAY, routes_expected: routes.length + printableCount, documents_written: manifest.length, problems: [], checks: {} }
 for (const r of routes) if (!keep.has(place(r.path).file)) report.problems.push(`missing file for ${r.path}`)
 for (const m of manifest) if (m.words < 40) report.problems.push(`very short document: ${m.file} (${m.words} words)`)
 const corpus = docs.map((d) => d.body).join('\n')
