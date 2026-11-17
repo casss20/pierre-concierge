@@ -727,7 +727,7 @@ function Footer() {
                 </div>
                 <div className="border-t border-ivory/10 pt-8 text-center text-xs text-ivory/60 space-y-2">
                     <p>© {year} Pierre Concierge Nursing & Wellness. All rights reserved.</p>
-                    <p>Services are non-emergency. In case of a medical emergency, dial 911.</p>
+                    <p className="font-semibold text-ivory/90">In case of a medical emergency, call 911. Pierre Concierge Nursing is not an emergency service.</p>
                 </div>
             </div>
         </footer>
@@ -1092,6 +1092,10 @@ function BookingModal({ isOpen, onClose, service }) {
                                 <textarea rows="3" placeholder="Anything Elda should know beforehand…" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition resize-none" />
                             </div>
 
+                            <p className="rounded-xl bg-cream/70 border border-pine/10 px-4 py-3 text-sm text-pine">
+                                <strong>Emergency?</strong> Do not use this form. If you or someone you care for is having a medical emergency, call <a href="tel:911" className="font-bold underline">911</a> right away.
+                            </p>
+
                             <PillButton type="submit" className="w-full py-4 text-base">
                                 Send Request <ArrowRight className="w-4 h-4" />
                             </PillButton>
@@ -1128,6 +1132,9 @@ function Nav({ openBooking, path = '/' }) {
             {/* announcement bar */}
             <div className="bg-pine text-ivory/90 text-xs font-medium text-center py-2 px-4 tracking-wide">
                 Now serving Ocala & Marion County — <a href="tel:+17543676929" className="text-sand font-semibold hover:text-ivory transition-colors">call or text (754) 367-6929</a>
+                <span className="block sm:inline sm:ml-3 sm:pl-3 sm:border-l sm:border-ivory/30">
+                    Medical emergency? <a href="tel:911" className="font-bold text-ivory underline underline-offset-2">Call 911</a>
+                </span>
             </div>
 
             <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
