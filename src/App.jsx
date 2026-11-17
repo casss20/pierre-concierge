@@ -986,6 +986,55 @@ function Testimonials() {
     );
 }
 
+// The Safe Home Playbook: paid PDF guide. The buy button appears only when a checkout link is set in siteConfig.
+const PLAYBOOK_POINTS = [
+    'Nine common problems after discharge, each with numbered steps',
+    'Exact words to say to nurses, doctors, pharmacists, and family',
+    'A 14 day plan with Day 7 and Day 14 review worksheets',
+    'Local Ocala and Marion County help numbers',
+];
+function PlaybookAction({ light = false }) {
+    const { playbookCheckoutUrl, playbookPrice } = SITE_CONFIG;
+    if (playbookCheckoutUrl) {
+        return (
+            <PillButton href={playbookCheckoutUrl} variant={light ? 'light' : 'primary'}>
+                Get the Playbook{playbookPrice ? ` · ${playbookPrice}` : ''} <ArrowRight className="w-4 h-4" />
+            </PillButton>
+        );
+    }
+    return (
+        <span className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border ${light ? 'border-ivory/40 text-ivory' : 'border-brass/60 text-pine bg-brass/10'}`}>
+            <Clock className="w-4 h-4" /> Coming soon
+        </span>
+    );
+}
+
+function PlaybookCTA() {
+    return (
+        <section className="bg-ivory py-16 md:py-20">
+            <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid md:grid-cols-[0.8fr_1.2fr] gap-8 md:gap-12 items-center bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10">
+                    <img src="/playbook-cover.webp" width="520" height="673" loading="lazy" decoding="async" alt="Cover of The Safe Home Playbook by Pierre Concierge Nursing" className="w-48 md:w-full max-w-[16rem] mx-auto rounded-xl shadow-xl" />
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">Guide for families</p>
+                        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">The Safe Home Playbook</h2>
+                        <p className="text-ink/80 leading-relaxed mb-5">A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.</p>
+                        <ul className="space-y-2 mb-6">
+                            {PLAYBOOK_POINTS.map((p) => (
+                                <li key={p} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{p}</span></li>
+                            ))}
+                        </ul>
+                        <div className="flex flex-wrap items-center gap-4">
+                            <PlaybookAction />
+                            <a href="/safe-home-playbook" className="inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See what is inside <ArrowRight className="w-4 h-4" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 function ChecklistCTA() {
     return (
         <section className="bg-cream/50 py-16">
@@ -1134,6 +1183,7 @@ function LocalPage({ found, openBooking }) {
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-4">{page.eyebrow}</p>
                     <h1 className="font-serif text-4xl md:text-5xl font-semibold text-pine leading-tight mb-4">{page.title}</h1>
                     {page.intro && <p className="text-lg text-ink/80 leading-relaxed">{page.intro}</p>}
+                    {page.path === '/safe-home-playbook' && <div className="mt-6"><PlaybookAction /></div>}
                 </div>
             </section>
 
@@ -1520,6 +1570,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Compare Care Options', href: '/compare' },
         { label: 'Paying for Care', href: '/paying-for-care' },
         { label: 'How It Works', href: '/how-it-works' },
+        { label: 'Safe Home Playbook', href: '/safe-home-playbook' },
         { label: 'Resources', href: '/resources' },
         { label: 'FAQ', href: '/faq' },
         { label: 'Contact', href: '/contact' },
@@ -1539,6 +1590,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'More', children: [
             { label: 'Compare Care Options', href: '/compare', children: kids(COMPARE_PAGES, '/compare') },
             { label: 'Paying for Care', href: '/paying-for-care', children: kids(PAYING_PAGES, '/paying-for-care') },
+            { label: 'Safe Home Playbook', href: '/safe-home-playbook' },
             { label: 'Resources', href: '/resources' },
             { label: 'Accessibility', href: '/accessibility' },
             { label: 'Privacy (HIPAA)', href: '/privacy-practices' },
@@ -1670,6 +1722,7 @@ export default function App({ path = '/' }) {
                 <Testimonials />
                 <FAQ />
                 <ChecklistCTA />
+                <PlaybookCTA />
                 <ServiceArea />
                 <FinalCTA openBooking={openBooking} />
             </>

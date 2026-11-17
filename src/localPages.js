@@ -623,6 +623,52 @@ export const AREA_NAMES = AREA_PAGES.map((a) => a.title);
 
 // Single pages (no sub pages)
 export const SINGLE_PAGES = {
+    '/safe-home-playbook': {
+        title: 'The Safe Home Playbook',
+        seoTitle: 'The Safe Home Playbook | Pierre Concierge Nursing, Ocala',
+        description: 'A nurse written, step by step guide for the first 14 days after surgery or a hospital stay: nine common problems, scripts, and when to call for help.',
+        eyebrow: 'Guide for families',
+        path: '/safe-home-playbook',
+        intro: 'Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 17 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.',
+        sections: [
+            { h: 'The nine problems it solves', p: ['We built it from what families report most, in published research and in caregiver communities.'], ul: [
+                'A rushed discharge with no written plan',
+                'Confusing medicines',
+                'Pain that is not controlled at home',
+                'Tasks nobody trained you for, like dressings and safe moves',
+                'Not knowing who to call, and nobody calling back',
+                'A loved one who pushes limits or refuses help',
+                'Caregiver overload and no backup plan',
+                'Not knowing whether home is still the right place',
+                'Keeping the whole family in sync',
+            ] },
+            { h: 'How every problem is handled', steps: [
+                'Spot it: what it looks like and why it happens.',
+                'Do the steps: numbered, in order, ready to start today.',
+                'Say it: the exact words to use with nurses, doctors, pharmacists, and family.',
+                'Escalate: who to call, and when to call 911.',
+            ] },
+            { h: 'What is inside', features: [
+                { t: 'A 14 day plan', d: 'What to do before leaving the hospital, on day one, and through the first two weeks, with check boxes.' },
+                { t: 'Review worksheets', d: 'A Day 7 and Day 14 review to decide whether to carry on, add help, or call the doctor.' },
+                { t: 'Call scripts and templates', d: 'A four part call script, a Recovery Rules sheet, and a weekly family update.' },
+                { t: 'Local help', d: 'Phone numbers and agencies for Ocala and Marion County.' },
+            ] },
+            { h: 'Who it is for', ul: ['Families bringing a parent, spouse, or relative home after surgery or a hospital stay', 'Adult children organizing care from a distance', 'Anyone who wants a clear plan before discharge day'] },
+            { h: 'Availability', p: ['The Playbook is coming soon as a downloadable PDF. When it launches, the Get the Playbook button will appear on this page.', 'Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.'], links: [
+                { href: '/services/hospital-to-home-transition', label: 'Hospital to Home Transition visit' },
+                { href: '/going-home-checklist.html', label: 'Free Going Home checklist' },
+                { href: '/how-it-works', label: 'How it works' },
+            ] },
+            { note: 'The Playbook is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.' },
+        ],
+        faqs: [
+            { q: 'Who wrote the Playbook?', a: 'It is written for families by Pierre Concierge Nursing, a Registered Nurse led practice in Ocala, Florida.' },
+            { q: 'Is it medical advice?', a: 'No. It is general guidance to help you organize, ask better questions, and know when to call. Always follow your own doctor and care team.' },
+            { q: 'How will I receive it?', a: 'It will be a downloadable PDF that you can print. Details will be posted here when it launches.' },
+            { q: 'Do I need a nurse visit to use it?', a: 'No. The Playbook works on its own. A nurse visit is optional if you want help going through it at home.' },
+        ],
+    },
     '/resources': {
         title: 'Resources for Ocala and Marion County Families',
         seoTitle: 'Healthcare Resources for Ocala and Marion County Families | Pierre Concierge Nursing',
