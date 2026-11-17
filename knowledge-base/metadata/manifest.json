@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-17",
   "site": "https://pierreconciergenursing.com",
-  "count": 62,
+  "count": 63,
   "documents": [
     {
       "file": "pages/home.md",
@@ -272,6 +272,16 @@
       "extracted": "2026-11-17",
       "hash": "747f33264d22624f",
       "words": 128
+    },
+    {
+      "file": "policies/policies.md",
+      "title": "Service and Website Policies | Pierre Concierge Nursing, Ocala, FL",
+      "source_url": "https://pierreconciergenursing.com/policies",
+      "route": "/policies",
+      "category": "policy",
+      "extracted": "2026-11-17",
+      "hash": "949225c151b3b094",
+      "words": 670
     },
     {
       "file": "compare/overview.md",

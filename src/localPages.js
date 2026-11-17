@@ -909,6 +909,24 @@ export const SINGLE_PAGES = {
             { h: 'Need help?', p: ['If something on this site is hard to use, call or text (754) 367-6929 and we will help you another way.'] },
         ],
     },
+    '/policies': {
+        title: 'Our Policies',
+        seoTitle: 'Service and Website Policies | Pierre Concierge Nursing, Ocala, FL',
+        description: 'How Pierre Concierge Nursing handles scope of care, scheduling, payment, cancellations, digital guides, privacy, and use of this website.',
+        eyebrow: 'Policies',
+        intro: 'Plain language on how we work, so there are no surprises. If anything here is unclear, call or text (754) 367-6929 and Elda will explain it.',
+        sections: [
+            { h: 'What we do and do not do', p: ['Pierre Concierge Nursing provides private, non emergency nursing care at home, in hotels, and in assisted living communities in Ocala and Marion County, Florida. Care is given by Elda Marie Pierre, RN, BSN.'], ul: ['Medications, IV therapy, injections, and wound treatments need your doctor\'s order. Elda will confirm the order with you before the visit.', 'We support your doctor\'s plan. We do not replace it, and we do not diagnose or change your treatment on our own.', 'We are not an emergency service. In a medical emergency, call 911.'] },
+            { h: 'Scheduling and hours', ul: ['Visits are by appointment, Monday to Saturday, 8am to 6pm.', 'The fastest way to reach Elda is by phone or text at (754) 367-6929.', 'Please do not send detailed medical information by text or regular email.', 'If you need help outside our hours, call your doctor, and call 911 for an emergency.'] },
+            { h: 'Payment', ul: ['Care is private pay. We do not bill insurance at this time.', 'We accept credit cards, HSA and FSA cards, and Zelle.', 'Payment is due at the time of service unless a monthly Care Plan is in place.', 'On request we provide a receipt and a superbill you can submit to your insurer. Reimbursement is up to your insurer and is not guaranteed.', 'Current rates are on our Pricing page. We tell you the cost before care begins.'] },
+            { h: 'Cancelling and rescheduling', ul: ['Please give as much notice as you can when you need to cancel or move a visit. Call or text and we will find a new time.', 'The monthly Care Plan can be cancelled at any time.', 'If your situation changes, tell Elda. Visits and plans are adjusted as your needs change.'] },
+            { h: 'Digital guides and downloads', p: ['Our printable guides are sold as digital downloads (PDF, with a Word version where noted). Because a download cannot be returned, all sales are final once the files are delivered. If a file will not open or something is wrong with your purchase, email pierreconciergenursing@gmail.com and we will make it right.', 'The guides are general education. They are not medical advice and do not replace instructions from your doctor, surgeon, or pharmacist. Our guides are for your own household use. Please do not copy or resell them.'] },
+            { h: 'Your privacy', p: ['Your health information is protected. Our HIPAA Notice of Privacy Practices explains how it is used and shared and the rights you have.'], ul: ['Records and updates are shared only with the doctors and family you authorize.', 'We do not sell your information.', 'Read the full notice on the Privacy (HIPAA) page.'] },
+            { h: 'Using this website', ul: ['This website is for general information. It does not give medical advice, and reading it does not create a nurse and patient relationship. That begins only when you and Elda agree to care.', 'We try to keep everything accurate, but details such as rates and availability can change. Please confirm by phone.', 'Everything on this site, including text, images, and the logo, belongs to Pierre Concierge Nursing. Please ask before reusing it.', 'Links to other sites are offered for convenience. We do not control those sites.'] },
+            { h: 'Changes to these policies', p: ['We may update this page as our services change. The version on this page is the current one.'] },
+            { note: 'Questions about any policy? Call or text (754) 367-6929 or email pierreconciergenursing@gmail.com. In a medical emergency, call 911.' },
+        ],
+    },
 };
 
 export const INDEX_PAGES = {

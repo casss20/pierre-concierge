@@ -2,7 +2,7 @@
 
 Every page of https://pierreconciergenursing.com and the Markdown file that holds its content.
 
-Last updated: 2026-11-17. Documents: 62.
+Last updated: 2026-11-17. Documents: 63.
 
 ## areas
 
@@ -112,6 +112,7 @@ Last updated: 2026-11-17. Documents: 62.
 | --- | --- | --- |
 | HIPAA Notice of Privacy Practices / Pierre Concierge Nursing | https://pierreconciergenursing.com/privacy-practices | `policies/privacy-practices.md` |
 | Accessibility / Pierre Concierge Nursing | https://pierreconciergenursing.com/accessibility | `policies/accessibility.md` |
+| Service and Website Policies / Pierre Concierge Nursing, Ocala, FL | https://pierreconciergenursing.com/policies | `policies/policies.md` |
 
 ## resource
 

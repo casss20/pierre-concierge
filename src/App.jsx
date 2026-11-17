@@ -855,6 +855,7 @@ function Footer() {
                             <a href="/contact" className="inline-block py-2 hover:text-sand transition-colors">Contact</a>
                             <a href="/accessibility" className="inline-block py-2 hover:text-sand transition-colors">Accessibility</a>
                             <a href="/privacy-practices" className="inline-block py-2 hover:text-sand transition-colors">Privacy (HIPAA)</a>
+                            <a href="/policies" className="inline-block py-2 hover:text-sand transition-colors">Policies</a>
                         </div>
                     </div>
                     <div>
@@ -1952,6 +1953,7 @@ function Nav({ openBooking, path = '/' }) {
             { label: 'Resources', href: '/resources' },
             { label: 'Accessibility', href: '/accessibility' },
             { label: 'Privacy (HIPAA)', href: '/privacy-practices' },
+            { label: 'Policies', href: '/policies' },
             { label: 'Contact', href: '/contact' },
         ] },
     ];
