@@ -321,6 +321,7 @@ function Hero({ openBooking }) {
                     <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-pine-dark">
                         <img
                             src="/elda-coat.jpg"
+                            width="848" height="1024"
                             alt="Elda Marie Pierre, RN, BSN — white coat portrait"
                             className="w-full h-[26rem] sm:h-[32rem] lg:h-[36rem] object-cover object-top"
                         />
@@ -399,7 +400,7 @@ function Services({ openBooking }) {
                     {SERVICES.map(({ icon: Icon, title, description, price, tag }, i) => (
                         <article key={title} className="reveal group bg-ivory rounded-3xl p-8 border border-transparent hover:border-pine/15 shadow-sm hover:shadow-xl flex flex-col h-full transition-all duration-300 hover:-translate-y-1">
                             {SERVICE_BY_SLUG[SLUG_BY_TITLE[title]]?.image && (
-                                <img src={SERVICE_BY_SLUG[SLUG_BY_TITLE[title]].image} alt="" loading="lazy" className="w-full h-40 object-cover rounded-2xl mb-6" />
+                                <img src={SERVICE_BY_SLUG[SLUG_BY_TITLE[title]].image} alt="" width="1344" height="752" loading="lazy" className="w-full h-40 object-cover rounded-2xl mb-6" />
                             )}
                             <div className="flex items-start justify-between mb-7">
                                 <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center group-hover:bg-pine group-hover:text-ivory transition-colors duration-300">
@@ -411,12 +412,12 @@ function Services({ openBooking }) {
                                 <a href={`/services/${SLUG_BY_TITLE[title]}`} className="hover:text-royal transition-colors">{title}</a>
                             </h3>
                             <p className="text-ink/75 leading-relaxed text-[0.93rem] flex-grow mb-4">{description}</p>
-                            <a href={`/services/${SLUG_BY_TITLE[title]}`} className="inline-flex items-center gap-1 text-sm font-semibold text-royal hover:text-royal-dark mb-6">
+                            <a href={`/services/${SLUG_BY_TITLE[title]}`} className="inline-flex items-center gap-1 min-h-[44px] text-sm font-semibold text-royal hover:text-royal-dark mb-2">
                                 What is this treatment? <ArrowRight className="w-4 h-4" />
                             </a>
                             <div className="pt-5 border-t border-pine/10 flex items-center justify-between mt-auto">
                                 <span className="text-pine font-bold text-base">{price}</span>
-                                <button onClick={() => openBooking(tag)} className="inline-flex items-center gap-1 text-sm font-semibold text-pine hover:text-royal transition-colors">
+                                <button onClick={() => openBooking(tag)} className="inline-flex items-center gap-1 min-h-[44px] min-w-[44px] justify-end text-sm font-semibold text-pine hover:text-royal transition-colors">
                                     Book <ChevronRight className="w-4 h-4" />
                                 </button>
                             </div>
@@ -543,6 +544,7 @@ function About() {
                         <div className="relative rounded-t-full rounded-b-[2rem] overflow-hidden shadow-2xl bg-sand">
                             <img
                                 src="/elda-scrubs.jpg"
+                                width="848" height="1024" loading="lazy"
                                 alt="Elda Marie Pierre in royal blue scrubs"
                                 className="w-full h-[30rem] object-cover object-top"
                             />
@@ -710,26 +712,26 @@ function Footer() {
                     </div>
                     <div>
                         <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Explore</h4>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-                            <a href="/services" className="hover:text-sand transition-colors">Services</a>
-                            <a href="/pricing" className="hover:text-sand transition-colors">Pricing</a>
-                            <a href="/about" className="hover:text-sand transition-colors">About Elda</a>
-                            <a href="/faq" className="hover:text-sand transition-colors">FAQ</a>
-                            <a href="/conditions" className="hover:text-sand transition-colors">Conditions</a>
-                            <a href="/areas" className="hover:text-sand transition-colors">Areas we serve</a>
-                            <a href="/compare" className="hover:text-sand transition-colors">Compare care options</a>
-                            <a href="/paying-for-care" className="hover:text-sand transition-colors">Paying for care</a>
-                            <a href="/resources" className="hover:text-sand transition-colors">Resources</a>
-                            <a href="/contact" className="hover:text-sand transition-colors">Contact</a>
-                            <a href="/accessibility" className="hover:text-sand transition-colors">Accessibility</a>
-                            <a href="/privacy-practices" className="hover:text-sand transition-colors">Privacy (HIPAA)</a>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-0 text-sm">
+                            <a href="/services" className="inline-block py-2 hover:text-sand transition-colors">Services</a>
+                            <a href="/pricing" className="inline-block py-2 hover:text-sand transition-colors">Pricing</a>
+                            <a href="/about" className="inline-block py-2 hover:text-sand transition-colors">About Elda</a>
+                            <a href="/faq" className="inline-block py-2 hover:text-sand transition-colors">FAQ</a>
+                            <a href="/conditions" className="inline-block py-2 hover:text-sand transition-colors">Conditions</a>
+                            <a href="/areas" className="inline-block py-2 hover:text-sand transition-colors">Areas we serve</a>
+                            <a href="/compare" className="inline-block py-2 hover:text-sand transition-colors">Compare care options</a>
+                            <a href="/paying-for-care" className="inline-block py-2 hover:text-sand transition-colors">Paying for care</a>
+                            <a href="/resources" className="inline-block py-2 hover:text-sand transition-colors">Resources</a>
+                            <a href="/contact" className="inline-block py-2 hover:text-sand transition-colors">Contact</a>
+                            <a href="/accessibility" className="inline-block py-2 hover:text-sand transition-colors">Accessibility</a>
+                            <a href="/privacy-practices" className="inline-block py-2 hover:text-sand transition-colors">Privacy (HIPAA)</a>
                         </div>
                     </div>
                     <div>
                         <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Contact</h4>
                         <ul className="space-y-2.5 text-sm">
-                            <li className="flex items-center gap-2.5"><Phone size={15} className="text-brass" /> <a href="tel:+17543676929" className="hover:text-sand transition-colors">+1 (754) 367-6929</a></li>
-                            <li className="flex items-center gap-2.5"><Mail size={15} className="text-brass" /> <a href="mailto:jpjojo565@gmail.com" className="hover:text-sand transition-colors">jpjojo565@gmail.com</a></li>
+                            <li className="flex items-center gap-2.5"><Phone size={15} className="text-brass" /> <a href="tel:+17543676929" className="inline-block py-2 hover:text-sand transition-colors">+1 (754) 367-6929</a></li>
+                            <li className="flex items-center gap-2.5"><Mail size={15} className="text-brass" /> <a href="mailto:jpjojo565@gmail.com" className="inline-block py-2 hover:text-sand transition-colors">jpjojo565@gmail.com</a></li>
                             <li className="flex items-center gap-2.5"><Clock size={15} className="text-brass" /> Mon–Sat: 8am – 6pm</li>
                         </ul>
                     </div>
@@ -759,11 +761,11 @@ function CredentialsStrip() {
                     <div key={title} className="reveal flex items-start gap-4 bg-cream/60 border border-pine/10 rounded-2xl p-5">
                         <div className="w-11 h-11 rounded-xl bg-pine text-ivory flex items-center justify-center shrink-0"><Icon className="w-5 h-5" /></div>
                         <div>
-                            <h3 className="font-serif text-lg font-semibold text-pine">{title}</h3>
+                            <p className="font-serif text-lg font-semibold text-pine">{title}</p>
                             <p className="text-sm text-ink/75 leading-relaxed">
                                 {href && !linkText ? <a href={href} target="_blank" rel="noopener noreferrer" className="underline decoration-brass underline-offset-4">{text}</a> : text}
                             </p>
-                            {linkText && <a href={href} className="inline-block mt-1 text-sm font-semibold text-royal underline decoration-brass underline-offset-4">{linkText}</a>}
+                            {linkText && <a href={href} className="inline-block py-3 mt-0 text-sm font-semibold text-royal underline decoration-brass underline-offset-4">{linkText}</a>}
                         </div>
                     </div>
                 ))}
@@ -1175,15 +1177,38 @@ function BookingModal({ isOpen, onClose, service }) {
         return () => window.removeEventListener('keydown', onKey);
     }, [isOpen, onClose]);
 
+    const dialogRef = useRef(null);
+    useEffect(() => {
+        if (!isOpen) return;
+        const prev = document.activeElement;
+        const node = dialogRef.current;
+        const focusables = () => node ? [...node.querySelectorAll('a[href],button:not([disabled]),input,select,textarea')] : [];
+        (focusables()[1] || focusables()[0])?.focus();
+        const trap = (e) => {
+            if (e.key !== 'Tab') return;
+            const f = focusables();
+            if (!f.length) return;
+            const first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        };
+        document.addEventListener('keydown', trap);
+        return () => { document.removeEventListener('keydown', trap); prev && prev.focus && prev.focus(); };
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-pine-dark/70 backdrop-blur-sm animate-fade-in" onClick={onClose}>
             <div
+                ref={dialogRef}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="booking-title"
                 className="bg-ivory rounded-[1.75rem] shadow-2xl max-w-lg w-full p-7 md:p-9 relative animate-fade-up max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
             >
-                <button onClick={onClose} className="absolute top-5 right-5 w-9 h-9 rounded-full bg-pine/5 text-pine/60 hover:bg-pine/15 hover:text-pine flex items-center justify-center transition-colors">
+                <button onClick={onClose} aria-label="Close" className="absolute top-5 right-5 w-11 h-11 rounded-full bg-pine/5 text-pine/60 hover:bg-pine/15 hover:text-pine flex items-center justify-center transition-colors">
                     <X size={18} />
                 </button>
 
@@ -1205,7 +1230,7 @@ function BookingModal({ isOpen, onClose, service }) {
                             <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center mb-4">
                                 <Calendar className="w-6 h-6" />
                             </div>
-                            <h3 className="font-serif text-2xl font-semibold text-pine">Request an appointment</h3>
+                            <h2 id="booking-title" className="font-serif text-2xl font-semibold text-pine">Request an appointment</h2>
                             <p className="text-ink/70 text-sm mt-1.5">
                                 You're requesting: <span className="text-royal font-semibold">{service}</span>
                             </p>
@@ -1289,25 +1314,25 @@ function Nav({ openBooking, path = '/' }) {
     return (
         <>
             {/* announcement bar: looping ticker (static for reduced motion) */}
-            <div className="ticker bg-pine text-ivory/90 text-xs font-medium py-2 tracking-wide" role="region" aria-label="Announcements">
+            <div className="ticker bg-pine text-ivory/90 text-xs font-medium tracking-wide" role="region" aria-label="Announcements">
                 <div className="ticker-track">
                     {[0, 1, 2, 3, 4, 5].map((n) => (
                         <span className="ticker-item" key={n} aria-hidden={n > 0 ? 'true' : undefined}>
-                            Now serving Ocala &amp; Marion County — <a href="tel:+17543676929" tabIndex={n > 0 ? -1 : undefined} className="text-sand font-semibold hover:text-ivory transition-colors">call or text (754) 367-6929</a>
+                            Now serving Ocala &amp; Marion County — <a href="tel:+17543676929" tabIndex={n > 0 ? -1 : undefined} className="inline-block py-[15px] px-1 text-sand font-semibold hover:text-ivory transition-colors">call or text (754) 367-6929</a>
                             <span className="mx-4 text-ivory/40">•</span>
-                            Medical emergency? <a href="tel:911" tabIndex={n > 0 ? -1 : undefined} className="font-bold text-ivory underline underline-offset-2">Call 911</a>
+                            Medical emergency? <a href="tel:911" tabIndex={n > 0 ? -1 : undefined} className="inline-block py-[15px] px-1 font-bold text-ivory underline underline-offset-2">Call 911</a>
                             <span className="mx-4 text-ivory/40">•</span>
                             Private-pay mobile nursing · Mon–Sat 8am–6pm
                         </span>
                     ))}
                 </div>
-                <p className="ticker-static text-center px-4">
-                    Now serving Ocala &amp; Marion County — <a href="tel:+17543676929" className="text-sand font-semibold">call or text (754) 367-6929</a>
-                    <span className="block sm:inline sm:ml-3 sm:pl-3 sm:border-l sm:border-ivory/30">Medical emergency? <a href="tel:911" className="font-bold text-ivory underline underline-offset-2">Call 911</a></span>
+                <p className="ticker-static text-center px-4 py-0.5">
+                    Now serving Ocala &amp; Marion County — <a href="tel:+17543676929" className="inline-block py-[15px] px-1 text-sand font-semibold">call or text (754) 367-6929</a>
+                    <span className="block sm:inline sm:ml-3 sm:pl-3 sm:border-l sm:border-ivory/30">Medical emergency? <a href="tel:911" className="inline-block py-[15px] px-1 font-bold text-ivory underline underline-offset-2">Call 911</a></span>
                 </p>
             </div>
 
-            <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
+            <nav aria-label="Main" className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-[4.5rem]">
                     <a href="/" className="flex items-center gap-3 group">
                         <img src="/logo-mark.png" alt="" width="33" height="40" className="h-10 w-auto" />
@@ -1318,10 +1343,10 @@ function Nav({ openBooking, path = '/' }) {
 
                     <div className="hidden md:flex items-center gap-8">
                         {links.map(({ label, href }) => (
-                            <a key={label} href={href} aria-current={current === href || current.startsWith(href + '/') ? 'page' : undefined} className={`text-sm font-semibold transition-colors hover:text-pine ${current === href || current.startsWith(href + '/') ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>{label}</a>
+                            <a key={label} href={href} aria-current={current === href || current.startsWith(href + '/') ? 'page' : undefined} className={`text-sm font-semibold transition-colors hover:text-pine py-3 ${current === href || current.startsWith(href + '/') ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>{label}</a>
                         ))}
                         <div className="relative group">
-                            <button type="button" aria-haspopup="true" className={`text-sm font-semibold transition-colors hover:text-pine inline-flex items-center gap-1 ${moreActive ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>
+                            <button type="button" aria-haspopup="true" className={`text-sm font-semibold transition-colors hover:text-pine py-3 inline-flex items-center gap-1 ${moreActive ? 'text-pine underline decoration-brass decoration-2 underline-offset-8' : 'text-ink/75'}`}>
                                 More <ChevronDown size={14} />
                             </button>
                             <div className="hidden group-hover:block group-focus-within:block absolute right-0 top-full pt-3 z-50">
@@ -1337,13 +1362,13 @@ function Nav({ openBooking, path = '/' }) {
                         </PillButton>
                     </div>
 
-                    <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden w-10 h-10 rounded-xl bg-pine/5 text-pine flex items-center justify-center">
+                    <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} aria-controls="mobile-menu" className="md:hidden w-11 h-11 rounded-xl bg-pine/5 text-pine flex items-center justify-center">
                         {menuOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
 
                 {menuOpen && (
-                    <div className="md:hidden bg-ivory border-t border-pine/10 shadow-xl">
+                    <div id="mobile-menu" className="md:hidden bg-ivory border-t border-pine/10 shadow-xl">
                         <div className="px-4 py-4 flex flex-col gap-1">
                             {links.map(({ label, href }) => (
                                 <a key={label} href={href} onClick={() => setMenuOpen(false)} className="py-3 px-3 rounded-xl font-semibold text-pine hover:bg-pine/5 transition-colors">
@@ -1411,7 +1436,6 @@ export default function App({ path = '/' }) {
                 <CareTeam />
                 <Pricing openBooking={openBooking} />
                 <Testimonials />
-                <About />
                 <FAQ />
                 <ChecklistCTA />
                 <ServiceArea />
@@ -1422,8 +1446,9 @@ export default function App({ path = '/' }) {
 
     return (
         <div id="top" className="min-h-screen bg-ivory font-sans text-ink">
+            <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:bg-pine focus:text-ivory focus:px-5 focus:py-3 focus:rounded-xl focus:font-semibold">Skip to main content</a>
             <Nav openBooking={openBooking} path={clean} />
-            <main>{content}</main>
+            <main id="main" tabIndex={-1} className="outline-none">{content}</main>
             <Footer />
             <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} service={service} />
         </div>

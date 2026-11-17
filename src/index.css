@@ -55,3 +55,8 @@
   .ticker-track { display: none; }
   .ticker-static { display: block; white-space: normal; }
 }
+
+/* Visible keyboard focus */
+:focus-visible { outline: 3px solid #2F5FD0; outline-offset: 3px; border-radius: 6px; }
+:is(.bg-pine, .bg-pine-dark, .bg-\[\#101B17\]) :focus-visible { outline-color: #F0DDB0; }
+main:focus { outline: none; }
