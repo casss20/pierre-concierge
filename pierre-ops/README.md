@@ -14,6 +14,7 @@ All client data stays on her device.
 | `print/google-business-setup.html` | Step-by-step Google Business Profile setup with copy-paste text + the review engine SOP |
 | `print/hipaa-notice.html` | Notice of Privacy Practices + consent (HIPAA format, 3pp) + authorization-to-disclose form |
 | `print/service-agreement.html` | Independent Practice Service Agreement + Missed-Visit & Cancellation Policy (3pp) — sign with every client |
+| `print/referral-form.html` | Referral pad form (1p) + referral acknowledgment card (1p) — how referrers send patients in, and how we close the loop |
 
 ## How Elda uses the app (5-minute orientation)
 
