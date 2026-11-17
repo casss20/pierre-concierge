@@ -12,6 +12,8 @@ All client data stays on her device.
 | `print/referral-onepager.html` | Leave-behind for discharge planners, surgeons, ALF admins, home-health liaisons |
 | `print/home-safety-checklist.html` | Detailed safety walk-through used with Hospital-to-Home Transition visits |
 | `print/google-business-setup.html` | Step-by-step Google Business Profile setup with copy-paste text + the review engine SOP |
+| `print/hipaa-notice.html` | Notice of Privacy Practices + consent (HIPAA format, 3pp) + authorization-to-disclose form |
+| `print/service-agreement.html` | Independent Practice Service Agreement + Missed-Visit & Cancellation Policy (3pp) — sign with every client |
 
 ## How Elda uses the app (5-minute orientation)
 
