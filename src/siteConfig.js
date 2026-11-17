@@ -24,6 +24,11 @@ export const SITE_CONFIG = {
     playbookCheckoutUrl: "",
     // Optional price text shown next to the button, for example "$34"
     playbookPrice: "$34",
+    // Discharge Readiness Kit (printable workbook). Same rule: empty link shows "Coming soon".
+    kitCheckoutUrl: "",
+    kitPrice: "$19",
+    // Optional bundle price for both guides, shown under the product carousel
+    bundlePrice: "$49",
     // Free downloadable resource (static page in /public)
     checklistUrl: "/going-home-checklist.html",
 };
