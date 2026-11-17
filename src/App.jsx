@@ -699,7 +699,7 @@ function Footer() {
                 <div className="grid md:grid-cols-3 gap-10 mb-10">
                     <div>
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-xl bg-ivory text-pine flex items-center justify-center font-serif font-semibold text-xl">P</div>
+                            <img src="/logo-mark-light.png" alt="" width="33" height="40" className="h-10 w-auto" />
                             <span className="font-serif text-xl font-semibold text-ivory">Pierre Concierge Nursing</span>
                         </div>
                         <p className="text-sm leading-relaxed">
@@ -1133,7 +1133,7 @@ function Nav({ openBooking, path = '/' }) {
             <nav className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-ivory/90 backdrop-blur-lg shadow-lg shadow-pine/5' : 'bg-ivory/60 backdrop-blur'}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-[4.5rem]">
                     <a href="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 rounded-xl bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-xl group-hover:bg-royal transition-colors">P</div>
+                        <img src="/logo-mark.png" alt="" width="33" height="40" className="h-10 w-auto" />
                         <span className="font-serif text-lg font-semibold text-pine leading-tight">
                             Pierre <span className="hidden sm:inline text-ink/70 font-normal">Concierge Nursing</span>
                         </span>
