@@ -1,19 +1,19 @@
 ---
 title: "Private Nurse vs. Caregiver for Home Care in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/compare/nurse-vs-caregiver
+source_url: https://pierreconciergenursing.com/compare/nurse-vs-caregiver
 description: "What a Registered Nurse can do at home that a non-medical caregiver cannot, and how to choose the right help for a loved one in Marion County."
 category: compare
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 5eda17465c8bee5a
+content_hash: a47116c1be6bf4df
 ---
 
 # Private Nurse vs. Caregiver for Home Care in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/compare/nurse-vs-caregiver
+> Source: https://pierreconciergenursing.com/compare/nurse-vs-caregiver
 
-[← Compare care options](https://pierre-concierge.vercel.app/compare)
+[← Compare care options](https://pierreconciergenursing.com/compare)
 
 Compare care options
 
@@ -54,7 +54,7 @@ This page is general information, not medical advice. Always follow the instruct
 
 ## More in Compare care options
 
-[Home Care vs. Home Health Care](https://pierre-concierge.vercel.app/compare/home-care-vs-home-health)[Concierge Nursing vs. Medicare Home Health](https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-home-health)[Recovering at Home vs. a Rehab Facility](https://pierre-concierge.vercel.app/compare/recovering-at-home-vs-rehab)[Concierge Nurse vs. Home Health Aide](https://pierre-concierge.vercel.app/compare/concierge-nurse-vs-home-health-aide)[Concierge Nursing vs. Assisted Living](https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-assisted-living)[Concierge Nursing vs. a Nursing Home](https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-nursing-home)[Concierge Nursing vs. Private Duty Nursing](https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-private-duty-nursing)
+[Home Care vs. Home Health Care](https://pierreconciergenursing.com/compare/home-care-vs-home-health)[Concierge Nursing vs. Medicare Home Health](https://pierreconciergenursing.com/compare/concierge-nursing-vs-home-health)[Recovering at Home vs. a Rehab Facility](https://pierreconciergenursing.com/compare/recovering-at-home-vs-rehab)[Concierge Nurse vs. Home Health Aide](https://pierreconciergenursing.com/compare/concierge-nurse-vs-home-health-aide)[Concierge Nursing vs. Assisted Living](https://pierreconciergenursing.com/compare/concierge-nursing-vs-assisted-living)[Concierge Nursing vs. a Nursing Home](https://pierreconciergenursing.com/compare/concierge-nursing-vs-nursing-home)[Concierge Nursing vs. Private Duty Nursing](https://pierreconciergenursing.com/compare/concierge-nursing-vs-private-duty-nursing)
 
 Get Started
 
@@ -62,4 +62,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

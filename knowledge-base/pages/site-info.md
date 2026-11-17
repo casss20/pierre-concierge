@@ -1,17 +1,17 @@
 ---
 title: "Site-wide information (footer)"
-source_url: https://pierre-concierge.vercel.app/
+source_url: https://pierreconciergenursing.com/
 description: "Contact details, hours, service area, and notices that appear in the footer of every page."
 category: site-info
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: a85c7f4522d2dc22
+content_hash: b4632ffdaf9528f5
 ---
 
 # Site-wide information (footer)
 
-> Source: https://pierre-concierge.vercel.app/
+> Source: https://pierreconciergenursing.com/
 
 Pierre Concierge Nursing
 
@@ -20,7 +20,7 @@ Skilled, RN-led nursing care in the comfort and privacy of your home, with compa
 #### Contact
 
 -   [+1 (754) 367-6929](tel:+17543676929)
--   [jpjojo565@gmail.com](mailto:jpjojo565@gmail.com)
+-   [pierreconciergenursing@gmail.com](mailto:pierreconciergenursing@gmail.com)
 -   Mon–Sat: 8am – 6pm
 
 © 2026 Pierre Concierge Nursing & Wellness. All rights reserved.

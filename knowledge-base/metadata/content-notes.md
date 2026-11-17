@@ -6,5 +6,5 @@ An AI assistant answers only from the site, so these should be settled before la
 2. **Service area wording.** The FAQ and home page say "The Villages (North)". The search engine data on the site says "The Villages". Use one.
 3. **"Fully Insured" badge.** The home page shows it, but no page gives insurance details.
 4. **Not on the site at all:** license number, cancellation policy beyond "cancel anytime" for the Care Plan, how fast care can begin, a street address, and the HIPAA notice effective date.
-5. **Contact email** is jpjojo565@gmail.com on the site. Confirm it is the right public address.
+5. **Contact email** is pierreconciergenursing@gmail.com, the business address set up for the new domain pierreconciergenursing.com.
 6. **Inaccessible content:** none. All pages rendered. Images and videos have no text content other than alt text.

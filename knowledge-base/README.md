@@ -1,6 +1,6 @@
 # Pierre Concierge Nursing knowledge base
 
-Markdown copy of every page of https://pierre-concierge.vercel.app, built for a RAG (retrieval) system so an AI assistant can answer visitors' questions from the website's own content.
+Markdown copy of every page of https://pierreconciergenursing.com, built for a RAG (retrieval) system so an AI assistant can answer visitors' questions from the website's own content.
 
 Pierre Concierge Nursing is a private pay, mobile Registered Nurse service in Ocala and Marion County, Florida, run by Elda Marie Pierre, RN, BSN. Phone: (754) 367-6929.
 

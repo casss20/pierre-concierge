@@ -13,7 +13,7 @@ const ROOT_TAG = '<div id="root"></div>'
 if (!template.includes(ROOT_TAG)) throw new Error('prerender: <div id="root"></div> not found in dist/index.html')
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
-const SITE = 'https://pierre-concierge.vercel.app'
+const SITE = 'https://pierreconciergenursing.com'
 
 // Keep titles within about 60 characters so search results do not cut them off.
 const BRAND = 'Pierre Concierge Nursing'

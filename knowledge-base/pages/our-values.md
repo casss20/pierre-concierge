@@ -1,17 +1,17 @@
 ---
 title: "Our Values | Pierre Concierge Nursing, Ocala, FL"
-source_url: https://pierre-concierge.vercel.app/our-values
+source_url: https://pierreconciergenursing.com/our-values
 description: "Why Pierre Concierge Nursing exists and what we stand for: personal attention, clear communication, advocacy, privacy, honest pricing, and care rooted in Marion County."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 68a0318b89c6a5f7
+content_hash: 7cda1e42f1330e97
 ---
 
 # Our Values | Pierre Concierge Nursing, Ocala, FL
 
-> Source: https://pierre-concierge.vercel.app/our-values
+> Source: https://pierreconciergenursing.com/our-values
 
 About
 
@@ -71,4 +71,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

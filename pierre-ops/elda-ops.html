@@ -166,7 +166,7 @@ tr.clickable:hover{background:var(--cream)}
 const LS_KEY='pierre_ops_v1';
 let S=load();
 function load(){try{const r=localStorage.getItem(LS_KEY);if(r)return JSON.parse(r)}catch(e){}return fresh()}
-function fresh(){return{settings:{name:'Elda Marie Joe Pierre, RN, BSN',title:'Pierre Concierge Nursing & Wellness',phone:'(754) 367-6929',email:'jpjojo565@gmail.com',license:'FL RN (add license #)',npi:'',address:'Ocala & Marion County, FL',googleReview:'',pass:'',rates:{'Post-Operative Recovery':160,'Hospital-to-Home Transition':185,'Advanced Wound Care':175,'IV Therapy & Hydration':200,'Medication Management':150,'Assisted Living Facility Support':175,'Family Peace-of-Mind Visits':150,'Wellness Assessments':150,'Chronic Disease Management':450,'Patient Advocacy':75}},clients:[],visits:[]}}
+function fresh(){return{settings:{name:'Elda Marie Joe Pierre, RN, BSN',title:'Pierre Concierge Nursing & Wellness',phone:'(754) 367-6929',email:'pierreconciergenursing@gmail.com',npi:'',address:'Ocala & Marion County, FL',googleReview:'',pass:'',rates:{'Post-Operative Recovery':160,'Hospital-to-Home Transition':185,'Advanced Wound Care':175,'IV Therapy & Hydration':200,'Medication Management':150,'Assisted Living Facility Support':175,'Family Peace-of-Mind Visits':150,'Wellness Assessments':150,'Chronic Disease Management':450,'Patient Advocacy':75}},clients:[],visits:[]}}
 function save(){localStorage.setItem(LS_KEY,JSON.stringify(S))}
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -452,7 +452,7 @@ function docFromPicker(){
 }
 function letterhead(sub){
   const s=S.settings;
-  return `<div style="text-align:center;margin-bottom:.5rem"><img src="assets/logo-mark.png" alt="" style="width:42px;height:51px"></div><h1 style="text-align:center">${esc(s.name)}</h1><div class="sub" style="text-align:center">${esc(s.title)} · ${esc(s.phone)} · ${esc(s.email)}<br>${esc(s.address)}${s.license?' · '+esc(s.license):''}</div>${sub?`<h4 style="text-align:center;margin-top:.6rem">${sub}</h4>`:''}<hr style="border:none;border-top:1.5px solid var(--sand);margin:.9rem 0 1.1rem">`;
+  return `<div style="text-align:center;margin-bottom:.5rem"><img src="assets/logo-mark.png" alt="" style="width:42px;height:51px"></div><h1 style="text-align:center">${esc(s.name)}</h1><div class="sub" style="text-align:center">${esc(s.title)} · ${esc(s.phone)} · ${esc(s.email)}<br>${esc(s.address)}</div>${sub?`<h4 style="text-align:center;margin-top:.6rem">${sub}</h4>`:''}<hr style="border:none;border-top:1.5px solid var(--sand);margin:.9rem 0 1.1rem">`;
 }
 function makeDoc(cid,type,vid){
   const c=clientById(cid);if(!c)return toast('Client not found');
@@ -526,7 +526,7 @@ function invoice(c){
   <div class="dkv"><span><b>Bill to:</b> ${esc(c.name)}</span><span>${esc(c.address||'')}</span><span><b>Client phone:</b> ${esc(c.phone||'—')}</span><span><b>Date:</b> ${dFmt(today())}</span></div>
   <table><tr><th>Date of service</th><th>Service</th><th style="text-align:right">Charge</th><th>Paid</th></tr>${rows||'<tr><td colspan="4">No completed visits on record.</td></tr>'}</table>
   <table style="max-width:280px;margin-left:auto"><tr><td><b>Total</b></td><td style="text-align:right"><b>${fmt$(total)}</b></td></tr><tr><td>Paid to date</td><td style="text-align:right">${fmt$(paid)}</td></tr><tr><td><b>Balance due</b></td><td style="text-align:right"><b>${fmt$(total-paid)}</b></td></tr></table>
-  <p class="note">Payment due at time of service unless a monthly plan is in effect. We accept credit cards, HSA/FSA cards, and Zelle. A superbill is provided for potential out-of-network reimbursement — submit to your insurer; reimbursement is not guaranteed. Diagnosis codes (if needed for your claim): ${esc((c.dx||[]).join('; ')||'on file with RN')}. Provider: ${esc(S.settings.name)}${S.settings.license?', '+esc(S.settings.license):''}${S.settings.npi?', NPI '+esc(S.settings.npi):''}.</p>`;
+  <p class="note">Payment due at time of service unless a monthly plan is in effect. We accept credit cards, HSA/FSA cards, and Zelle. A superbill is provided for potential out-of-network reimbursement — submit to your insurer; reimbursement is not guaranteed. Diagnosis codes (if needed for your claim): ${esc((c.dx||[]).join('; ')||'on file with RN')}. Provider: ${esc(S.settings.name)}${S.settings.npi?', NPI '+esc(S.settings.npi):''}.</p>`;
 }
 function medSched(c){
   return `${letterhead('MEDICATION SCHEDULE')}
@@ -592,7 +592,6 @@ function vSettings(){
       <div class="field"><label>Service area</label><input id="s_addr" value="${esc(s.address)}"></div>
     </div>
     <div class="row c2">
-      <div class="field"><label>FL RN license # (optional, prints on superbills)</label><input id="s_lic" value="${esc(s.license)}"></div>
       <div class="field"><label>NPI (optional)</label><input id="s_npi" value="${esc(s.npi)}"></div>
     </div>
     <div class="field"><label>Google review link (from your Business Profile — see print/google-business-setup.html)</label><input id="s_grev" value="${esc(s.googleReview)}" placeholder="https://g.page/r/.../review"></div>
@@ -618,7 +617,7 @@ function vSettings(){
     </div>
   </div>`;
 }
-function saveSettings(){const s=S.settings;s.name=$('#s_name').value;s.title=$('#s_title').value;s.phone=$('#s_phone').value;s.email=$('#s_email').value;s.address=$('#s_addr').value;s.license=$('#s_lic').value;s.npi=$('#s_npi').value;s.googleReview=$('#s_grev').value.trim();save();toast('Settings saved')}
+function saveSettings(){const s=S.settings;s.name=$('#s_name').value;s.title=$('#s_title').value;s.phone=$('#s_phone').value;s.email=$('#s_email').value;s.address=$('#s_addr').value;s.npi=$('#s_npi').value;s.googleReview=$('#s_grev').value.trim();save();toast('Settings saved')}
 function saveRates(){document.querySelectorAll('[data-rate]').forEach(i=>{S.settings.rates[i.dataset.rate]=+i.value||0});save();toast('Rates saved')}
 async function setPass(){const p=$('#s_pass').value;if(p.length<4){toast('Passcode too short');return}S.settings.pass=await sha(p);save();toast('Passcode set — applies on next load')}
 async function clearPass(){if(!confirm('Remove the app passcode?'))return;S.settings.pass='';save();toast('Passcode removed')}

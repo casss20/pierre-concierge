@@ -17,7 +17,7 @@ export const SITE_CONFIG = {
     testimonials: [],
     // HIPAA privacy notice details. The notice must carry the date Elda adopts it.
     privacyEffectiveDate: "",   // e.g. "December 1, 2026"
-    privacyContactEmail: "",    // email for privacy questions and requests
+    privacyContactEmail: "pierreconciergenursing@gmail.com",    // email for privacy questions and requests
     privacyMailingAddress: "",  // mailing address for written requests
     // The Safe Home Playbook (paid PDF guide). Leave the checkout link empty until the store is ready:
     // the site then shows "Coming soon". Once you paste the store link, the Get the Playbook button appears everywhere.

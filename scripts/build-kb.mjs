@@ -17,7 +17,7 @@ import { parse } from 'node-html-parser'
 
 const root = process.cwd()
 const KB = path.join(root, 'knowledge-base')
-const SITE = 'https://pierre-concierge.vercel.app'
+const SITE = 'https://pierreconciergenursing.com'
 const TODAY = new Date().toISOString().slice(0, 10)
 
 // ---------- 1. Render every route with the site's own code ----------
@@ -76,7 +76,7 @@ function htmlToMarkdown(html) {
 }
 
 // ---------- 3. Routing to files and categories ----------
-const POLICY = new Set(['/privacy-practices', '/accessibility'])
+const POLICY = new Set(['/privacy-practices', '/accessibility', '/policies'])
 function place(route) {
     if (route === '/') return { file: 'pages/home.md', category: 'page' }
     const parts = route.replace(/^\//, '').split('/')

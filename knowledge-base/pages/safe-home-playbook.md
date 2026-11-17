@@ -1,17 +1,17 @@
 ---
 title: "The Safe Home Playbook | Pierre Concierge Nursing, Ocala"
-source_url: https://pierre-concierge.vercel.app/safe-home-playbook
+source_url: https://pierreconciergenursing.com/safe-home-playbook
 description: "A nurse written, step by step guide for the first 14 days after surgery or a hospital stay: nine common problems, scripts, and when to call for help."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 5ceaf005a69563c9
+content_hash: 6ad239dc301351e7
 ---
 
 # The Safe Home Playbook | Pierre Concierge Nursing, Ocala
 
-> Source: https://pierre-concierge.vercel.app/safe-home-playbook
+> Source: https://pierreconciergenursing.com/safe-home-playbook
 
 Guide for families
 
@@ -132,7 +132,7 @@ The Playbook is coming soon as a downloadable PDF. When it launches, the Get the
 
 Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.
 
-[Hospital to Home Transition visit](https://pierre-concierge.vercel.app/services/hospital-to-home-transition)[Free Going Home checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)[How it works](https://pierre-concierge.vercel.app/how-it-works)
+[Hospital to Home Transition visit](https://pierreconciergenursing.com/services/hospital-to-home-transition)[Free Going Home checklist](https://pierreconciergenursing.com/going-home-checklist.html)[How it works](https://pierreconciergenursing.com/how-it-works)
 
 The Playbook is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.
 
@@ -162,4 +162,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

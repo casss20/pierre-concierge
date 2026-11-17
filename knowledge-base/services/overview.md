@@ -1,17 +1,17 @@
 ---
 title: "Home Nursing Services in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/services
+source_url: https://pierreconciergenursing.com/services
 description: "Post-surgery care, wound care, IV therapy, medication management, and more. Private pay mobile RN services in Ocala and Marion County, FL."
 category: services-overview
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: d91f220629a2e1ec
+content_hash: 6e4c6a4f5e8e84f4
 ---
 
 # Home Nursing Services in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/services
+> Source: https://pierreconciergenursing.com/services
 
 Services
 
@@ -19,109 +19,103 @@ Services
 
 Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.
 
-Services
-
-## Comprehensive nursing, delivered
-
-Professional medical care tailored to your recovery and wellness needs — sterile equipment, clear communication, genuine warmth.
-
 01
 
-### [Post-Operative Recovery](https://pierre-concierge.vercel.app/services/post-operative-recovery)
+### [Post-Operative Recovery](https://pierreconciergenursing.com/services/post-operative-recovery)
 
 Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal. It works alongside your doctor and any Medicare home health visits, adding more time and attention between them.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/post-operative-recovery)
+[What is this treatment?](https://pierreconciergenursing.com/services/post-operative-recovery)
 
 $160 per visit
 
 02
 
-### [Chronic Disease Management](https://pierre-concierge.vercel.app/services/chronic-disease-management)
+### [Chronic Disease Management](https://pierreconciergenursing.com/services/chronic-disease-management)
 
 Ongoing support for diabetes, hypertension, and heart conditions — regular monitoring, medication oversight, and care plans that catch small problems before they become ER visits.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/chronic-disease-management)
+[What is this treatment?](https://pierreconciergenursing.com/services/chronic-disease-management)
 
 Custom Plans
 
 03
 
-### [Hospital-to-Home Transition](https://pierre-concierge.vercel.app/services/hospital-to-home-transition)
+### [Hospital-to-Home Transition](https://pierreconciergenursing.com/services/hospital-to-home-transition)
 
 The first 72 hours home are the riskiest. We coordinate your discharge, set up your medications and equipment, check incisions or wounds, and make sure your home is safe — so you never land alone.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/hospital-to-home-transition)
+[What is this treatment?](https://pierreconciergenursing.com/services/hospital-to-home-transition)
 
 $185 per visit
 
 04
 
-### [Advanced Wound Care](https://pierre-concierge.vercel.app/services/advanced-wound-care)
+### [Advanced Wound Care](https://pierreconciergenursing.com/services/advanced-wound-care)
 
 Expert management of surgical wounds, pressure ulcers, and diabetic wounds — sterile dressing changes, measurement, and close monitoring for signs of infection, all without the wheelchair-van trips to a wound clinic.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/advanced-wound-care)
+[What is this treatment?](https://pierreconciergenursing.com/services/advanced-wound-care)
 
 Starting at $175
 
 05
 
-### [IV Therapy & Hydration](https://pierre-concierge.vercel.app/services/iv-therapy-hydration)
+### [IV Therapy & Hydration](https://pierreconciergenursing.com/services/iv-therapy-hydration)
 
 Physician-ordered IV fluids and medications, administered by a licensed Registered Nurse in the comfort of your home. We verify your order before every visit, then handle setup, administration, and monitoring.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/iv-therapy-hydration)
+[What is this treatment?](https://pierreconciergenursing.com/services/iv-therapy-hydration)
 
 Starting at $200
 
 06
 
-### [Medication Management](https://pierre-concierge.vercel.app/services/medication-management)
+### [Medication Management](https://pierreconciergenursing.com/services/medication-management)
 
 Ten prescriptions and a missed dose shouldn't end in a hospital trip. We reconcile your medications, organize weekly pill systems, administer injections like insulin or B12, and coordinate refills with your pharmacy.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/medication-management)
+[What is this treatment?](https://pierreconciergenursing.com/services/medication-management)
 
 $150 per visit
 
 07
 
-### [Assisted Living Facility Support](https://pierre-concierge.vercel.app/services/assisted-living-facility-support)
+### [Assisted Living Facility Support](https://pierreconciergenursing.com/services/assisted-living-facility-support)
 
 Many assisted living communities limit the clinical tasks their staff can perform. We can provide them right inside your facility, with your doctor's orders: insulin administration, wound care, and clinical monitoring that may help your loved one stay where they live. Monthly contracts available.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/assisted-living-facility-support)
+[What is this treatment?](https://pierreconciergenursing.com/services/assisted-living-facility-support)
 
 $175 per visit
 
 08
 
-### [Family Peace-of-Mind Visits](https://pierre-concierge.vercel.app/services/family-peace-of-mind-visits)
+### [Family Peace-of-Mind Visits](https://pierreconciergenursing.com/services/family-peace-of-mind-visits)
 
 For families managing Mom or Dad from Orlando — or anywhere. Scheduled RN visits with a same-day report: vitals, medication status, how they really look, straight answers to your questions.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/family-peace-of-mind-visits)
+[What is this treatment?](https://pierreconciergenursing.com/services/family-peace-of-mind-visits)
 
 $150 per visit
 
 09
 
-### [Patient Advocacy](https://pierre-concierge.vercel.app/services/patient-advocacy)
+### [Patient Advocacy](https://pierreconciergenursing.com/services/patient-advocacy)
 
 Help understanding doctor's orders, attending appointments with you, and organizing your medical life — a bridge between you and your specialists.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/patient-advocacy)
+[What is this treatment?](https://pierreconciergenursing.com/services/patient-advocacy)
 
 Hourly Rates
 
 10
 
-### [Wellness Assessments](https://pierre-concierge.vercel.app/services/wellness-assessments)
+### [Wellness Assessments](https://pierreconciergenursing.com/services/wellness-assessments)
 
 A full head-to-toe assessment — blood pressure, heart rate, oxygen levels, and lung sounds — with clear explanations and updates for family or your physician.
 
-[What is this treatment?](https://pierre-concierge.vercel.app/services/wellness-assessments)
+[What is this treatment?](https://pierreconciergenursing.com/services/wellness-assessments)
 
 $150 per visit
 
@@ -159,4 +153,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

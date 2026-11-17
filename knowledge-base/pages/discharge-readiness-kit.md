@@ -1,17 +1,17 @@
 ---
 title: "The Discharge Readiness Kit | Pierre Concierge Nursing, Ocala"
-source_url: https://pierre-concierge.vercel.app/discharge-readiness-kit
+source_url: https://pierreconciergenursing.com/discharge-readiness-kit
 description: "A printable 15 page workbook for families: questions to ask before discharge, a medication list and schedule, a home checklist, and a 14 day recovery log."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 42a1914fe3b62f8e
+content_hash: 06ec332fba21c99a
 ---
 
 # The Discharge Readiness Kit | Pierre Concierge Nursing, Ocala
 
-> Source: https://pierre-concierge.vercel.app/discharge-readiness-kit
+> Source: https://pierreconciergenursing.com/discharge-readiness-kit
 
 Printable workbook
 
@@ -97,7 +97,7 @@ When to get help, a contacts and appointments page for the fridge, and a schedul
 
 ## Pairs well with
 
-[The Safe Home Playbook](https://pierre-concierge.vercel.app/safe-home-playbook)[Hospital to Home Transition visit](https://pierre-concierge.vercel.app/services/hospital-to-home-transition)[All our products](https://pierre-concierge.vercel.app/products)
+[The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[Hospital to Home Transition visit](https://pierreconciergenursing.com/services/hospital-to-home-transition)[All our products](https://pierreconciergenursing.com/products)
 
 ## Availability
 
@@ -127,4 +127,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

@@ -1,19 +1,19 @@
 ---
 title: "Hospital-to-Home Transition at Home in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/services/hospital-to-home-transition
+source_url: https://pierreconciergenursing.com/services/hospital-to-home-transition
 description: "Hospital to home transition nursing in Ocala, FL: discharge coordination, medication setup, home safety checks, and wound or incision checks in the first days."
 category: services
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 6f6ef93811a1a1c1
+content_hash: 375505de9dd4050a
 ---
 
 # Hospital-to-Home Transition at Home in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/services/hospital-to-home-transition
+> Source: https://pierreconciergenursing.com/services/hospital-to-home-transition
 
-[All services](https://pierre-concierge.vercel.app/services)
+[All services](https://pierreconciergenursing.com/services)
 
 Service
 
@@ -54,4 +54,4 @@ This page is general information, not medical advice. Always follow the instruct
 
 ## Other services
 
-[Post-Operative Recovery](https://pierre-concierge.vercel.app/services/post-operative-recovery) [Chronic Disease Management](https://pierre-concierge.vercel.app/services/chronic-disease-management) [Advanced Wound Care](https://pierre-concierge.vercel.app/services/advanced-wound-care) [IV Therapy & Hydration](https://pierre-concierge.vercel.app/services/iv-therapy-hydration) [Medication Management](https://pierre-concierge.vercel.app/services/medication-management) [Assisted Living Facility Support](https://pierre-concierge.vercel.app/services/assisted-living-facility-support) [Family Peace-of-Mind Visits](https://pierre-concierge.vercel.app/services/family-peace-of-mind-visits) [Patient Advocacy](https://pierre-concierge.vercel.app/services/patient-advocacy) [Wellness Assessments](https://pierre-concierge.vercel.app/services/wellness-assessments)
+[Post-Operative Recovery](https://pierreconciergenursing.com/services/post-operative-recovery) [Chronic Disease Management](https://pierreconciergenursing.com/services/chronic-disease-management) [Advanced Wound Care](https://pierreconciergenursing.com/services/advanced-wound-care) [IV Therapy & Hydration](https://pierreconciergenursing.com/services/iv-therapy-hydration) [Medication Management](https://pierreconciergenursing.com/services/medication-management) [Assisted Living Facility Support](https://pierreconciergenursing.com/services/assisted-living-facility-support) [Family Peace-of-Mind Visits](https://pierreconciergenursing.com/services/family-peace-of-mind-visits) [Patient Advocacy](https://pierreconciergenursing.com/services/patient-advocacy) [Wellness Assessments](https://pierreconciergenursing.com/services/wellness-assessments)

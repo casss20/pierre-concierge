@@ -1,175 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pierre-concierge.vercel.app/</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/pricing</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/about</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/our-values</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/faq</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/privacy-practices</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/going-home-checklist.html</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/post-operative-recovery</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/chronic-disease-management</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/hospital-to-home-transition</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/advanced-wound-care</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/iv-therapy-hydration</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/medication-management</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/assisted-living-facility-support</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/family-peace-of-mind-visits</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/patient-advocacy</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/services/wellness-assessments</loc></url>
+  <url><loc>https://pierreconciergenursing.com/</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services</loc></url>
+  <url><loc>https://pierreconciergenursing.com/pricing</loc></url>
+  <url><loc>https://pierreconciergenursing.com/about</loc></url>
+  <url><loc>https://pierreconciergenursing.com/our-values</loc></url>
+  <url><loc>https://pierreconciergenursing.com/faq</loc></url>
+  <url><loc>https://pierreconciergenursing.com/privacy-practices</loc></url>
+  <url><loc>https://pierreconciergenursing.com/going-home-checklist.html</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/post-operative-recovery</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/chronic-disease-management</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/hospital-to-home-transition</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/advanced-wound-care</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/iv-therapy-hydration</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/medication-management</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/assisted-living-facility-support</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/family-peace-of-mind-visits</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/patient-advocacy</loc></url>
+  <url><loc>https://pierreconciergenursing.com/services/wellness-assessments</loc></url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/paying-for-care</loc>
+    <loc>https://pierreconciergenursing.com/paying-for-care</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/resources</loc>
+    <loc>https://pierreconciergenursing.com/resources</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/how-it-works</loc>
+    <loc>https://pierreconciergenursing.com/how-it-works</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/contact</loc>
+    <loc>https://pierreconciergenursing.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/accessibility</loc>
+    <loc>https://pierreconciergenursing.com/accessibility</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/compare</loc>
+    <loc>https://pierreconciergenursing.com/policies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://pierreconciergenursing.com/compare</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions</loc>
+    <loc>https://pierreconciergenursing.com/conditions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/care-settings</loc>
+    <loc>https://pierreconciergenursing.com/care-settings</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas</loc>
+    <loc>https://pierreconciergenursing.com/areas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/compare/home-care-vs-home-health</loc>
+    <loc>https://pierreconciergenursing.com/compare/home-care-vs-home-health</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-home-health</loc>
+    <loc>https://pierreconciergenursing.com/compare/concierge-nursing-vs-home-health</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/compare/nurse-vs-caregiver</loc>
+    <loc>https://pierreconciergenursing.com/compare/nurse-vs-caregiver</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/compare/recovering-at-home-vs-rehab</loc>
+    <loc>https://pierreconciergenursing.com/compare/recovering-at-home-vs-rehab</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions/diabetes</loc>
+    <loc>https://pierreconciergenursing.com/conditions/diabetes</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions/heart-failure</loc>
+    <loc>https://pierreconciergenursing.com/conditions/heart-failure</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions/copd</loc>
+    <loc>https://pierreconciergenursing.com/conditions/copd</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions/high-blood-pressure</loc>
+    <loc>https://pierreconciergenursing.com/conditions/high-blood-pressure</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions/stroke-recovery</loc>
+    <loc>https://pierreconciergenursing.com/conditions/stroke-recovery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/conditions/dementia</loc>
+    <loc>https://pierreconciergenursing.com/conditions/dementia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/care-settings/in-home-nursing</loc>
+    <loc>https://pierreconciergenursing.com/care-settings/in-home-nursing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/care-settings/after-a-hospital-stay</loc>
+    <loc>https://pierreconciergenursing.com/care-settings/after-a-hospital-stay</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/care-settings/visitors-and-travelers</loc>
+    <loc>https://pierreconciergenursing.com/care-settings/visitors-and-travelers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/ocala</loc>
+    <loc>https://pierreconciergenursing.com/areas/ocala</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/belleview</loc>
+    <loc>https://pierreconciergenursing.com/areas/belleview</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/dunnellon</loc>
+    <loc>https://pierreconciergenursing.com/areas/dunnellon</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/silver-springs</loc>
+    <loc>https://pierreconciergenursing.com/areas/silver-springs</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/marion-oaks</loc>
+    <loc>https://pierreconciergenursing.com/areas/marion-oaks</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/summerfield</loc>
+    <loc>https://pierreconciergenursing.com/areas/summerfield</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://pierre-concierge.vercel.app/areas/on-top-of-the-world</loc>
+    <loc>https://pierreconciergenursing.com/areas/on-top-of-the-world</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nurse-vs-home-health-aide</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-assisted-living</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-nursing-home</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/compare/concierge-nursing-vs-private-duty-nursing</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/does-medicare-cover-a-private-nurse</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/how-to-pay-for-a-private-nurse</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/long-term-care-insurance-home-nursing</loc></url>
-  <url><loc>https://pierre-concierge.vercel.app/paying-for-care/veterans-benefits-home-nursing</loc></url>
+  <url><loc>https://pierreconciergenursing.com/compare/concierge-nurse-vs-home-health-aide</loc></url>
+  <url><loc>https://pierreconciergenursing.com/compare/concierge-nursing-vs-assisted-living</loc></url>
+  <url><loc>https://pierreconciergenursing.com/compare/concierge-nursing-vs-nursing-home</loc></url>
+  <url><loc>https://pierreconciergenursing.com/compare/concierge-nursing-vs-private-duty-nursing</loc></url>
+  <url><loc>https://pierreconciergenursing.com/paying-for-care/does-medicare-cover-a-private-nurse</loc></url>
+  <url><loc>https://pierreconciergenursing.com/paying-for-care/how-to-pay-for-a-private-nurse</loc></url>
+  <url><loc>https://pierreconciergenursing.com/paying-for-care/long-term-care-insurance-home-nursing</loc></url>
+  <url><loc>https://pierreconciergenursing.com/paying-for-care/veterans-benefits-home-nursing</loc></url>
 </urlset>

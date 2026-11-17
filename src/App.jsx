@@ -812,7 +812,7 @@ function FinalCTA({ openBooking }) {
                     <PillButton variant="light" href="tel:+17543676929" className="text-base px-8 py-4">
                         <Phone className="w-4 h-4" /> Call or Text: (754) 367-6929
                     </PillButton>
-                    <PillButton variant="ghostLight" href="mailto:jpjojo565@gmail.com" className="text-base px-8 py-4">
+                    <PillButton variant="ghostLight" href="mailto:pierreconciergenursing@gmail.com" className="text-base px-8 py-4">
                         <Mail className="w-4 h-4" /> Email Elda
                     </PillButton>
                 </div>
@@ -855,13 +855,14 @@ function Footer() {
                             <a href="/contact" className="inline-block py-2 hover:text-sand transition-colors">Contact</a>
                             <a href="/accessibility" className="inline-block py-2 hover:text-sand transition-colors">Accessibility</a>
                             <a href="/privacy-practices" className="inline-block py-2 hover:text-sand transition-colors">Privacy (HIPAA)</a>
+                            <a href="/policies" className="inline-block py-2 hover:text-sand transition-colors">Policies</a>
                         </div>
                     </div>
                     <div>
                         <h4 className="text-ivory font-bold mb-4 text-sm uppercase tracking-wider">Contact</h4>
                         <ul className="space-y-2.5 text-sm">
                             <li className="flex items-center gap-2.5"><Phone size={15} className="text-brass" /> <a href="tel:+17543676929" className="inline-block py-2 hover:text-sand transition-colors">+1 (754) 367-6929</a></li>
-                            <li className="flex items-center gap-2.5"><Mail size={15} className="text-brass" /> <a href="mailto:jpjojo565@gmail.com" className="inline-block py-2 hover:text-sand transition-colors">jpjojo565@gmail.com</a></li>
+                            <li className="flex items-center gap-2.5"><Mail size={15} className="text-brass" /> <a href="mailto:pierreconciergenursing@gmail.com" className="inline-block py-2 hover:text-sand transition-colors">pierreconciergenursing@gmail.com</a></li>
                             <li className="flex items-center gap-2.5"><Clock size={15} className="text-brass" /> Mon–Sat: 8am – 6pm</li>
                         </ul>
                     </div>
@@ -1952,6 +1953,7 @@ function Nav({ openBooking, path = '/' }) {
             { label: 'Resources', href: '/resources' },
             { label: 'Accessibility', href: '/accessibility' },
             { label: 'Privacy (HIPAA)', href: '/privacy-practices' },
+            { label: 'Policies', href: '/policies' },
             { label: 'Contact', href: '/contact' },
         ] },
     ];

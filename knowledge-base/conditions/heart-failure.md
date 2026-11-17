@@ -1,19 +1,19 @@
 ---
 title: "Heart Failure Nursing Care at Home in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/conditions/heart-failure
+source_url: https://pierreconciergenursing.com/conditions/heart-failure
 description: "Regular nurse visits for people with heart failure in Marion County: weight and symptom checks, medication review, and clear guidance on when to call."
 category: conditions
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 52148afc93162bb2
+content_hash: 4d3c166c7e512773
 ---
 
 # Heart Failure Nursing Care at Home in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/conditions/heart-failure
+> Source: https://pierreconciergenursing.com/conditions/heart-failure
 
-[← Conditions](https://pierre-concierge.vercel.app/conditions)
+[← Conditions](https://pierreconciergenursing.com/conditions)
 
 Conditions
 
@@ -46,7 +46,7 @@ This page is general information, not medical advice. Always follow the instruct
 
 ## More in Conditions
 
-[Diabetes Care at Home](https://pierre-concierge.vercel.app/conditions/diabetes)[COPD Care at Home](https://pierre-concierge.vercel.app/conditions/copd)[High Blood Pressure Care at Home](https://pierre-concierge.vercel.app/conditions/high-blood-pressure)[Stroke Recovery at Home](https://pierre-concierge.vercel.app/conditions/stroke-recovery)[Dementia and Memory Care Support at Home](https://pierre-concierge.vercel.app/conditions/dementia)
+[Diabetes Care at Home](https://pierreconciergenursing.com/conditions/diabetes)[COPD Care at Home](https://pierreconciergenursing.com/conditions/copd)[High Blood Pressure Care at Home](https://pierreconciergenursing.com/conditions/high-blood-pressure)[Stroke Recovery at Home](https://pierreconciergenursing.com/conditions/stroke-recovery)[Dementia and Memory Care Support at Home](https://pierreconciergenursing.com/conditions/dementia)
 
 Get Started
 
@@ -54,4 +54,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)
