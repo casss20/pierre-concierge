@@ -1211,7 +1211,7 @@ function ProductCards() {
     );
 }
 
-function PlaybookCTA() {
+function PlaybookCTA({ standalone = false }) {
     const [idx, setIdx] = useState(0);
     const [paused, setPaused] = useState(false);
     const [reduced, setReduced] = useState(true);
@@ -1232,21 +1232,23 @@ function PlaybookCTA() {
     const go = (i) => setIdx((i + PRODUCTS.length) % PRODUCTS.length);
     const { bundlePrice } = SITE_CONFIG;
     return (
-        <section className="bg-ivory py-16 md:py-20">
-            <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className={standalone ? 'py-4' : 'bg-ivory py-16 md:py-20'}>
+            <div className={standalone ? 'max-w-5xl mx-auto' : 'reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'}>
+                {!standalone && (
                 <div className="text-center mb-8">
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">Our products</p>
                     <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight">Guides for the first weeks at home</h2>
                     <a href="/products" className="mt-3 inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See all our products <ArrowRight className="w-4 h-4" /></a>
                 </div>
+                )}
                 <div className="relative bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10"
                     role="region" aria-roledescription="carousel" aria-label="Guides for families"
                     onMouseEnter={() => { hold.current = true; }} onMouseLeave={() => { hold.current = false; }}
                     onFocus={() => { hold.current = true; }} onBlur={() => { hold.current = false; }}
                     onTouchStart={(e) => { hold.current = true; const t = e.touches[0]; swipe.current = e.target.closest('[aria-roledescription="carousel"] [aria-roledescription="carousel"]') ? null : { x: t.clientX, y: t.clientY }; }}
                     onTouchEnd={(e) => { const s = swipe.current; swipe.current = null; if (s) { const t = e.changedTouches[0]; const dx = t.clientX - s.x; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(t.clientY - s.y) * 1.5) go(idx + (dx < 0 ? 1 : -1)); } setTimeout(() => { hold.current = false; }, 4000); }}>
-                    <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="absolute z-10 left-1 md:-left-5 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronLeft className="w-5 h-5" /></button>
-                    <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="absolute z-10 right-1 md:-right-5 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronRight className="w-5 h-5" /></button>
+                    <button type="button" onClick={() => go(idx - 1)} aria-label="Previous guide" className="absolute z-10 left-1 md:-left-5 lg:-left-16 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronLeft className="w-5 h-5" /></button>
+                    <button type="button" onClick={() => go(idx + 1)} aria-label="Next guide" className="absolute z-10 right-1 md:-right-5 lg:-right-16 top-[24%] md:top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center hover:bg-white"><ChevronRight className="w-5 h-5" /></button>
                     <div className="grid">
                         {PRODUCTS.map((p, i) => {
                             const active = i === idx;
@@ -1448,7 +1450,7 @@ function LocalPage({ found, openBooking }) {
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                     {page.path === '/products' ? (
                         <>
-                            <><ProductCards /><BundleCards /></>
+                            <><PlaybookCTA standalone /><BundleCards /></>
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">
                                     <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Questions, answered</h2>

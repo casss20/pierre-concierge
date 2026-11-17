@@ -626,10 +626,10 @@ export const SINGLE_PAGES = {
     '/products': {
         title: 'Our Products',
         seoTitle: 'Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing',
-        description: 'Nurse written guides for families: The Safe Home Playbook and the Discharge Readiness Kit. Steps, scripts, lists, and logs for the first weeks at home.',
+        description: 'Nurse written guides and organizers for Florida families: the Safe Home Playbook, Discharge Readiness Kit, Long Distance Caregiver Kit, Assisted Living Family Guide, and Care Plan Binder.',
         eyebrow: 'Our products',
         path: '/products',
-        intro: 'Guides written by a Registered Nurse to help families through the first weeks at home. Both are downloadable PDFs you can print. They are general information, not medical advice.',
+        intro: 'Guides written by a Registered Nurse to help families care for a loved one at home, from far away, or after a move. They are downloadable PDFs you can print. Swipe or use the arrows to browse. They are general information, not medical advice.',
         sections: [],
         faqs: [
             { q: 'Which one should I start with?', a: 'Start with the Discharge Readiness Kit if discharge is near and you want lists to fill in. Choose the Safe Home Playbook for the steps, scripts, and emergency guide for the first 14 days. Many families use both.' },
