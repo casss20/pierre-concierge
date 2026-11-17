@@ -994,15 +994,15 @@ const PLAYBOOK_POINTS = [
     'A 14 day plan with Day 7 and Day 14 review worksheets',
     'Local Ocala and Marion County help numbers',
 ];
+// Sales preview only: the cover plus short descriptions. The guide's real pages are not shown on the site.
 const PLAYBOOK_SLIDES = [
-    { src: '/playbook/p1.webp', cap: 'Cover' },
-    { src: '/playbook/p2.webp', cap: 'How it works' },
-    { src: '/playbook/p3.webp', cap: 'The first 14 days at a glance' },
-    { src: '/playbook/p4.webp', cap: 'One of nine problems, with steps and scripts' },
-    { src: '/playbook/p8.webp', cap: 'Pain and medicine, step by step' },
-    { src: '/playbook/p13.webp', cap: 'Your 14 day plan' },
-    { src: '/playbook/p14.webp', cap: 'Day 7 and Day 14 review' },
-    { src: '/playbook/p15.webp', cap: 'Local help in Ocala and Marion County' },
+    { cover: true, cap: 'The Safe Home Playbook' },
+    { t: 'Nine problems, solved', d: 'Rushed discharge, confusing medicines, pain at home, tasks nobody taught you, no one calling back, and more.', cap: 'What it covers' },
+    { t: 'Numbered steps', d: 'Each problem has clear steps you can start today, in order, with nothing to figure out.', cap: 'Step by step' },
+    { t: 'Words to say', d: 'Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.', cap: 'Scripts' },
+    { t: 'A 14 day plan', d: 'Tick boxes from before you leave the hospital through the first two weeks at home.', cap: 'The plan' },
+    { t: 'Day 7 and Day 14 reviews', d: 'Simple worksheets to decide whether to carry on, add help, or call the doctor.', cap: 'Reviews' },
+    { t: 'Local help', d: 'Phone numbers and agencies for Ocala and Marion County, plus when to call 911.', cap: 'Ocala and Marion County' },
 ];
 function PlaybookCarousel({ compact = false }) {
     const trackRef = useRef(null);
@@ -1017,20 +1017,28 @@ function PlaybookCarousel({ compact = false }) {
         setIdx(Math.round(el.scrollLeft / el.clientWidth));
     };
     return (
-        <div className={`relative mx-auto ${compact ? 'max-w-xs' : 'max-w-md'}`} role="region" aria-roledescription="carousel" aria-label="Preview pages of The Safe Home Playbook">
+        <div className={`relative mx-auto ${compact ? 'max-w-xs' : 'max-w-md'}`} role="region" aria-roledescription="carousel" aria-label="What The Safe Home Playbook includes">
             <div ref={trackRef} onScroll={onScroll} className="flex overflow-x-auto snap-x snap-mandatory rounded-2xl shadow-xl bg-white" style={{ scrollbarWidth: 'none' }}>
                 {PLAYBOOK_SLIDES.map((s, i) => (
-                    <figure key={s.src} className="snap-center shrink-0 w-full m-0" aria-label={`${i + 1} of ${PLAYBOOK_SLIDES.length}: ${s.cap}`}>
-                        <img src={s.src} width="680" height="880" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" alt={`Playbook preview: ${s.cap}`} className="w-full h-auto block" />
+                    <figure key={s.cap} className="snap-center shrink-0 w-full m-0" style={{ aspectRatio: '680 / 880' }} aria-label={`${i + 1} of ${PLAYBOOK_SLIDES.length}: ${s.cap}`}>
+                        {s.cover ? (
+                            <img src="/playbook/p1.webp" width="680" height="880" loading="eager" decoding="async" alt="Cover of The Safe Home Playbook by Pierre Concierge Nursing" className="w-full h-full block object-cover" />
+                        ) : (
+                            <div className="w-full h-full bg-pine text-ivory flex flex-col justify-center px-10 text-center">
+                                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-4">{i} of {PLAYBOOK_SLIDES.length - 1}</p>
+                                <h3 className="font-serif text-3xl font-semibold leading-tight mb-4">{s.t}</h3>
+                                <p className="text-ivory/85 leading-relaxed">{s.d}</p>
+                            </div>
+                        )}
                     </figure>
                 ))}
             </div>
-            <button type="button" onClick={() => go(idx - 1)} disabled={idx === 0} aria-label="Previous page" className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
-            <button type="button" onClick={() => go(idx + 1)} disabled={idx === PLAYBOOK_SLIDES.length - 1} aria-label="Next page" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
+            <button type="button" onClick={() => go(idx - 1)} disabled={idx === 0} aria-label="Previous" className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
+            <button type="button" onClick={() => go(idx + 1)} disabled={idx === PLAYBOOK_SLIDES.length - 1} aria-label="Next" className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-ivory/95 text-pine shadow-lg flex items-center justify-center disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
             <p className="mt-3 text-center text-sm text-ink/70" aria-live="polite">{PLAYBOOK_SLIDES[idx].cap}</p>
             <div className="mt-2 flex justify-center gap-1">
                 {PLAYBOOK_SLIDES.map((s, i) => (
-                    <button key={s.src} type="button" onClick={() => go(i)} aria-label={`Go to page ${i + 1}`} className="w-6 h-6 flex items-center justify-center"><span className={`block rounded-full transition-all ${i === idx ? 'w-5 h-2 bg-pine' : 'w-2 h-2 bg-pine/25'}`} /></button>
+                    <button key={s.cap} type="button" onClick={() => go(i)} aria-label={`Go to slide ${i + 1}`} className="w-6 h-6 flex items-center justify-center"><span className={`block rounded-full transition-all ${i === idx ? 'w-5 h-2 bg-pine' : 'w-2 h-2 bg-pine/25'}`} /></button>
                 ))}
             </div>
         </div>

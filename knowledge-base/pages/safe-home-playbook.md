@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: fc4ef34154586158
+content_hash: 0644ce05276abc37
 ---
 
 # The Safe Home Playbook | Pierre Concierge Nursing, Ocala
@@ -21,23 +21,45 @@ Discharge papers say what to do. They rarely say what to do when it goes wrong. 
 
 Coming soon
 
-*(Image: Playbook preview: Cover)*
+*(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
 
-*(Image: Playbook preview: How it works)*
+1 of 6
 
-*(Image: Playbook preview: The first 14 days at a glance)*
+### Nine problems, solved
 
-*(Image: Playbook preview: One of nine problems, with steps and scripts)*
+Rushed discharge, confusing medicines, pain at home, tasks nobody taught you, no one calling back, and more.
 
-*(Image: Playbook preview: Pain and medicine, step by step)*
+2 of 6
 
-*(Image: Playbook preview: Your 14 day plan)*
+### Numbered steps
 
-*(Image: Playbook preview: Day 7 and Day 14 review)*
+Each problem has clear steps you can start today, in order, with nothing to figure out.
 
-*(Image: Playbook preview: Local help in Ocala and Marion County)*
+3 of 6
 
-Cover
+### Words to say
+
+Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.
+
+4 of 6
+
+### A 14 day plan
+
+Tick boxes from before you leave the hospital through the first two weeks at home.
+
+5 of 6
+
+### Day 7 and Day 14 reviews
+
+Simple worksheets to decide whether to carry on, add help, or call the doctor.
+
+6 of 6
+
+### Local help
+
+Phone numbers and agencies for Ocala and Marion County, plus when to call 911.
+
+The Safe Home Playbook
 
 ## The nine problems it solves
 
