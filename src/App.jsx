@@ -38,7 +38,7 @@ import {
 } from 'lucide-react';
 
 /* ============================================================
-   Pierre Concierge Nursing — v2 redesign
+   Pierre Concierge Care — v2 redesign
    Palette is drawn from Elda's own portraits:
    charcoal studio backdrop, royal blue scrubs, warm beige.
    ============================================================ */
@@ -205,7 +205,7 @@ const FAQS = [
     },
     {
         q: "How is concierge nursing different from Medicare home health?",
-        a: "Medicare home health is short, task-focused, physician-ordered, and generally requires that you are homebound. Pierre Concierge Nursing is private-pay: the same nurse each time, flexible visit times, no homebound requirement, and no insurance-imposed time limit. The two can work side by side, and we are glad to coordinate with your home health team.",
+        a: "Medicare home health is short, task-focused, physician-ordered, and generally requires that you are homebound. Pierre Concierge Care is private-pay: the same nurse each time, flexible visit times, no homebound requirement, and no insurance-imposed time limit. The two can work side by side, and we are glad to coordinate with your home health team.",
     },
     {
         q: "Is my health information kept private?",
@@ -276,7 +276,7 @@ function Hero({ openBooking }) {
                 {/* Copy */}
                 <div className="reveal order-2 lg:order-1">
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pine/5 border border-pine/10 text-pine text-xs font-semibold uppercase tracking-[0.14em] mb-7">
-                        Premier Concierge Nursing · Ocala, FL
+                        Premier Concierge Care · Ocala, FL
                     </div>
 
                     <h1 className="font-serif text-[2.6rem] leading-[1.08] sm:text-5xl xl:text-[4.1rem] font-semibold text-pine mb-6">
@@ -562,7 +562,7 @@ function About() {
                             experience — from the fast pace of rehabilitation centers to the personal setting of home health care.
                         </p>
                         <p className="text-ink/75 leading-relaxed mb-10">
-                            Elda founded <strong className="text-pine">Pierre Concierge Nursing</strong> after seeing too many
+                            Elda founded <strong className="text-pine">Pierre Concierge Care</strong> after seeing too many
                             patients discharged home with confusing instructions and little support. Her goal: to be your
                             advocate, your nurse, and your peace of mind.
                         </p>
@@ -700,7 +700,7 @@ function Footer() {
                     <div>
                         <div className="flex items-center gap-3 mb-4">
                             <img src="/logo-mark-light.png" alt="" width="33" height="40" className="h-10 w-auto" />
-                            <span className="font-serif text-xl font-semibold text-ivory">Pierre Concierge Nursing</span>
+                            <span className="font-serif text-xl font-semibold text-ivory">Pierre Concierge Care</span>
                         </div>
                         <p className="text-sm leading-relaxed">
                             Hospital-grade nursing care in the comfort and privacy of your home — compassion, integrity, and clinical excellence.
@@ -727,7 +727,7 @@ function Footer() {
                 </div>
                 <div className="border-t border-ivory/10 pt-8 text-center text-xs text-ivory/60 space-y-2">
                     <p>© {year} Pierre Concierge Nursing & Wellness. All rights reserved.</p>
-                    <p className="font-semibold text-ivory/90">In case of a medical emergency, call 911. Pierre Concierge Nursing is not an emergency service.</p>
+                    <p className="font-semibold text-ivory/90">In case of a medical emergency, call 911. Pierre Concierge Care is not an emergency service.</p>
                 </div>
             </div>
         </footer>
@@ -785,7 +785,7 @@ function CompareHomeHealth() {
                             <tr className="bg-pine text-ivory">
                                 <th className="px-5 py-4 font-semibold"><span className="sr-only">Topic</span></th>
                                 <th className="px-5 py-4 font-semibold">Medicare home health</th>
-                                <th className="px-5 py-4 font-semibold">Pierre Concierge Nursing</th>
+                                <th className="px-5 py-4 font-semibold">Pierre Concierge Care</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1013,7 +1013,7 @@ function PageHeader({ eyebrow, title, subtitle }) {
 const PAGE_HEADERS = {
     '/services': { eyebrow: 'Services', title: 'Our nursing services', subtitle: 'Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.' },
     '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.' },
-    '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.' },
+    '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Care.' },
     '/privacy-practices': { eyebrow: 'Privacy', title: 'HIPAA Notice of Privacy Practices', subtitle: 'How your health information is used, shared, and protected, and the rights you have.' },
     '/faq': { eyebrow: 'FAQ', title: 'Frequently asked questions', subtitle: 'Insurance, payment, physician orders, and how a visit works.' },
 };
@@ -1153,7 +1153,7 @@ function Nav({ openBooking, path = '/' }) {
                     <a href="/" className="flex items-center gap-3 group">
                         <img src="/logo-mark.png" alt="" width="33" height="40" className="h-10 w-auto" />
                         <span className="font-serif text-lg font-semibold text-pine leading-tight">
-                            Pierre <span className="hidden sm:inline text-ink/70 font-normal">Concierge Nursing</span>
+                            Pierre <span className="hidden sm:inline text-ink/70 font-normal">Concierge Care</span>
                         </span>
                     </a>
 

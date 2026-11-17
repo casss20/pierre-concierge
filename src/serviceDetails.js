@@ -140,7 +140,7 @@ export const SERVICE_DETAILS = [
             "A written or prescribed order from your physician",
             "A list of allergies and current medications",
         ],
-        note: "IV therapy at Pierre Concierge Nursing requires a physician's order, and we verify it before every visit. Without an order, we cannot give IV treatment.",
+        note: "IV therapy at Pierre Concierge Care requires a physician's order, and we verify it before every visit. Without an order, we cannot give IV treatment.",
     },
     {
         slug: "medication-management",
