@@ -102,7 +102,7 @@ const SERVICES = [
     {
         icon: Activity,
         title: "Post-Operative Recovery",
-        description: "Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal — care Medicare's few-and-far-between visits don't cover.",
+        description: "Peace of mind after surgery: incision checks, vitals monitoring, pain assessment, medication reconciliation, and safe mobility assistance while you heal. It works alongside your doctor and any Medicare home health visits, adding more time and attention between them.",
         price: "$160 per visit",
         tag: "Book Post-Op Care",
     },
@@ -144,7 +144,7 @@ const SERVICES = [
     {
         icon: Building2,
         title: "Assisted Living Facility Support",
-        description: "Assisted living communities can't perform clinical tasks — we can, right inside your facility. Insulin administration, wound care, and clinical monitoring that let your loved one stay in their home, not move to a higher level of care. Monthly contracts available.",
+        description: "Many assisted living communities limit the clinical tasks their staff can perform. We can provide them right inside your facility, with your doctor's orders: insulin administration, wound care, and clinical monitoring that may help your loved one stay where they live. Monthly contracts available.",
         price: "$175 per visit",
         tag: "Book a Facility Visit",
     },
@@ -282,7 +282,7 @@ function Hero({ openBooking }) {
                     </div>
 
                     <h1 className="font-serif text-[2.6rem] leading-[1.08] sm:text-5xl xl:text-[4.1rem] font-semibold text-pine mb-6">
-                        Hospital-grade care,
+                        Skilled, RN-led care,
                         <br />
                         <span className="italic font-medium text-royal">right at home.</span>
                     </h1>
@@ -383,7 +383,7 @@ function AboutWhy() {
                 </div>
                 <div>
                     <Eyebrow>What it means</Eyebrow>
-                    <h2 className="font-serif text-3xl font-semibold text-pine leading-tight mb-5">Hospital-grade care, <span className="italic font-medium text-royal">at home</span></h2>
+                    <h2 className="font-serif text-3xl font-semibold text-pine leading-tight mb-5">Skilled, RN-led care, <span className="italic font-medium text-royal">at home</span></h2>
                     <p className="text-ink/80 leading-relaxed mb-4">Concierge nursing is private pay, nurse led care that comes to you. You choose the visits you need, and treatments follow your doctor&rsquo;s orders.</p>
                     <ul className="space-y-2.5">
                         {['Recovery after surgery or a hospital stay', 'Help managing a chronic condition', 'Medication reviews and health checks for an aging parent'].map((t) => (
@@ -452,12 +452,6 @@ function ValuesTeaser() {
 function QuoteBand() {
     return (
         <section className="relative bg-pine text-ivory overflow-hidden">
-            <img
-                src="/care-outdoors.jpg"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 w-full h-full object-cover opacity-20"
-            />
             <div className="pointer-events-none absolute inset-0 bg-pine/85" />
             <div className="pointer-events-none absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-pine-light/40 blur-3xl" />
             <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-24 text-center reveal">
@@ -514,9 +508,6 @@ function Services({ openBooking }) {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {SERVICES.map(({ icon: Icon, title, description, price, tag }, i) => (
                         <article key={title} className="reveal group bg-ivory rounded-3xl p-8 border border-transparent hover:border-pine/15 shadow-sm hover:shadow-xl flex flex-col h-full transition-all duration-300 hover:-translate-y-1">
-                            {SERVICE_BY_SLUG[SLUG_BY_TITLE[title]]?.image && (
-                                <img src={SERVICE_BY_SLUG[SLUG_BY_TITLE[title]].image} alt="" width="1344" height="752" loading="lazy" className="w-full h-40 object-cover rounded-2xl mb-6" />
-                            )}
                             <div className="flex items-start justify-between mb-7">
                                 <div className="w-12 h-12 rounded-2xl bg-pine/5 text-pine flex items-center justify-center group-hover:bg-pine group-hover:text-ivory transition-colors duration-300">
                                     <Icon className="w-6 h-6" />
@@ -658,8 +649,8 @@ function About() {
                         <div className="absolute -inset-3 rounded-t-full rounded-b-[2rem] border border-brass/40 translate-x-3 translate-y-3" />
                         <div className="relative rounded-t-full rounded-b-[2rem] overflow-hidden shadow-2xl bg-sand">
                             <img
-                                src="/elda-scrubs.jpg"
-                                width="848" height="1024" loading="lazy"
+                                src="/elda-scrubs.webp"
+                                width="848" height="1024" loading="lazy" decoding="async"
                                 alt="Elda Marie Pierre in royal blue scrubs"
                                 className="w-full h-[30rem] object-cover object-top"
                             />
@@ -688,7 +679,7 @@ function About() {
 
                         <figure className="reveal mb-10 rounded-[1.5rem] overflow-hidden shadow-lg border border-pine/10">
                             <img
-                                src="/care-couple.jpg"
+                                src="/care-couple.webp" width="1000" height="667" loading="lazy" decoding="async"
                                 alt="An older couple together in their living room at home"
                                 className="w-full h-60 sm:h-72 object-cover"
                             />
@@ -776,7 +767,7 @@ function ServiceArea() {
                 <div className="bg-cream/70 border border-pine/10 rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-sm">
                     <div className="md:w-[42%] shrink-0">
                         <img
-                            src="/senior-couple.jpg"
+                            src="/senior-couple.webp" width="800" height="1198" loading="lazy" decoding="async"
                             alt="A senior couple resting together at home"
                             className="w-full h-56 md:h-full object-cover"
                         />
@@ -840,7 +831,7 @@ function Footer() {
                             <span className="font-serif text-xl font-semibold text-ivory">Pierre Concierge Nursing</span>
                         </div>
                         <p className="text-sm leading-relaxed">
-                            Hospital-grade nursing care in the comfort and privacy of your home — compassion, integrity, and clinical excellence.
+                            Skilled, RN-led nursing care in the comfort and privacy of your home, with compassion and integrity.
                         </p>
                     </div>
                     <div>

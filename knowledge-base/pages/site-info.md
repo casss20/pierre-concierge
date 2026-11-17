@@ -6,7 +6,7 @@ category: site-info
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 31b648ef06d462cf
+content_hash: a85c7f4522d2dc22
 ---
 
 # Site-wide information (footer)
@@ -15,7 +15,7 @@ content_hash: 31b648ef06d462cf
 
 Pierre Concierge Nursing
 
-Hospital-grade nursing care in the comfort and privacy of your home — compassion, integrity, and clinical excellence.
+Skilled, RN-led nursing care in the comfort and privacy of your home, with compassion and integrity.
 
 #### Contact
 

@@ -177,7 +177,7 @@ export const SERVICE_DETAILS = [
         orderText: "Clinical tasks such as insulin and wound care require a physician's order, which we confirm at intake.",
         title: "Assisted Living Facility Support",
         seoDescription: "Clinical nursing inside assisted living communities in Ocala, FL: insulin, wound care, and monitoring so residents can stay where they live.",
-        intro: "Assisted living communities help with daily living, but many cannot perform clinical tasks. We provide those clinical services right inside the facility so a resident may not need to move to a higher level of care.",
+        intro: "Assisted living communities help with daily living, and many limit the clinical tasks their staff can perform. With your doctor's orders, we can provide those clinical services right inside the facility, so a resident may not need to move to a higher level of care.",
         whoFor: [
             "Residents who need insulin, injections, or wound care",
             "Families who want their loved one to stay in their current community",
