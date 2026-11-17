@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 7977c29aba8fea8f
+content_hash: accee4e7d2d4fe79
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -332,7 +332,7 @@ A step by step plan for the first 14 days after surgery or a hospital stay, writ
 -   A 14 day plan with Day 7 and Day 14 review worksheets
 -   Local Ocala and Marion County help numbers
 
-Coming soon[See what is inside](https://pierre-concierge.vercel.app/safe-home-playbook)
+Coming soon · $34[See what is inside](https://pierre-concierge.vercel.app/safe-home-playbook)
 
 *(Image: A senior couple resting together at home)*
 
