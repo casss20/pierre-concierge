@@ -69,16 +69,16 @@ main:focus { outline: none; }
 .sb-glow { position: absolute; border-radius: 9999px; will-change: transform; }
 .sb-glow-gold {
   width: 70vmax; height: 70vmax; left: -20vmax; top: -15vmax;
-  background: radial-gradient(circle, rgba(201,162,77,.20) 0%, rgba(201,162,77,0) 62%);
+  background: radial-gradient(circle, rgba(201,162,77,.12) 0%, rgba(201,162,77,0) 62%);
   transform: translate3d(calc(var(--sp) * 55vw + var(--px) * 60px), calc(var(--sp) * 70vh + var(--py) * 40px), 0);
 }
 .sb-glow-green {
   width: 60vmax; height: 60vmax; right: -25vmax; bottom: -20vmax;
-  background: radial-gradient(circle, rgba(22,84,60,.14) 0%, rgba(22,84,60,0) 65%);
+  background: radial-gradient(circle, rgba(22,84,60,.08) 0%, rgba(22,84,60,0) 65%);
   transform: translate3d(calc(var(--sp) * -45vw + var(--px) * -50px), calc(var(--sp) * -60vh + var(--py) * -30px), 0);
 }
 .sb-mark {
-  position: absolute; right: -6vw; top: 12vh; width: min(70vw, 460px); height: auto; opacity: .07; will-change: transform;
+  position: absolute; right: -6vw; top: 12vh; width: min(70vw, 460px); height: auto; opacity: .035; will-change: transform;
   transform: translate3d(calc(var(--px) * -36px), calc(var(--sp) * -26vh + var(--py) * -24px), 0) rotate(calc(var(--sp) * 14deg - 4deg));
 }
 @media (prefers-reduced-motion: reduce) {
