@@ -1,19 +1,19 @@
 ---
 title: "Care After a Hospital Stay in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/care-settings/after-a-hospital-stay
+source_url: https://pierreconciergenursing.com/care-settings/after-a-hospital-stay
 description: "A nurse at home in the first days after discharge from an Ocala hospital: medication review, incision checks, and a safe home setup."
 category: care-settings
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 2681dfc4979982e0
+content_hash: 19f974294b367e01
 ---
 
 # Care After a Hospital Stay in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/care-settings/after-a-hospital-stay
+> Source: https://pierreconciergenursing.com/care-settings/after-a-hospital-stay
 
-[← Care settings](https://pierre-concierge.vercel.app/care-settings)
+[← Care settings](https://pierreconciergenursing.com/care-settings)
 
 Care settings
 
@@ -47,7 +47,7 @@ This page is general information, not medical advice. Always follow the instruct
 
 ## More in Care settings
 
-[In-Home Nursing in Ocala](https://pierre-concierge.vercel.app/care-settings/in-home-nursing)[Nursing for Visitors and Travelers in Ocala](https://pierre-concierge.vercel.app/care-settings/visitors-and-travelers)
+[In-Home Nursing in Ocala](https://pierreconciergenursing.com/care-settings/in-home-nursing)[Nursing for Visitors and Travelers in Ocala](https://pierreconciergenursing.com/care-settings/visitors-and-travelers)
 
 Get Started
 
@@ -55,4 +55,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

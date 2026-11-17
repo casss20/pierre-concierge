@@ -1,17 +1,17 @@
 ---
 title: "Accessibility | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/accessibility
+source_url: https://pierreconciergenursing.com/accessibility
 description: "Our commitment to making this website usable by everyone, and how to reach us if you have trouble."
 category: policy
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: d2a51006bd0b495e
+content_hash: 747f33264d22624f
 ---
 
 # Accessibility | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/accessibility
+> Source: https://pierreconciergenursing.com/accessibility
 
 Accessibility
 
@@ -38,4 +38,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

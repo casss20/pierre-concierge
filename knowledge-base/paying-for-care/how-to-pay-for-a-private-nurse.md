@@ -1,19 +1,19 @@
 ---
 title: "How to Pay for a Private Nurse in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/paying-for-care/how-to-pay-for-a-private-nurse
+source_url: https://pierreconciergenursing.com/paying-for-care/how-to-pay-for-a-private-nurse
 description: "How families in Ocala and Marion County pay for private home nursing: private pay, long term care insurance, HSA and FSA, and veterans benefits."
 category: paying-for-care
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 0cf1737ee27e5714
+content_hash: 0b360209ee5237ed
 ---
 
 # How to Pay for a Private Nurse in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/paying-for-care/how-to-pay-for-a-private-nurse
+> Source: https://pierreconciergenursing.com/paying-for-care/how-to-pay-for-a-private-nurse
 
-[← Paying for care](https://pierre-concierge.vercel.app/paying-for-care)
+[← Paying for care](https://pierreconciergenursing.com/paying-for-care)
 
 Paying for care
 
@@ -59,7 +59,7 @@ This page is general information, not medical advice. Always follow the instruct
 
 ## More in Paying for care
 
-[Does Medicare Cover a Private Nurse?](https://pierre-concierge.vercel.app/paying-for-care/does-medicare-cover-a-private-nurse)[Long Term Care Insurance and Home Nursing](https://pierre-concierge.vercel.app/paying-for-care/long-term-care-insurance-home-nursing)[Veterans Benefits and Home Nursing](https://pierre-concierge.vercel.app/paying-for-care/veterans-benefits-home-nursing)
+[Does Medicare Cover a Private Nurse?](https://pierreconciergenursing.com/paying-for-care/does-medicare-cover-a-private-nurse)[Long Term Care Insurance and Home Nursing](https://pierreconciergenursing.com/paying-for-care/long-term-care-insurance-home-nursing)[Veterans Benefits and Home Nursing](https://pierreconciergenursing.com/paying-for-care/veterans-benefits-home-nursing)
 
 Get Started
 
@@ -67,4 +67,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

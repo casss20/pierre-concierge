@@ -1,17 +1,17 @@
 ---
 title: "Going Home After Surgery Checklist | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/going-home-checklist.html
+source_url: https://pierreconciergenursing.com/going-home-checklist.html
 description: "Printable checklist for the first days at home after a hospital stay."
 category: resource
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 1e37105bcb259e2d
+content_hash: 54a2a911e82a622b
 ---
 
 # Going Home After Surgery Checklist | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/going-home-checklist.html
+> Source: https://pierreconciergenursing.com/going-home-checklist.html
 
 # Going Home After Surgery
 

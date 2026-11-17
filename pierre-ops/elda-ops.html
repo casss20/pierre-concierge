@@ -166,7 +166,7 @@ tr.clickable:hover{background:var(--cream)}
 const LS_KEY='pierre_ops_v1';
 let S=load();
 function load(){try{const r=localStorage.getItem(LS_KEY);if(r)return JSON.parse(r)}catch(e){}return fresh()}
-function fresh(){return{settings:{name:'Elda Marie Joe Pierre, RN, BSN',title:'Pierre Concierge Nursing & Wellness',phone:'(754) 367-6929',email:'jpjojo565@gmail.com',license:'FL RN (add license #)',npi:'',address:'Ocala & Marion County, FL',googleReview:'',pass:'',rates:{'Post-Operative Recovery':160,'Hospital-to-Home Transition':185,'Advanced Wound Care':175,'IV Therapy & Hydration':200,'Medication Management':150,'Assisted Living Facility Support':175,'Family Peace-of-Mind Visits':150,'Wellness Assessments':150,'Chronic Disease Management':450,'Patient Advocacy':75}},clients:[],visits:[]}}
+function fresh(){return{settings:{name:'Elda Marie Joe Pierre, RN, BSN',title:'Pierre Concierge Nursing & Wellness',phone:'(754) 367-6929',email:'pierreconciergenursing@gmail.com',license:'FL RN (add license #)',npi:'',address:'Ocala & Marion County, FL',googleReview:'',pass:'',rates:{'Post-Operative Recovery':160,'Hospital-to-Home Transition':185,'Advanced Wound Care':175,'IV Therapy & Hydration':200,'Medication Management':150,'Assisted Living Facility Support':175,'Family Peace-of-Mind Visits':150,'Wellness Assessments':150,'Chronic Disease Management':450,'Patient Advocacy':75}},clients:[],visits:[]}}
 function save(){localStorage.setItem(LS_KEY,JSON.stringify(S))}
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

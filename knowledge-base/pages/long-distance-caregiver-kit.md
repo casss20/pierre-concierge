@@ -1,17 +1,17 @@
 ---
 title: "The Long Distance Caregiver Kit | Pierre Concierge Nursing, Ocala"
-source_url: https://pierre-concierge.vercel.app/long-distance-caregiver-kit
+source_url: https://pierreconciergenursing.com/long-distance-caregiver-kit
 description: "A 16 page kit for families caring for a parent in Florida from far away: call scripts, a local team plan, a check in system, and a crisis plan."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: a7093cb068e57b91
+content_hash: 2fb49bc4bac7f1fa
 ---
 
 # The Long Distance Caregiver Kit | Pierre Concierge Nursing, Ocala
 
-> Source: https://pierre-concierge.vercel.app/long-distance-caregiver-kit
+> Source: https://pierreconciergenursing.com/long-distance-caregiver-kit
 
 Kit for far away families
 
@@ -101,7 +101,7 @@ A meeting agenda, a money page, and support for your own wellbeing.
 
 ## Pairs well with
 
-[The Safe Home Playbook](https://pierre-concierge.vercel.app/safe-home-playbook)[The Care Plan Binder](https://pierre-concierge.vercel.app/care-plan-binder)[Hospital to Home Transition visit](https://pierre-concierge.vercel.app/services/hospital-to-home-transition)[All our products](https://pierre-concierge.vercel.app/products)
+[The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[The Care Plan Binder](https://pierreconciergenursing.com/care-plan-binder)[Hospital to Home Transition visit](https://pierreconciergenursing.com/services/hospital-to-home-transition)[All our products](https://pierreconciergenursing.com/products)
 
 ## Availability
 
@@ -127,4 +127,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

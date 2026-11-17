@@ -1,17 +1,17 @@
 ---
 title: "How Concierge Nursing Works | Pierre Concierge Nursing, Ocala, FL"
-source_url: https://pierre-concierge.vercel.app/how-it-works
+source_url: https://pierreconciergenursing.com/how-it-works
 description: "How to get started with private nursing at home in Ocala and Marion County: call or text, talk with Elda, a home visit, clear notes, and a plan that adapts."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: d008e6865e1f0fe8
+content_hash: 52c504eba01eb765
 ---
 
 # How Concierge Nursing Works | Pierre Concierge Nursing, Ocala, FL
 
-> Source: https://pierre-concierge.vercel.app/how-it-works
+> Source: https://pierreconciergenursing.com/how-it-works
 
 How it works
 
@@ -62,7 +62,7 @@ With your permission, Elda shares what she sees so your care team can act on it.
 
 ## Where to next
 
-[Pricing and payment](https://pierre-concierge.vercel.app/pricing)[All services](https://pierre-concierge.vercel.app/services)[Conditions we support](https://pierre-concierge.vercel.app/conditions)[Paying for care](https://pierre-concierge.vercel.app/paying-for-care)[FAQ](https://pierre-concierge.vercel.app/faq)
+[Pricing and payment](https://pierreconciergenursing.com/pricing)[All services](https://pierreconciergenursing.com/services)[Conditions we support](https://pierreconciergenursing.com/conditions)[Paying for care](https://pierreconciergenursing.com/paying-for-care)[FAQ](https://pierreconciergenursing.com/faq)
 
 ## Questions, answered
 
@@ -98,4 +98,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

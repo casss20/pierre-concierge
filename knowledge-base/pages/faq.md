@@ -1,27 +1,23 @@
 ---
 title: "FAQ | Pierre Concierge Nursing, Ocala, FL"
-source_url: https://pierre-concierge.vercel.app/faq
+source_url: https://pierreconciergenursing.com/faq
 description: "Answers about insurance, payment, physician orders, service areas, and how concierge nursing differs from Medicare home health."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 0552a4eab5037913
+content_hash: f42b6b8cd174d817
 ---
 
 # FAQ | Pierre Concierge Nursing, Ocala, FL
 
-> Source: https://pierre-concierge.vercel.app/faq
+> Source: https://pierreconciergenursing.com/faq
 
 FAQ
 
 # Frequently asked questions
 
 Insurance, payment, physician orders, and how a visit works.
-
-FAQ
-
-## Questions, answered
 
 ### Do you accept insurance?
 
@@ -55,7 +51,7 @@ No referral is needed to book. Most families contact us directly, often the week
 
 Questions to ask before discharge and a simple plan for the first 72 hours. Print it and bring it to the hospital.
 
-[Open the checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)
+[Open the checklist](https://pierreconciergenursing.com/going-home-checklist.html)
 
 Get Started
 
@@ -63,4 +59,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

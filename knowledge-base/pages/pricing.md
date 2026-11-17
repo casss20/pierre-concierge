@@ -1,29 +1,23 @@
 ---
 title: "Pricing | Pierre Concierge Nursing, Ocala, FL"
-source_url: https://pierre-concierge.vercel.app/pricing
+source_url: https://pierreconciergenursing.com/pricing
 description: "Transparent per visit pricing from $150 and a $450 monthly Care Plan for mobile nursing at home in Ocala, FL."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 6e1bd57c9db8a4fa
+content_hash: 9becd9aca3e45f67
 ---
 
 # Pricing | Pierre Concierge Nursing, Ocala, FL
 
-> Source: https://pierre-concierge.vercel.app/pricing
+> Source: https://pierreconciergenursing.com/pricing
 
 Pricing
 
 # Plans and per visit rates
 
 Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.
-
-Pricing
-
-## Simple, transparent, no surprises
-
-One visit for immediate needs, or consistent monthly care at a better value.
 
 Most popular · Best for post-op recovery
 
@@ -62,4 +56,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

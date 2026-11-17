@@ -1,17 +1,17 @@
 ---
 title: "The Florida Assisted Living Family Guide | Pierre Concierge Nursing, Ocala"
-source_url: https://pierre-concierge.vercel.app/florida-assisted-living-family-guide
+source_url: https://pierreconciergenursing.com/florida-assisted-living-family-guide
 description: "A 17 page guide to choosing, touring, paying for, and settling into an assisted living facility in Florida, with checklists and a scorecard."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 61851e187d54c100
+content_hash: 40629faae2d44d68
 ---
 
 # The Florida Assisted Living Family Guide | Pierre Concierge Nursing, Ocala
 
-> Source: https://pierre-concierge.vercel.app/florida-assisted-living-family-guide
+> Source: https://pierreconciergenursing.com/florida-assisted-living-family-guide
 
 Guide for families
 
@@ -101,7 +101,7 @@ Resident rights and Florida phone numbers for concerns.
 
 ## Pairs well with
 
-[The Safe Home Playbook](https://pierre-concierge.vercel.app/safe-home-playbook)[The Long Distance Caregiver Kit](https://pierre-concierge.vercel.app/long-distance-caregiver-kit)[The Care Plan Binder](https://pierre-concierge.vercel.app/care-plan-binder)[All our products](https://pierre-concierge.vercel.app/products)
+[The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[The Long Distance Caregiver Kit](https://pierreconciergenursing.com/long-distance-caregiver-kit)[The Care Plan Binder](https://pierreconciergenursing.com/care-plan-binder)[All our products](https://pierreconciergenursing.com/products)
 
 ## Availability
 
@@ -127,4 +127,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

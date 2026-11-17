@@ -1,17 +1,17 @@
 ---
 title: "HIPAA Notice of Privacy Practices | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/privacy-practices
+source_url: https://pierreconciergenursing.com/privacy-practices
 description: "How Pierre Concierge Nursing uses, shares, and protects your health information, and the privacy rights you have."
 category: policy
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 6b233f8b44c90e30
+content_hash: c4f5556af3b88ec9
 ---
 
 # HIPAA Notice of Privacy Practices | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/privacy-practices
+> Source: https://pierreconciergenursing.com/privacy-practices
 
 Privacy
 
@@ -95,3 +95,4 @@ Elda Marie Pierre, RN, BSN
 Pierre Concierge Nursing & Wellness
 
 Phone or text: [(754) 367-6929](tel:+17543676929)
+Email: [pierreconciergenursing@gmail.com](mailto:pierreconciergenursing@gmail.com)

@@ -1,19 +1,19 @@
 ---
 title: "Dementia Care Support at Home in Ocala, FL | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/conditions/dementia
+source_url: https://pierreconciergenursing.com/conditions/dementia
 description: "Nurse support for families caring for someone with dementia in Ocala and Marion County: medication safety, health checks, and caregiver guidance."
 category: conditions
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 44579564601d2f98
+content_hash: ec13949c19d1f95a
 ---
 
 # Dementia Care Support at Home in Ocala, FL | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/conditions/dementia
+> Source: https://pierreconciergenursing.com/conditions/dementia
 
-[← Conditions](https://pierre-concierge.vercel.app/conditions)
+[← Conditions](https://pierreconciergenursing.com/conditions)
 
 Conditions
 
@@ -43,7 +43,7 @@ This page is general information, not medical advice. Always follow the instruct
 
 ## More in Conditions
 
-[Diabetes Care at Home](https://pierre-concierge.vercel.app/conditions/diabetes)[Heart Failure Care at Home](https://pierre-concierge.vercel.app/conditions/heart-failure)[COPD Care at Home](https://pierre-concierge.vercel.app/conditions/copd)[High Blood Pressure Care at Home](https://pierre-concierge.vercel.app/conditions/high-blood-pressure)[Stroke Recovery at Home](https://pierre-concierge.vercel.app/conditions/stroke-recovery)
+[Diabetes Care at Home](https://pierreconciergenursing.com/conditions/diabetes)[Heart Failure Care at Home](https://pierreconciergenursing.com/conditions/heart-failure)[COPD Care at Home](https://pierreconciergenursing.com/conditions/copd)[High Blood Pressure Care at Home](https://pierreconciergenursing.com/conditions/high-blood-pressure)[Stroke Recovery at Home](https://pierreconciergenursing.com/conditions/stroke-recovery)
 
 Get Started
 
@@ -51,4 +51,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

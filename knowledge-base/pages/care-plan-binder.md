@@ -1,17 +1,17 @@
 ---
 title: "The Care Plan Binder | Pierre Concierge Nursing, Ocala"
-source_url: https://pierre-concierge.vercel.app/care-plan-binder
+source_url: https://pierreconciergenursing.com/care-plan-binder
 description: "A 20 page printable organizer for family caregivers: emergency card, medicine list, contacts, appointments, legal papers, logs, and home safety."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 0644ba1a803d19a3
+content_hash: f6f54fa3a4c3c7fc
 ---
 
 # The Care Plan Binder | Pierre Concierge Nursing, Ocala
 
-> Source: https://pierre-concierge.vercel.app/care-plan-binder
+> Source: https://pierreconciergenursing.com/care-plan-binder
 
 Printable organizer
 
@@ -101,7 +101,7 @@ A seasonal check, a hurricane plan, and daily care logs.
 
 ## Pairs well with
 
-[The Discharge Readiness Kit](https://pierre-concierge.vercel.app/discharge-readiness-kit)[The Safe Home Playbook](https://pierre-concierge.vercel.app/safe-home-playbook)[The Long Distance Caregiver Kit](https://pierre-concierge.vercel.app/long-distance-caregiver-kit)[All our products](https://pierre-concierge.vercel.app/products)
+[The Discharge Readiness Kit](https://pierreconciergenursing.com/discharge-readiness-kit)[The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[The Long Distance Caregiver Kit](https://pierreconciergenursing.com/long-distance-caregiver-kit)[All our products](https://pierreconciergenursing.com/products)
 
 ## Availability
 
@@ -127,4 +127,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)

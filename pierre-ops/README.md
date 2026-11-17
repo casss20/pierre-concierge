@@ -66,4 +66,4 @@ Every product: PDF download + fillable fields + click-to-call + QR to booking si
 
 All settings (name, license #, NPI, rates) are editable in the app's **Settings** tab — no code changes needed.
 
-Built 2026-11-17. Brand-matched to pierre-concierge.vercel.app.
+Built 2026-11-17. Brand-matched to pierreconciergenursing.com.

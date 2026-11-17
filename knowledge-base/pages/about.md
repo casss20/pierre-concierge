@@ -1,17 +1,17 @@
 ---
 title: "About Elda Pierre, RN, BSN | Pierre Concierge Nursing"
-source_url: https://pierre-concierge.vercel.app/about
+source_url: https://pierreconciergenursing.com/about
 description: "Meet Elda Marie Pierre, a Registered Nurse with a BSN and more than 20 years in patient care, serving Ocala and Marion County, FL."
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 90e1fe1f1f723369
+content_hash: 654337d6f3713576
 ---
 
 # About Elda Pierre, RN, BSN | Pierre Concierge Nursing
 
-> Source: https://pierre-concierge.vercel.app/about
+> Source: https://pierreconciergenursing.com/about
 
 About
 
@@ -22,8 +22,6 @@ Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nurs
 *(Image: Elda Marie Pierre in royal blue scrubs)*
 
 20+ years of patient care
-
-Meet your nurse
 
 ## Elda Marie Joe Pierre, RN, BSN
 
@@ -66,7 +64,7 @@ Decades of foundational, hands-on patient care experience.
 
 Personal attention, clear communication, advocacy, privacy, honest pricing, and care rooted in Marion County.
 
-[Read our values](https://pierre-concierge.vercel.app/our-values)
+[Read our values](https://pierreconciergenursing.com/our-values)
 
 Licensed Florida RN
 
@@ -76,7 +74,7 @@ Private and confidential
 
 Records and updates are shared only with the doctors and family you authorize.
 
-[Read our privacy notice](https://pierre-concierge.vercel.app/privacy-practices)
+[Read our privacy notice](https://pierreconciergenursing.com/privacy-practices)
 
 Working with your care team
 
@@ -122,7 +120,7 @@ Ocala and Marion County, Florida. Call or text (754) 367-6929 to confirm travel 
 
 ## Where to next
 
-[All services](https://pierre-concierge.vercel.app/services)[How it works](https://pierre-concierge.vercel.app/how-it-works)[Pricing](https://pierre-concierge.vercel.app/pricing)[Conditions](https://pierre-concierge.vercel.app/conditions)[Care settings](https://pierre-concierge.vercel.app/care-settings)[Areas we serve](https://pierre-concierge.vercel.app/areas)[Contact](https://pierre-concierge.vercel.app/contact)
+[All services](https://pierreconciergenursing.com/services)[How it works](https://pierreconciergenursing.com/how-it-works)[Pricing](https://pierreconciergenursing.com/pricing)[Conditions](https://pierreconciergenursing.com/conditions)[Care settings](https://pierreconciergenursing.com/care-settings)[Areas we serve](https://pierreconciergenursing.com/areas)[Contact](https://pierreconciergenursing.com/contact)
 
 This page is general information, not medical advice. Services are non-emergency. In a medical emergency, call 911.
 
@@ -140,4 +138,4 @@ Get Started
 
 One-time check-up or continuous care — booking is simple, secure, and personal.
 
-[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:jpjojo565@gmail.com)
+[Call or Text: (754) 367-6929](tel:+17543676929) [Email Elda](mailto:pierreconciergenursing@gmail.com)
