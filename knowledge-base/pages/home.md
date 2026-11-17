@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: ef4bfab95a4769c2
+content_hash: 7977c29aba8fea8f
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -280,6 +280,59 @@ No referral is needed to book. Most families contact us directly, often the week
 Questions to ask before discharge and a simple plan for the first 72 hours. Print it and bring it to the hospital.
 
 [Open the checklist](https://pierre-concierge.vercel.app/going-home-checklist.html)
+
+*(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
+
+1 of 6
+
+### Nine problems, solved
+
+Rushed discharge, confusing medicines, pain at home, tasks nobody taught you, no one calling back, and more.
+
+2 of 6
+
+### Numbered steps
+
+Each problem has clear steps you can start today, in order, with nothing to figure out.
+
+3 of 6
+
+### Words to say
+
+Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.
+
+4 of 6
+
+### A 14 day plan
+
+Tick boxes from before you leave the hospital through the first two weeks at home.
+
+5 of 6
+
+### Day 7 and Day 14 reviews
+
+Simple worksheets to decide whether to carry on, add help, or call the doctor.
+
+6 of 6
+
+### Local help
+
+Phone numbers and agencies for Ocala and Marion County, plus when to call 911.
+
+The Safe Home Playbook
+
+Guide for families
+
+## The Safe Home Playbook
+
+A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.
+
+-   Nine common problems after discharge, each with numbered steps
+-   Exact words to say to nurses, doctors, pharmacists, and family
+-   A 14 day plan with Day 7 and Day 14 review worksheets
+-   Local Ocala and Marion County help numbers
+
+Coming soon[See what is inside](https://pierre-concierge.vercel.app/safe-home-playbook)
 
 *(Image: A senior couple resting together at home)*
 

@@ -19,6 +19,11 @@ export const SITE_CONFIG = {
     privacyEffectiveDate: "",   // e.g. "December 1, 2026"
     privacyContactEmail: "",    // email for privacy questions and requests
     privacyMailingAddress: "",  // mailing address for written requests
+    // The Safe Home Playbook (paid PDF guide). Leave the checkout link empty until the store is ready:
+    // the site then shows "Coming soon". Once you paste the store link, the Get the Playbook button appears everywhere.
+    playbookCheckoutUrl: "",
+    // Optional price text shown next to the button, for example "$34"
+    playbookPrice: "",
     // Free downloadable resource (static page in /public)
     checklistUrl: "/going-home-checklist.html",
 };

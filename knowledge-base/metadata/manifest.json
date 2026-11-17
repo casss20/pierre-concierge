@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-17",
   "site": "https://pierre-concierge.vercel.app",
-  "count": 56,
+  "count": 57,
   "documents": [
     {
       "file": "pages/home.md",
@@ -10,8 +10,8 @@
       "route": "/",
       "category": "page",
       "extracted": "2026-11-17",
-      "hash": "ef4bfab95a4769c2",
-      "words": 1366
+      "hash": "7977c29aba8fea8f",
+      "words": 1613
     },
     {
       "file": "services/overview.md",
@@ -172,6 +172,16 @@
       "extracted": "2026-11-17",
       "hash": "d044e9a87afb36f0",
       "words": 258
+    },
+    {
+      "file": "pages/safe-home-playbook.md",
+      "title": "The Safe Home Playbook | Pierre Concierge Nursing, Ocala",
+      "source_url": "https://pierre-concierge.vercel.app/safe-home-playbook",
+      "route": "/safe-home-playbook",
+      "category": "page",
+      "extracted": "2026-11-17",
+      "hash": "0644ce05276abc37",
+      "words": 724
     },
     {
       "file": "pages/resources.md",
