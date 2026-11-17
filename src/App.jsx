@@ -1301,6 +1301,43 @@ function ServicePage({ slug, openBooking }) {
     );
 }
 
+// Decorative background that responds to scrolling (and to the mouse on desktop).
+// Only transform and opacity change, it never intercepts clicks, and it stays still for reduced motion.
+function ScrollBackdrop() {
+    const ref = useRef(null);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        let raf = 0, px = 0, py = 0;
+        const update = () => {
+            raf = 0;
+            const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            el.style.setProperty('--sp', Math.min(1, window.scrollY / max).toFixed(4));
+            el.style.setProperty('--px', px.toFixed(3));
+            el.style.setProperty('--py', py.toFixed(3));
+        };
+        const queue = () => { if (!raf) raf = requestAnimationFrame(update); };
+        const onMove = (e) => { px = e.clientX / window.innerWidth - 0.5; py = e.clientY / window.innerHeight - 0.5; queue(); };
+        update();
+        window.addEventListener('scroll', queue, { passive: true });
+        window.addEventListener('resize', queue);
+        window.addEventListener('pointermove', onMove, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', queue);
+            window.removeEventListener('resize', queue);
+            window.removeEventListener('pointermove', onMove);
+            if (raf) cancelAnimationFrame(raf);
+        };
+    }, []);
+    return (
+        <div ref={ref} className="scroll-backdrop" aria-hidden="true">
+            <div className="sb-glow sb-glow-gold" />
+            <div className="sb-glow sb-glow-green" />
+            <img className="sb-mark" src="/logo-mark-bg.webp" alt="" width="390" height="465" />
+        </div>
+    );
+}
+
 // --- Standalone pages ---------------------------------------------
 function PageHeader({ eyebrow, title, subtitle }) {
     return (
@@ -1620,9 +1657,9 @@ export default function App({ path = '/' }) {
     } else if (clean === '/pricing') {
         content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/our-values') {
-        content = (<><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><ScrollBackdrop /><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
-        content = (<><PageHeader {...PAGE_HEADERS['/about']} /><About /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
+        content = (<><ScrollBackdrop /><PageHeader {...PAGE_HEADERS['/about']} /><About /><ValuesTeaser /><CredentialsStrip /><CareTeam /><Testimonials /><AboutFaqNext /><ServiceArea /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/privacy-practices') {
         content = (<><PageHeader {...PAGE_HEADERS['/privacy-practices']} /><PrivacyNotice /></>);
     } else if (clean === '/faq') {
