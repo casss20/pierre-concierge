@@ -1148,12 +1148,17 @@ function ProductCards() {
     return (
         <div className="space-y-8">
             {PRODUCTS.map((p) => (
-                <div key={p.id} className="grid sm:grid-cols-[11rem_1fr] gap-6 items-center bg-cream/60 border border-pine/10 rounded-3xl p-6">
-                    <img src={p.cover} width="680" height="880" loading="lazy" decoding="async" alt={`Cover of ${p.title}`} className="w-40 sm:w-full mx-auto rounded-xl shadow-lg" />
+                <div key={p.id} className="grid md:grid-cols-[0.8fr_1.2fr] gap-6 md:gap-10 items-center bg-cream/60 border border-pine/10 rounded-3xl p-6">
+                    <PlaybookCarousel compact slides={p.slides} label={`What ${p.title} includes`} />
                     <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-2">{p.eyebrow}</p>
-                        <h2 className="font-serif text-2xl font-semibold text-pine mb-2">{p.title}</h2>
+                        <h2 className="font-serif text-2xl font-semibold text-pine mb-2"><a href={p.href} className="hover:underline">{p.title}</a></h2>
                         <p className="text-sm text-ink/80 leading-relaxed mb-4">{p.blurb}</p>
+                        <ul className="space-y-2 mb-5">
+                            {p.points.map((t) => (
+                                <li key={t} className="flex gap-3 text-sm text-ink/80 leading-relaxed"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>
+                            ))}
+                        </ul>
                         <div className="flex flex-wrap items-center gap-4">
                             <ProductAction url={SITE_CONFIG[p.urlKey]} price={SITE_CONFIG[p.priceKey]} />
                             <a href={p.href} className="inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See what is inside <ArrowRight className="w-4 h-4" /></a>
@@ -1161,7 +1166,7 @@ function ProductCards() {
                     </div>
                 </div>
             ))}
-            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">Get both together for {SITE_CONFIG.bundlePrice}.</p>}
+            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">The Safe Home Playbook and the Discharge Readiness Kit together: {SITE_CONFIG.bundlePrice}.</p>}
         </div>
     );
 }
