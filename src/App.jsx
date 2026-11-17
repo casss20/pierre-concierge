@@ -1008,10 +1008,12 @@ const PLAYBOOK_SLIDES = [
 ];
 const KIT_SLIDES = [
     { cover: true, src: '/playbook/kit-cover.webp', title: 'The Discharge Readiness Kit', cap: 'The Discharge Readiness Kit' },
-    { t: 'Questions to ask', d: 'Printable question pages for before discharge, with space to write each answer as the nurse speaks.', cap: 'Before discharge' },
-    { t: 'Medication list and schedule', d: 'Fill in the medicines from the discharge papers, then build a simple daily schedule.', cap: 'Day of discharge' },
-    { t: 'Home preparation checklist', d: 'Get the home ready before your loved one arrives, room by room.', cap: 'Getting the home ready' },
-    { t: 'A daily log', d: 'Track the first two weeks in one place, so nothing is forgotten when you call the doctor.', cap: 'The first two weeks' },
+    { t: 'Questions to ask', d: 'Printable question pages for before you leave, with space to write each answer as the nurse speaks.', cap: 'Before discharge' },
+    { t: 'Medication list and schedule', d: 'Fill in the medicines from the discharge papers, then build a simple daily schedule chart for the week.', cap: 'Day of discharge' },
+    { t: 'Getting the home ready', d: 'A home checklist, plus a simple plan for the first 72 hours, one day at a time.', cap: 'Before you arrive home' },
+    { t: 'Daily recovery log', d: 'One line a day for the first two weeks, ready to bring to follow up visits.', cap: 'Days 1 to 14' },
+    { t: 'When to get help', d: 'Warning signs to know before you need them, and a contacts and appointments page for the fridge.', cap: 'Keep it on the fridge' },
+    { t: 'Family care schedule', d: 'Who is with the patient, and when, so everyone shares the load.', cap: 'Sharing the care' },
 ];
 function PlaybookCarousel({ compact = false, arrows = true, slides = PLAYBOOK_SLIDES, label = 'What The Safe Home Playbook includes' }) {
     const trackRef = useRef(null);
@@ -1093,9 +1095,31 @@ const PRODUCTS = [
         id: 'kit', eyebrow: 'Printable workbook', title: 'The Discharge Readiness Kit', cover: '/playbook/kit-cover.webp',
         blurb: 'Everything you need to bring your loved one home from the hospital with confidence. Print it, bring it to the hospital, and write the answers down as the nurse speaks.',
         points: ['Questions to ask before discharge day', 'A medication list and daily schedule', 'A home preparation checklist', 'A daily log for the first two weeks'],
-        slides: KIT_SLIDES, priceKey: 'kitPrice', urlKey: 'kitCheckoutUrl',
+        slides: KIT_SLIDES, href: '/discharge-readiness-kit', hrefLabel: 'See what is inside', priceKey: 'kitPrice', urlKey: 'kitCheckoutUrl',
     },
 ];
+
+function ProductCards() {
+    return (
+        <div className="space-y-8">
+            {PRODUCTS.map((p) => (
+                <div key={p.id} className="grid sm:grid-cols-[11rem_1fr] gap-6 items-center bg-cream/60 border border-pine/10 rounded-3xl p-6">
+                    <img src={p.cover} width="680" height="880" loading="lazy" decoding="async" alt={`Cover of ${p.title}`} className="w-40 sm:w-full mx-auto rounded-xl shadow-lg" />
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-2">{p.eyebrow}</p>
+                        <h2 className="font-serif text-2xl font-semibold text-pine mb-2">{p.title}</h2>
+                        <p className="text-sm text-ink/80 leading-relaxed mb-4">{p.blurb}</p>
+                        <div className="flex flex-wrap items-center gap-4">
+                            <ProductAction url={SITE_CONFIG[p.urlKey]} price={SITE_CONFIG[p.priceKey]} />
+                            <a href={p.href} className="inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See what is inside <ArrowRight className="w-4 h-4" /></a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+            {SITE_CONFIG.bundlePrice && <p className="text-center text-sm text-ink/70">Get both together for {SITE_CONFIG.bundlePrice}.</p>}
+        </div>
+    );
+}
 
 function PlaybookCTA() {
     const [idx, setIdx] = useState(0);
@@ -1120,6 +1144,11 @@ function PlaybookCTA() {
     return (
         <section className="bg-ivory py-16 md:py-20">
             <div className="reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-8">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">Our products</p>
+                    <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight">Guides for the first weeks at home</h2>
+                    <a href="/products" className="mt-3 inline-flex items-center gap-1 min-h-[44px] font-semibold text-royal hover:underline">See all our products <ArrowRight className="w-4 h-4" /></a>
+                </div>
                 <div className="relative bg-cream/60 border border-pine/10 rounded-[2rem] p-6 md:p-10"
                     role="region" aria-roledescription="carousel" aria-label="Guides for families"
                     onMouseEnter={() => { hold.current = true; }} onMouseLeave={() => { hold.current = false; }}
@@ -1137,7 +1166,7 @@ function PlaybookCTA() {
                                     <PlaybookCarousel compact arrows={false} slides={p.slides} label={`What ${p.title} includes`} />
                                     <div>
                                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass mb-3">{p.eyebrow}</p>
-                                        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">{p.title}</h2>
+                                        <h3 className="font-serif text-3xl md:text-4xl font-semibold text-pine leading-tight mb-3">{p.title}</h3>
                                         <p className="text-ink/80 leading-relaxed mb-5">{p.blurb}</p>
                                         <ul className="space-y-2 mb-6">
                                             {p.points.map((t) => (
@@ -1318,12 +1347,24 @@ function LocalPage({ found, openBooking }) {
                     <h1 className="font-serif text-4xl md:text-5xl font-semibold text-pine leading-tight mb-4">{page.title}</h1>
                     {page.intro && <p className="text-lg text-ink/80 leading-relaxed">{page.intro}</p>}
                     {page.path === '/safe-home-playbook' && <div className="mt-6"><PlaybookAction /></div>}
+                    {page.path === '/discharge-readiness-kit' && <div className="mt-6"><ProductAction url={SITE_CONFIG.kitCheckoutUrl} price={SITE_CONFIG.kitPrice} /></div>}
                 </div>
             </section>
 
             <section className="bg-ivory py-10">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {kind === 'index' ? (
+                    {page.path === '/products' ? (
+                        <>
+                            <ProductCards />
+                            {page.faqs && page.faqs.length > 0 && (
+                                <div className="mt-12">
+                                    <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Questions, answered</h2>
+                                    <LocalFaq faqs={page.faqs} />
+                                </div>
+                            )}
+                            <p className="mt-10 text-xs text-ink/60 leading-relaxed">These guides are general information, not medical advice. Always follow the instructions of your own doctor. In a medical emergency, call 911.</p>
+                        </>
+                    ) : kind === 'index' ? (
                         <div className="grid sm:grid-cols-2 gap-5">
                             {page.items.map((it) => (
                                 <a key={it.slug} href={`${page.base}/${it.slug}`} className="group block bg-cream/60 border border-pine/10 rounded-3xl p-6 hover:shadow-lg hover:-translate-y-0.5 transition">
@@ -1336,6 +1377,7 @@ function LocalPage({ found, openBooking }) {
                     ) : (
                         <>
                             {page.path === '/safe-home-playbook' && <div className="mb-12"><PlaybookCarousel /></div>}
+                            {page.path === '/discharge-readiness-kit' && <div className="mb-12"><PlaybookCarousel slides={KIT_SLIDES} label="What The Discharge Readiness Kit includes" /></div>}
                             {page.sections.map((sec, i) => <LocalSection key={i} section={sec} />)}
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">
@@ -1697,6 +1739,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Conditions', href: '/conditions' },
         { label: 'Areas', href: '/areas' },
         { label: 'Pricing', href: '/pricing' },
+        { label: 'Our Products', href: '/products' },
         { label: 'About', href: '/about' },
     ];
     const moreLinks = [
@@ -1705,7 +1748,6 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Compare Care Options', href: '/compare' },
         { label: 'Paying for Care', href: '/paying-for-care' },
         { label: 'How It Works', href: '/how-it-works' },
-        { label: 'Safe Home Playbook', href: '/safe-home-playbook' },
         { label: 'Resources', href: '/resources' },
         { label: 'FAQ', href: '/faq' },
         { label: 'Contact', href: '/contact' },
@@ -1720,12 +1762,12 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Conditions', href: '/conditions', children: kids(CONDITION_PAGES, '/conditions') },
         { label: 'Areas', href: '/areas', children: kids(AREA_PAGES, '/areas') },
         { label: 'Pricing', href: '/pricing' },
+        { label: 'Our Products', href: '/products', children: [{ label: 'The Safe Home Playbook', href: '/safe-home-playbook' }, { label: 'The Discharge Readiness Kit', href: '/discharge-readiness-kit' }] },
         { label: 'How It Works', href: '/how-it-works' },
         { label: 'FAQs', href: '/faq' },
         { label: 'More', children: [
             { label: 'Compare Care Options', href: '/compare', children: kids(COMPARE_PAGES, '/compare') },
             { label: 'Paying for Care', href: '/paying-for-care', children: kids(PAYING_PAGES, '/paying-for-care') },
-            { label: 'Safe Home Playbook', href: '/safe-home-playbook' },
             { label: 'Resources', href: '/resources' },
             { label: 'Accessibility', href: '/accessibility' },
             { label: 'Privacy (HIPAA)', href: '/privacy-practices' },
