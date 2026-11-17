@@ -25,13 +25,14 @@ All client data stays on her device.
 | The Safe Home Playbook (20pp, PDF + Word, see `products/`) | $34 | all services |
 | Discharge Readiness Kit (15pp, see `products/`) | $19 | Hospital to Home Transition $185 |
 | Holiday Parent Checkup (2pp) | $12 | Wellness Assessment $150 |
-| 2 A.M. Fridge Pack | $15 | Wellness Assessment $150 |
+| 2 A.M. Fridge Pack | Included in the Safe Home Playbook (page 13), not sold separately | Wellness Assessment $150 |
 | Long-Distance Caregiver Kit | $29 | Care Plan $450/mo |
 | Medication Command Center | $25 | Medication Mgmt $150 |
 | Post-Op Recovery Roadmap | $19 | Post-Op $160 |
 | ALF Family Guide | $25 | ALF Support $175 |
 | Care Plan Binder | $59 | premium / gifting |
-| **The Full Shelf** (bundle) | **$89** | everything |
+| **Starter Bundle** (Safe Home Playbook + Discharge Readiness Kit) | **$49** | shown on the website |
+| **The Full Shelf** (every product above) | **$89** | everything |
 
 Every product: PDF download + fillable fields + click-to-call + QR to booking site (`assets/qr-booking.png`).
 
