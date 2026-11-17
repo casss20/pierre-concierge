@@ -318,26 +318,28 @@ function Hero({ openBooking }) {
                 {/* Portrait */}
                 <div className="reveal order-1 lg:order-2 relative mx-auto w-full max-w-md lg:max-w-none">
                     <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2rem] border border-brass/40" />
-                    <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-pine-dark">
-                        <img
-                            src="/elda-coat.jpg"
-                            width="848" height="1024"
-                            alt="Elda Marie Pierre, RN, BSN — white coat portrait"
-                            className="w-full h-[26rem] sm:h-[32rem] lg:h-[36rem] object-cover object-top"
-                        />
-                        {/* sparkle watermark in source image sits bottom-right — cover it */}
-                        <div className="absolute bottom-0 right-0 h-16 w-16 bg-gradient-to-tl from-pine-dark/90 to-transparent" />
-                        <div className="absolute bottom-5 left-5 right-5 sm:right-auto bg-ivory/95 backdrop-blur rounded-2xl px-5 py-4 shadow-xl flex items-center gap-4">
-                            <div className="w-11 h-11 rounded-full bg-pine text-ivory flex items-center justify-center font-serif font-semibold text-lg shrink-0">E</div>
-                            <div>
-                                <p className="font-serif font-semibold text-pine leading-tight">Elda Marie Pierre</p>
-                                <p className="text-xs text-ink/70 font-medium">RN, BSN · 20+ years in patient care</p>
-                            </div>
-                        </div>
-                    </div>
+                    <LogoAnimation />
                 </div>
             </div>
         </header>
+    );
+}
+
+// Hero logo animation: plays once, then holds on the finished logo.
+function LogoAnimation() {
+    const [still, setStill] = useState(false);
+    useEffect(() => {
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) setStill(true);
+    }, []);
+    return (
+        <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-[#FDF7ED] aspect-square w-full">
+            {still ? (
+                <img src="/pierre-logo-animation-poster.webp" width="1080" height="1080" alt="Pierre Concierge Nursing logo" className="w-full h-full object-contain" />
+            ) : (
+                <video src="/videos/pierre-logo-animation.mp4" poster="/pierre-logo-animation-poster.webp" width="1080" height="1080" autoPlay muted playsInline preload="auto" aria-label="Pierre Concierge Nursing logo animation" className="w-full h-full object-contain" />
+            )}
+        </div>
     );
 }
 
