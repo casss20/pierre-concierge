@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-17
-content_hash: 6f5c6972bea02035
+content_hash: d7ab977945d3c9cd
 ---
 
 # Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing
@@ -17,113 +17,125 @@ Our products
 
 # Our Products
 
-Guides written by a Registered Nurse to help families care for a loved one at home, from far away, or after a move. They are downloadable PDFs you can print. Swipe or use the arrows to browse. They are general information, not medical advice.
+Guides written by a Registered Nurse to help families care for a loved one at home, from far away, or after a move. They are downloadable PDFs you can print. Tap any product to see what is inside. They are general information, not medical advice.
 
-*(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
+-   [
 
-1 of 8
+    *(Image: Cover of The Safe Home Playbook)*
 
-### Nine problems, solved
 
-Rushed discharge, confusing medicines, pain at home, tasks nobody taught you, no one calling back, and more.
 
-2 of 8
+    ](https://pierre-concierge.vercel.app/safe-home-playbook)Coming soon
 
-### Numbered steps
+    ## [The Safe Home Playbook](https://pierre-concierge.vercel.app/safe-home-playbook)
 
-Each problem has clear steps you can start today, in order, with nothing to figure out.
+    Guide for families
 
-3 of 8
+    $34
 
-### Words to say
+    Coming soon[See inside](https://pierre-concierge.vercel.app/safe-home-playbook)
 
-Ready to use scripts for nurses, doctors, pharmacists, and family, so you know what to ask and how.
+-   [
 
-4 of 8
+    *(Image: Cover of The Discharge Readiness Kit)*
 
-### A 14 day plan
 
-Tick boxes from before you leave the hospital through the first two weeks at home.
 
-5 of 8
+    ](https://pierre-concierge.vercel.app/discharge-readiness-kit)Coming soon
 
-### Day 7 and Day 14 reviews
+    ## [The Discharge Readiness Kit](https://pierre-concierge.vercel.app/discharge-readiness-kit)
 
-Simple worksheets to decide whether to carry on, add help, or call the doctor.
+    Printable workbook
 
-6 of 8
+    $19
 
-### Red, yellow, green
+    Coming soon[See inside](https://pierre-concierge.vercel.app/discharge-readiness-kit)
 
-An emergency ladder and fridge card, so you know what can wait and what cannot.
+-   [
 
-7 of 8
+    *(Image: Cover of The Long Distance Caregiver Kit)*
 
-### Doctors and family
 
-Forms that let you speak with the care team, five questions for every visit, and a family meeting agenda.
 
-8 of 8
+    ](https://pierre-concierge.vercel.app/long-distance-caregiver-kit)Coming soon
 
-### Local help
+    ## [The Long Distance Caregiver Kit](https://pierre-concierge.vercel.app/long-distance-caregiver-kit)
 
-Phone numbers and agencies for Ocala and Marion County, plus when to call 911.
+    Kit for far away families
 
-The Safe Home Playbook
+    $29
 
-Guide for families
+    Coming soon[See inside](https://pierre-concierge.vercel.app/long-distance-caregiver-kit)
 
-### The Safe Home Playbook
+-   [
 
-A step by step plan for the first 14 days after surgery or a hospital stay, written by a Registered Nurse. It turns the problems families struggle with most into clear steps, scripts, and when to call for help.
+    *(Image: Cover of The Florida Assisted Living Family Guide)*
 
--   Nine common problems after discharge, each with numbered steps
--   Exact words to say to nurses, doctors, pharmacists, and family
--   A 14 day plan with Day 7 and Day 14 review worksheets
--   Local Ocala and Marion County help numbers
 
-Coming soon · $34[See what is inside](https://pierre-concierge.vercel.app/safe-home-playbook)
 
-The Safe Home Playbook
+    ](https://pierre-concierge.vercel.app/florida-assisted-living-family-guide)Coming soon
 
-Bundles from $49. [See the bundles](https://pierre-concierge.vercel.app/products#bundles)
+    ## [The Florida Assisted Living Family Guide](https://pierre-concierge.vercel.app/florida-assisted-living-family-guide)
 
-## Bundles
+    Guide for families
 
-Buy together and save.
+    $25
 
-Best for a hospital stay
+    Coming soon[See inside](https://pierre-concierge.vercel.app/florida-assisted-living-family-guide)
 
-Save $4
+-   [
 
-### The Starter Bundle
+    *(Image: Cover of The Care Plan Binder)*
 
-The two guides most families need first when a loved one is coming home.
+
+
+    ](https://pierre-concierge.vercel.app/care-plan-binder)Coming soon
+
+    ## [The Care Plan Binder](https://pierre-concierge.vercel.app/care-plan-binder)
+
+    Printable organizer
+
+    $59
+
+    Coming soon[See inside](https://pierre-concierge.vercel.app/care-plan-binder)
+
+-   Save $4
+
+    ## The Starter Bundle
+
+    2 guides in one
+
+    $49$53
+
+    Coming soon
+
+-   Save $77
+
+    ## The Full Shelf
+
+    5 guides in one
+
+    $89$166
+
+    Coming soon
+
+
+### The Starter Bundle includes
+
+Separately $53. Together $49.
 
 -   The Safe Home Playbook
 -   The Discharge Readiness Kit
 
-Separately $53. Together $49.
+### The Full Shelf includes
 
-Coming soon · $49
-
-Best value
-
-Save $77
-
-### The Full Shelf
-
-Every guide we make, for every stage of caring for an aging parent. New guides will be added.
+Separately $166. Together $89.
 
 -   The Safe Home Playbook
 -   The Discharge Readiness Kit
 -   The Long Distance Caregiver Kit
 -   The Florida Assisted Living Family Guide
 -   The Care Plan Binder
-
-Separately $166. Together $89.
-
-Coming soon · $89
 
 ## Questions, answered
 

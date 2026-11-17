@@ -1148,12 +1148,12 @@ const BUNDLES = [
     {
         id: 'starter', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $4',
         blurb: 'The two guides most families need first when a loved one is coming home.',
-        items: ['The Safe Home Playbook', 'The Discharge Readiness Kit'], was: '$53', priceKey: 'bundlePrice', urlKey: 'starterBundleUrl',
+        ids: ['playbook', 'kit'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit'], was: '$53', priceKey: 'bundlePrice', urlKey: 'starterBundleUrl',
     },
     {
         id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $77',
         blurb: 'Every guide we make, for every stage of caring for an aging parent. New guides will be added.',
-        items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$166', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
+        ids: ['playbook', 'kit', 'ldk', 'alf', 'binder'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$166', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
     },
 ];
 
@@ -1207,6 +1207,85 @@ function ProductCards() {
                     </div>
                 </div>
             ))}
+        </div>
+    );
+}
+
+const CATEGORIES = { playbook: 'recovery', kit: 'recovery', ldk: 'caregiving', alf: 'caregiving', binder: 'caregiving' };
+const CATALOG_FILTERS = [
+    { id: 'all', label: 'All' },
+    { id: 'recovery', label: 'Hospital and recovery' },
+    { id: 'caregiving', label: 'Family caregiving' },
+    { id: 'bundle', label: 'Bundles' },
+];
+
+function ProductCatalog() {
+    const [filter, setFilter] = useState('all');
+    const covers = Object.fromEntries(PRODUCTS.map((p) => [p.id, p.cover]));
+    const items = [
+        ...PRODUCTS.map((p) => ({ kind: 'product', id: p.id, cat: CATEGORIES[p.id] || 'all', title: p.title, blurb: p.blurb, href: p.href, cover: p.cover, price: SITE_CONFIG[p.priceKey], url: SITE_CONFIG[p.urlKey], tag: p.eyebrow })),
+        ...BUNDLES.map((b) => ({ kind: 'bundle', id: b.id, cat: 'bundle', title: b.title, blurb: b.blurb, href: null, covers: b.ids.map((i) => covers[i]), price: SITE_CONFIG[b.priceKey], was: b.was, url: SITE_CONFIG[b.urlKey], tag: b.badge, count: b.ids.length })),
+    ].filter((x) => filter === 'all' || x.cat === filter);
+    return (
+        <div>
+            <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter products">
+                {CATALOG_FILTERS.map((f) => (
+                    <button key={f.id} type="button" onClick={() => setFilter(f.id)} aria-pressed={filter === f.id}
+                        className={`min-h-[44px] rounded-full px-5 text-sm font-semibold border transition-colors ${filter === f.id ? 'bg-pine text-ivory border-pine' : 'bg-ivory text-pine border-pine/20 hover:border-pine/50'}`}>{f.label}</button>
+                ))}
+            </div>
+            <ul className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 sm:gap-x-8">
+                {items.map((x) => {
+                    const media = x.kind === 'bundle' ? (
+                        <div className="relative aspect-[17/22] bg-cream rounded-2xl overflow-hidden flex items-center justify-center">
+                            {x.covers.slice(0, 3).map((c, i) => (
+                                <img key={c} src={c} alt="" loading="lazy" decoding="async" width="680" height="880" className="absolute w-[46%] rounded-lg shadow-lg" style={{ transform: `translateX(${(i - 1) * 40}%) rotate(${(i - 1) * 7}deg)`, zIndex: 3 - i }} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="aspect-[17/22] bg-cream rounded-2xl overflow-hidden flex items-center justify-center p-3 sm:p-6">
+                            <img src={x.cover} alt={`Cover of ${x.title}`} loading="lazy" decoding="async" width="680" height="880" className="w-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.03]" />
+                        </div>
+                    );
+                    return (
+                        <li key={x.id} className="group flex flex-col">
+                            <div className="relative">
+                                {x.href ? <a href={x.href} aria-label={`See what is inside ${x.title}`} className="block">{media}</a> : <a href="#bundle-contents" className="block" tabIndex={-1} aria-hidden="true">{media}</a>}
+                                <span className="absolute top-2 left-2 rounded-full bg-ivory/95 text-pine text-[11px] font-semibold px-2.5 py-1 shadow">{x.kind === 'bundle' ? x.tag : (x.url ? 'Available' : 'Coming soon')}</span>
+                            </div>
+                            <h2 className="font-serif text-base sm:text-xl font-semibold text-pine mt-3 leading-snug">
+                                {x.href ? <a href={x.href} className="hover:underline">{x.title}</a> : x.title}
+                            </h2>
+                            <p className="mt-1 text-sm text-ink/70 leading-snug">
+                                {x.kind === 'bundle' ? `${x.count} guides in one` : x.tag}
+                            </p>
+                            <p className="mt-2 text-sm">
+                                <span className="font-semibold text-pine text-base">{x.price}</span>
+                                {x.was && <span className="ml-2 text-ink/50 line-through">{x.was}</span>}
+                            </p>
+                            <div className="mt-3 mt-auto pt-3 flex flex-wrap items-center gap-3">
+                                {x.url
+                                    ? <ProductAction url={x.url} price={x.price} />
+                                    : <span className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-semibold border border-brass/60 text-pine bg-brass/10"><Clock className="w-3.5 h-3.5" /> Coming soon</span>}
+                                {x.href && <a href={x.href} className="inline-flex items-center gap-1 min-h-[44px] text-sm font-semibold text-royal hover:underline">See inside <ArrowRight className="w-4 h-4" /></a>}
+                            </div>
+                        </li>
+                    );
+                })}
+            </ul>
+            {(filter === 'all' || filter === 'bundle') && (
+                <div id="bundle-contents" className="mt-14 grid md:grid-cols-2 gap-6 scroll-mt-24">
+                    {BUNDLES.map((b) => (
+                        <div key={b.id} className="bg-cream/60 border border-pine/10 rounded-3xl p-6">
+                            <h3 className="font-serif text-xl font-semibold text-pine mb-1">{b.title} includes</h3>
+                            <p className="text-xs text-ink/60 mb-3">Separately {b.was}. Together {SITE_CONFIG[b.priceKey]}.</p>
+                            <ul className="space-y-2">
+                                {b.items.map((t) => (<li key={t} className="flex gap-3 text-sm text-ink/80"><CheckCircle className="w-5 h-5 text-royal shrink-0" /><span>{t}</span></li>))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
@@ -1447,10 +1526,10 @@ function LocalPage({ found, openBooking }) {
             </section>
 
             <section className="bg-ivory py-10">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className={`${page.path === '/products' ? 'max-w-6xl' : 'max-w-3xl'} mx-auto px-4 sm:px-6 lg:px-8`}>
                     {page.path === '/products' ? (
                         <>
-                            <><PlaybookCTA standalone /><BundleCards /></>
+                            <ProductCatalog />
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">
                                     <h2 className="font-serif text-2xl font-semibold text-pine mb-4">Questions, answered</h2>
