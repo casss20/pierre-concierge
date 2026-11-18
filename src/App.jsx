@@ -108,7 +108,7 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = true, light = fal
     </div>
 );
 
-const PillButton = ({ children, variant = 'primary', className = '', onClick, href }) => {
+const PillButton = ({ children, variant = 'primary', className = '', onClick, href, type, disabled }) => {
     const base = "inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer";
     const styles = {
         primary: "bg-pine text-ivory hover:bg-pine-dark",
@@ -120,7 +120,7 @@ const PillButton = ({ children, variant = 'primary', className = '', onClick, hr
     const cls = `${base} ${styles[variant]} ${className}`;
     return href
         ? <a href={href} className={cls}>{children}</a>
-        : <button onClick={onClick} className={cls}>{children}</button>;
+        : <button type={type} disabled={disabled} onClick={onClick} className={`${cls}${disabled ? ' opacity-60 pointer-events-none' : ''}`}>{children}</button>;
 };
 
 // --- Data ------------------------------------------------------
@@ -1787,7 +1787,45 @@ const PAGE_HEADERS = {
 
 function BookingModal({ isOpen, onClose, service }) {
     const [submitted, setSubmitted] = useState(false);
-    useEffect(() => { if (isOpen) setSubmitted(false); }, [isOpen]);
+    const [status, setStatus] = useState('idle'); // idle | sending | error
+    const [errorMsg, setErrorMsg] = useState('');
+    useEffect(() => { if (isOpen) { setSubmitted(false); setStatus('idle'); setErrorMsg(''); } }, [isOpen]);
+
+    useEffect(() => {
+        if (errorMsg) document.getElementById('booking-error')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }, [errorMsg]);
+
+    const sendRequest = async (e) => {
+        e.preventDefault();
+        if (status === 'sending') return;
+        const fd = new FormData(e.currentTarget);
+        setStatus('sending');
+        setErrorMsg('');
+        try {
+            const res = await fetch('/api/request', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: fd.get('name'),
+                    phone: fd.get('phone'),
+                    when: fd.get('when'),
+                    order: fd.get('order'),
+                    notes: fd.get('notes'),
+                    website: fd.get('website'),
+                    service,
+                    page: window.location.pathname,
+                }),
+            });
+            const data = await res.json().catch(() => ({}));
+            if (res.ok && data.ok) { setSubmitted(true); setStatus('idle'); return; }
+            setErrorMsg(data.error === 'invalid'
+                ? 'Please check your name and a phone number with area code, then try again.'
+                : 'We could not send your request just now. Please call or text (754) 367-6929 and Elda will help you right away.');
+        } catch {
+            setErrorMsg('We could not send your request just now. Please call or text (754) 367-6929 and Elda will help you right away.');
+        }
+        setStatus('error');
+    };
     useEffect(() => {
         const onKey = (e) => e.key === 'Escape' && onClose();
         if (isOpen) window.addEventListener('keydown', onKey);
@@ -1853,22 +1891,25 @@ function BookingModal({ isOpen, onClose, service }) {
                             </p>
                         </div>
 
-                        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+                        <form className="space-y-4" onSubmit={sendRequest}>
+                            <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
+                                <label>Leave this empty<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
+                            </div>
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Full Name</label>
-                                <input required type="text" placeholder="Jane Doe" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                                <input required name="name" autoComplete="name" maxLength={120} type="text" placeholder="Jane Doe" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Phone Number</label>
-                                <input required type="tel" placeholder="(555) 123-4567" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                                <input required name="phone" autoComplete="tel" maxLength={40} type="tel" placeholder="(555) 123-4567" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Preferred Date / Time</label>
-                                <input type="text" placeholder="e.g. Monday morning" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
+                                <input name="when" maxLength={200} type="text" placeholder="e.g. Monday morning" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition" />
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Do you have a physician's order for this care?</label>
-                                <select defaultValue="" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition">
+                                <select name="order" defaultValue="" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition">
                                     <option value="" disabled>Select one</option>
                                     <option>Yes, I have an order</option>
                                     <option>Not yet, I am waiting on one</option>
@@ -1879,16 +1920,20 @@ function BookingModal({ isOpen, onClose, service }) {
                             </div>
                             <div>
                                 <label className="block text-sm font-semibold text-pine mb-1.5">Notes <span className="text-ink/55 font-normal">(optional)</span></label>
-                                <textarea rows="3" placeholder="Anything Elda should know beforehand…" className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition resize-none" />
+                                <textarea name="notes" maxLength={1500} rows="3" placeholder="Please keep medical details brief. Elda will ask the rest by phone." className="w-full px-4 py-3 rounded-xl border border-pine/15 bg-white focus:ring-2 focus:ring-royal/40 focus:border-royal outline-none transition resize-none" />
                             </div>
 
                             <p className="rounded-xl bg-cream/70 border border-pine/10 px-4 py-3 text-sm text-pine">
                                 <strong>Emergency?</strong> Do not use this form. If you or someone you care for is having a medical emergency, call <a href="tel:911" className="font-bold underline">911</a> right away.
                             </p>
 
-                            <PillButton type="submit" className="w-full py-4 text-base">
-                                Send Request <ArrowRight className="w-4 h-4" />
+                            {errorMsg && (
+                                <p id="booking-error" role="alert" className="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-900">{errorMsg}</p>
+                            )}
+                            <PillButton type="submit" disabled={status === 'sending'} className="w-full py-4 text-base">
+                                {status === 'sending' ? 'Sending…' : <>Send Request <ArrowRight className="w-4 h-4" /></>}
                             </PillButton>
+                            <p className="text-xs text-center text-ink/60">Please do not include detailed medical information here. Your details are used only to contact you. <a href="/privacy-practices" className="text-royal font-semibold underline">Privacy notice</a></p>
                             <p className="text-xs text-center text-ink/60">Prefer to talk? <a href="tel:+17543676929" className="text-royal font-semibold">Call (754) 367-6929</a></p>
                         </form>
                     </>
