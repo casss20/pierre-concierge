@@ -448,7 +448,7 @@ function AboutValues() {
 function AboutFaqNext() {
     const links = [
         { href: '/services', label: 'All services' }, { href: '/how-it-works', label: 'How it works' },
-        { href: '/pricing', label: 'Pricing' }, { href: '/conditions', label: 'Conditions' },
+        { href: '/pricing', label: 'Pricing' }, { href: '/recovery-packages', label: 'Recovery packages' }, { href: '/conditions', label: 'Conditions' },
         { href: '/care-settings', label: 'Care settings' }, { href: '/areas', label: 'Areas we serve' }, { href: '/contact', label: 'Contact' },
     ];
     return (
@@ -2080,6 +2080,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Care Settings', href: '/care-settings' },
         { label: 'Compare Care Options', href: '/compare' },
         { label: 'Paying for Care', href: '/paying-for-care' },
+        { label: 'Recovery Packages', href: '/recovery-packages' },
         { label: 'How It Works', href: '/how-it-works' },
         { label: 'Resources', href: '/resources' },
         { label: 'FAQ', href: '/faq' },
@@ -2094,7 +2095,7 @@ function Nav({ openBooking, path = '/' }) {
         { label: 'Care Settings', href: '/care-settings', children: kids(SETTING_PAGES, '/care-settings') },
         { label: 'Conditions', href: '/conditions', children: kids(CONDITION_PAGES, '/conditions') },
         { label: 'Areas', href: '/areas', children: kids(AREA_PAGES, '/areas') },
-        { label: 'Pricing', href: '/pricing' },
+        { label: 'Pricing', href: '/pricing', children: [{ label: 'Plans and visit rates', href: '/pricing' }, { label: 'Home Recovery Packages', href: '/recovery-packages' }] },
         { label: 'Our Products', href: '/products', children: [{ label: 'The Safe Home Playbook', href: '/safe-home-playbook' }, { label: 'The Discharge Readiness Kit', href: '/discharge-readiness-kit' }, { label: 'The Long Distance Caregiver Kit', href: '/long-distance-caregiver-kit' }, { label: 'The Florida Assisted Living Family Guide', href: '/florida-assisted-living-family-guide' }, { label: 'The Care Plan Binder', href: '/care-plan-binder' }] },
         { label: 'How It Works', href: '/how-it-works' },
         { label: 'FAQs', href: '/faq' },
