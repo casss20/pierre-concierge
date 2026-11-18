@@ -230,7 +230,7 @@ const MONTHLY_PLANS = [
         ],
     },
     {
-        name: 'The Pierre Care Plan', price: '$450', tagline: 'A nurse on call, every month.', featured: true, badge: 'Most popular · Best for post-op recovery',
+        name: 'The Pierre Care Plan', price: '$450', tagline: 'A nurse on call, every month.', featured: true, badge: 'Most popular',
         items: [
             { strong: '3 visits per month', rest: 'wound care, IV, check-ups' },
             { strong: 'Priority scheduling', rest: 'mornings and weekends' },
@@ -651,29 +651,27 @@ function Pricing({ openBooking, hideHeading = false }) {
                     <div className="reveal max-w-6xl mx-auto">
                         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
                             {MONTHLY_PLANS.map(({ name, price, tagline, items, featured, badge }) => (
-                                <div key={name} className={`flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden ${featured ? 'shadow-2xl ring-2 ring-brass' : 'shadow-xl'}`}>
-                                    <div className={`px-6 py-3 text-center text-xs font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-transparent text-transparent select-none'}`} aria-hidden={!featured}>
-                                        {featured ? badge : '.'}
+                                <div key={name} className={`relative flex flex-col rounded-[2rem] p-8 backdrop-blur transition-all duration-300 ${featured ? 'bg-gradient-to-b from-sand/20 to-ivory/[0.08] border-2 border-sand/70 shadow-2xl lg:-my-3 lg:py-11' : 'bg-ivory/[0.07] border border-ivory/15 hover:bg-ivory/10 hover:border-sand/40'}`}>
+                                    {featured && (
+                                        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brass text-ivory text-[11px] font-bold uppercase tracking-[0.16em] px-4 py-1.5 rounded-full whitespace-nowrap shadow-lg">{badge}</span>
+                                    )}
+                                    <h3 className="font-serif text-2xl font-semibold text-center mb-1">{name}</h3>
+                                    <p className="text-center text-ivory/70 text-sm mb-6">{tagline}</p>
+                                    <div className="text-center mb-7">
+                                        <span className="font-serif text-5xl font-semibold text-sand">{price}</span>
+                                        <span className="text-ivory/70 font-medium">/month</span>
                                     </div>
-                                    <div className="p-8 flex flex-col flex-1">
-                                        <h3 className="font-serif text-2xl font-semibold text-pine text-center mb-1">{name}</h3>
-                                        <p className="text-center text-ink/70 text-sm mb-6">{tagline}</p>
-                                        <div className="text-center mb-7">
-                                            <span className="font-serif text-5xl font-semibold text-pine">{price}</span>
-                                            <span className="text-ink/70 font-medium">/month</span>
-                                        </div>
-                                        <ul className="space-y-3.5 mb-8 flex-1">
-                                            {items.map(({ strong, rest }) => (
-                                                <li key={strong} className="flex items-start gap-3">
-                                                    <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" />
-                                                    <span className="text-ink/80 text-sm"><strong className="font-semibold text-pine">{strong}</strong>, {rest}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-3.5 text-base">
-                                            Start the {name === 'The Pierre Care Plan' ? 'Care Plan' : name}
-                                        </PillButton>
-                                    </div>
+                                    <ul className="space-y-3.5 mb-8 flex-1">
+                                        {items.map(({ strong, rest }) => (
+                                            <li key={strong} className="flex items-start gap-3">
+                                                <CheckCircle className="w-5 h-5 text-sand shrink-0 mt-0.5" />
+                                                <span className="text-ivory/80 text-sm"><strong className="font-semibold text-ivory">{strong}</strong>, {rest}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-3.5 text-base">
+                                        Start the {name === 'The Pierre Care Plan' ? 'Care Plan' : name}
+                                    </PillButton>
                                 </div>
                             ))}
                         </div>
