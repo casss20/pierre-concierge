@@ -49,20 +49,45 @@ import {
 // --- Reveal-on-scroll hook ------------------------------------
 function useReveal() {
     useEffect(() => {
-        const els = document.querySelectorAll('.reveal');
-        // Screenshot/print mode: reveal everything instantly (also a safe fallback)
-        if (window.location.hash === '#snap' || !('IntersectionObserver' in window)) {
-            document.documentElement.classList.add('snap');
-            els.forEach((el) => el.classList.add('is-visible'));
-            return;
-        }
-        const io = new IntersectionObserver(
-            (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('is-visible')),
+        const snap = () => window.location.hash === '#snap' || !('IntersectionObserver' in window);
+        const seen = new WeakSet();
+        const io = snap() ? null : new IntersectionObserver(
+            (entries) => entries.forEach((e) => {
+                if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            }),
             { threshold: 0.12 }
         );
-        els.forEach((el) => io.observe(el));
-        return () => io.disconnect();
-    });
+        const register = (root) => {
+            const list = [];
+            if (root.nodeType !== 1) return;
+            if (root.classList.contains('reveal')) list.push(root);
+            root.querySelectorAll && root.querySelectorAll('.reveal').forEach((el) => list.push(el));
+            list.forEach((el) => {
+                if (seen.has(el)) return;
+                seen.add(el);
+                if (!io) { el.classList.add('is-visible'); return; }
+                io.observe(el);
+            });
+        };
+        if (!io) document.documentElement.classList.add('snap');
+        register(document.body);
+        // Pick up content that appears later (tabs, filters, route changes) so it never stays invisible.
+        // React can also reuse an element and reset its class (e.g. switching pricing tabs), which drops
+        // 'is-visible'. When that happens, watch the element again so it fades in instead of staying hidden.
+        const mo = new MutationObserver((muts) => muts.forEach((m) => {
+            if (m.type === 'attributes') {
+                const el = m.target;
+                if (io && el.classList && el.classList.contains('reveal') && !el.classList.contains('is-visible')) {
+                    io.unobserve(el);
+                    io.observe(el);
+                }
+                return;
+            }
+            m.addedNodes.forEach(register);
+        }));
+        mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+        return () => { mo.disconnect(); io && io.disconnect(); };
+    }, []);
 }
 
 // --- Small building blocks ------------------------------------
