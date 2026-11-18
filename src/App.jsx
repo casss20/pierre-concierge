@@ -895,8 +895,9 @@ function Footer() {
                     </div>
                 </div>
                 <div className="border-t border-ivory/10 pt-8 text-center text-xs text-ivory/60 space-y-2">
-                    <p>© {year} Pierre Concierge Nursing & Wellness. All rights reserved.</p>
+                    <p>© {year} Pierre Concierge Nursing. All rights reserved.</p>
                     <p className="font-semibold text-ivory/90">In case of a medical emergency, call 911. Pierre Concierge Nursing is not an emergency service.</p>
+                    <p className="max-w-3xl mx-auto leading-relaxed">All content is for general informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your provider before beginning any treatment or therapy program. <a href="/policies" className="underline hover:text-sand">Read the full disclaimer</a>.</p>
                     <p className="text-ivory/40">Stock photography: Pexels (free license).</p>
                 </div>
             </div>

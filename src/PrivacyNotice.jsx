@@ -25,7 +25,7 @@ export default function PrivacyNotice() {
                 {privacyEffectiveDate && <p className="text-sm text-ink/70 mb-8">Effective date: {privacyEffectiveDate}</p>}
 
                 <Section title="Who follows this notice">
-                    <p>This notice applies to Pierre Concierge Nursing & Wellness and to Elda Marie Pierre, RN, BSN, who provides your nursing care. It covers the health information we create or receive about you, including records of your visits, assessments, medications, and care.</p>
+                    <p>This notice applies to Pierre Concierge Nursing and to Elda Marie Pierre, RN, BSN, who provides your nursing care. It covers the health information we create or receive about you, including records of your visits, assessments, medications, and care.</p>
                 </Section>
 
                 <Section title="Our promise to you">
@@ -94,7 +94,7 @@ export default function PrivacyNotice() {
                 </Section>
 
                 <Section title="Privacy contact">
-                    <p className="font-semibold text-pine">Elda Marie Pierre, RN, BSN<br />Pierre Concierge Nursing & Wellness</p>
+                    <p className="font-semibold text-pine">Elda Marie Pierre, RN, BSN<br />Pierre Concierge Nursing</p>
                     <p>
                         Phone or text: <a className="text-royal font-semibold" href="tel:+17543676929">(754) 367-6929</a>
                         {privacyContactEmail && <><br />Email: <a className="text-royal font-semibold" href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a></>}
