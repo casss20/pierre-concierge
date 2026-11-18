@@ -742,6 +742,7 @@ function RecoveryPackages({ openBooking }) {
                 <div className="reveal max-w-3xl mx-auto mt-12 text-center text-sm text-ink/70 leading-relaxed space-y-3">
                     <p>Every package begins with a free phone call so Elda can learn about your procedure and your surgeon\u2019s orders. We tailor the hours and tasks to what you need.</p>
                     <p>Care is provided by a Registered Nurse. Tasks such as drain care are performed only when ordered by your physician. For a medical emergency, call 911.</p>
+                    <p>Read the paperwork before you decide: <a href="/forms/home-recovery-package-addendum.pdf" className="underline text-pine font-semibold">Home Recovery Package Addendum (PDF)</a> and <a href="/forms/service-agreement.pdf" className="underline text-pine font-semibold">Service Agreement (PDF)</a>. These are blank forms. Nothing is signed until you and Elda agree on your care.</p>
                     <p>Need ongoing support after your recovery days? See the monthly <a href="/pricing" className="underline text-pine font-semibold">Care Plan</a>.</p>
                 </div>
             </div>
