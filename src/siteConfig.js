@@ -42,5 +42,5 @@ export const SITE_CONFIG = {
     fullShelfUrl: "https://payhip.com/b/TRSnP",
     fullShelfPrice: "$89",
     // Free downloadable resource (static page in /public)
-    checklistUrl: "/going-home-checklist.html",
+    checklistUrl: "https://payhip.com/b/HMxJU",
 };
