@@ -7,6 +7,12 @@
 //   REQUEST_TO_EMAIL    where Elda's alerts go (same variable as api/request.js)
 // Optional:
 //   REQUEST_FROM        a verified sender, default is Resend's test sender
+//   CLIENT_EMAILS       set to "on" to email the client a confirmation after Elda approves.
+//                       Default is off. Do not turn on until the attorney has reviewed the
+//                       client documents and the LLC is filed.
+//   PACKET_BASE_URL     where the signing packet PDFs are published, for example
+//                       https://pierreconciergenursing.com/legal  (files are <slug>.pdf).
+//                       If unset, the confirmation email goes out without a packet link.
 //
 // Privacy: alerts carry only what the booking form collects (name, phone, address,
 // ZIP, access notes, visit type, time). Nothing is stored. Logs hold no personal data.
@@ -42,6 +48,23 @@ const TITLES = {
     BOOKING_REJECTED: 'Booking declined',
 };
 
+// ZIP codes treated as inside Ocala and Marion County. Advisory only: it adds a warning and a
+// draft reply to Elda's alert. It never blocks a booking and never contacts the client.
+// Please have Elda confirm this list.
+const MARION_ZIPS = new Set([
+    '34420', '34421', '34430', '34431', '34432', '34433', '34434', '34470', '34471', '34472', '34473',
+    '34474', '34475', '34476', '34477', '34478', '34479', '34480', '34481', '34482', '34483', '34484',
+    '34488', '34491', '34492', '32134', '32179', '32183', '32195', '32617', '32664', '32686',
+]);
+export const inServiceArea = (zip) => !zip || MARION_ZIPS.has(String(zip).trim().slice(0, 5));
+
+const DECLINE_DRAFT = (name) =>
+    `Hello ${name.split(' ')[0] || ''}, thank you for requesting a visit with Pierre Concierge Nursing. ` +
+    `We currently serve Ocala and Marion County, Florida, and the address you gave is outside that area, ` +
+    `so we are not able to schedule this visit. We are sorry we cannot help. ` +
+    `If you have any questions, call or text (754) 367-6929, Monday to Saturday, 8am to 6pm. ` +
+    `For a medical emergency, call 911.`;
+
 // Pull a value out of Cal.com's "responses" object by key pattern.
 const fromResponses = (responses, pattern) => {
     if (!responses || typeof responses !== 'object') return '';
@@ -76,6 +99,7 @@ export const summarize = (event) => {
     return {
         trigger: event.triggerEvent,
         uid: clean(p.uid, 80),
+        slug: clean(p.type, 80),
         visit: clean(p.eventTitle || p.type || p.title, 120) || 'Visit',
         name: clean(attendee.name || fromResponses(r, /^name$/i), 120) || 'Not given',
         email: clean(attendee.email || fromResponses(r, /^email$/i), 160),
@@ -101,6 +125,9 @@ export const buildEmail = (s) => {
         ['Access notes', s.notes || 'None'],
     ];
     if (s.reason) rows.push(['Reason', s.reason]);
+    const outside = s.trigger === 'BOOKING_REQUESTED' && s.zip && !inServiceArea(s.zip);
+    if (outside) rows.push(['Warning', `ZIP ${s.zip} is not on the Ocala and Marion County list. You may need to decline.`]);
+    if (outside) rows.push(['Draft decline (you send it, nothing is sent automatically)', DECLINE_DRAFT(s.name)]);
     const action =
         s.trigger === 'BOOKING_REQUESTED'
             ? 'Open Cal.com to approve or decline: https://app.cal.com/bookings/unconfirmed . Check the ZIP code is in Ocala or Marion County first.'
@@ -113,6 +140,36 @@ export const buildEmail = (s) => {
         .join('')}</table>
 <p style="font-family:Arial,sans-serif">${esc(action)}</p>${digits.length >= 10 ? `<p style="font-family:Arial,sans-serif"><a href="tel:${esc(digits)}">Call ${esc(s.phone)}</a></p>` : ''}`;
     return { subject: `${title}: ${s.visit} (${s.name})`, text, html };
+};
+
+const when = (s) => s.start;
+
+export const buildClientEmail = (s, packetBase) => {
+    const first = s.name.split(' ')[0] || 'there';
+    const packet = packetBase && s.slug ? `${packetBase.replace(/\/$/, '')}/${s.slug}.pdf` : '';
+    const lines = [
+        `Hello ${first},`,
+        '',
+        'Your visit with Pierre Concierge Nursing is confirmed.',
+        '',
+        `When: ${when(s)}`,
+        `Where: ${s.address || 'the address you gave when booking'}`,
+        '',
+        packet
+            ? `Please read the service agreement and sign it before the visit, or bring it signed:\n${packet}`
+            : 'Elda will go over the service agreement with you at or before the visit.',
+        '',
+        'Please do not send medical details by email. Elda will talk through those with you by phone or in person.',
+        'To change or cancel, use the link in your Cal.com confirmation email, or call or text (754) 367-6929, Monday to Saturday, 8am to 6pm.',
+        'For a medical emergency, call 911.',
+        '',
+        'Pierre Concierge Nursing',
+    ];
+    const text = lines.join('\n');
+    const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#1C2321;line-height:1.5">${lines
+        .map((l) => (l ? `<p style="margin:0 0 12px">${esc(l).replace(/\n/g, '<br>')}</p>` : ''))
+        .join('')}</div>`;
+    return { subject: 'Your visit with Pierre Concierge Nursing', text, html };
 };
 
 const seen = new Map(); // light in memory duplicate guard per warm instance
@@ -170,7 +227,28 @@ export default async function handler(req, res) {
         });
         console.log(JSON.stringify({ event: s.trigger, uid: s.uid, emailed: r.ok }));
         if (!r.ok) return res.status(502).json({ ok: false, error: 'email' });
-        return res.status(200).json({ ok: true });
+
+        // Optional client confirmation. Off unless CLIENT_EMAILS=on. Only fires on BOOKING_CREATED,
+        // which Cal.com sends once Elda has approved (or right away for visits needing no approval).
+        let client = false;
+        if (process.env.CLIENT_EMAILS === 'on' && s.trigger === 'BOOKING_CREATED' && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email)) {
+            const c = buildClientEmail(s, process.env.PACKET_BASE_URL);
+            const cr = await fetch('https://api.resend.com/emails', {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    from: process.env.REQUEST_FROM || 'Pierre Concierge Bookings <onboarding@resend.dev>',
+                    to: [s.email],
+                    reply_to: to,
+                    subject: c.subject,
+                    text: c.text,
+                    html: c.html,
+                }),
+            });
+            client = cr.ok;
+            console.log(JSON.stringify({ event: s.trigger, uid: s.uid, clientEmailed: cr.ok }));
+        }
+        return res.status(200).json({ ok: true, client });
     } catch {
         console.log(JSON.stringify({ event: s.trigger, uid: s.uid, emailed: false }));
         return res.status(502).json({ ok: false, error: 'email' });

@@ -50,5 +50,26 @@ r = await call({}, { method: 'GET' });
 check('GET rejected', r.code === 405);
 r = await call({ triggerEvent: 'BOOKING_CANCELLED', payload: { uid: 'c1', eventTitle: 'Wellness Check', startTime: '2026-11-25T14:00:00Z', attendees: [{ name: 'A B' }], cancellationReason: 'Sick' } });
 check('cancellation alert sent with reason', sent.length === 2 && /Sick/.test(sent[1].text));
+
+// Phase 2 checks
+const { inServiceArea, buildClientEmail } = await import('../api/cal-webhook.js');
+check('Ocala ZIP is in area', inServiceArea('34471') && inServiceArea('34471-1234'));
+check('Tampa ZIP is out of area', !inServiceArea('33602'));
+const away = { ...booking, payload: { ...booking.payload, uid: 'far1', responses: { ...booking.payload.responses, zip: { value: '33602' } } } };
+sent.length = 0; r = await call(away);
+check('out-of-area alert warns Elda and has draft decline', /Warning/.test(sent[0].text) && /Draft decline/.test(sent[0].text) && sent.length === 1);
+check('out-of-area decline is not sent to the client', !JSON.stringify(sent).includes('client@example.com'));
+const created = { triggerEvent: 'BOOKING_CREATED', payload: { ...booking.payload, uid: 'ok1', type: 'wound-care-visit' } };
+sent.length = 0; r = await call(created);
+check('client email OFF by default (alert only)', sent.length === 1 && !r.json.client);
+process.env.CLIENT_EMAILS = 'on'; process.env.PACKET_BASE_URL = 'https://example.com/legal/';
+sent.length = 0; r = await call({ ...created, payload: { ...created.payload, uid: 'ok2' } });
+check('client email ON sends alert plus one client email', sent.length === 2 && r.json.client === true);
+check('client email goes to client with generic subject and packet link', sent[1].to[0] === 'client@example.com' && sent[1].subject === 'Your visit with Pierre Concierge Nursing' && /legal\/wound-care-visit\.pdf/.test(sent[1].text));
+check('client email has no visit type or medical details', !/wound/i.test(sent[1].subject) && !/Gate code/.test(sent[1].text));
+check('client email tells them to call 911 for emergencies', /911/.test(sent[1].text));
+sent.length = 0; r = await call({ ...booking, payload: { ...booking.payload, uid: 'req2' } });
+check('client email never sent on a mere request', sent.length === 1 && !r.json.client);
+delete process.env.CLIENT_EMAILS;
 console.log(fail ? `${fail} FAILED` : 'ALL PASSED');
 process.exit(fail ? 1 : 0);
