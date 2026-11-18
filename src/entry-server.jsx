@@ -15,6 +15,7 @@ export function render(path = '/') {
 export const pageRoutes = [
     { path: '/services', title: 'Home Nursing Services in Ocala, FL | Pierre Concierge Nursing', description: 'Post-surgery care, wound care, IV therapy, medication management, and more. Private pay mobile RN services in Ocala and Marion County, FL.' },
     { path: '/pricing', title: 'Pricing | Pierre Concierge Nursing, Ocala, FL', description: 'Transparent per visit pricing from $150 and a $450 monthly Care Plan for mobile nursing at home in Ocala, FL.' },
+    { path: '/recovery-packages', title: 'Home Recovery Packages | Pierre Concierge Nursing', description: 'Four, eight, and twelve hour private nursing packages after surgery in Ocala, FL, with task checklists and clear hourly pricing.' },
     { path: '/about', title: 'About Elda Pierre, RN, BSN | Pierre Concierge Nursing', description: 'Meet Elda Marie Pierre, a Registered Nurse with a BSN and more than 20 years in patient care, serving Ocala and Marion County, FL.' },
     { path: '/our-values', title: 'Our Values | Pierre Concierge Nursing, Ocala, FL', description: 'Why Pierre Concierge Nursing exists and what we stand for: personal attention, clear communication, advocacy, privacy, honest pricing, and care rooted in Marion County.' },
     { path: '/privacy-practices', title: 'HIPAA Notice of Privacy Practices | Pierre Concierge Nursing', description: 'How Pierre Concierge Nursing uses, shares, and protects your health information, and the privacy rights you have.' },

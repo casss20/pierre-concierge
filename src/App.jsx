@@ -672,6 +672,83 @@ function Pricing({ openBooking, hideHeading = false }) {
     );
 }
 
+// Home recovery packages: time blocks priced per hour. Prices and task lists must be confirmed by Elda before this page is merged.
+const RECOVERY_PACKAGES = [
+    {
+        name: 'Essential', hours: 4, price: '$340', rate: '$85 an hour',
+        blurb: 'A nurse with you through the first hours at home after a procedure.',
+        items: [
+            'Discharge instructions reviewed with you and your family',
+            'Medications reviewed, with reminders and education',
+            'Vital signs, comfort, and pain checked',
+            'Incision and dressing check',
+            'Recovery area set up and safe to move around in',
+            'Fluids and light nutrition encouraged',
+            'Update to the family member you choose',
+            'Contact with your surgeon\u2019s office if something looks wrong',
+        ],
+    },
+    {
+        name: 'Extended', hours: 8, price: '$640', rate: '$80 an hour', featured: true,
+        blurb: 'A full shift of continuous nursing care for the toughest part of recovery.',
+        items: [
+            'Everything in Essential, for 8 hours',
+            'Vital signs and incision checks every two hours',
+            'Drain care and output tracking, when ordered by your physician',
+            'Meal preparation and food intake monitoring',
+            'Help with hygiene, bathroom trips, and getting ready for bed',
+            'Checks on alertness and your ability to care for yourself',
+        ],
+    },
+    {
+        name: 'Full Day', hours: 12, price: '$900', rate: '$75 an hour',
+        blurb: 'Our lowest hourly rate, and the most peace of mind for you and your family.',
+        items: [
+            'Everything in Extended, for 12 hours',
+            'Can be split into two 6 hour visits within 3 days after your procedure',
+            'Best for morning procedures, with care finishing in the evening',
+            'Care after 10 p.m. is arranged by request',
+        ],
+    },
+];
+
+function RecoveryPackages({ openBooking }) {
+    return (
+        <section className="bg-ivory py-12 md:py-16">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid md:grid-cols-3 gap-6">
+                    {RECOVERY_PACKAGES.map(({ name, hours, price, rate, blurb, items, featured }) => (
+                        <div key={name} className={`reveal flex flex-col bg-white rounded-3xl p-7 shadow-lg border ${featured ? 'border-brass ring-2 ring-brass/40' : 'border-sand/60'}`}>
+                            {featured && <p className="text-xs font-bold uppercase tracking-[0.18em] text-brass mb-2">Most chosen</p>}
+                            <h2 className="font-serif text-2xl font-semibold text-pine">{name}</h2>
+                            <p className="text-sm text-ink/70 mb-4">{hours} hours of continuous care</p>
+                            <p className="mb-1"><span className="font-serif text-5xl font-semibold text-pine">{price}</span></p>
+                            <p className="text-sm text-ink/70 mb-5">{rate}</p>
+                            <p className="text-ink/80 text-sm leading-relaxed mb-5">{blurb}</p>
+                            <ul className="space-y-3 mb-8 flex-1">
+                                {items.map((t) => (
+                                    <li key={t} className="flex items-start gap-3 text-sm text-ink/80">
+                                        <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" />
+                                        <span>{t}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <PillButton onClick={() => openBooking('General Consultation')} className="w-full py-3.5">
+                                Book a free phone consultation
+                            </PillButton>
+                        </div>
+                    ))}
+                </div>
+                <div className="reveal max-w-3xl mx-auto mt-12 text-center text-sm text-ink/70 leading-relaxed space-y-3">
+                    <p>Every package begins with a free phone call so Elda can learn about your procedure and your surgeon\u2019s orders. We tailor the hours and tasks to what you need.</p>
+                    <p>Care is provided by a Registered Nurse. Tasks such as drain care are performed only when ordered by your physician. For a medical emergency, call 911.</p>
+                    <p>Need ongoing support after your recovery days? See the monthly <a href="/pricing" className="underline text-pine font-semibold">Care Plan</a>.</p>
+                </div>
+            </div>
+        </section>
+    );
+}
+
 function About({ hideEyebrow = false }) {
     return (
         <section id="about" className="bg-ivory py-20 md:py-28 overflow-hidden">
@@ -1782,6 +1859,7 @@ function PageHeader({ eyebrow, title, subtitle }) {
 const PAGE_HEADERS = {
     '/services': { eyebrow: 'Services', title: 'Our nursing services', subtitle: 'Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.' },
     '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.' },
+    '/recovery-packages': { eyebrow: 'Home recovery', title: 'Home recovery packages', subtitle: 'Hours of private nursing care at home after surgery, priced by the hour with longer packages at a lower rate.' },
     '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.' },
     '/our-values': { eyebrow: 'About', title: 'Our values', subtitle: 'Why Pierre Concierge Nursing exists, and the principles behind every visit.' },
     '/privacy-practices': { eyebrow: 'Privacy', title: 'HIPAA Notice of Privacy Practices', subtitle: 'How your health information is used, shared, and protected, and the rights you have.' },
@@ -2174,6 +2252,8 @@ export default function App({ path = '/' }) {
         content = (<><PageHeader {...PAGE_HEADERS['/services']} /><Services openBooking={openBooking} hideHeading /><HowItWorks /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/pricing') {
         content = (<><PageHeader {...PAGE_HEADERS['/pricing']} /><Pricing openBooking={openBooking} hideHeading /><CompareHomeHealth /><FinalCTA openBooking={openBooking} /></>);
+    } else if (clean === '/recovery-packages') {
+        content = (<><PageHeader {...PAGE_HEADERS['/recovery-packages']} /><RecoveryPackages openBooking={openBooking} /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/our-values') {
         content = (<><PageHeader {...PAGE_HEADERS['/our-values']} /><AboutWhy /><AboutValues /><FinalCTA openBooking={openBooking} /></>);
     } else if (clean === '/about') {
