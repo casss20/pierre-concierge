@@ -820,7 +820,7 @@ export const SINGLE_PAGES = {
             { h: 'Who it is for', ul: ['Families bringing a parent, spouse, or relative home after surgery or a hospital stay', 'Adult children organizing care from a distance', 'Anyone who wants a clear plan before discharge day'] },
             { h: 'How to get it', p: ['The Playbook is a downloadable PDF. Tap Get the Playbook on this page to check out securely through Payhip, and a private download link is emailed to you.', 'Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.'], links: [
                 { href: '/services/hospital-to-home-transition', label: 'Hospital to Home Transition visit' },
-                { href: '/going-home-checklist.html', label: 'Free Going Home checklist' },
+                { href: 'https://payhip.com/b/HMxJU', label: 'Free Going Home checklist' },
                 { href: '/how-it-works', label: 'How it works' },
             ] },
             { note: 'The Playbook is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.' },
@@ -843,7 +843,7 @@ export const SINGLE_PAGES = {
             { h: 'Medicare and health coverage', ul: ['Medicare: 1-800-MEDICARE or Medicare.gov', 'Florida facility and provider lookup: FloridaHealthFinder.gov'] },
             { h: 'Older adults and caregivers', ul: ['Florida Elder Helpline: 1-800-963-5337', 'Alzheimer\'s Association 24 hour helpline: 1-800-272-3900'] },
             { h: 'Veterans', ul: ['Marion County Veterans Services: (352) 671-8422', 'Ocala VA Clinic: 4826 SW 49th Road, Ocala', 'Veterans Crisis Line: dial 988 then press 1'] },
-            { h: 'From us', p: ['Download our printable Going Home Checklist for the first days after a hospital stay.'], link: { href: '/going-home-checklist.html', label: 'Open the checklist' } },
+            { h: 'From us', p: ['Download our printable Going Home Checklist for the first days after a hospital stay.'], link: { href: 'https://payhip.com/b/HMxJU', label: 'Open the checklist' } },
         ],
     },
     '/how-it-works': {
