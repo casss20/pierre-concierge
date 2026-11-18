@@ -218,18 +218,19 @@ const SINGLE_VISITS = [
     { name: "Wellness Check", price: "$150", desc: "Complete physical assessment — heart, lungs, vitals." },
 ];
 
-// Monthly plans. Check-In and Family Link prices are proposals pending Elda's confirmation. Care Plan $450 is existing.
+// Monthly plans. Check-In $175 and Family Link $600 are proposals pending Elda's confirmation. Care Plan $450 is existing.
 const MONTHLY_PLANS = [
     {
-        name: 'Check-In Plan', price: '$225', tagline: 'A steady nurse touchpoint every month.',
+        name: 'Check-In Plan', price: '$175', band: 'bg-sand', badge: 'Getting started', tagline: 'A steady nurse touchpoint every month.',
         items: [
             { strong: '1 visit per month', rest: 'at home, any service' },
+            { strong: 'Priority scheduling', rest: 'mornings and weekends' },
             { strong: 'Monthly medication review', rest: 'a clear list of what to take and when' },
             { strong: 'Written summary', rest: 'a short note for you and your family' },
         ],
     },
     {
-        name: 'The Pierre Care Plan', price: '$450', tagline: 'A nurse on call, every month.', featured: true, badge: 'Most popular · Best for post-op recovery',
+        name: 'The Pierre Care Plan', price: '$450', band: 'bg-brass', tagline: 'A nurse on call, every month.', featured: true, badge: 'Most popular',
         items: [
             { strong: '3 visits per month', rest: 'wound care, IV, check-ups' },
             { strong: 'Priority scheduling', rest: 'mornings and weekends' },
@@ -239,7 +240,7 @@ const MONTHLY_PLANS = [
         ],
     },
     {
-        name: 'Family Link Plan', price: '$650', tagline: 'For families who live far away.',
+        name: 'Family Link Plan', price: '$600', band: 'bg-brass/50', badge: 'For long distance families', tagline: 'For families who live far away.',
         items: [
             { strong: '4 visits per month', rest: 'with a nurse your family knows by name' },
             { strong: 'Monthly family video call', rest: 'one conversation with everyone on the same page' },
@@ -649,10 +650,11 @@ function Pricing({ openBooking, hideHeading = false }) {
                 {tab === 'subscription' ? (
                     <div className="reveal max-w-6xl mx-auto">
                         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
-                            {MONTHLY_PLANS.map(({ name, price, tagline, items, featured, badge }) => (
-                                <div key={name} className={`flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden ${featured ? 'shadow-2xl ring-2 ring-brass' : 'shadow-xl'}`}>
-                                    <div className={`px-6 py-3 text-center text-xs font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-transparent text-transparent select-none'}`} aria-hidden={!featured}>
-                                        {featured ? badge : '.'}
+                            {MONTHLY_PLANS.map(({ name, price, tagline, items, featured, badge, band }) => (
+                                <div key={name} className={`relative flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${featured ? 'shadow-2xl ring-2 ring-brass lg:-my-3' : 'shadow-xl'}`}>
+                                    <div className={`h-2.5 ${band}`} />
+                                    <div className={`px-6 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-sand/25 text-pine'}`}>
+                                        {badge}
                                     </div>
                                     <div className="p-8 flex flex-col flex-1">
                                         <h3 className="font-serif text-2xl font-semibold text-pine text-center mb-1">{name}</h3>
@@ -682,16 +684,22 @@ function Pricing({ openBooking, hideHeading = false }) {
                     <div className="reveal max-w-5xl mx-auto">
                         <p className="text-center text-ivory/80 text-sm max-w-xl mx-auto mb-8 leading-relaxed">Hours of private nursing care at home after surgery. The longer the package, the lower the hourly rate.</p>
                         <div className="grid md:grid-cols-3 gap-5">
-                            {RECOVERY_PACKAGES.map(({ name, hours, price, rate, blurb, featured }) => (
-                                <div key={name} className={`flex flex-col bg-ivory/[0.07] border rounded-3xl p-7 backdrop-blur hover:bg-ivory/10 transition-all duration-300 ${featured ? 'border-sand/60' : 'border-ivory/15 hover:border-sand/40'}`}>
-                                    <h4 className="font-serif text-xl font-semibold">{name}</h4>
-                                    <p className="text-ivory/65 text-sm mb-4">{hours} hours of continuous care</p>
-                                    <p className="font-serif text-5xl font-semibold text-sand">{price}</p>
-                                    <p className="text-ivory/65 text-sm mb-4">{rate}</p>
-                                    <p className="text-ivory/65 text-sm leading-relaxed mb-6 flex-1">{blurb}</p>
-                                    <a href="/recovery-packages" className="inline-flex items-center gap-1 text-sm font-semibold text-sand hover:text-ivory transition-colors">
-                                        See what is included <ChevronRight className="w-4 h-4" />
-                                    </a>
+                            {RECOVERY_PACKAGES.map(({ name, hours, price, rate, blurb, featured }, i) => (
+                                <div key={name} className={`relative flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${featured ? 'shadow-2xl ring-2 ring-brass md:-my-3' : 'shadow-xl'}`}>
+                                    <div className={`h-2.5 ${['bg-sand', 'bg-brass', 'bg-brass/50'][i % 3]}`} />
+                                    <div className={`px-6 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-sand/25 text-pine'}`}>
+                                        {featured ? 'Most popular' : `${hours} hours`}
+                                    </div>
+                                    <div className="p-7 flex flex-col flex-1">
+                                        <h4 className="font-serif text-2xl font-semibold text-pine text-center">{name}</h4>
+                                        <p className="text-ink/70 text-sm text-center mb-4">{hours} hours of continuous care</p>
+                                        <p className="font-serif text-5xl font-semibold text-pine text-center">{price}</p>
+                                        <p className="text-ink/70 text-sm text-center mb-5">{rate}</p>
+                                        <p className="text-ink/75 text-sm leading-relaxed text-center mb-6 flex-1">{blurb}</p>
+                                        <a href="/recovery-packages" className="inline-flex items-center justify-center gap-1 text-sm font-semibold text-brass hover:text-pine transition-colors">
+                                            See what is included <ChevronRight className="w-4 h-4" />
+                                        </a>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -702,16 +710,19 @@ function Pricing({ openBooking, hideHeading = false }) {
                     </div>
                 ) : (
                     <div className="reveal grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
-                        {SINGLE_VISITS.map(({ name, price, desc }) => (
-                            <div key={name} className="bg-ivory/[0.07] border border-ivory/15 rounded-3xl p-7 backdrop-blur hover:bg-ivory/10 hover:border-sand/40 transition-all duration-300">
-                                <div className="flex items-start justify-between gap-4 mb-3">
-                                    <h4 className="font-serif text-xl font-semibold">{name}</h4>
-                                    <span className="bg-sand/15 text-sand px-3.5 py-1 rounded-full text-sm font-semibold whitespace-nowrap">{price}</span>
+                        {SINGLE_VISITS.map(({ name, price, desc }, i) => (
+                            <div key={name} className="relative bg-ivory text-ink rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                                <div className={`h-2 ${['bg-sand', 'bg-brass', 'bg-brass/50'][i % 3]}`} />
+                                <div className="p-7">
+                                    <div className="flex items-start justify-between gap-4 mb-3">
+                                        <h4 className="font-serif text-xl font-semibold text-pine">{name}</h4>
+                                        <span className="bg-brass/15 text-brass px-3.5 py-1 rounded-full text-sm font-bold whitespace-nowrap">{price}</span>
+                                    </div>
+                                    <p className="text-ink/75 text-sm leading-relaxed mb-5">{desc}</p>
+                                    <button onClick={() => openBooking(name)} className="inline-flex items-center gap-1 text-sm font-semibold text-brass hover:text-pine transition-colors">
+                                        Book this visit <ChevronRight className="w-4 h-4" />
+                                    </button>
                                 </div>
-                                <p className="text-ivory/65 text-sm leading-relaxed mb-5">{desc}</p>
-                                <button onClick={() => openBooking(name)} className="inline-flex items-center gap-1 text-sm font-semibold text-sand hover:text-ivory transition-colors">
-                                    Book this visit <ChevronRight className="w-4 h-4" />
-                                </button>
                             </div>
                         ))}
                     </div>
