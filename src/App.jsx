@@ -1182,7 +1182,7 @@ const BUNDLES = [
     {
         id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $77',
         blurb: 'Every guide we make, for every stage of caring for an aging parent. New guides will be added.',
-        ids: ['playbook', 'kit', 'ldk', 'alf', 'binder'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$166', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
+        ids: ['playbook', 'kit', 'ldk', 'alf', 'binder'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$146', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
     },
 ];
 

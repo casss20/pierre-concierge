@@ -5,8 +5,8 @@ description: "A nurse written, step by step guide for the first 14 days after su
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 6ad239dc301351e7
+last_extracted: 2026-11-18
+content_hash: 0e0fcd31461b5040
 ---
 
 # The Safe Home Playbook | Pierre Concierge Nursing, Ocala
@@ -19,7 +19,7 @@ Guide for families
 
 Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 20 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.
 
-Coming soon · $34
+[Get the Playbook · $34](https://payhip.com/b/XgK9T)
 
 *(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
 

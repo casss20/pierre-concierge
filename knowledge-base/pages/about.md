@@ -5,8 +5,8 @@ description: "Meet Elda Marie Pierre, a Registered Nurse with a BSN and more tha
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 654337d6f3713576
+last_extracted: 2026-11-18
+content_hash: 0e238f11b5aceb55
 ---
 
 # About Elda Pierre, RN, BSN | Pierre Concierge Nursing
@@ -19,7 +19,7 @@ About
 
 Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.
 
-*(Image: Elda Marie Pierre in royal blue scrubs)*
+*(Image: Elda Marie Pierre, RN, BSN, smiling)*
 
 20+ years of patient care
 

@@ -5,8 +5,8 @@ description: "A 16 page kit for families caring for a parent in Florida from far
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 2fb49bc4bac7f1fa
+last_extracted: 2026-11-18
+content_hash: 24bd5dd41f9ec8a1
 ---
 
 # The Long Distance Caregiver Kit | Pierre Concierge Nursing, Ocala
@@ -19,7 +19,7 @@ Kit for far away families
 
 When you live far from a parent who needs help, distance becomes the hardest part. This 16 page kit gives you a plan: who to call, what to say, how to check in, and what to do when the call comes.
 
-Coming soon · $29
+[Get it · $29](https://payhip.com/b/NSQue)
 
 *(Image: Cover of The Long Distance Caregiver Kit by Pierre Concierge Nursing)*
 

@@ -5,8 +5,8 @@ description: "Nurse written guides and organizers for Florida families: the Safe
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 149bd9c7baba4799
+last_extracted: 2026-11-18
+content_hash: 1e1b7dd611ddeb93
 ---
 
 # Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing
@@ -25,7 +25,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
 
 
-    ](https://pierreconciergenursing.com/safe-home-playbook)Coming soon
+    ](https://pierreconciergenursing.com/safe-home-playbook)Available
 
     ## [The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)
 
@@ -33,7 +33,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     $34
 
-    Coming soon[See inside](https://pierreconciergenursing.com/safe-home-playbook)
+    [Get it · $34](https://payhip.com/b/XgK9T) [See inside](https://pierreconciergenursing.com/safe-home-playbook)
 
 -   [
 
@@ -41,7 +41,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
 
 
-    ](https://pierreconciergenursing.com/discharge-readiness-kit)Coming soon
+    ](https://pierreconciergenursing.com/discharge-readiness-kit)Available
 
     ## [The Discharge Readiness Kit](https://pierreconciergenursing.com/discharge-readiness-kit)
 
@@ -49,7 +49,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     $19
 
-    Coming soon[See inside](https://pierreconciergenursing.com/discharge-readiness-kit)
+    [Get it · $19](https://payhip.com/b/ep5b0) [See inside](https://pierreconciergenursing.com/discharge-readiness-kit)
 
 -   [
 
@@ -57,7 +57,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
 
 
-    ](https://pierreconciergenursing.com/long-distance-caregiver-kit)Coming soon
+    ](https://pierreconciergenursing.com/long-distance-caregiver-kit)Available
 
     ## [The Long Distance Caregiver Kit](https://pierreconciergenursing.com/long-distance-caregiver-kit)
 
@@ -65,7 +65,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     $29
 
-    Coming soon[See inside](https://pierreconciergenursing.com/long-distance-caregiver-kit)
+    [Get it · $29](https://payhip.com/b/NSQue) [See inside](https://pierreconciergenursing.com/long-distance-caregiver-kit)
 
 -   [
 
@@ -73,7 +73,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
 
 
-    ](https://pierreconciergenursing.com/florida-assisted-living-family-guide)Coming soon
+    ](https://pierreconciergenursing.com/florida-assisted-living-family-guide)Available
 
     ## [The Florida Assisted Living Family Guide](https://pierreconciergenursing.com/florida-assisted-living-family-guide)
 
@@ -81,7 +81,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     $25
 
-    Coming soon[See inside](https://pierreconciergenursing.com/florida-assisted-living-family-guide)
+    [Get it · $25](https://payhip.com/b/4xSYX) [See inside](https://pierreconciergenursing.com/florida-assisted-living-family-guide)
 
 -   [
 
@@ -89,15 +89,15 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
 
 
-    ](https://pierreconciergenursing.com/care-plan-binder)Coming soon
+    ](https://pierreconciergenursing.com/care-plan-binder)Available
 
     ## [The Care Plan Binder](https://pierreconciergenursing.com/care-plan-binder)
 
     Printable organizer
 
-    $59
+    $39
 
-    Coming soon[See inside](https://pierreconciergenursing.com/care-plan-binder)
+    [Get it · $39](https://payhip.com/b/GSAf8) [See inside](https://pierreconciergenursing.com/care-plan-binder)
 
 -   Save $4
 
@@ -105,9 +105,9 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     2 guides in one
 
-    $49$53
+    $44$53
 
-    Coming soon
+    [Get it · $44](https://payhip.com/b/4AnJP)
 
 -   Save $77
 
@@ -115,21 +115,21 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     5 guides in one
 
-    $89$166
+    $89$146
 
-    Coming soon
+    [Get it · $89](https://payhip.com/b/TRSnP)
 
 
 ### The Starter Bundle includes
 
-Separately $53. Together $49.
+Separately $53. Together $44.
 
 -   The Safe Home Playbook
 -   The Discharge Readiness Kit
 
 ### The Full Shelf includes
 
-Separately $166. Together $89.
+Separately $146. Together $89.
 
 -   The Safe Home Playbook
 -   The Discharge Readiness Kit

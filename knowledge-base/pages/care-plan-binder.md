@@ -5,8 +5,8 @@ description: "A 20 page printable organizer for family caregivers: emergency car
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: f6f54fa3a4c3c7fc
+last_extracted: 2026-11-18
+content_hash: e2ea0f191bedfa95
 ---
 
 # The Care Plan Binder | Pierre Concierge Nursing, Ocala
@@ -19,7 +19,7 @@ Printable organizer
 
 A binder helps a paramedic, an ER nurse, or a new caregiver understand the basics in minutes. This 20 page printable organizer gives you every page, tabbed and ready to fill in.
 
-Coming soon · $59
+[Get it · $39](https://payhip.com/b/GSAf8)
 
 *(Image: Cover of The Care Plan Binder by Pierre Concierge Nursing)*
 
