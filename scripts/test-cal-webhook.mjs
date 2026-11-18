@@ -44,8 +44,8 @@ r = await call('{not json');
 check('bad json rejected', r.code === 400);
 r = await call({ triggerEvent: 'PING', payload: {} });
 check('ping accepted', r.code === 200 && r.json.ping);
-r = await call({ triggerEvent: 'MEETING_ENDED', payload: {} });
-check('other events ignored', r.json.ignored === 'MEETING_ENDED' && sent.length === 1);
+r = await call({ triggerEvent: 'RECORDING_READY', payload: {} });
+check('other events ignored', r.json.ignored === 'RECORDING_READY' && sent.length === 1);
 r = await call({}, { method: 'GET' });
 check('GET rejected', r.code === 405);
 r = await call({ triggerEvent: 'BOOKING_CANCELLED', payload: { uid: 'c1', eventTitle: 'Wellness Check', startTime: '2026-11-25T14:00:00Z', attendees: [{ name: 'A B' }], cancellationReason: 'Sick' } });
@@ -71,5 +71,19 @@ check('client email tells them to call 911 for emergencies', /911/.test(sent[1].
 sent.length = 0; r = await call({ ...booking, payload: { ...booking.payload, uid: 'req2' } });
 check('client email never sent on a mere request', sent.length === 1 && !r.json.client);
 delete process.env.CLIENT_EMAILS;
+
+// Phase 3 checks
+const ended = { triggerEvent: 'MEETING_ENDED', payload: { ...booking.payload, uid: 'end1', type: 'wound-care-visit' } };
+sent.length = 0; r = await call(ended);
+check('visit end: Elda gets a draft thank you, client gets nothing by default', sent.length === 1 && sent[0].to[0] === 'elda@example.com' && /Draft thank you/.test(sent[0].text) && !r.json.client);
+process.env.POST_VISIT_EMAILS = 'on'; process.env.REVIEW_URL = 'https://g.page/r/example/review';
+sent.length = 0; r = await call({ ...ended, payload: { ...ended.payload, uid: 'end2' } });
+check('thank yous ON: client gets one email with review link, generic subject', sent.length === 2 && sent[1].to[0] === 'client@example.com' && sent[1].subject === 'Thank you from Pierre Concierge Nursing' && /g\.page/.test(sent[1].text));
+check('thank you has no visit type, no notes, mentions 911', !/wound|gate code/i.test(sent[1].text) && /911/.test(sent[1].text));
+sent.length = 0; r = await call({ ...ended, payload: { ...ended.payload, uid: 'end2' } });
+check('duplicate visit-end event ignored', r.json.duplicate === true && sent.length === 0);
+sent.length = 0; r = await call({ ...booking, payload: { ...booking.payload, uid: 'req3' } });
+check('thank you never sent on a booking request', sent.length === 1 && !r.json.client);
+delete process.env.POST_VISIT_EMAILS; delete process.env.REVIEW_URL;
 console.log(fail ? `${fail} FAILED` : 'ALL PASSED');
 process.exit(fail ? 1 : 0);

@@ -10,6 +10,9 @@
 //   CLIENT_EMAILS       set to "on" to email the client a confirmation after Elda approves.
 //                       Default is off. Do not turn on until the attorney has reviewed the
 //                       client documents and the LLC is filed.
+//   POST_VISIT_EMAILS  set to "on" to email the client a thank you after the visit ends.
+//                       Default is off. Elda always gets a draft of the same message either way.
+//   REVIEW_URL          Google review link for the practice. If unset, the thank you has no link.
 //   PACKET_BASE_URL     where the signing packet PDFs are published, for example
 //                       https://pierreconciergenursing.com/legal  (files are <slug>.pdf).
 //                       If unset, the confirmation email goes out without a packet link.
@@ -46,6 +49,7 @@ const TITLES = {
     BOOKING_CANCELLED: 'Booking cancelled',
     BOOKING_RESCHEDULED: 'Booking rescheduled',
     BOOKING_REJECTED: 'Booking declined',
+    MEETING_ENDED: 'Visit finished, thank you draft ready',
 };
 
 // ZIP codes treated as inside Ocala and Marion County. Advisory only: it adds a warning and a
@@ -125,13 +129,18 @@ export const buildEmail = (s) => {
         ['Access notes', s.notes || 'None'],
     ];
     if (s.reason) rows.push(['Reason', s.reason]);
+    if (s.trigger === 'MEETING_ENDED') {
+        rows.push(['Draft thank you (nothing is sent unless you turn on automatic thank yous)', buildThankYou(s, process.env.REVIEW_URL).text]);
+    }
     const outside = s.trigger === 'BOOKING_REQUESTED' && s.zip && !inServiceArea(s.zip);
     if (outside) rows.push(['Warning', `ZIP ${s.zip} is not on the Ocala and Marion County list. You may need to decline.`]);
     if (outside) rows.push(['Draft decline (you send it, nothing is sent automatically)', DECLINE_DRAFT(s.name)]);
     const action =
         s.trigger === 'BOOKING_REQUESTED'
             ? 'Open Cal.com to approve or decline: https://app.cal.com/bookings/unconfirmed . Check the ZIP code is in Ocala or Marion County first.'
-            : 'See it in Cal.com: https://app.cal.com/bookings/upcoming';
+            : s.trigger === 'MEETING_ENDED'
+              ? 'Add your visit notes in your own records. Cal.com does not store them.'
+              : 'See it in Cal.com: https://app.cal.com/bookings/upcoming';
     const digits = s.phone.replace(/\D/g, '');
     const text = `${title}\n\n${rows.map(([k, v]) => `${k}: ${v}`).join('\n')}\n\n${action}`;
     const html = `<h2 style="font-family:Georgia,serif;color:#1E3D34">${esc(title)}</h2>
@@ -170,6 +179,28 @@ export const buildClientEmail = (s, packetBase) => {
         .map((l) => (l ? `<p style="margin:0 0 12px">${esc(l).replace(/\n/g, '<br>')}</p>` : ''))
         .join('')}</div>`;
     return { subject: 'Your visit with Pierre Concierge Nursing', text, html };
+};
+
+export const buildThankYou = (s, reviewUrl) => {
+    const first = s.name.split(' ')[0] || 'there';
+    const lines = [
+        `Hello ${first},`,
+        '',
+        'Thank you for choosing Pierre Concierge Nursing. It was a pleasure caring for you.',
+        '',
+        reviewUrl
+            ? `If you have a moment, a short review helps other families find us:\n${reviewUrl}`
+            : 'If you have a moment, a kind word to a friend or neighbor helps other families find us.',
+        '',
+        'Please do not reply with medical details. For questions, call or text (754) 367-6929, Monday to Saturday, 8am to 6pm. For a medical emergency, call 911.',
+        '',
+        'Pierre Concierge Nursing',
+    ];
+    const text = lines.join('\n');
+    const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#1C2321;line-height:1.5">${lines
+        .map((l) => (l ? `<p style="margin:0 0 12px">${esc(l).replace(/\n/g, '<br>')}</p>` : ''))
+        .join('')}</div>`;
+    return { subject: 'Thank you from Pierre Concierge Nursing', text, html };
 };
 
 const seen = new Map(); // light in memory duplicate guard per warm instance
@@ -247,6 +278,24 @@ export default async function handler(req, res) {
             });
             client = cr.ok;
             console.log(JSON.stringify({ event: s.trigger, uid: s.uid, clientEmailed: cr.ok }));
+        }
+
+        if (process.env.POST_VISIT_EMAILS === 'on' && s.trigger === 'MEETING_ENDED' && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email)) {
+            const t = buildThankYou(s, process.env.REVIEW_URL);
+            const tr = await fetch('https://api.resend.com/emails', {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    from: process.env.REQUEST_FROM || 'Pierre Concierge Bookings <onboarding@resend.dev>',
+                    to: [s.email],
+                    reply_to: to,
+                    subject: t.subject,
+                    text: t.text,
+                    html: t.html,
+                }),
+            });
+            client = tr.ok;
+            console.log(JSON.stringify({ event: s.trigger, uid: s.uid, thankYou: tr.ok }));
         }
         return res.status(200).json({ ok: true, client });
     } catch {
