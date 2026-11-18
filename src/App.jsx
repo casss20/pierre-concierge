@@ -218,12 +218,13 @@ const SINGLE_VISITS = [
     { name: "Wellness Check", price: "$150", desc: "Complete physical assessment — heart, lungs, vitals." },
 ];
 
-// Monthly plans. Check-In and Family Link prices are proposals pending Elda's confirmation. Care Plan $450 is existing.
+// Monthly plans. Check-In $175 and Family Link $600 are proposals pending Elda's confirmation. Care Plan $450 is existing.
 const MONTHLY_PLANS = [
     {
-        name: 'Check-In Plan', price: '$225', tagline: 'A steady nurse touchpoint every month.',
+        name: 'Check-In Plan', price: '$175', tagline: 'A steady nurse touchpoint every month.',
         items: [
             { strong: '1 visit per month', rest: 'at home, any service' },
+            { strong: 'Priority scheduling', rest: 'mornings and weekends' },
             { strong: 'Monthly medication review', rest: 'a clear list of what to take and when' },
             { strong: 'Written summary', rest: 'a short note for you and your family' },
         ],
@@ -239,7 +240,7 @@ const MONTHLY_PLANS = [
         ],
     },
     {
-        name: 'Family Link Plan', price: '$650', tagline: 'For families who live far away.',
+        name: 'Family Link Plan', price: '$600', tagline: 'For families who live far away.',
         items: [
             { strong: '4 visits per month', rest: 'with a nurse your family knows by name' },
             { strong: 'Monthly family video call', rest: 'one conversation with everyone on the same page' },
