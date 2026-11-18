@@ -221,7 +221,7 @@ const SINGLE_VISITS = [
 // Monthly plans. Check-In $175 and Family Link $600 are proposals pending Elda's confirmation. Care Plan $450 is existing.
 const MONTHLY_PLANS = [
     {
-        name: 'Check-In Plan', price: '$175', band: 'bg-sand', badge: 'Getting started', tagline: 'A steady nurse touchpoint every month.',
+        name: 'Check-In Plan', price: '$175', book: 'General Consultation', band: 'bg-sand', badge: 'Getting started', tagline: 'A steady nurse touchpoint every month.',
         items: [
             { strong: '1 visit per month', rest: 'at home, any service' },
             { strong: 'Priority scheduling', rest: 'mornings and weekends' },
@@ -240,7 +240,7 @@ const MONTHLY_PLANS = [
         ],
     },
     {
-        name: 'Family Link Plan', price: '$600', band: 'bg-brass/50', badge: 'For long distance families', tagline: 'For families who live far away.',
+        name: 'Family Link Plan', price: '$600', book: 'General Consultation', band: 'bg-brass/50', badge: 'For long distance families', tagline: 'For families who live far away.',
         items: [
             { strong: '4 visits per month', rest: 'with a nurse your family knows by name' },
             { strong: 'Monthly family video call', rest: 'one conversation with everyone on the same page' },
@@ -650,7 +650,7 @@ function Pricing({ openBooking, hideHeading = false }) {
                 {tab === 'subscription' ? (
                     <div className="reveal max-w-6xl mx-auto">
                         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
-                            {MONTHLY_PLANS.map(({ name, price, tagline, items, featured, badge, band }) => (
+                            {MONTHLY_PLANS.map(({ name, price, tagline, items, featured, badge, band, book }) => (
                                 <div key={name} className={`relative flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${featured ? 'shadow-2xl ring-2 ring-brass lg:-my-3' : 'shadow-xl'}`}>
                                     <div className={`h-2.5 ${band}`} />
                                     <div className={`px-6 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-sand/25 text-pine'}`}>
@@ -671,8 +671,8 @@ function Pricing({ openBooking, hideHeading = false }) {
                                                 </li>
                                             ))}
                                         </ul>
-                                        <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-3.5 text-base">
-                                            Start the {name === 'The Pierre Care Plan' ? 'Care Plan' : name}
+                                        <PillButton onClick={() => openBooking(book || 'Pierre Care Subscription')} className="w-full py-3.5 text-base">
+                                            {book ? 'Book a free call to start' : 'Start the Care Plan'}
                                         </PillButton>
                                     </div>
                                 </div>
