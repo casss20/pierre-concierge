@@ -677,14 +677,13 @@ function About({ hideEyebrow = false }) {
                     {/* Portrait */}
                     <div className="reveal relative mx-auto w-full max-w-sm lg:sticky lg:top-28">
                         <div className="absolute -inset-3 rounded-t-full rounded-b-[2rem] border border-brass/40 translate-x-3 translate-y-3" />
-                        <div className="relative rounded-t-full rounded-b-[2rem] overflow-hidden shadow-2xl bg-sand">
+                        <div className="relative rounded-t-full rounded-b-[2rem] overflow-hidden shadow-2xl bg-pine-dark">
                             <img
-                                src="/elda-scrubs.webp"
+                                src="/elda-portrait.webp"
                                 width="848" height="1024" loading="lazy" decoding="async"
-                                alt="Elda Marie Pierre in royal blue scrubs"
+                                alt="Elda Marie Pierre, RN, BSN, smiling"
                                 className="w-full h-[30rem] object-cover object-top"
                             />
-                            <div className="absolute bottom-0 right-0 h-16 w-16 bg-gradient-to-tl from-sand/80 to-transparent" />
                         </div>
                         <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-pine text-ivory rounded-full px-6 py-2.5 shadow-xl text-sm font-semibold whitespace-nowrap">
                             20+ years of patient care
