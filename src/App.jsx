@@ -108,6 +108,9 @@ const SectionHeading = ({ eyebrow, title, subtitle, centered = true, light = fal
     </div>
 );
 
+// Outside links (Payhip checkout, free checklist) open in a new tab so the visitor can come straight back to the site.
+const extProps = (href) => (/^https?:\/\//.test(href || '') && !/pierreconciergenursing\.com/.test(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {});
+
 const PillButton = ({ children, variant = 'primary', className = '', onClick, href, type, disabled }) => {
     const base = "inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer";
     const styles = {
@@ -119,7 +122,7 @@ const PillButton = ({ children, variant = 'primary', className = '', onClick, hr
     };
     const cls = `${base} ${styles[variant]} ${className}`;
     return href
-        ? <a href={href} className={cls}>{children}</a>
+        ? <a href={href} {...extProps(href)} className={cls}>{children}</a>
         : <button type={type} disabled={disabled} onClick={onClick} className={`${cls}${disabled ? ' opacity-60 pointer-events-none' : ''}`}>{children}</button>;
 };
 
@@ -455,7 +458,7 @@ function AboutFaqNext() {
                 <LocalFaq faqs={ABOUT_FAQS} />
                 <h2 className="font-serif text-2xl font-semibold text-pine mt-14 mb-4">Where to next</h2>
                 <div className="flex flex-wrap gap-2.5">
-                    {links.map((l) => <a key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-cream/70 border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>)}
+                    {links.map((l) => <a key={l.href} href={l.href} {...extProps(l.href)} className="px-4 py-2 rounded-full bg-cream/70 border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>)}
                 </div>
                 <p className="mt-10 text-xs text-ink/60 leading-relaxed">This page is general information, not medical advice. Services are non-emergency. In a medical emergency, call 911.</p>
             </div>
@@ -1524,11 +1527,11 @@ function LocalSection({ section }) {
             {links && (
                 <div className="flex flex-wrap gap-2.5">
                     {links.map((l) => (
-                        <a key={l.href} href={l.href} className="px-4 py-2 rounded-full bg-ivory border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>
+                        <a key={l.href} href={l.href} {...extProps(l.href)} className="px-4 py-2 rounded-full bg-ivory border border-pine/10 text-sm font-semibold text-pine hover:bg-pine hover:text-ivory transition-colors">{l.label}</a>
                     ))}
                 </div>
             )}
-            {link && <a href={link.href} className="inline-flex items-center gap-2 font-semibold text-royal hover:underline">{link.label} <ArrowRight className="w-4 h-4" /></a>}
+            {link && <a href={link.href} {...extProps(link.href)} className="inline-flex items-center gap-2 font-semibold text-royal hover:underline">{link.label} <ArrowRight className="w-4 h-4" /></a>}
         </div>
     );
 }
