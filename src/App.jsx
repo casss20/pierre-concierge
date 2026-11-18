@@ -672,7 +672,7 @@ function Pricing({ openBooking, hideHeading = false }) {
     );
 }
 
-// Home recovery packages: time blocks priced per hour. Prices and task lists must be confirmed by Elda before this page is merged.
+// Home recovery packages: time blocks priced per hour. Prices confirmed by Mr. Casseus. Task lists still need Elda's review before merge.
 const RECOVERY_PACKAGES = [
     {
         name: 'Essential', hours: 4, price: '$340', rate: '$85 an hour',
@@ -707,7 +707,7 @@ const RECOVERY_PACKAGES = [
             'Everything in Extended, for 12 hours',
             'Can be split into two 6 hour visits within 3 days after your procedure',
             'Best for morning procedures, with care finishing in the evening',
-            'Care after 10 p.m. is arranged by request',
+            'Care after 10 p.m. is available for an additional charge',
         ],
     },
 ];
