@@ -2107,6 +2107,47 @@ function Nav({ openBooking, path = '/' }) {
     );
 }
 
+// --- Online booking (Cal.com) -------------------------------------
+// The Cal.com script loads only when someone clicks Book, so no third party code runs on ordinary page views.
+function openCalBooking(svc) {
+    const { calUsername, calOrigin, calEvents } = SITE_CONFIG;
+    const slug = calUsername && calEvents && calEvents[svc || 'General Consultation'];
+    if (!slug || typeof window === 'undefined') return false;
+    const calLink = `${calUsername}/${slug}`;
+    try {
+        if (!window.Cal) {
+            (function (C, A, L) {
+                const p = (a, ar) => { a.q.push(ar); };
+                const d = C.document;
+                C.Cal = C.Cal || function () {
+                    const cal = C.Cal; const ar = arguments;
+                    if (!cal.loaded) {
+                        cal.ns = {}; cal.q = cal.q || [];
+                        const s = d.head.appendChild(d.createElement('script'));
+                        s.src = A;
+                        s.addEventListener('error', () => window.open(`${calOrigin}/${calLink}`, '_blank', 'noopener'));
+                        cal.loaded = true;
+                    }
+                    if (ar[0] === L) {
+                        const api = function () { p(api, arguments); };
+                        const namespace = ar[1];
+                        api.q = api.q || [];
+                        if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); }
+                        else p(cal, ar);
+                        return;
+                    }
+                    p(cal, ar);
+                };
+            })(window, `${calOrigin}/embed/embed.js`, 'init');
+            window.Cal('init', { origin: calOrigin });
+        }
+        window.Cal('modal', { calLink, config: { layout: 'month_view' } });
+        return true;
+    } catch {
+        return false;
+    }
+}
+
 // --- App ----------------------------------------------------------
 export default function App({ path = '/' }) {
     const clean = path.replace(/\/+$/, '') || '/';
@@ -2116,6 +2157,7 @@ export default function App({ path = '/' }) {
     const [service, setService] = useState('General Consultation');
 
     const openBooking = useCallback((svc) => {
+        if (openCalBooking(svc)) return;
         setService(svc || 'General Consultation');
         setBookingOpen(true);
     }, []);
