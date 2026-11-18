@@ -684,16 +684,22 @@ function Pricing({ openBooking, hideHeading = false }) {
                     <div className="reveal max-w-5xl mx-auto">
                         <p className="text-center text-ivory/80 text-sm max-w-xl mx-auto mb-8 leading-relaxed">Hours of private nursing care at home after surgery. The longer the package, the lower the hourly rate.</p>
                         <div className="grid md:grid-cols-3 gap-5">
-                            {RECOVERY_PACKAGES.map(({ name, hours, price, rate, blurb, featured }) => (
-                                <div key={name} className={`flex flex-col bg-ivory/[0.07] border rounded-3xl p-7 backdrop-blur hover:bg-ivory/10 transition-all duration-300 ${featured ? 'border-sand/60' : 'border-ivory/15 hover:border-sand/40'}`}>
-                                    <h4 className="font-serif text-xl font-semibold">{name}</h4>
-                                    <p className="text-ivory/65 text-sm mb-4">{hours} hours of continuous care</p>
-                                    <p className="font-serif text-5xl font-semibold text-sand">{price}</p>
-                                    <p className="text-ivory/65 text-sm mb-4">{rate}</p>
-                                    <p className="text-ivory/65 text-sm leading-relaxed mb-6 flex-1">{blurb}</p>
-                                    <a href="/recovery-packages" className="inline-flex items-center gap-1 text-sm font-semibold text-sand hover:text-ivory transition-colors">
-                                        See what is included <ChevronRight className="w-4 h-4" />
-                                    </a>
+                            {RECOVERY_PACKAGES.map(({ name, hours, price, rate, blurb, featured }, i) => (
+                                <div key={name} className={`relative flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${featured ? 'shadow-2xl ring-2 ring-brass md:-my-3' : 'shadow-xl'}`}>
+                                    <div className={`h-2.5 ${['bg-sand', 'bg-brass', 'bg-brass/50'][i % 3]}`} />
+                                    <div className={`px-6 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-sand/25 text-pine'}`}>
+                                        {featured ? 'Most popular' : `${hours} hours`}
+                                    </div>
+                                    <div className="p-7 flex flex-col flex-1">
+                                        <h4 className="font-serif text-2xl font-semibold text-pine text-center">{name}</h4>
+                                        <p className="text-ink/70 text-sm text-center mb-4">{hours} hours of continuous care</p>
+                                        <p className="font-serif text-5xl font-semibold text-pine text-center">{price}</p>
+                                        <p className="text-ink/70 text-sm text-center mb-5">{rate}</p>
+                                        <p className="text-ink/75 text-sm leading-relaxed text-center mb-6 flex-1">{blurb}</p>
+                                        <a href="/recovery-packages" className="inline-flex items-center justify-center gap-1 text-sm font-semibold text-brass hover:text-pine transition-colors">
+                                            See what is included <ChevronRight className="w-4 h-4" />
+                                        </a>
+                                    </div>
                                 </div>
                             ))}
                         </div>
