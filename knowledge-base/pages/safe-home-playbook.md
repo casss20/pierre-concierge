@@ -5,8 +5,8 @@ description: "A nurse written, step by step guide for the first 14 days after su
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 6ad239dc301351e7
+last_extracted: 2026-11-18
+content_hash: 161f6869448e8f1c
 ---
 
 # The Safe Home Playbook | Pierre Concierge Nursing, Ocala
@@ -19,7 +19,7 @@ Guide for families
 
 Discharge papers say what to do. They rarely say what to do when it goes wrong. The Safe Home Playbook is a 20 page guide, written by a Registered Nurse, that gives families the steps, the words to say, and when to call for help.
 
-Coming soon · $34
+[Get the Playbook · $34](https://payhip.com/b/XgK9T)
 
 *(Image: Cover of The Safe Home Playbook by Pierre Concierge Nursing)*
 
@@ -126,9 +126,9 @@ The forms that let you speak with the care team, five questions for every appoin
 -   Adult children organizing care from a distance
 -   Anyone who wants a clear plan before discharge day
 
-## Availability
+## How to get it
 
-The Playbook is coming soon as a downloadable PDF. When it launches, the Get the Playbook button will appear on this page.
+The Playbook is a downloadable PDF. Tap Get the Playbook on this page to check out securely through Payhip, and a private download link is emailed to you.
 
 Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.
 
@@ -148,7 +148,7 @@ No. It is general guidance to help you organize, ask better questions, and know 
 
 ### How will I receive it?
 
-It will be a downloadable PDF that you can print. Details will be posted here when it launches.
+It is a downloadable PDF that you can print. After you check out securely through Payhip, a private download link is emailed to you.
 
 ### Do I need a nurse visit to use it?
 

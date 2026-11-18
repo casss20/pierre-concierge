@@ -633,7 +633,7 @@ export const SINGLE_PAGES = {
         sections: [],
         faqs: [
             { q: 'Which one should I start with?', a: 'Start with the Discharge Readiness Kit if discharge is near and you want lists to fill in. Choose the Safe Home Playbook for the steps, scripts, and emergency guide for the first 14 days. Many families use both.' },
-            { q: 'How will I receive them?', a: 'They will be downloadable PDFs that you can print. Details will be posted here when they launch.' },
+            { q: 'How will I receive them?', a: 'They are downloadable PDFs that you can print. After you check out securely through Payhip, a private download link is emailed to you.' },
             { q: 'Is this medical advice?', a: 'No. These are general guides. Always follow your own doctor and care team, and call 911 in an emergency.' },
         ],
     },
@@ -664,7 +664,7 @@ export const SINGLE_PAGES = {
                 { href: '/services/hospital-to-home-transition', label: 'Hospital to Home Transition visit' },
                 { href: '/products', label: 'All our products' },
             ] },
-            { h: 'Availability', p: ['The Kit is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.'] },
+            { h: 'How to get it', p: ['The Kit is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.'] },
             { note: 'The Kit is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.' },
         ],
         faqs: [
@@ -702,7 +702,7 @@ export const SINGLE_PAGES = {
                 { href: '/services/hospital-to-home-transition', label: 'Hospital to Home Transition visit' },
                 { href: '/products', label: 'All our products' },
             ] },
-            { h: 'Availability', p: ['The Kit is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.'] },
+            { h: 'How to get it', p: ['The Kit is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.'] },
             { note: 'This is general information, not medical or legal advice. In a medical emergency, call 911.' },
         ],
         faqs: [
@@ -739,7 +739,7 @@ export const SINGLE_PAGES = {
                 { href: '/care-plan-binder', label: 'The Care Plan Binder' },
                 { href: '/products', label: 'All our products' },
             ] },
-            { h: 'Availability', p: ['The Guide is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.'] },
+            { h: 'How to get it', p: ['The Guide is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.'] },
             { note: 'This is general information, not medical or legal advice. In a medical emergency, call 911. Laws, fees, and phone numbers change, so confirm details with the agency or an attorney.' },
         ],
         faqs: [
@@ -776,7 +776,7 @@ export const SINGLE_PAGES = {
                 { href: '/long-distance-caregiver-kit', label: 'The Long Distance Caregiver Kit' },
                 { href: '/products', label: 'All our products' },
             ] },
-            { h: 'Availability', p: ['The Binder is coming soon as a printable PDF. When it launches, the buy button will appear on this page.'] },
+            { h: 'How to get it', p: ['The Binder is a printable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.'] },
             { note: 'This is general information, not medical or legal advice. In a medical emergency, call 911.' },
         ],
         faqs: [
@@ -818,7 +818,7 @@ export const SINGLE_PAGES = {
                 { t: 'Doctors, forms, and family meeting', d: 'The forms that let you speak with the care team, five questions for every appointment, and an agenda for the family.' },
             ] },
             { h: 'Who it is for', ul: ['Families bringing a parent, spouse, or relative home after surgery or a hospital stay', 'Adult children organizing care from a distance', 'Anyone who wants a clear plan before discharge day'] },
-            { h: 'Availability', p: ['The Playbook is coming soon as a downloadable PDF. When it launches, the Get the Playbook button will appear on this page.', 'Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.'], links: [
+            { h: 'How to get it', p: ['The Playbook is a downloadable PDF. Tap Get the Playbook on this page to check out securely through Payhip, and a private download link is emailed to you.', 'Want a nurse to go through it with you at home? Elda can review your discharge papers and set up your home at a Hospital to Home Transition visit.'], links: [
                 { href: '/services/hospital-to-home-transition', label: 'Hospital to Home Transition visit' },
                 { href: '/going-home-checklist.html', label: 'Free Going Home checklist' },
                 { href: '/how-it-works', label: 'How it works' },
@@ -828,7 +828,7 @@ export const SINGLE_PAGES = {
         faqs: [
             { q: 'Who wrote the Playbook?', a: 'It is written for families by Pierre Concierge Nursing, a Registered Nurse led practice in Ocala, Florida.' },
             { q: 'Is it medical advice?', a: 'No. It is general guidance to help you organize, ask better questions, and know when to call. Always follow your own doctor and care team.' },
-            { q: 'How will I receive it?', a: 'It will be a downloadable PDF that you can print. Details will be posted here when it launches.' },
+            { q: 'How will I receive it?', a: 'It is a downloadable PDF that you can print. After you check out securely through Payhip, a private download link is emailed to you.' },
             { q: 'Do I need a nurse visit to use it?', a: 'No. The Playbook works on its own. A nurse visit is optional if you want help going through it at home.' },
         ],
     },

@@ -5,8 +5,8 @@ description: "A 17 page guide to choosing, touring, paying for, and settling int
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 40629faae2d44d68
+last_extracted: 2026-11-18
+content_hash: 9ffff2737a5f4d1a
 ---
 
 # The Florida Assisted Living Family Guide | Pierre Concierge Nursing, Ocala
@@ -19,7 +19,7 @@ Guide for families
 
 Choosing assisted living is often decided in a hurry after a fall or a hospital stay. This 17 page guide slows it down and puts the right questions in your hands.
 
-Coming soon · $25
+[Get it · $25](https://payhip.com/b/4xSYX)
 
 *(Image: Cover of The Florida Assisted Living Family Guide by Pierre Concierge Nursing)*
 
@@ -103,9 +103,9 @@ Resident rights and Florida phone numbers for concerns.
 
 [The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[The Long Distance Caregiver Kit](https://pierreconciergenursing.com/long-distance-caregiver-kit)[The Care Plan Binder](https://pierreconciergenursing.com/care-plan-binder)[All our products](https://pierreconciergenursing.com/products)
 
-## Availability
+## How to get it
 
-The Guide is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.
+The Guide is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.
 
 This is general information, not medical or legal advice. In a medical emergency, call 911. Laws, fees, and phone numbers change, so confirm details with the agency or an attorney.
 

@@ -5,8 +5,8 @@ description: "A printable 15 page workbook for families: questions to ask before
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 06ec332fba21c99a
+last_extracted: 2026-11-18
+content_hash: 2c142c89bca8d2cd
 ---
 
 # The Discharge Readiness Kit | Pierre Concierge Nursing, Ocala
@@ -19,7 +19,7 @@ Printable workbook
 
 Discharge day moves fast, and most families remember only half of it later. This 15 page printable workbook slows things down so you can ask the right questions, write the answers down, and walk out with a plan.
 
-Coming soon · $19
+[Get it · $19](https://payhip.com/b/ep5b0)
 
 *(Image: Cover of The Discharge Readiness Kit by Pierre Concierge Nursing)*
 
@@ -99,9 +99,9 @@ When to get help, a contacts and appointments page for the fridge, and a schedul
 
 [The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[Hospital to Home Transition visit](https://pierreconciergenursing.com/services/hospital-to-home-transition)[All our products](https://pierreconciergenursing.com/products)
 
-## Availability
+## How to get it
 
-The Kit is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.
+The Kit is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.
 
 The Kit is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.
 

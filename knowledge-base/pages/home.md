@@ -5,8 +5,8 @@ description: "Skilled, RN-led post-operative care, IV therapy, and wound care at
 category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
-last_extracted: 2026-11-17
-content_hash: 09b07aa0f463e193
+last_extracted: 2026-11-18
+content_hash: e8142d8285bb93ea
 ---
 
 # Pierre Concierge Nursing | Home Nursing in Ocala, FL
@@ -350,11 +350,11 @@ A step by step plan for the first 14 days after surgery or a hospital stay, writ
 -   A 14 day plan with Day 7 and Day 14 review worksheets
 -   Local Ocala and Marion County help numbers
 
-Coming soon · $34[See what is inside](https://pierreconciergenursing.com/safe-home-playbook)
+[Get it · $34](https://payhip.com/b/XgK9T) [See what is inside](https://pierreconciergenursing.com/safe-home-playbook)
 
 The Safe Home Playbook
 
-Bundles from $49. [See the bundles](https://pierreconciergenursing.com/products#bundles)
+Bundles from $44. [See the bundles](https://pierreconciergenursing.com/products#bundles)
 
 *(Image: A senior couple resting together at home)*
 

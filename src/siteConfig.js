@@ -21,25 +21,25 @@ export const SITE_CONFIG = {
     privacyMailingAddress: "",  // mailing address for written requests
     // The Safe Home Playbook (paid PDF guide). Leave the checkout link empty until the store is ready:
     // the site then shows "Coming soon". Once you paste the store link, the Get the Playbook button appears everywhere.
-    playbookCheckoutUrl: "",
+    playbookCheckoutUrl: "https://payhip.com/b/XgK9T",
     // Optional price text shown next to the button, for example "$34"
     playbookPrice: "$34",
     // Discharge Readiness Kit (printable workbook). Same rule: empty link shows "Coming soon".
-    kitCheckoutUrl: "",
+    kitCheckoutUrl: "https://payhip.com/b/ep5b0",
     kitPrice: "$19",
     // Long Distance Caregiver Kit, Florida Assisted Living Family Guide, Care Plan Binder. Empty link shows "Coming soon".
-    ldkCheckoutUrl: "",
+    ldkCheckoutUrl: "https://payhip.com/b/NSQue",
     ldkPrice: "$29",
-    alfCheckoutUrl: "",
+    alfCheckoutUrl: "https://payhip.com/b/4xSYX",
     alfPrice: "$25",
-    binderCheckoutUrl: "",
-    binderPrice: "$59",
+    binderCheckoutUrl: "https://payhip.com/b/GSAf8",
+    binderPrice: "$39",
     // Optional bundle price for both guides, shown under the product carousel
-    bundlePrice: "$49",
+    bundlePrice: "$44",
     // Bundles. Empty link shows "Coming soon". Starter Bundle = Safe Home Playbook + Discharge Readiness Kit.
-    starterBundleUrl: "",
+    starterBundleUrl: "https://payhip.com/b/4AnJP",
     // Full Shelf = all five guides (Playbook, Discharge Kit, Long Distance Kit, Assisted Living Guide, Care Plan Binder)
-    fullShelfUrl: "",
+    fullShelfUrl: "https://payhip.com/b/TRSnP",
     fullShelfPrice: "$89",
     // Free downloadable resource (static page in /public)
     checklistUrl: "/going-home-checklist.html",
