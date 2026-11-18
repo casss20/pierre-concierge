@@ -218,11 +218,36 @@ const SINGLE_VISITS = [
     { name: "Wellness Check", price: "$150", desc: "Complete physical assessment — heart, lungs, vitals." },
 ];
 
-const SUBSCRIPTION_FEATURES = [
-    { strong: "3 visits per month", rest: "included" },
-    { strong: "Mix & match services", rest: "wound care, IV, check-ups" },
-    { strong: "Priority scheduling", rest: "mornings & weekends" },
-    { strong: "Direct text line", rest: "24/7 support with Elda" },
+// Monthly plans. Check-In and Family Link prices are proposals pending Elda's confirmation. Care Plan $450 is existing.
+const MONTHLY_PLANS = [
+    {
+        name: 'Check-In Plan', price: '$225', tagline: 'A steady nurse touchpoint every month.',
+        items: [
+            { strong: '1 visit per month', rest: 'at home, any service' },
+            { strong: 'Monthly medication review', rest: 'a clear list of what to take and when' },
+            { strong: 'Written summary', rest: 'a short note for you and your family' },
+        ],
+    },
+    {
+        name: 'The Pierre Care Plan', price: '$450', tagline: 'A nurse on call, every month.', featured: true, badge: 'Most popular · Best for post-op recovery',
+        items: [
+            { strong: '3 visits per month', rest: 'wound care, IV, check-ups' },
+            { strong: 'Priority scheduling', rest: 'mornings and weekends' },
+            { strong: 'Direct text line', rest: 'non urgent questions answered by Elda' },
+            { strong: 'Monthly medication review', rest: 'and a written summary for family' },
+            { strong: 'Appointment prep notes', rest: 'questions and updates ready for the doctor' },
+        ],
+    },
+    {
+        name: 'Family Link Plan', price: '$650', tagline: 'For families who live far away.',
+        items: [
+            { strong: '4 visits per month', rest: 'with a nurse your family knows by name' },
+            { strong: 'Monthly family video call', rest: 'one conversation with everyone on the same page' },
+            { strong: 'Appointment coordination', rest: 'help with scheduling and follow up' },
+            { strong: 'Written report', rest: 'after each month for the whole family' },
+            { strong: 'Everything in the Care Plan', rest: 'including the text line' },
+        ],
+    },
 ];
 
 const FAQS = [
@@ -389,7 +414,7 @@ const ABOUT_VALUES = [
     { icon: BookOpen, t: 'Clear communication', d: 'Plain language, written notes after each visit, and answers to your questions.' },
     { icon: ShieldCheck, t: 'Advocacy', d: 'Elda speaks up for you with your doctors so nothing is missed or misunderstood.' },
     { icon: Lock, t: 'Privacy and discretion', d: 'Your information is shared only with the doctors and family you authorize.' },
-    { icon: FileText, t: 'Honest pricing', d: 'Posted per visit rates and a monthly Care Plan, with no surprises.' },
+    { icon: FileText, t: 'Honest pricing', d: 'Posted per visit rates, monthly plans and recovery packages, with no surprises.' },
     { icon: MapPin, t: 'Rooted in Marion County', d: 'Care at home across Ocala and Marion County, close to the people we serve.' },
 ];
 const ABOUT_FAQS = [
@@ -606,7 +631,7 @@ function Pricing({ openBooking, hideHeading = false }) {
                 <div className="flex justify-center mb-12">
                     <div className="bg-ivory/10 p-1 rounded-full inline-flex backdrop-blur">
                         {[
-                            { key: 'subscription', label: 'Monthly Plan' },
+                            { key: 'subscription', label: 'Monthly Plans' },
                             { key: 'alacarte', label: 'Single Visits' },
                             { key: 'packages', label: 'Packages' },
                         ].map(({ key, label }) => (
@@ -622,30 +647,36 @@ function Pricing({ openBooking, hideHeading = false }) {
                 </div>
 
                 {tab === 'subscription' ? (
-                    <div className="reveal max-w-lg mx-auto bg-ivory text-ink rounded-[2rem] shadow-2xl overflow-hidden">
-                        <div className="bg-brass px-6 py-3 text-center text-ivory text-xs font-bold uppercase tracking-[0.18em]">
-                            Most popular · Best for post-op recovery
+                    <div className="reveal max-w-6xl mx-auto">
+                        <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+                            {MONTHLY_PLANS.map(({ name, price, tagline, items, featured, badge }) => (
+                                <div key={name} className={`flex flex-col bg-ivory text-ink rounded-[2rem] overflow-hidden ${featured ? 'shadow-2xl ring-2 ring-brass' : 'shadow-xl'}`}>
+                                    <div className={`px-6 py-3 text-center text-xs font-bold uppercase tracking-[0.18em] ${featured ? 'bg-brass text-ivory' : 'bg-transparent text-transparent select-none'}`} aria-hidden={!featured}>
+                                        {featured ? badge : '.'}
+                                    </div>
+                                    <div className="p-8 flex flex-col flex-1">
+                                        <h3 className="font-serif text-2xl font-semibold text-pine text-center mb-1">{name}</h3>
+                                        <p className="text-center text-ink/70 text-sm mb-6">{tagline}</p>
+                                        <div className="text-center mb-7">
+                                            <span className="font-serif text-5xl font-semibold text-pine">{price}</span>
+                                            <span className="text-ink/70 font-medium">/month</span>
+                                        </div>
+                                        <ul className="space-y-3.5 mb-8 flex-1">
+                                            {items.map(({ strong, rest }) => (
+                                                <li key={strong} className="flex items-start gap-3">
+                                                    <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" />
+                                                    <span className="text-ink/80 text-sm"><strong className="font-semibold text-pine">{strong}</strong>, {rest}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-3.5 text-base">
+                                            Start the {name === 'The Pierre Care Plan' ? 'Care Plan' : name}
+                                        </PillButton>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <div className="p-9">
-                            <h3 className="font-serif text-3xl font-semibold text-pine text-center mb-1">The Pierre Care Plan</h3>
-                            <p className="text-center text-ink/70 text-sm mb-7">A nurse on call, every month.</p>
-                            <div className="text-center mb-8">
-                                <span className="font-serif text-6xl font-semibold text-pine">$450</span>
-                                <span className="text-ink/70 font-medium">/month</span>
-                            </div>
-                            <ul className="space-y-4 mb-9">
-                                {SUBSCRIPTION_FEATURES.map(({ strong, rest }) => (
-                                    <li key={strong} className="flex items-start gap-3">
-                                        <CheckCircle className="w-5 h-5 text-brass shrink-0 mt-0.5" />
-                                        <span className="text-ink/80"><strong className="font-semibold text-pine">{strong}</strong> — {rest}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <PillButton onClick={() => openBooking('Pierre Care Subscription')} className="w-full py-4 text-base">
-                                Start the Care Plan
-                            </PillButton>
-                            <p className="text-xs text-center text-ink/60 mt-4">No long-term contract. Cancel anytime.</p>
-                        </div>
+                        <p className="text-center text-ivory/70 text-xs mt-6">No long term contract. Cancel anytime. Not sure which plan fits? Book a free phone consultation and Elda will help you choose.</p>
                     </div>
                 ) : tab === 'packages' ? (
                     <div className="reveal max-w-5xl mx-auto">
@@ -1881,7 +1912,7 @@ function PageHeader({ eyebrow, title, subtitle }) {
 
 const PAGE_HEADERS = {
     '/services': { eyebrow: 'Services', title: 'Our nursing services', subtitle: 'Ten ways we bring professional nursing care to your home. Choose a service to see exactly what it involves.' },
-    '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit or choose the monthly Care Plan. Posted prices, no surprises.' },
+    '/pricing': { eyebrow: 'Pricing', title: 'Plans and per visit rates', subtitle: 'Pay per visit, choose a monthly plan, or book a home recovery package. Posted prices, no surprises.' },
     '/recovery-packages': { eyebrow: 'Home recovery', title: 'Home recovery packages', subtitle: 'Hours of private nursing care at home after surgery, priced by the hour with longer packages at a lower rate.' },
     '/about': { eyebrow: 'About', title: 'Meet your nurse', subtitle: 'Elda Marie Pierre, RN, BSN, and the care philosophy behind Pierre Concierge Nursing.' },
     '/our-values': { eyebrow: 'About', title: 'Our values', subtitle: 'Why Pierre Concierge Nursing exists, and the principles behind every visit.' },
