@@ -608,6 +608,7 @@ function Pricing({ openBooking, hideHeading = false }) {
                         {[
                             { key: 'subscription', label: 'Monthly Plan' },
                             { key: 'alacarte', label: 'Single Visits' },
+                            { key: 'packages', label: 'Packages' },
                         ].map(({ key, label }) => (
                             <button
                                 key={key}
@@ -644,6 +645,28 @@ function Pricing({ openBooking, hideHeading = false }) {
                                 Start the Care Plan
                             </PillButton>
                             <p className="text-xs text-center text-ink/60 mt-4">No long-term contract. Cancel anytime.</p>
+                        </div>
+                    </div>
+                ) : tab === 'packages' ? (
+                    <div className="reveal max-w-5xl mx-auto">
+                        <p className="text-center text-ivory/80 text-sm max-w-xl mx-auto mb-8 leading-relaxed">Hours of private nursing care at home after surgery. The longer the package, the lower the hourly rate.</p>
+                        <div className="grid md:grid-cols-3 gap-5">
+                            {RECOVERY_PACKAGES.map(({ name, hours, price, rate, blurb, featured }) => (
+                                <div key={name} className={`flex flex-col bg-ivory/[0.07] border rounded-3xl p-7 backdrop-blur hover:bg-ivory/10 transition-all duration-300 ${featured ? 'border-sand/60' : 'border-ivory/15 hover:border-sand/40'}`}>
+                                    <h4 className="font-serif text-xl font-semibold">{name}</h4>
+                                    <p className="text-ivory/65 text-sm mb-4">{hours} hours of continuous care</p>
+                                    <p className="font-serif text-5xl font-semibold text-sand">{price}</p>
+                                    <p className="text-ivory/65 text-sm mb-4">{rate}</p>
+                                    <p className="text-ivory/65 text-sm leading-relaxed mb-6 flex-1">{blurb}</p>
+                                    <a href="/recovery-packages" className="inline-flex items-center gap-1 text-sm font-semibold text-sand hover:text-ivory transition-colors">
+                                        See what is included <ChevronRight className="w-4 h-4" />
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="text-center mt-8">
+                            <PillButton onClick={() => openBooking('General Consultation')} className="py-3.5 px-8">Book a free phone consultation</PillButton>
+                            <p className="text-ivory/65 text-xs mt-4">Care after 10 p.m. is available for an additional charge.</p>
                         </div>
                     </div>
                 ) : (
