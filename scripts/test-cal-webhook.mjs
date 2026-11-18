@@ -1,0 +1,54 @@
+// Run: node scripts/test-cal-webhook.mjs
+// Signs fake Cal.com payloads and checks the webhook handler without sending real email.
+import { createHmac } from 'node:crypto';
+import { Readable } from 'node:stream';
+process.env.CAL_WEBHOOK_SECRET = 'test-secret';
+process.env.RESEND_API_KEY = 'test-key';
+process.env.REQUEST_TO_EMAIL = 'elda@example.com';
+const sent = [];
+globalThis.fetch = async (url, init) => { sent.push(JSON.parse(init.body)); return { ok: true }; };
+const { default: handler } = await import('../api/cal-webhook.js');
+
+const call = async (body, { sig, method = 'POST' } = {}) => {
+    const raw = typeof body === 'string' ? body : JSON.stringify(body);
+    const req = Readable.from([Buffer.from(raw)]);
+    req.method = method;
+    req.headers = { 'x-cal-signature-256': sig === undefined ? createHmac('sha256', 'test-secret').update(raw).digest('hex') : sig };
+    const out = { code: 0, json: null, headers: {} };
+    const res = { setHeader: (k, v) => (out.headers[k] = v), status: (c) => ((out.code = c), res), json: (j) => ((out.json = j), res) };
+    await handler(req, res);
+    return out;
+};
+let fail = 0;
+const check = (name, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + name); if (!ok) fail++; };
+
+const booking = {
+    triggerEvent: 'BOOKING_REQUESTED',
+    payload: {
+        uid: 'abc123', eventTitle: 'Wound Care Visit', startTime: '2026-11-24T15:00:00Z',
+        attendees: [{ name: 'Test Client', email: 'client@example.com', timeZone: 'America/New_York' }],
+        responses: { name: { value: 'Test Client' }, location: { value: { optionValue: '12 Oak St, Ocala, FL 34471' } }, attendeePhoneNumber: { value: '+13525550123' }, zip: { value: '34471' }, notes: { value: 'Gate code 1234' } },
+        location: '12 Oak St, Ocala, FL 34471',
+    },
+};
+let r = await call(booking);
+check('valid request returns 200', r.code === 200 && r.json.ok);
+check('one email sent to Elda only', sent.length === 1 && sent[0].to[0] === 'elda@example.com');
+check('email has name, zip, phone, approve link', /Test Client/.test(sent[0].text) && /34471/.test(sent[0].text) && /3525550123/.test(sent[0].text) && /bookings\/unconfirmed/.test(sent[0].text));
+check('client is never emailed', !JSON.stringify(sent).includes('client@example.com'));
+r = await call(booking);
+check('duplicate delivery ignored', r.json.duplicate === true && sent.length === 1);
+r = await call({ ...booking, payload: { ...booking.payload, uid: 'zzz' } }, { sig: 'bad' });
+check('bad signature rejected', r.code === 401);
+r = await call('{not json');
+check('bad json rejected', r.code === 400);
+r = await call({ triggerEvent: 'PING', payload: {} });
+check('ping accepted', r.code === 200 && r.json.ping);
+r = await call({ triggerEvent: 'MEETING_ENDED', payload: {} });
+check('other events ignored', r.json.ignored === 'MEETING_ENDED' && sent.length === 1);
+r = await call({}, { method: 'GET' });
+check('GET rejected', r.code === 405);
+r = await call({ triggerEvent: 'BOOKING_CANCELLED', payload: { uid: 'c1', eventTitle: 'Wellness Check', startTime: '2026-11-25T14:00:00Z', attendees: [{ name: 'A B' }], cancellationReason: 'Sick' } });
+check('cancellation alert sent with reason', sent.length === 2 && /Sick/.test(sent[1].text));
+console.log(fail ? `${fail} FAILED` : 'ALL PASSED');
+process.exit(fail ? 1 : 0);
