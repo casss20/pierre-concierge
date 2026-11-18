@@ -710,16 +710,19 @@ function Pricing({ openBooking, hideHeading = false }) {
                     </div>
                 ) : (
                     <div className="reveal grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
-                        {SINGLE_VISITS.map(({ name, price, desc }) => (
-                            <div key={name} className="bg-ivory/[0.07] border border-ivory/15 rounded-3xl p-7 backdrop-blur hover:bg-ivory/10 hover:border-sand/40 transition-all duration-300">
-                                <div className="flex items-start justify-between gap-4 mb-3">
-                                    <h4 className="font-serif text-xl font-semibold">{name}</h4>
-                                    <span className="bg-sand/15 text-sand px-3.5 py-1 rounded-full text-sm font-semibold whitespace-nowrap">{price}</span>
+                        {SINGLE_VISITS.map(({ name, price, desc }, i) => (
+                            <div key={name} className="relative bg-ivory text-ink rounded-3xl shadow-xl overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                                <div className={`h-2 ${['bg-sand', 'bg-brass', 'bg-brass/50'][i % 3]}`} />
+                                <div className="p-7">
+                                    <div className="flex items-start justify-between gap-4 mb-3">
+                                        <h4 className="font-serif text-xl font-semibold text-pine">{name}</h4>
+                                        <span className="bg-brass/15 text-brass px-3.5 py-1 rounded-full text-sm font-bold whitespace-nowrap">{price}</span>
+                                    </div>
+                                    <p className="text-ink/75 text-sm leading-relaxed mb-5">{desc}</p>
+                                    <button onClick={() => openBooking(name)} className="inline-flex items-center gap-1 text-sm font-semibold text-brass hover:text-pine transition-colors">
+                                        Book this visit <ChevronRight className="w-4 h-4" />
+                                    </button>
                                 </div>
-                                <p className="text-ivory/65 text-sm leading-relaxed mb-5">{desc}</p>
-                                <button onClick={() => openBooking(name)} className="inline-flex items-center gap-1 text-sm font-semibold text-sand hover:text-ivory transition-colors">
-                                    Book this visit <ChevronRight className="w-4 h-4" />
-                                </button>
                             </div>
                         ))}
                     </div>
