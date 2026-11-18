@@ -43,4 +43,29 @@ export const SITE_CONFIG = {
     fullShelfPrice: "$89",
     // Free downloadable resource (static page in /public)
     checklistUrl: "https://payhip.com/b/HMxJU",
+    // Online booking through Cal.com. The username is the part after cal.com/ on the booking page.
+    calUsername: "pierre-concierge-nursing-dkkn9s",
+    calOrigin: "https://app.cal.com",
+    // Service name or button label to Cal.com visit link. Anything not listed opens the request form instead.
+    calEvents: {
+        "General Consultation": "free-phone-consultation",
+        "Book a Consultation": "free-phone-consultation",
+        "Book Post-Op Care": "post-op-check-in",
+        "Post-Op Check-in": "post-op-check-in",
+        "Book Transition Care": "hospital-to-home-transition",
+        "Hospital-to-Home Transition": "hospital-to-home-transition",
+        "Book Wound Care": "wound-care-visit",
+        "Wound Care Visit": "wound-care-visit",
+        "Book IV Therapy": "iv-hydration",
+        "IV Hydration": "iv-hydration",
+        "Book Medication Support": "medication-management",
+        "Medication Management": "medication-management",
+        "Book a Facility Visit": "facility-visit",
+        "ALF / Facility Visit": "facility-visit",
+        "Book a Check-In": "family-check-in",
+        "Family Check-In": "family-check-in",
+        "Book an Assessment": "wellness-check",
+        "Wellness Check": "wellness-check",
+        "Pierre Care Subscription": "care-plan-consultation",
+    },
 };
