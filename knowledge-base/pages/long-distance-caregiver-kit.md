@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-18
-content_hash: 24bd5dd41f9ec8a1
+content_hash: 0801a9f91d23579d
 ---
 
 # The Long Distance Caregiver Kit | Pierre Concierge Nursing, Ocala
@@ -103,9 +103,9 @@ A meeting agenda, a money page, and support for your own wellbeing.
 
 [The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[The Care Plan Binder](https://pierreconciergenursing.com/care-plan-binder)[Hospital to Home Transition visit](https://pierreconciergenursing.com/services/hospital-to-home-transition)[All our products](https://pierreconciergenursing.com/products)
 
-## Availability
+## How to get it
 
-The Kit is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.
+The Kit is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.
 
 This is general information, not medical or legal advice. In a medical emergency, call 911.
 

@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-18
-content_hash: 64d30dffeabcb7dc
+content_hash: 2c142c89bca8d2cd
 ---
 
 # The Discharge Readiness Kit | Pierre Concierge Nursing, Ocala
@@ -99,9 +99,9 @@ When to get help, a contacts and appointments page for the fridge, and a schedul
 
 [The Safe Home Playbook](https://pierreconciergenursing.com/safe-home-playbook)[Hospital to Home Transition visit](https://pierreconciergenursing.com/services/hospital-to-home-transition)[All our products](https://pierreconciergenursing.com/products)
 
-## Availability
+## How to get it
 
-The Kit is coming soon as a downloadable PDF. When it launches, the buy button will appear on this page.
+The Kit is a downloadable PDF. Tap the buy button on this page to check out securely through Payhip, and a private download link is emailed to you.
 
 The Kit is general information, not medical advice. It does not replace the instructions of your own doctors. In a medical emergency, call 911.
 

@@ -6,7 +6,7 @@ category: page
 business: Pierre Concierge Nursing
 location: Ocala and Marion County, Florida
 last_extracted: 2026-11-18
-content_hash: 1e1b7dd611ddeb93
+content_hash: 09d7945aa5a7ea40
 ---
 
 # Our Products: Guides for Families After the Hospital | Pierre Concierge Nursing
@@ -145,7 +145,7 @@ Start with the Discharge Readiness Kit if discharge is near and you want lists t
 
 ### How will I receive them?
 
-They will be downloadable PDFs that you can print. Details will be posted here when they launch.
+They are downloadable PDFs that you can print. After you check out securely through Payhip, a private download link is emailed to you.
 
 ### Is this medical advice?
 
