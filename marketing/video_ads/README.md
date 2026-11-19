@@ -1,8 +1,8 @@
 # Pierre Concierge Nursing: 30 Second Video Ad Scripts
 
-Seven scripts, each aimed at one real problem our customers have. Every script is written to be pasted into an AI video generator, shot by shot. Source of the problems and audiences: the Obsidian note "12 Problems We Solve and Customers".
+Seven scripts, each aimed at one real problem our customers have, directed with the pierre ad director skill (see the folder marketing/director_skill). Each script has a direction card, the shot prompts, and an edit plan. Every script is written to be pasted into an AI video generator, shot by shot. Source of the problems and audiences: the Obsidian note "12 Problems We Solve and Customers".
 
-Status: DRAFT. Nothing here has been reviewed by Elda yet, and nothing has been published.
+Status: DRAFT, directed v2 and fixed after an independent review. Nothing here has been reviewed by Elda yet, and nothing has been published.
 
 ## The scripts
 
@@ -20,21 +20,20 @@ Status: DRAFT. Nothing here has been reviewed by Elda yet, and nothing has been 
 
 - Length: 30 seconds exactly, six shots of 5 seconds each.
 - Format: vertical 9:16 (1080 by 1920) first. For a wide 16:9 version, ask the generator to reframe, and keep the on screen text in the center.
-- Voiceover: about 60 to 70 words, read at a calm, warm pace. Female or male voice, mature, kind, never salesy.
+- Voiceover: about 55 to 70 words, at most 14 words in any 5 second shot. The shot 5 voiceover starts 1.5 seconds late so the silence is real. Female or male voice, mature, kind, never salesy.
 - Structure: problem in the first 2 seconds, our answer by second 12, the call to action in the last 5 seconds.
 - Call to action: book the free phone consultation. Website pierreconciergenursing.com and phone (754) 367 6929.
 
 ## Shared style block (paste at the start of every shot prompt)
 
 ```
-Warm, natural, documentary style. Soft window light, shallow depth of field,
-calm and reassuring mood. Color palette: deep pine green, ivory, soft sand,
-touches of brass gold. Real looking Florida homes (Ocala, Marion County),
-older adults and family caregivers of diverse backgrounds. A registered nurse
-in neat, professional, non hospital clothing, carrying a tote bag. No text,
-no logos, no captions, no watermarks inside the generated video. Natural
-hands, natural faces, no distortion. Vertical 9:16.
+Warm, natural, documentary style. Shallow depth of field. Pine green shadows,
+ivory and sand highlights, never pure black. Natural hands, natural faces, no
+distortion. No text, no logos, no captions, no watermarks inside the generated
+video. Vertical 9:16.
 ```
+
+Then add this ad's own light, place and people on the next line (each script's direction card says what they are). State the brass accent only in the shot where it carries its meaning. Do not paste a nurse into every shot: the nurse appears only in the shots that show her.
 
 Text, logo and phone number are added afterwards in the video editor, not by the generator. Generators draw text badly.
 
@@ -64,3 +63,7 @@ Text, logo and phone number are added afterwards in the video editor, not by the
 - [ ] The LLC and the business name wording are settled (Pierre Concierge, LLC, doing business as Pierre Concierge Nursing)
 - [ ] Captions are on, because most viewers watch with the sound off
 - [ ] A person watched the finished video once from start to end for visual errors in hands, faces and pills
+
+## Brand colors, logo and transitions (all ads)
+
+Brand colors: pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only). Logo: public/logo-mark-light.png on a flat pine green end card, fade in 0.5 s. Transitions: hard cuts, then one 0.5 s dissolve into the end card. Each script repeats this in its Brand and finish section.
