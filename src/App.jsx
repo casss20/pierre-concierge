@@ -1321,12 +1321,12 @@ const PRODUCTS = [
 
 const BUNDLES = [
     {
-        id: 'starter', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $4',
+        id: 'starter', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $9',
         blurb: 'The two guides most families need first when a loved one is coming home.',
         ids: ['playbook', 'kit'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit'], was: '$53', priceKey: 'bundlePrice', urlKey: 'starterBundleUrl',
     },
     {
-        id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $77',
+        id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $57',
         blurb: 'Every guide we make, for every stage of caring for an aging parent. New guides will be added.',
         ids: ['playbook', 'kit', 'ldk', 'alf', 'binder'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$146', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
     },
