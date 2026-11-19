@@ -15,6 +15,9 @@ Status: DRAFT, directed v2 and fixed after an independent review. Nothing here h
 | 5 | 05_long_distance_family.md | Family lives far away | Adult children outside Florida, parent in Marion County |
 | 6 | 06_same_page.md | Family disagreements | Siblings sharing care of a parent |
 | 7 | 07_home_after_surgery.md | Recovery needs hours, not one visit | Local families, surgery patients, referral partners |
+| 8 | 08_sunday_night_question.md | An adult child cannot tell who keeps track of a parent's care | Daughters and sons 40 to 60 |
+| 9 | 09_home_from_the_hospital.md | A discharge folder nobody explains | Families after a hospital stay |
+| 10 | 10_going_home_checklist.md | Free checklist for the trip home after surgery (lead ad) | Florida adults who help care for family |
 
 ## How every script is built
 
@@ -66,4 +69,4 @@ Text, logo and phone number are added afterwards in the video editor, not by the
 
 ## Brand colors, logo and transitions (all ads)
 
-Brand colors: pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only). Logo: public/logo-mark-light.png on a flat pine green end card, fade in 0.5 s. Transitions: hard cuts, then one 0.5 s dissolve into the end card. Each script repeats this in its Brand and finish section.
+Brand colors: pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only). End card (updated after the Ad 1 pilot): ivory #FAF7F2 background with the full logo lockup (pierre-logo-animation-poster.webp), because logo-mark-light.png is only 86 pixels wide. Fade in 0.5 s. Transitions: hard cuts, then one 0.5 s dissolve into the end card. Each script repeats this in its Brand and finish section.
