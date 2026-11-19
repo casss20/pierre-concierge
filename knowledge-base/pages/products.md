@@ -99,7 +99,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     [Get it · $39](https://payhip.com/b/GSAf8) [See inside](https://pierreconciergenursing.com/care-plan-binder)
 
--   Save $4
+-   Save $9
 
     ## The Starter Bundle
 
@@ -109,7 +109,7 @@ Guides written by a Registered Nurse to help families care for a loved one at ho
 
     [Get it · $44](https://payhip.com/b/4AnJP)
 
--   Save $77
+-   Save $57
 
     ## The Full Shelf
 
