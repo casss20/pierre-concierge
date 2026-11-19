@@ -59,6 +59,18 @@ A nurse you can text. Book a free call.
 
 Generation tip: each shot prompt holds one action only. If the generator adds a second action, trim the clip at the end of the first action and re roll with a simpler prompt.
 
+## Brand and finish (same in every ad)
+
+| Item | Setting |
+|---|---|
+| Palette | Pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only, one meaning per ad). No pure black. |
+| End card background | Flat pine green #1E3D34, no gradient. |
+| Logo | public/logo-mark-light.png from the website repo (the light version for the dark green card), centered in the upper middle. Fade in over 0.5 s, hold to the end. Check the file on the green card before export. |
+| End card text | One line, website, phone, and Serving Ocala and Marion County in ivory #FAF7F2. Brass #B08D57 only for the one line that matters most. |
+| Transitions | Hard cuts between shots 1 to 5. One slow dissolve (0.5 s) from the shot 6 poster frame into the end card. No wipes, zooms, glitches or flashes. |
+
+Cut by cut: 1 to 2 cut | 2 to 3 cut | 3 to 4 cut | 4 to 5 cut | 5 to 6 cut | poster frame to end card dissolve.
+
 ## Sound
 
 Soft acoustic music. One gentle message chime at 16 s, not a harsh buzz. Keep room tone under shot 5.

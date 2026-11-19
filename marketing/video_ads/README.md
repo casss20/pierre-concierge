@@ -63,3 +63,7 @@ Text, logo and phone number are added afterwards in the video editor, not by the
 - [ ] The LLC and the business name wording are settled (Pierre Concierge, LLC, doing business as Pierre Concierge Nursing)
 - [ ] Captions are on, because most viewers watch with the sound off
 - [ ] A person watched the finished video once from start to end for visual errors in hands, faces and pills
+
+## Brand colors, logo and transitions (all ads)
+
+Brand colors: pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only). Logo: public/logo-mark-light.png on a flat pine green end card, fade in 0.5 s. Transitions: hard cuts, then one 0.5 s dissolve into the end card. Each script repeats this in its Brand and finish section.
