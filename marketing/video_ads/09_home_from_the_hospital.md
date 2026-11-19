@@ -7,7 +7,7 @@
 | Plan featured | Hospital to Home Transition visit (no price) |
 | Length and format | 30 seconds, vertical 9:16, six shots of 5 seconds |
 | Call to action | Book a free phone consultation |
-| Status | Directed v2, fixed after independent review. Needs Elda's review. |
+| Status | Directed v3: hook tests, muted read and a 15 second cut added (v2 was fixed after independent review). Needs Elda's review. |
 
 ## Direction card
 
@@ -34,7 +34,7 @@ The hospital sent him home with a folder.
 
 Page after page. And a lot of questions.
 
-A registered nurse from Pierre Concierge Nursing comes to the house, here in Ocala. She goes through it with them, page by page.
+A registered nurse from Pierre Concierge Nursing comes to the house. She goes through it with them, page by page.
 
 So nobody reads it alone.
 
@@ -46,18 +46,44 @@ Paste the shared style block (README) first, then the shot prompt.
 
 | Time | Shot prompt | Voiceover | On screen text (editor) |
 |---|---|---|---|
-| 0 to 5 | Top down view of an ivory kitchen counter in warm afternoon light. A thick sand colored folder falls into the lower half of the frame and lands flat, loose papers sliding out, then stillness. Upper half empty counter. Papers not readable. | The hospital sent him home with a folder. | Home from the hospital. Now what? (0.3 to 3.0 s, top) |
-| 5 to 10 | A man in his forties stands at the same counter, the open folder in front of him. He raises one hand to his forehead and holds it there, still. Slow push in. Papers not readable. | Page after page. And a lot of questions. | |
-| 10 to 15 | A living room in soft light. An older man sits in a worn armchair. A registered nurse in navy scrubs sits down in a chair beside him. Gentle drift. Nobody looks at the camera. | A registered nurse from Pierre Concierge Nursing comes to the house, here in Ocala. | Ocala and Marion County (top third) |
+| 0 to 5 | Top down view of an ivory kitchen counter in warm afternoon light. A thick sand colored folder falls into the lower half of the frame and lands flat, loose papers sliding out, then stillness. Upper half empty counter. Papers not readable. | The hospital sent him home with a folder. | He came home with a folder (0.0 to 3.0 s, upper text zone) |
+| 5 to 10 | A man in his forties stands at the same counter, the open folder in front of him. He raises one hand to his forehead and holds it there, still. Slow push in. Papers not readable. | Page after page. And a lot of questions. | Page after page of questions |
+| 10 to 15 | A living room in soft light. An older man sits in a worn armchair. A registered nurse in navy scrubs sits down in a chair beside him. Gentle drift. Nobody looks at the camera. | A registered nurse from Pierre Concierge Nursing comes to the house. | A registered nurse comes to the house in Ocala (upper text zone) |
 | 15 to 20 | The kitchen counter from shot 1. The nurse and the son stand side by side over the open folder. She turns the folder to face him and rests her hand flat beside it. Warm brass light falls across the folder. Hold. Papers not readable. | She goes through it with them, page by page. | Medications / Follow up visits / What to watch for (one at a time) |
-| 20 to 25 | A front porch in morning light. The older man and his son sit side by side with coffee mugs. The son leans back in his chair and breathes out. Hold still. | (silent 1.5 s) So nobody reads it alone. | |
+| 20 to 25 | A front porch in morning light. The older man and his son sit side by side with coffee mugs. The son leans back in his chair and breathes out. Hold still. | (silent 1.5 s) So nobody reads it alone. | So nobody reads it alone (appears in the silence) |
 | 25 to 30 | Poster frame (generated still): the shot 1 counter, the folder closed and squared, a coffee mug beside it, warm brass light on the folder. Held 2 s, then dissolve to the end card. | Book a free call. | End card |
+
+## Muted read (supers only)
+
+He came home with a folder / Page after page of questions / A registered nurse comes to the house in Ocala / Medications. Follow up visits. What to watch for. / So nobody reads it alone / Book a free call. The story holds with the sound off.
+
+Text zone: between 15 and 40 percent of the frame height (about y 200 to 500). Nothing in the bottom 25 percent. In shot 1 the folder lands in the lower half but above the bottom 25 percent.
+
+## Hook tests (same body from shot 2 on)
+
+| Version | Shot 1 prompt | Super at 0.0 s | First voice line |
+|---|---|---|---|
+| A (main) | As in the shot list: the folder lands on the counter. | He came home with a folder | The hospital sent him home with a folder. |
+| B | Close on a man's hands flipping quickly through a thick stack of papers, then stopping. Papers not readable. | Page after page | The discharge folder. Page after page. |
+| C | A car pulls into a home driveway in afternoon light, an older man in the passenger seat. No hospital visible. | Home, with a folder | He's home, with a folder nobody explained. |
+| D | Close on the son's face as he reads, his brow tightens, he looks up. | Nobody explained this part | Nobody explained this part. |
+
+Keep the winner by 3 second view rate, not by clicks.
+
+## 15 second cut (Reels and Stories, 26 words)
+
+| Time | Picture | Voiceover | Super |
+|---|---|---|---|
+| 0 to 4 s | Shot 1 | The hospital sent him home with a folder. | He came home with a folder |
+| 4 to 8 s | Shot 3 | Pierre Concierge Nursing sends a registered nurse to the house. | A registered nurse, at home in Ocala |
+| 8 to 12 s | Shot 4 | She goes through it with them. | Page by page |
+| 12 to 15 s | End card | Book a free call. | Book a free call |
 
 ## Edit plan
 
 | Moment | When | Rule |
 |---|---|---|
-| Hook | 0.3 to 3.0 s | Text readable sound off by 3 s. Trim the head so the landing happens before 0.5 s. |
+| Hook | 0.0 to 3.0 s | "He came home with a folder" readable sound off by 3 s. Trim the head so the landing happens before 0.5 s. |
 | Acceleration | 0 to 10 s | Shots 1 and 2 are quick; voice starts on the landing. |
 | The one moment | 17 s | Folder turned toward him. Hold to the end of shot 4. |
 | The breath | 20 to 21.5 s | No voice. Birds and porch room tone. |

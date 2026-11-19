@@ -7,7 +7,7 @@
 | Plan featured | Nurse visits with medication review, appointment notes and a written summary (no plan name, no price) |
 | Length and format | 30 seconds, vertical 9:16, six shots of 5 seconds |
 | Call to action | Book a free phone consultation |
-| Status | Directed v2, fixed after independent review. Needs Elda's review. |
+| Status | Directed v3: hook tests, muted read and a 15 second cut added (v2 was fixed after independent review). Needs Elda's review. |
 
 ## Direction card
 
@@ -34,7 +34,7 @@ Sunday night. She wonders who is keeping track of Mom's care.
 
 Appointments. New medications. Questions nobody wrote down.
 
-A registered nurse from Pierre Concierge Nursing visits Mom at home in Ocala. She reviews the medications and writes it all down.
+A registered nurse from Pierre Concierge Nursing visits her mother at home in Ocala. She reviews the medications and writes it all down.
 
 Now someone is keeping track.
 
@@ -48,18 +48,44 @@ Paste the shared style block (README) first, then the shot prompt.
 
 | Time | Shot prompt | Voiceover | On screen text (editor) |
 |---|---|---|---|
-| 0 to 5 | Night living room lit by one warm table lamp. A woman in her forties sits on a sofa, her face lit by the glow of a phone. She slowly lowers the phone to her lap and stares ahead, still. Top third of the frame dark and empty. Held frame. Phone screen not visible. | Sunday night. She wonders who is keeping track of Mom's care. | Is anyone keeping track? (0.3 to 3.0 s, top third) |
-| 5 to 10 | Close view of a refrigerator door covered with appointment cards and sticky notes, framed in the lower two thirds. Slow push in. One sticky note slips loose and drifts down out of frame. Notes not readable. | Appointments. New medications. Questions nobody wrote down. | |
-| 10 to 15 | Morning, held frame from inside the hallway. The front door is already open. A registered nurse in navy scrubs with a canvas tote steps across the threshold. Nobody looks at the camera. | A registered nurse from Pierre Concierge Nursing visits Mom at home in Ocala. | Ocala and Marion County (top third) |
-| 15 to 20 | Kitchen table in soft morning light. The nurse lays her pen down across a sheet of paper and rests her hand beside it. The older woman beside her looks at the page. Hold. Handwriting not readable. | She reviews the medications and writes it all down. | A registered nurse at the kitchen table (top third) |
-| 20 to 25 | Daytime office. The same woman at her desk turns her phone face down on the desk and leaves her hand resting on it. Warm brass light on her hand. Hold still. Phone screen not visible. | (silent 1.5 s) Now someone is keeping track. | |
+| 0 to 5 | Night living room lit by one warm table lamp. A woman in her forties sits on a sofa, her face lit by the glow of a phone. She slowly lowers the phone to her lap and stares ahead, still. Top third of the frame dark and empty. Held frame. Phone screen not visible. | Sunday night. She wonders who is keeping track of Mom's care. | Is anyone keeping track? (0.0 to 3.0 s, upper text zone) |
+| 5 to 10 | Close view of a refrigerator door covered with appointment cards and sticky notes, framed in the lower two thirds. Slow push in. One sticky note slips loose and drifts down out of frame. Notes not readable. | Appointments. New medications. Questions nobody wrote down. | Appointments. Medications. Questions. |
+| 10 to 15 | Morning, held frame from inside the hallway. The front door is already open. A registered nurse in navy scrubs with a canvas tote steps across the threshold. Nobody looks at the camera. | A registered nurse from Pierre Concierge Nursing visits her mother at home in Ocala. | A registered nurse visits her mom in Ocala (upper text zone) |
+| 15 to 20 | Kitchen table in soft morning light. The nurse lays her pen down across a sheet of paper and rests her hand beside it. The older woman beside her looks at the page. Hold. Handwriting not readable. | She reviews the medications and writes it all down. | Medications reviewed and written down (upper text zone) |
+| 20 to 25 | Daytime office. The same woman at her desk turns her phone face down on the desk and leaves her hand resting on it. Warm brass light on her hand. Hold still. Phone screen not visible. | (silent 1.5 s) Now someone is keeping track. | Now someone is keeping track (appears in the silence) |
 | 25 to 30 | Poster frame (generated still): the same sofa from shot 1 in morning light, lamp off, the phone face down on the cushion in warm brass light. Held 2 s, then dissolve to the end card. | Book a free call. | End card |
+
+## Muted read (supers only)
+
+Is anyone keeping track? / Appointments. Medications. Questions. / A registered nurse visits her mom in Ocala / Medications reviewed and written down / Now someone is keeping track / Book a free call. The story holds with the sound off.
+
+Text zone: between 15 and 40 percent of the frame height (about y 200 to 500). Nothing in the bottom 25 percent.
+
+## Hook tests (same body from shot 2 on)
+
+| Version | Shot 1 prompt | Super at 0.0 s | First voice line |
+|---|---|---|---|
+| A (main) | As in the shot list: the phone lowers to her lap. | Is anyone keeping track? | Sunday night. She wonders who is keeping track of Mom's care. |
+| B | Close on her face in phone glow, eyes moving as she reads, then she stops and looks up. Screen not visible. | Sunday, 11 p.m. | Eleven at night, and she is still thinking about Mom's appointments. |
+| C | Dark bedroom, she lies awake on her side, eyes open, phone glowing on the pillow. | The question that keeps her up | The question that keeps her up: who is keeping track of Mom's care? |
+| D | A phone on a nightstand lights up, her hand reaches for it. Screen not visible. | Her mom says she's fine | Mom says she's fine. But who is keeping track? |
+
+Keep the winner by 3 second view rate, not by clicks.
+
+## 15 second cut (Reels and Stories, 27 words)
+
+| Time | Picture | Voiceover | Super |
+|---|---|---|---|
+| 0 to 4 s | Shot 1 | Sunday night. She wonders who keeps track of Mom's care. | Is anyone keeping track? |
+| 4 to 8 s | Shot 3 | Pierre Concierge Nursing sends a registered nurse to her mother's home. | A registered nurse, at home in Ocala |
+| 8 to 12 s | Shot 5 | (silent 1 s) Now someone is. | Now someone is keeping track |
+| 12 to 15 s | End card | Book a free call. | Book a free call |
 
 ## Edit plan
 
 | Moment | When | Rule |
 |---|---|---|
-| Hook | 0.3 to 3.0 s | "Is anyone keeping track?" large, ivory on a pine green box, readable sound off by 3 s. Frame 0 already composed. |
+| Hook | 0.0 to 3.0 s | "Is anyone keeping track?" large, ivory on a pine green box, readable sound off by 3 s. Frame 0 already composed. |
 | Acceleration | 5 to 15 s | Shots 2 and 3 are the quick ones; cut on the falling note. |
 | The breath | 20 to 21.5 s | No voice. Room tone only. The phone turns face down inside the silence. |
 | The one moment | 21 s | Phone face down. Hold to the end of shot 5. |

@@ -18,6 +18,13 @@ Status: DRAFT, directed v2 and fixed after an independent review. Nothing here h
 | 8 | 08_sunday_night_question.md | An adult child cannot tell who keeps track of a parent's care | Daughters and sons 40 to 60 |
 | 9 | 09_home_from_the_hospital.md | A discharge folder nobody explains | Families after a hospital stay |
 | 10 | 10_going_home_checklist.md | Free checklist for the trip home after surgery (lead ad) | Florida adults who help care for family |
+| 11 | 11_discharge_readiness_kit.md | Families forget half of what the discharge nurse says ($19 guide) | Florida adults who help care for family |
+| 12 | 12_safe_home_playbook.md | The first two weeks at home bring untrained problems ($34 guide) | Florida adults who help care for family |
+| 13 | 13_long_distance_caregiver_kit.md | Far away children cannot get information or act ($29 guide) | Adults with a parent in Florida |
+| 14 | 14_assisted_living_family_guide.md | Assisted living tours all look the same ($25 guide) | Florida adults 40 to 70 |
+| 15 | 15_care_plan_binder.md | Care information is scattered, nobody can take over ($39 guide) | Florida adults who help care for family |
+| 16 | 16_starter_bundle.md | Discharge day and the two weeks after ($44 bundle, save $9) | Florida adults who help care for family |
+| 17 | 17_full_shelf.md | Every stage of caring for a parent ($89 bundle, save $57) | Florida adults 40 to 70 |
 
 ## How every script is built
 
