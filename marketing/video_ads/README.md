@@ -15,6 +15,16 @@ Status: DRAFT, directed v2 and fixed after an independent review. Nothing here h
 | 5 | 05_long_distance_family.md | Family lives far away | Adult children outside Florida, parent in Marion County |
 | 6 | 06_same_page.md | Family disagreements | Siblings sharing care of a parent |
 | 7 | 07_home_after_surgery.md | Recovery needs hours, not one visit | Local families, surgery patients, referral partners |
+| 8 | 08_sunday_night_question.md | An adult child cannot tell who keeps track of a parent's care | Daughters and sons 40 to 60 |
+| 9 | 09_home_from_the_hospital.md | A discharge folder nobody explains | Families after a hospital stay |
+| 10 | 10_going_home_checklist.md | Free checklist for the trip home after surgery (lead ad) | Florida adults who help care for family |
+| 11 | 11_discharge_readiness_kit.md | Families forget half of what the discharge nurse says ($19 guide) | Florida adults who help care for family |
+| 12 | 12_safe_home_playbook.md | The first two weeks at home bring untrained problems ($34 guide) | Florida adults who help care for family |
+| 13 | 13_long_distance_caregiver_kit.md | Far away children cannot get information or act ($29 guide) | Adults with a parent in Florida |
+| 14 | 14_assisted_living_family_guide.md | Assisted living tours all look the same ($25 guide) | Florida adults 40 to 70 |
+| 15 | 15_care_plan_binder.md | Care information is scattered, nobody can take over ($39 guide) | Florida adults who help care for family |
+| 16 | 16_starter_bundle.md | Discharge day and the two weeks after ($44 bundle, save $9) | Florida adults who help care for family |
+| 17 | 17_full_shelf.md | Every stage of caring for a parent ($89 bundle, save $57) | Florida adults 40 to 70 |
 
 ## How every script is built
 
@@ -66,4 +76,4 @@ Text, logo and phone number are added afterwards in the video editor, not by the
 
 ## Brand colors, logo and transitions (all ads)
 
-Brand colors: pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only). Logo: public/logo-mark-light.png on a flat pine green end card, fade in 0.5 s. Transitions: hard cuts, then one 0.5 s dissolve into the end card. Each script repeats this in its Brand and finish section.
+Brand colors: pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only). End card (updated after the Ad 1 pilot): ivory #FAF7F2 background with the full logo lockup (pierre-logo-animation-poster.webp), because logo-mark-light.png is only 86 pixels wide. Fade in 0.5 s. Transitions: hard cuts, then one 0.5 s dissolve into the end card. Each script repeats this in its Brand and finish section.
