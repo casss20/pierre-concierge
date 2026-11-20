@@ -1258,6 +1258,15 @@ function PlaybookCarousel({ compact = false, arrows = true, slides = PLAYBOOK_SL
     );
 }
 
+// Product scene images shown under the carousel on each guide page. Covers only, never interior pages.
+const PRODUCT_SCENES = {
+    '/safe-home-playbook': { src: '/products/safe-home-playbook.webp', alt: 'The Safe Home Playbook shown as a printable PDF' },
+    '/discharge-readiness-kit': { src: '/products/discharge-readiness-kit.webp', alt: 'The Discharge Readiness Kit shown as a printable PDF' },
+    '/long-distance-caregiver-kit': { src: '/products/long-distance-caregiver-kit.webp', alt: 'The Long Distance Caregiver Kit shown as a printable PDF' },
+    '/florida-assisted-living-family-guide': { src: '/products/florida-assisted-living-family-guide.webp', alt: 'The Florida Assisted Living Family Guide shown as a printable PDF' },
+    '/care-plan-binder': { src: '/products/care-plan-binder.webp', alt: 'The Care Plan Binder shown as a printable PDF' },
+};
+
 function PlaybookAction({ light = false }) {
     const { playbookCheckoutUrl, playbookPrice } = SITE_CONFIG;
     if (playbookCheckoutUrl) {
@@ -1321,12 +1330,12 @@ const PRODUCTS = [
 
 const BUNDLES = [
     {
-        id: 'starter', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $9',
+        id: 'starter', img: '/products/starter-bundle.webp', imgAlt: 'The Starter Bundle: the Safe Home Playbook and the Discharge Readiness Kit as printable PDFs', eyebrow: 'Best for a hospital stay', title: 'The Starter Bundle', badge: 'Save $9',
         blurb: 'The two guides most families need first when a loved one is coming home.',
         ids: ['playbook', 'kit'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit'], was: '$53', priceKey: 'bundlePrice', urlKey: 'starterBundleUrl',
     },
     {
-        id: 'shelf', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $57',
+        id: 'shelf', img: '/products/full-shelf.webp', imgAlt: 'The Full Shelf: all five Pierre Concierge Nursing guides as printable PDFs', eyebrow: 'Best value', title: 'The Full Shelf', badge: 'Save $57',
         blurb: 'Every guide we make, for every stage of caring for an aging parent. New guides will be added.',
         ids: ['playbook', 'kit', 'ldk', 'alf', 'binder'], items: ['The Safe Home Playbook', 'The Discharge Readiness Kit', 'The Long Distance Caregiver Kit', 'The Florida Assisted Living Family Guide', 'The Care Plan Binder'], was: '$146', priceKey: 'fullShelfPrice', urlKey: 'fullShelfUrl',
     },
@@ -1452,6 +1461,7 @@ function ProductCatalog() {
                 <div id="bundle-contents" className="mt-14 grid md:grid-cols-2 gap-6 scroll-mt-24">
                     {BUNDLES.map((b) => (
                         <div key={b.id} className="bg-cream/60 border border-pine/10 rounded-3xl p-6">
+                            {b.img && <img src={b.img} alt={b.imgAlt} width="900" height="900" loading="lazy" decoding="async" className="w-full rounded-2xl mb-5" />}
                             <h3 className="font-serif text-xl font-semibold text-pine mb-1">{b.title} includes</h3>
                             <p className="text-xs text-ink/60 mb-3">Separately {b.was}. Together {SITE_CONFIG[b.priceKey]}.</p>
                             <ul className="space-y-2">
@@ -1730,6 +1740,7 @@ function LocalPage({ found, openBooking }) {
                             {page.path === '/florida-assisted-living-family-guide' && <div className="mb-12"><PlaybookCarousel slides={ALF_SLIDES} label="What The Florida Assisted Living Family Guide includes" /></div>}
                             {page.path === '/care-plan-binder' && <div className="mb-12"><PlaybookCarousel slides={BINDER_SLIDES} label="What The Care Plan Binder includes" /></div>}
                             {page.path === '/discharge-readiness-kit' && <div className="mb-12"><PlaybookCarousel slides={KIT_SLIDES} label="What The Discharge Readiness Kit includes" /></div>}
+                            {PRODUCT_SCENES[page.path] && <img src={PRODUCT_SCENES[page.path].src} alt={PRODUCT_SCENES[page.path].alt} width="900" height="900" loading="lazy" decoding="async" className="w-full max-w-md mx-auto rounded-2xl shadow-lg mb-12" />}
                             {page.sections.map((sec, i) => <LocalSection key={i} section={sec} />)}
                             {page.faqs && page.faqs.length > 0 && (
                                 <div className="mt-12">
