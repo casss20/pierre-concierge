@@ -45,7 +45,7 @@ Stay connected from far away. Book a free call.
 | 10 to 15 | A sunny Florida living room with live oaks outside the window. A registered nurse with a tote bag sits with an older woman, both laughing. | Pierre Concierge Nursing visits her mother at home in Marion County. | A nurse visits her mother in Ocala |
 | 15 to 20 | Sunny living room. A laptop on a coffee table, shot from behind, its screen glowing warm brass. The older mother, seated beside the nurse, waves at the screen once, then both hold still, smiling. | With the Family Link Plan, she joins a monthly video call. | Monthly family video call. |
 | 20 to 25 | The woman reads a clean one page report on her laptop and a small smile appears. Report text not readable. | (silent for the first 1.5 s) And she gets a written report. | Written report. |
-| 25 to 30 | Generated poster frame held about 2 seconds, then the end card in the editor: flat color background (no gradient), logo lockup, one line, website, phone, and the line Serving Ocala and Marion County. Poster frame: the same city window in warm morning light, the phone face down on the sill. | Stay connected from far away. Book a free call. | Book a free call. pierreconciergenursing.com | (754) 367 6929 |
+| 25 to 30 | Generated poster frame held about 2 seconds, then the end card in the editor: flat color background (no gradient), logo lockup, one line, website, and the line Serving Ocala and Marion County. Poster frame: the same city window in warm morning light, the phone face down on the sill. | Stay connected from far away. Book a free call. | Book a free call. pierreconciergenursing.com | (754) 367 6929 |
 
 ## Muted read (supers only)
 
@@ -80,7 +80,7 @@ Keep the winner by 3 second view rate, not by clicks.
 | The one moment (hero) | 15 to 20 s | Build toward it. Anticipation, release, settle each visible on a phone. Do not spend it earlier. |
 | The breath | 20 to 21.5 s, the daughter reads the report in quiet. | Delay the shot 5 voiceover by 1.5 seconds so the silence is real. Room tone only. |
 | Pace | whole ad | The city shots are slower. The cut to Florida is the acceleration. Shot 4 holds longest. Shot 5 is the breath. |
-| End card poster | 25 to 30 s | Generated poster frame held 2 s, then a flat color end card with logo lockup, one line, website, phone and Serving Ocala and Marion County. |
+| End card poster | 25 to 30 s | Generated poster frame held 2 s, then a flat color end card with logo lockup, one line, website and Serving Ocala and Marion County. |
 
 Generation tip: each shot prompt holds one action only. If the generator adds a second action, trim the clip at the end of the first action and re roll with a simpler prompt.
 
@@ -91,7 +91,7 @@ Generation tip: each shot prompt holds one action only. If the generator adds a 
 | Palette | Pine green #1E3D34, ivory #FAF7F2, sand #E8D5B0, brass #B08D57 (accent only, one meaning per ad). No pure black. |
 | End card background | Ivory #FAF7F2, no gradient. |
 | Logo | Full logo lockup (pierre-logo-animation-poster.webp, 1080 by 1080) in the upper middle. Fade in over 0.5 s, hold to the end. The small logo-mark-light.png is only 86 pixels wide, so do not use it. |
-| End card text | One line, website, phone, and Serving Ocala and Marion County in pine green #1E3D34. Brass #B08D57 only for the one line that matters most. |
+| End card text | One line, website, and Serving Ocala and Marion County in pine green #1E3D34. Brass #B08D57 only for the one line that matters most. |
 | Transitions | Hard cuts between shots 1 to 5. One slow dissolve (0.5 s) from the shot 6 poster frame into the end card. No wipes, zooms, glitches or flashes. |
 
 Cut by cut: 1 to 2 cut | 2 to 3 cut | 3 to 4 cut | 4 to 5 cut | 5 to 6 cut | poster frame to end card dissolve.

@@ -87,7 +87,7 @@ Keep the winner by 3 second view rate and by downloads, not by clicks alone.
 | Acceleration | 10 to 20 s | Shots 3 and 4 are the quick steps, one line each. |
 | The one moment | 21 s | The tick. Hold after the page is set down. |
 | The breath | 20 to 21.5 s | No voice; the tick lands in silence. |
-| End card | 27 to 30 s | Logo lockup, Free Going Home Checklist, the URL that matches the ad's click destination, (754) 367 6929, Serving Ocala and Marion County. Show only the real PDF's title area, cropped flat, never the item list. |
+| End card | 27 to 30 s | Logo lockup, Free Going Home Checklist, the URL that matches the ad's click destination, Serving Ocala and Marion County. Show only the real PDF's title area, cropped flat, never the item list. |
 
 Brand and finish follow the README. Generator: Kling 3.0 Turbo, 720p, 5 s, 9:16.
 

@@ -32,7 +32,7 @@ Status: DRAFT, directed v2 and fixed after an independent review. Nothing here h
 - Format: vertical 9:16 (1080 by 1920) first. For a wide 16:9 version, ask the generator to reframe, and keep the on screen text in the center.
 - Voiceover: about 55 to 70 words, at most 14 words in any 5 second shot. The shot 5 voiceover starts 1.5 seconds late so the silence is real. Female or male voice, mature, kind, never salesy.
 - Structure: problem in the first 2 seconds, our answer by second 12, the call to action in the last 5 seconds.
-- Call to action: book the free phone consultation. Website pierreconciergenursing.com and phone (754) 367 6929.
+- Call to action: book the free phone consultation. Website pierreconciergenursing.com only. Never put the phone number on the end card or any graphic.
 
 ## Shared style block (paste at the start of every shot prompt)
 
@@ -51,7 +51,7 @@ Text, logo and phone number are added afterwards in the video editor, not by the
 
 - Logo lockups and the logo animation: the Obsidian vault folder `assets/logos` and `assets/videos` (also in this repo under `public/videos`).
 - Colors: Pine #1E3D34, Ivory #FAF7F2, Sand #E8D5B0, Brass #B08D57. Fonts: Fraunces for headlines, Inter for small text.
-- End card: ivory or pine background, logo lockup, one line, website, phone.
+- End card: ivory or pine background, logo lockup, one line, website.
 
 ## Rules that apply to every ad
 

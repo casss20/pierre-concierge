@@ -89,7 +89,7 @@ Keep the winner by 3 second view rate, not by clicks.
 | Acceleration | 5 to 15 s | Shots 2 and 3 are the quick ones; cut on the falling note. |
 | The breath | 20 to 21.5 s | No voice. Room tone only. The phone turns face down inside the silence. |
 | The one moment | 21 s | Phone face down. Hold to the end of shot 5. |
-| End card | 27 to 30 s | Logo lockup, Book a free call, pierreconciergenursing.com, (754) 367 6929, Serving Ocala and Marion County. |
+| End card | 27 to 30 s | Logo lockup, Book a free call, pierreconciergenursing.com, Serving Ocala and Marion County. |
 
 Brand and finish follow the README (palette, ivory end card with the full logo lockup, hard cuts, one 0.5 s dissolve into the end card). Generator: Kling 3.0 Turbo, 720p, 5 s, 9:16. Voice: Helena at 1.0 to 1.2x speed.
 

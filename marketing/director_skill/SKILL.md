@@ -74,7 +74,7 @@ By 3 seconds, on screen, large, high contrast, readable with the sound off: the 
 
 ## Ending and loop
 
-The last frame is a poster: one clean composition, the call to action, the website, the phone number. It answers the opening (the messy table is now tidy, the worried face is now calm). For ads that play on a loop, make the last frame match the first composition so the loop reads as a deliberate cycle. If a perfect loop is not wanted, end on the poster.
+The last frame is a poster: one clean composition, the call to action and the website (never the phone number). It answers the opening (the messy table is now tidy, the worried face is now calm). For ads that play on a loop, make the last frame match the first composition so the loop reads as a deliberate cycle. If a perfect loop is not wanted, end on the poster.
 
 ## Say the words people say
 

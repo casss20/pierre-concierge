@@ -87,7 +87,7 @@ Keep the winner by 3 second view rate, not by clicks.
 | Acceleration | 0 to 10 s | Shots 1 and 2 are quick; voice starts on the landing. |
 | The one moment | 17 s | Folder turned toward him. Hold to the end of shot 4. |
 | The breath | 20 to 21.5 s | No voice. Birds and porch room tone. |
-| End card | 27 to 30 s | Logo lockup, Book a free call, website, phone, Serving Ocala and Marion County. |
+| End card | 27 to 30 s | Logo lockup, Book a free call, website, Serving Ocala and Marion County. |
 
 Brand and finish follow the README. Generator: Kling 3.0 Turbo, 720p, 5 s, 9:16.
 
