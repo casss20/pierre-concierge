@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
     // One line describing liability coverage (e.g. "Professional liability coverage through [carrier]")
     insuranceDetail: "",
     // Plain language visit cancellation and rescheduling policy
-    cancellationPolicy: "",
+    cancellationPolicy: "Online visits are paid when you book. Cancel or reschedule at least 1 business day before your visit for a full refund or a free move to a new time. With less than 1 business day of notice, or if no one is home when the nurse arrives, the visit fee is not refunded. If Elda has to cancel, you get a full refund. Refunds go back to the original card.",
     // What happens if Elda is unavailable (sick, emergency, fully booked)
     backupPlan: "",
     // Set to true only if every client really receives a written care plan and cost before care begins
