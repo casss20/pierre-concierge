@@ -38,14 +38,17 @@ Pierre Concierge Nursing provides private, non emergency nursing care at home, i
 
 -   Care is private pay. We do not bill insurance at this time.
 -   We accept credit cards, HSA and FSA cards, and Zelle.
--   Payment is due at the time of service unless a monthly Care Plan is in place.
+-   Visits booked online are paid when you book. Other visits are paid at the time of service unless a monthly Care Plan is in place.
 -   On request we provide a receipt and a superbill you can submit to your insurer. Reimbursement is up to your insurer and is not guaranteed.
 -   Current rates are on our Pricing page. We tell you the cost before care begins.
 
 ## Cancelling and rescheduling
 
--   Please give as much notice as you can when you need to cancel or move a visit. Call or text and we will find a new time.
--   The monthly Care Plan can be cancelled at any time.
+-   Online visits are paid when you book. If you cancel or reschedule at least 1 business day before your visit, you get a full refund or a free move to a new time.
+-   If you cancel with less than 1 business day of notice, or no one is home when the nurse arrives, the visit fee is not refunded. Call or text and Elda will try to help.
+-   If Elda has to cancel or cannot take your booking, you get a full refund. If a visit needs a doctor order and we cannot confirm it before the visit, you also get a full refund.
+-   Refunds go back to the original card. Your bank may take several business days to show it.
+-   The free phone consultation has no charge. The monthly Care Plan can be cancelled at any time.
 -   If your situation changes, tell Elda. Visits and plans are adjusted as your needs change.
 
 ## Digital guides and downloads
